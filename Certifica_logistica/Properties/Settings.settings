@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Certifica_logistica.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="IpServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.40.1.144</Value>
+    </Setting>
+    <Setting Name="PuertoServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1250</Value>
+    </Setting>
+    <Setting Name="Catalogo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Logistica</Value>
+    </Setting>
+    <Setting Name="PathServerFotos" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\192.168.1.154\fotos$</Value>
+    </Setting>
+    <Setting Name="Server_Updates" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.40.1.151</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
