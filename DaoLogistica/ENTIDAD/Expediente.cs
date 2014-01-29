@@ -15,7 +15,7 @@ namespace DaoLogistica.ENTIDAD
 		public Expediente(string idexpediente, DateTime fechaExp, DateTime fechaIngreso, 
             string codSubDepOrigen, string codSubdepEntrega, string idxTipoDocTra, string nrodoc, string asunto, char moneda, 
             decimal montoAprobado, string cNroAuto, int idRubro, int idMeta, string ccp, short folios, short idfuente, 
-            string codLogin, DateTime fechaRegistro)
+            string codLogin, DateTime fechaRegistro, int nlog)
 		{
             Idexpediente = idexpediente;
             FechaExp = fechaExp;
@@ -35,6 +35,7 @@ namespace DaoLogistica.ENTIDAD
             CodLogin = codLogin;
             FechaRegistro = fechaRegistro;
 		    IdFuente = idfuente;
+		    Nlog = nlog;
 		}
 
         public void Clear()
@@ -58,6 +59,7 @@ namespace DaoLogistica.ENTIDAD
             CodLogin = String.Empty;
             FechaRegistro = fecha;
             IdFuente = 0;
+            Nlog = 0;
         }
 		#endregion
 
@@ -99,6 +101,7 @@ namespace DaoLogistica.ENTIDAD
 
 		public DateTime FechaRegistro { get; set; }
         public short IdFuente { get; set; }
+        public int Nlog { get; set; }
 		#endregion
     }
 }

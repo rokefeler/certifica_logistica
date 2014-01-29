@@ -37,30 +37,6 @@ namespace Certifica_logistica.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1250")]
-        public string PuertoServer {
-            get {
-                return ((string)(this["PuertoServer"]));
-            }
-            set {
-                this["PuertoServer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Logistica")]
-        public string Catalogo {
-            get {
-                return ((string)(this["Catalogo"]));
-            }
-            set {
-                this["Catalogo"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("\\\\192.168.1.154\\fotos$")]
         public string PathServerFotos {
             get {

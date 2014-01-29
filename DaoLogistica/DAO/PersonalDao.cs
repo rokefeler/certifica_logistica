@@ -19,7 +19,7 @@ namespace DaoLogistica.DAO
             DATA.Db.AddInParameter(cmd, "Ape", DbType.String, tPersonal.Ape);
             DATA.Db.AddInParameter(cmd, "Nom", DbType.String, tPersonal.Nom);
             DATA.Db.AddInParameter(cmd, "Direc", DbType.String, tPersonal.Direc);
-            DATA.Db.AddInParameter(cmd, "IdcTipoDoc", DbType.String, (tPersonal.IdxTipoDoc==String.Empty)?Convert.DBNull:tPersonal.IdxTipoDoc);
+            DATA.Db.AddInParameter(cmd, "IdxTipoDoc", DbType.String, (tPersonal.IdxTipoDoc==String.Empty)?Convert.DBNull:tPersonal.IdxTipoDoc);
             DATA.Db.AddInParameter(cmd, "NroDocIden", DbType.String, tPersonal.NroDocIden);
             DATA.Db.AddInParameter(cmd, "fecnac", DbType.DateTime, tPersonal.Fecnac);
             DATA.Db.AddInParameter(cmd, "Email", DbType.String, tPersonal.Email);
@@ -27,7 +27,8 @@ namespace DaoLogistica.DAO
             DATA.Db.AddInParameter(cmd, "NroFijo", DbType.String,(tPersonal.Nrofijo==String.Empty)?Convert.DBNull:tPersonal.Nrofijo);
             DATA.Db.AddInParameter(cmd, "CodDis", DbType.String, tPersonal.CodDis);
             DATA.Db.AddInParameter(cmd, "IdFotoDbExt", DbType.Int32, tPersonal.IdFotoDbExt);
-            DATA.Db.AddInParameter(cmd, "IdcCondicion", DbType.String, tPersonal.IdxCondicion);
+            DATA.Db.AddInParameter(cmd, "IdxCategoria", DbType.String, tPersonal.IdxCategoria);
+            DATA.Db.AddInParameter(cmd, "IdxCondicion", DbType.String, tPersonal.IdxCondicion);
             DATA.Db.AddInParameter(cmd, "CodSubDep", DbType.String, tPersonal.CodSubDep);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             if (dbTrans != null)

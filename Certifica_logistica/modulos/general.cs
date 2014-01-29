@@ -23,10 +23,12 @@ static class CONSTANTE
      public const string VECTOR16 = "ROKEFELER@GMAIL.COM";
      public const int LONGITUD = 256; //128, 192, 256
      public const string HashProvider = "HashCertifica"; 
-     public const string CryptoProvider = "CryptoCertifica";
+     public const string CryptoProvider = @"CryptoCertifica";
+     public const string Catalogo = @"Logistica";
+     public const string Puerto = @"1250";
      public const string UserDb = "sys"+"dba"+"log";
      public const string Syn = "dGb"+"UTA"+"XVS"+"26Q"+"JnZ"+"CC1"+"Na";
-     public const string PasswordDb = "xeg"+"x8@"+"py^e"+"62x"+"Cz_Y"+"]D";
+     public const string PasswordDb = @"6um"+"BUIy"+"sI4S"+"kvX"+"NAA"+"0ad";
 }
     public enum ENumTabla
     {

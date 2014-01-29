@@ -73,6 +73,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.TxtnLog = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -110,7 +111,11 @@
             // 
             // pan1
             // 
+            this.pan1.Controls.Add(this.TxtnLog);
             this.pan1.Size = new System.Drawing.Size(660, 46);
+            this.pan1.Controls.SetChildIndex(this.LblTitulo, 0);
+            this.pan1.Controls.SetChildIndex(this.pic1, 0);
+            this.pan1.Controls.SetChildIndex(this.TxtnLog, 0);
             // 
             // splitContainer1
             // 
@@ -149,9 +154,11 @@
             this.LstObsv.TabIndex = 10;
             this.LstObsv.SelectedIndexChanged += new System.EventHandler(this.LstObsv_SelectedIndexChanged);
             this.LstObsv.DoubleClick += new System.EventHandler(this.LstObsv_DoubleClick);
+            this.LstObsv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LstObsv_KeyDown);
             // 
             // BtnObsv
             // 
+            this.BtnObsv.Enabled = false;
             this.BtnObsv.Location = new System.Drawing.Point(575, 247);
             this.BtnObsv.Name = "BtnObsv";
             this.BtnObsv.Size = new System.Drawing.Size(75, 50);
@@ -186,6 +193,7 @@
             // 
             // EdCodSubDep_Recibe
             // 
+            this.EdCodSubDep_Recibe.EditValue = "NCS";
             this.EdCodSubDep_Recibe.Location = new System.Drawing.Point(5, 18);
             this.EdCodSubDep_Recibe.Name = "EdCodSubDep_Recibe";
             this.EdCodSubDep_Recibe.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -303,6 +311,7 @@
             this.TxtFolios.Name = "TxtFolios";
             this.TxtFolios.Size = new System.Drawing.Size(48, 20);
             this.TxtFolios.TabIndex = 7;
+            this.TxtFolios.Text = "1";
             // 
             // label12
             // 
@@ -711,9 +720,26 @@
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.PaintStyleName = "Flat";
             // 
+            // toolTipController1
+            // 
+            this.toolTipController1.ToolTipType = DevExpress.Utils.ToolTipType.SuperTip;
+            // 
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
+            // 
+            // TxtnLog
+            // 
+            this.TxtnLog.BackColor = System.Drawing.SystemColors.Highlight;
+            this.TxtnLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtnLog.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtnLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtnLog.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.TxtnLog.Location = new System.Drawing.Point(556, 26);
+            this.TxtnLog.Name = "TxtnLog";
+            this.TxtnLog.Size = new System.Drawing.Size(100, 20);
+            this.TxtnLog.TabIndex = 2;
+            this.TxtnLog.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FpTramite
             // 
@@ -805,5 +831,6 @@
         private DevExpress.XtraEditors.ListBoxControl LstObsv;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private System.Windows.Forms.TextBox TxtnLog;
     }
 }

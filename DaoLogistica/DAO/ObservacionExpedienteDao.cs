@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
 using DaoLogistica.ENTIDAD;
 
 namespace DaoLogistica.DAO
@@ -21,6 +19,21 @@ namespace DaoLogistica.DAO
             DATA.Db.AddInParameter(cmd, "IdExpediente", DbType.String, obj.IdExpediente);
             DATA.Db.AddInParameter(cmd, "Detalle", DbType.String, obj.Detalle);
             DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, obj.CodLogin);
+            DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
+            if (dbTrans != null)
+                DATA.Db.ExecuteNonQuery(cmd, dbTrans);
+            else
+                DATA.Db.ExecuteNonQuery(cmd);
+            ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
+            return ret; //devuelve el id único del registro
+        }
+        public static int Delete(long id, String codLogin, DbTransaction dbTrans)
+        {
+            var ret = -1;
+            var cmd = DATA.Db.GetStoredProcCommand("sp_TAOBSV_EXPEDIENTE");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.DeleteLogico); //300
+            DATA.Db.AddInParameter(cmd, "Id", DbType.Int64, id);
+            DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, codLogin);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             if (dbTrans != null)
                 DATA.Db.ExecuteNonQuery(cmd, dbTrans);

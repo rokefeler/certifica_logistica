@@ -7,7 +7,7 @@ using DaoLogistica.ENTIDAD;
 
 namespace Certifica_logistica.mantenimiento
 {
-    public partial class FmPersonal : Certifica_logistica.Masterform
+    public partial class FmPersonal : Masterform
     {
         private Personal _obj;
         public FmPersonal()
@@ -15,18 +15,46 @@ namespace Certifica_logistica.mantenimiento
             InitializeComponent();
         }
 
-        public override bool Master_GrabarFormulario()
+        public override bool Master_Verificar()
         {
-            var ret = 0;
-            if (errorProvider1.GetError(TxtCodPersonal).Length > 0 
-                || errorProvider1.GetError(BtnUbigeo).Length > 0
-                || errorProvider1.GetError(TxtNroDoc).Length > 0)
+            var cad = string.Empty;
+            var msg = string.Empty;
+            if (dxErrorProvider1.GetError(TxtCodPersonal).Length > 0
+                || dxErrorProvider1.GetError(BtnUbigeo).Length > 0
+                || dxErrorProvider1.GetError(TxtNroDoc).Length > 0
+                || dxErrorProvider1.GetError(EdCodSubDep).Length > 0
+                )
             {
                 General.ShowMessage("Primero Complete u Corriga Las Observaciones Encontradas ");
                 return false;
             }
-            else
+            /*
+            msg = "Debe Seleccionar la SubDependencia a la que pertence el Documento que esta Registrando";
+            if (EdCodSubDep.EditValue != null)
             {
+                General.ShowMessage(msg);
+                dxErrorProvider1.SetError(EdCodSubDep, msg);
+                EdCodSubDep.Focus();
+                return false;
+            }
+
+            cad = EdCodSubDep.Text.Trim();
+            if (cad.Length <= 0)
+            {
+                General.ShowMessage(msg);
+                dxErrorProvider1.SetError(EdCodSubDep, msg);
+                EdCodSubDep.Focus();
+                return false;
+            }
+            dxErrorProvider1.SetError(EdCodSubDep, "");*/
+            return true;
+        }
+
+        public override bool Master_GrabarFormulario()
+        {
+            var ret = 0;
+            if (!Master_Verificar()) return false;
+
                 Value = TxtCodPersonal.Text.Trim();
                 if(_obj==null) 
                     _obj = new Personal();
@@ -43,6 +71,10 @@ namespace Certifica_logistica.mantenimiento
                 _obj.IdxCondicion = ((Codigo)CboCondicion.SelectedItem).Id;
                 _obj.Nrofijo = TxtFijo.Text.Trim();
                 _obj.Movil = TxtMovil.Text.Trim();
+            if(EdCodSubDep.EditValue!=null)
+                if (EdCodSubDep.Text.Length > 0)
+                    _obj.CodSubDep = EdCodSubDep.Text.Trim();
+
                 var con = DATA.Db.CreateConnection();
                 con.Open();
                 var dbTrans = con.BeginTransaction();
@@ -70,7 +102,7 @@ namespace Certifica_logistica.mantenimiento
                     con.Close();
                     dbTrans.Dispose();
                 }
-            }
+            
             return (ret > 0);
         }
 
@@ -80,13 +112,13 @@ namespace Certifica_logistica.mantenimiento
             oFrm.ShowDialog();
             SuspendLayout();
             TxtCodPersonal.Text = oFrm._Codigo;
-            toolTip1.SetToolTip(TxtCodPersonal, oFrm._Nombre);
+            toolTipController1.SetToolTip(TxtCodPersonal, oFrm._Nombre);
             oFrm.Close();
             ResumeLayout();
         }
         private void TxtCodPersonal_Leave(object sender, EventArgs e)
         {
-            errorProvider1.SetError(TxtCodPersonal, "");
+            dxErrorProvider1.SetError(TxtCodPersonal, "");
             if (TxtCodPersonal.EditValue == null)
                 TxtCodPersonal.EditValue = "";
 
@@ -95,12 +127,12 @@ namespace Certifica_logistica.mantenimiento
             if (idP.Length == 0)
             {
                 TxtApellidos.Text = "";
-                errorProvider1.SetError(TxtCodPersonal, "Debe Ingresar Codigo de Usuario Final u digitar 0");
+                dxErrorProvider1.SetError(TxtCodPersonal, "Debe Ingresar Codigo de Usuario Final u digitar 0");
             }
             else if (idP.Length < 8)
             {
                 TxtApellidos.Text = "";
-                errorProvider1.SetError(TxtCodPersonal, "Código Ingresado es Muy Corto (Log. Minima 08 Dig)");
+                dxErrorProvider1.SetError(TxtCodPersonal, "Código Ingresado es Muy Corto (Log. Minima 08 Dig)");
             }
             else
             {
@@ -126,6 +158,11 @@ namespace Certifica_logistica.mantenimiento
                 TxtFijo.Text = p.Nrofijo;
                 General.UbicaItemsComboCodigo(CboCategoria, p.IdxCategoria);
                 General.UbicaItemsComboCodigo(CboCondicion, p.IdxCondicion);
+                if (p.CodSubDep.Length > 0)
+                {
+                    EdCodSubDep.EditValue = p.CodSubDep;
+                    EdCodSubDep_Leave(EdCodSubDep,null); //mostrar datos
+                }
             }
             else 
             {
@@ -136,7 +173,7 @@ namespace Certifica_logistica.mantenimiento
 
         private void TxtCodPersonal_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = !string.IsNullOrEmpty(errorProvider1.GetError(TxtCodPersonal));
+            e.Cancel = !string.IsNullOrEmpty(dxErrorProvider1.GetError(TxtCodPersonal));
             //BtnAdd.Enabled = !e.Cancel;
         }
         private void ObjEnter(object sender, EventArgs e)
@@ -161,18 +198,17 @@ namespace Certifica_logistica.mantenimiento
         private void BtnUbigeo_Leave(object sender, EventArgs e)
         {
             string coddis = BtnUbigeo.Text.Trim();
-            errorProvider1.SetError(BtnUbigeo, "");
+            dxErrorProvider1.SetError(BtnUbigeo, "");
             if (string.IsNullOrEmpty(coddis))
             {
-                errorProvider1.SetError(BtnUbigeo, "Ingrese Código de Ubigeo - Ej: 040101");
+                dxErrorProvider1.SetError(BtnUbigeo, "Ingrese Código de Ubigeo - Ej: 040101");
                 return;
             }
             var d = DistritoDao.GetbyId(coddis);
             if(d==null)
             {
                 TxtUbigeo.Text = @"Código de Ubigeo no Existe!";
-                errorProvider1.SetError(BtnUbigeo, "Código de Ubigeo no Existe!");
-                return;
+                dxErrorProvider1.SetError(BtnUbigeo, "Código de Ubigeo no Existe!");
             }
             else
             {
@@ -184,11 +220,47 @@ namespace Certifica_logistica.mantenimiento
         private void TxtNroDoc_Leave(object sender, EventArgs e)
         {
             var cnum = TxtNroDoc.Text.Trim();
-            errorProvider1.SetError(TxtNroDoc, "");
+            dxErrorProvider1.SetError(TxtNroDoc, "");
             if(string.IsNullOrEmpty(cnum))
-                errorProvider1.SetError(TxtNroDoc,"Ingrese el Número de Documento");
+                dxErrorProvider1.SetError(TxtNroDoc, "Ingrese el Número de Documento");
             else if(cnum.Length<8)
-                errorProvider1.SetError(TxtNroDoc,"El Número de Documento de tener como mínimo una Long. de 8C");
+                dxErrorProvider1.SetError(TxtNroDoc, "El Número de Documento de tener como mínimo una Long. de 8C");
+        }
+
+        private void EdCodSubDep_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var oFrm = new FphSubDependencia { _TiTuloForm = "Busqueda De SubDependencia Institucional", _backColor = BackColor };
+            oFrm.ShowDialog();
+            SuspendLayout();
+            EdCodSubDep.Text = oFrm._Codigo;
+            toolTipController1.SetToolTip(EdCodSubDep, oFrm._Nombre);
+            oFrm.Close();
+            ResumeLayout();
+        }
+
+        private void EdCodSubDep_Leave(object sender, EventArgs e)
+        {
+            TxtSubDependencia.Text = "";
+            TxtDependencia.Text = "";
+            toolTipController1.SetToolTip(TxtSubDependencia, "");
+            toolTipController1.SetToolTip(TxtDependencia, "");
+            dxErrorProvider1.SetError(EdCodSubDep, "");
+            if (EdCodSubDep.EditValue == null) return;
+            if (EdCodSubDep.EditValue.ToString().Length <= 0) return;
+
+            var cod = EdCodSubDep.EditValue.ToString().ToUpper();
+            if (cod.Length <= 0) return;
+            var obj = SubDependenciaDao.GetbyId(cod);
+            if (obj == null)
+            {
+                dxErrorProvider1.SetError(EdCodSubDep, "Este Valor Ingresado no Existe");
+                return;
+            }
+            TxtSubDependencia.Text = obj.Nombre;
+            var obj2 = DependenciaDao.GetbyId(obj.CodDependencia);
+            TxtDependencia.Text = obj2.Nombre;
+            toolTipController1.SetToolTip(TxtSubDependencia, obj.Nombre);
+            toolTipController1.SetToolTip(TxtDependencia, obj2.Nombre);
         }
     }
 }

@@ -1,14 +1,4 @@
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\DaoLogistica.dll
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\DaoLogistica.pdb
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.Unity.dll
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.ServiceLocation.dll
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.Unity.Interception.dll
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.Unity.xml
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.Unity.Interception.xml
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\obj\Debug\DaoLogistica.dll
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\obj\Debug\DaoLogistica.pdb

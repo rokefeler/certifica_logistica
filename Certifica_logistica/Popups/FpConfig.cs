@@ -1,4 +1,5 @@
 ﻿using System;
+using Certifica_logistica.modulos;
 
 namespace Certifica_logistica.Popups
 {
@@ -12,9 +13,9 @@ namespace Certifica_logistica.Popups
         private void FpConfig_Load(object sender, EventArgs e)
         {
             MskPeriodo.Text = _FrmPadre.Miconfiguracion.PeriodoActual;
-            TxtCatalogo.Text = Properties.Settings.Default.Catalogo;
+            TxtCatalogo.Text = CONSTANTE.Catalogo;
             MskServerBD.Text = Properties.Settings.Default.IpServer;
-            MskPuerto.Text = Properties.Settings.Default.PuertoServer;
+            MskPuerto.Text = CONSTANTE.Puerto;
             MskServerUpdate.Text = Properties.Settings.Default.Server_Updates;
         }
 

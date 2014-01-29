@@ -5,12 +5,6 @@
     <Setting Name="IpServer" Type="System.String" Scope="User">
       <Value Profile="(Default)">10.40.1.144</Value>
     </Setting>
-    <Setting Name="PuertoServer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1250</Value>
-    </Setting>
-    <Setting Name="Catalogo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Logistica</Value>
-    </Setting>
     <Setting Name="PathServerFotos" Type="System.String" Scope="User">
       <Value Profile="(Default)">\\192.168.1.154\fotos$</Value>
     </Setting>

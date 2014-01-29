@@ -113,9 +113,11 @@ namespace Certifica_logistica
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -531,19 +533,20 @@ namespace Certifica_logistica
             // trámiteDocumentarioToolStripMenuItem
             // 
             this.trámiteDocumentarioToolStripMenuItem.Name = "trámiteDocumentarioToolStripMenuItem";
-            this.trámiteDocumentarioToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.trámiteDocumentarioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.trámiteDocumentarioToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.trámiteDocumentarioToolStripMenuItem.Text = "Trámite Documentario";
             this.trámiteDocumentarioToolStripMenuItem.Click += new System.EventHandler(this.trámiteDocumentarioToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(176, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(214, 6);
             // 
             // ordenesDeServicioToolStripMenuItem
             // 
             this.ordenesDeServicioToolStripMenuItem.Name = "ordenesDeServicioToolStripMenuItem";
-            this.ordenesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.ordenesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.ordenesDeServicioToolStripMenuItem.Text = "Ordenes de Servicio";
             // 
             // ReportesMenuItemSup
@@ -564,13 +567,13 @@ namespace Certifica_logistica
             this.relaciónDeAmbientesToolStripMenuItem.Name = "relaciónDeAmbientesToolStripMenuItem";
             this.relaciónDeAmbientesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.D1)));
-            this.relaciónDeAmbientesToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.relaciónDeAmbientesToolStripMenuItem.Text = "Relación de Ambientes";
+            this.relaciónDeAmbientesToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.relaciónDeAmbientesToolStripMenuItem.Text = "Reportes de Tramites";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(260, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(255, 6);
             // 
             // windowsMenu
             // 
@@ -771,7 +774,7 @@ namespace Certifica_logistica
             this.LblVersion.ForeColor = System.Drawing.Color.OliveDrab;
             this.LblVersion.Name = "LblVersion";
             this.LblVersion.Size = new System.Drawing.Size(143, 22);
-            this.LblVersion.Text = "Compilación: 22Ene2014";
+            this.LblVersion.Text = "Compilación: 29Ene2014";
             // 
             // toolStripCDeposito
             // 
@@ -840,6 +843,10 @@ namespace Certifica_logistica
             this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // popupMenu1
+            // 
+            this.popupMenu1.Name = "popupMenu1";
+            // 
             // Inicioform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -862,6 +869,7 @@ namespace Certifica_logistica
             this.toolStrip.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -952,6 +960,7 @@ namespace Certifica_logistica
         private System.Windows.Forms.ToolStripMenuItem subDependenciasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trámiteDocumentarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenesDeServicioToolStripMenuItem;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
     }
 }
 

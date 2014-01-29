@@ -54,21 +54,19 @@
             this.TxtFijo = new System.Windows.Forms.TextBox();
             this.CboCondicion = new System.Windows.Forms.ComboBox();
             this.CboCategoria = new System.Windows.Forms.ComboBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.GrpSubDependencia = new System.Windows.Forms.GroupBox();
+            this.EdCodSubDep = new DevExpress.XtraEditors.ButtonEdit();
+            this.TxtSubDependencia = new System.Windows.Forms.TextBox();
+            this.TxtDependencia = new System.Windows.Forms.TextBox();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCodPersonal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnUbigeo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.GrpSubDependencia.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EdCodSubDep.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pic1
@@ -334,85 +332,66 @@
             this.CboCategoria.Size = new System.Drawing.Size(389, 21);
             this.CboCategoria.TabIndex = 23;
             // 
-            // errorProvider1
+            // GrpSubDependencia
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.GrpSubDependencia.BackColor = System.Drawing.Color.Transparent;
+            this.GrpSubDependencia.Controls.Add(this.EdCodSubDep);
+            this.GrpSubDependencia.Controls.Add(this.TxtSubDependencia);
+            this.GrpSubDependencia.Controls.Add(this.TxtDependencia);
+            this.GrpSubDependencia.Location = new System.Drawing.Point(0, 318);
+            this.GrpSubDependencia.Name = "GrpSubDependencia";
+            this.GrpSubDependencia.Size = new System.Drawing.Size(479, 74);
+            this.GrpSubDependencia.TabIndex = 24;
+            this.GrpSubDependencia.TabStop = false;
+            this.GrpSubDependencia.Text = "Datos de SubDependencia al que se encuentra Asignado";
             // 
-            // textBox1
+            // EdCodSubDep
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox1.Location = new System.Drawing.Point(179, 23);
-            this.textBox1.MaxLength = 255;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(290, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // buttonEdit1
-            // 
-            this.buttonEdit1.Location = new System.Drawing.Point(97, 23);
-            this.buttonEdit1.Name = "buttonEdit1";
-            this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.EdCodSubDep.Location = new System.Drawing.Point(5, 18);
+            this.EdCodSubDep.Name = "EdCodSubDep";
+            this.EdCodSubDep.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit1.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.buttonEdit1.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.buttonEdit1.Properties.Mask.BeepOnError = true;
-            this.buttonEdit1.Properties.Mask.EditMask = "999999";
-            this.buttonEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
-            this.buttonEdit1.Properties.MaxLength = 15;
-            this.buttonEdit1.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.BtnUbigeo_Properties_ButtonClick);
-            this.buttonEdit1.Size = new System.Drawing.Size(76, 20);
-            this.buttonEdit1.TabIndex = 1;
+            this.EdCodSubDep.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.EdCodSubDep.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.EdCodSubDep.Properties.Mask.BeepOnError = true;
+            this.EdCodSubDep.Properties.Mask.EditMask = "LLLl";
+            this.EdCodSubDep.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
+            this.EdCodSubDep.Properties.Mask.SaveLiteral = false;
+            this.EdCodSubDep.Properties.MaxLength = 15;
+            this.EdCodSubDep.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdCodSubDep_Properties_ButtonClick);
+            this.EdCodSubDep.Size = new System.Drawing.Size(65, 20);
+            this.EdCodSubDep.TabIndex = 0;
+            this.EdCodSubDep.Leave += new System.EventHandler(this.EdCodSubDep_Leave);
             // 
-            // label12
+            // TxtSubDependencia
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 26);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "SubDependencia:";
+            this.TxtSubDependencia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtSubDependencia.Location = new System.Drawing.Point(79, 18);
+            this.TxtSubDependencia.Name = "TxtSubDependencia";
+            this.TxtSubDependencia.ReadOnly = true;
+            this.TxtSubDependencia.Size = new System.Drawing.Size(394, 20);
+            this.TxtSubDependencia.TabIndex = 1;
+            this.TxtSubDependencia.TabStop = false;
             // 
-            // textBox2
+            // TxtDependencia
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox2.Location = new System.Drawing.Point(97, 49);
-            this.textBox2.MaxLength = 255;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(372, 20);
-            this.textBox2.TabIndex = 4;
+            this.TxtDependencia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtDependencia.Location = new System.Drawing.Point(79, 44);
+            this.TxtDependencia.Name = "TxtDependencia";
+            this.TxtDependencia.ReadOnly = true;
+            this.TxtDependencia.Size = new System.Drawing.Size(394, 20);
+            this.TxtDependencia.TabIndex = 2;
+            this.TxtDependencia.TabStop = false;
             // 
-            // label13
+            // dxErrorProvider1
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(18, 52);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(74, 13);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "Dependencia:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.buttonEdit1);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Location = new System.Drawing.Point(2, 318);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 83);
-            this.groupBox1.TabIndex = 24;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dependencia & SubDependencia Al que esta Asignado";
+            this.dxErrorProvider1.ContainerControl = this;
             // 
             // FmPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(479, 404);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(479, 397);
+            this.Controls.Add(this.GrpSubDependencia);
             this.Controls.Add(this.CboCategoria);
             this.Controls.Add(this.CboCondicion);
             this.Controls.Add(this.label10);
@@ -466,16 +445,16 @@
             this.Controls.SetChildIndex(this.label10, 0);
             this.Controls.SetChildIndex(this.CboCondicion, 0);
             this.Controls.SetChildIndex(this.CboCategoria, 0);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.GrpSubDependencia, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
             this.pan1.ResumeLayout(false);
             this.pan1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCodPersonal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnUbigeo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.GrpSubDependencia.ResumeLayout(false);
+            this.GrpSubDependencia.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EdCodSubDep.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -507,13 +486,11 @@
         private System.Windows.Forms.TextBox TxtFijo;
         private System.Windows.Forms.ComboBox CboCondicion;
         private System.Windows.Forms.ComboBox CboCategoria;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private DevExpress.XtraEditors.ButtonEdit buttonEdit1;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox GrpSubDependencia;
+        private DevExpress.XtraEditors.ButtonEdit EdCodSubDep;
+        private System.Windows.Forms.TextBox TxtSubDependencia;
+        private System.Windows.Forms.TextBox TxtDependencia;
+        private DevExpress.Utils.ToolTipController toolTipController1;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
     }
 }

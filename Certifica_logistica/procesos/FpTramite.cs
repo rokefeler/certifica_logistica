@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 using Certifica_logistica.modulos;
@@ -181,7 +182,7 @@ namespace Certifica_logistica.procesos
             }
             dxErrorProvider1.SetError(TxtObsv, "");
 
-            if (TxtObsv.Text.Trim().Length<=4)
+            if (TxtObsv.Text.Trim().Length>0 && TxtObsv.Text.Trim().Length<=4)
             {
                 msg = "La Longitud de la Observación es muy Corta, debe ser mas de 4 caracteres";
                 General.ShowMessage(msg);
@@ -215,6 +216,7 @@ namespace Certifica_logistica.procesos
 
         public override bool Master_GrabarFormulario()
         {
+            var bExisteExp = false;
             string cad;
             DbConnection con=null;
             DbTransaction dbtrans = null;
@@ -228,6 +230,8 @@ namespace Certifica_logistica.procesos
             else
                 _exp.Clear();
 
+            //Verificar si Existe
+            bExisteExp = ExpedienteDao.ExisteById(Value);
 
             _exp.Idexpediente = Value;
             _exp.FechaIngreso = DtFechaIngresoExp.DateTime;
@@ -261,35 +265,40 @@ namespace Certifica_logistica.procesos
                 con.Open();
                 dbtrans = con.BeginTransaction();
                 var ret = ExpedienteDao.Grabar(_exp, dbtrans);
+                _exp.Nlog = ret; //grabar el nro de Log
+                TxtnLog.Text = @"Log:" + _exp.Nlog.ToString(CultureInfo.InvariantCulture).PadLeft(6, '0');
                 cad = General.AnalizaResultadoSql(ret);
                 if (ret > 0)
                 {
-                    //Pasar Expediente a Estado por Revisar
-                    var det= new DetExpediente();
-                    det.IdExpediente = _exp.Idexpediente;
-                    var codSubDepOrigen = EdCodSubDep_Recibe.EditValue.ToString().Trim();
-                    det.CodSubDepOrigen = codSubDepOrigen;
-                    det.FechaRecepcion = _exp.FechaIngreso;
-                    var obj = LoginDao.GetbyId(_FrmPadre.Miconfiguracion.IdUsuario);
-                    det.CodPersonalOrigen = obj.CodPersonal;
-                    det.IdxEstadoExp = "DEES-0000"; //Estado inicial por Revisa
-                    det.Detalle = "Recepción Doc. por realizar Despacho";
-                    det.Aceptado = false;
-                    det.CodLogin = _FrmPadre.Miconfiguracion.IdUsuario;
-                    ret=DetExpedienteDao.GrabarInicial(det, dbtrans);
+                    if (!bExisteExp) //Si es un Exp Nuevo, grabar por defecto inicio de derivación
+                    {
+                        //Pasar Expediente a Estado por Revisar
+                        var det = new DetExpediente();
+                        det.IdExpediente = _exp.Idexpediente;
+                        var codSubDepOrigen = EdCodSubDep_Recibe.EditValue.ToString().Trim();
+                        det.CodSubDepOrigen = codSubDepOrigen;
+                        det.FechaRecepcion = _exp.FechaIngreso;
+                        var obj = LoginDao.GetbyId(_FrmPadre.Miconfiguracion.IdUsuario);
+                        det.CodPersonalOrigen = obj.CodPersonal;
+                        det.IdxEstadoExp = "DEES-0000"; //Estado inicial por Revisa
+                        det.Detalle = "Recepción Doc. por realizar Despacho";
+                        det.Aceptado = false;
+                        det.CodLogin = _FrmPadre.Miconfiguracion.IdUsuario;
+                        ret = DetExpedienteDao.GrabarInicial(det, dbtrans);
+                    }
                     if (ret > 0)
                     {
                         //Ahora en Cadena, Grabar Observación Si Existe
-                        var obsv = new ObservacionExpediente(_exp.Idexpediente, TxtObsv.Text, _FrmPadre.Miconfiguracion.IdUsuario );
                         if (!String.IsNullOrEmpty(TxtObsv.Text))
                         {
+                            var obsv = new ObservacionExpediente(_exp.Idexpediente, TxtObsv.Text, _FrmPadre.Miconfiguracion.IdUsuario);
                             ret = ObservacionExpedienteDao.Grabar(obsv, dbtrans);
-                            if (ret > 0)
-                            {
-                                dbtrans.Commit();
-                                MessageBox.Show(cad, @"Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                VerDetalleExpediente();
-                            }
+                        }
+                        if (ret > 0)
+                        {
+                            dbtrans.Commit();
+                            MessageBox.Show(cad, @"Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            VerDetalleExpediente();
                         }
                      }
                 }
@@ -322,13 +331,13 @@ namespace Certifica_logistica.procesos
             Value = String.Empty;
             EdIdExpediente.EditValue = null;
             CboYearExp.SelectedIndex = 0;
-            DtFechaExp.EditValue = null;
-            DtFechaIngresoExp.DateTime = new DateTime();
+            //DtFechaExp.EditValue = null; //mantener por indic. de SUssy
+            DtFechaIngresoExp.EditValue = DateTime.Now;
             //CboFuente.SelectedIndex = 3;
             CboMoneda.SelectedIndex = 0;
             TxtNroAutorizacion.Text = "";
             TxtMontoAprobado.Text = "";
-            //EdCodSubDep.EditValue = null;  //Queda misma Dependencia  por defecto
+            //EdCodSubDep.EditValue = null;  //Queda misma Dependencia  por defecto, segun sussy
             //TxtDependencia.Text = "";
             //toolTipController1.SetToolTip(TxtDependencia,"");
             //TxtSubDependencia.Text = "";
@@ -336,7 +345,7 @@ namespace Certifica_logistica.procesos
             General.CargarDatos(CboTipoDoc, "TDTR", "TDTR-0001"); //por defecto oficio seleccionado
             TxtNroDoc.Text = "";
             TxtAsunto.Text = "";
-            TxtFolios.Text = "";
+            TxtFolios.Text = @"01"; //por defecto
             LstObsv.DataSource = null;
             TxtObsv.Text = "";
             toolTipController1.SetToolTip(LstObsv, "");
@@ -344,18 +353,28 @@ namespace Certifica_logistica.procesos
             _tb.Rows.Clear(); //limpioar registros
             Text = Tag + @"Modificado por : " + _FrmPadre.Miconfiguracion.IdUsuario +
             @" El " + DateTime.Now.ToShortDateString() + @" " + DateTime.Now.ToShortTimeString();
+            TxtnLog.Text = "";
+            EdIdExpediente.ResetBackColor();
+            if(_exp!=null) _exp.Clear();
             EdIdExpediente.Focus();
+            
             return true;
         }
 
         public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null)
         {
+            BtnObsv.Enabled = false;
             _exp = ExpedienteDao.GetbyId(idPrincipal);
+            EdIdExpediente.ResetBackColor();
+            CboYearExp.ResetBackColor();
             if (_exp == null)
             {
-                General.ShowMessage("El Expediente Ingresado " + idPrincipal + " No Existe");
+                Console.Beep();
+                toolTipController1.ShowHint("El Expediente Ingresado " + idPrincipal + " No Existe");
                 return false;
             }
+            EdIdExpediente.BackColor = Color.LightGreen;
+            CboYearExp.BackColor = Color.LightGreen;
             Value = idPrincipal;
             DtFechaExp.DateTime = _exp.FechaExp;
             DtFechaIngresoExp.DateTime = _exp.FechaIngreso;
@@ -383,6 +402,9 @@ namespace Certifica_logistica.procesos
                 TxtMontoAprobado.Text = "";
             else
                 TxtMontoAprobado.Text = _exp.MontoAprobado.ToString("####00.00");
+            EdCodSubDep.IsModified = true;
+            EdCodSubDep_Recibe.IsModified = true;
+
             EdCodSubDep.EditValue = _exp.CodSubDepOrigen;
             EdCodSubDep_Leave(EdCodSubDep,null);
             EdCodSubDep_Recibe.EditValue = _exp.CodSubDepEntrega;
@@ -391,6 +413,8 @@ namespace Certifica_logistica.procesos
             TxtNroDoc.Text = _exp.Nrodoc;
             TxtAsunto.Text = _exp.Asunto;
             TxtFolios.Text = _exp.Folios.ToString("#00");
+            TxtnLog.Text = @"Log:" + _exp.Nlog.ToString(CultureInfo.InvariantCulture).PadLeft(6, '0');
+            BtnObsv.Enabled = true;
             //Cargar Observaciones
             VerDetalleExpediente();
             return true;
@@ -417,7 +441,9 @@ namespace Certifica_logistica.procesos
             CboFuente.SelectedIndex = 3;
             DtFechaIngresoExp.EditValue = DateTime.Now;
             DtFechaExp.DateTime = DateTime.Now; //Por Defecto Fecha de Hoy
-
+            EdCodSubDep_Recibe.EditValue = @"NCS";
+            EdCodSubDep_Recibe.IsModified = true;
+            EdCodSubDep_Leave(EdCodSubDep_Recibe,null);
             Text = Tag + @"Modificado por : " + _FrmPadre.Miconfiguracion.IdUsuario + 
                         @" El " + DateTime.Now.ToShortDateString() + @" " + DateTime.Now.ToShortTimeString();
             EdIdExpediente.Focus();
@@ -483,7 +509,7 @@ namespace Certifica_logistica.procesos
                 var cad = @"Reg. por:";
                 var obsv = (ObservacionExpediente) LstObsv.SelectedItem;
                 cad = String.Format("{0} {1}", cad, obsv.CodLogin);
-                TxtObsv.Text = string.Format(@"[{0} {1}] Observo: {2}", obsv.CodLogin, obsv.Display, obsv.Detalle);
+                TxtObsv.Text = string.Format(@"[{0} {1}] {2}", obsv.CodLogin, obsv.Display, obsv.Detalle);
                 toolTipController1.SetToolTip(TxtObsv, cad);
                 toolTipController1.SetToolTip(LstObsv, cad);
             }
@@ -578,6 +604,55 @@ namespace Certifica_logistica.procesos
             toolTipController1.SetToolTip(t2, obj2.Nombre);
         }
         #endregion
+
+        private void LstObsv_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (String.IsNullOrEmpty(Value)) return;
+                var con = DATA.Db.CreateConnection();
+                con.Open();
+                var dbTrans = con.BeginTransaction();
+                try
+                {
+// ReSharper disable once RedundantAssignment
+                    var ret = 0;
+// ReSharper disable once RedundantAssignment
+                    var cad = String.Empty;
+                    var o = (ObservacionExpediente) LstObsv.SelectedItem;
+
+                    if (o.Id > 0)
+                    {
+
+                        ret = ObservacionExpedienteDao.Delete(o.Id, _FrmPadre.Miconfiguracion.IdUsuario, dbTrans);
+                        if (ret >= 0)
+                        {
+                            dbTrans.Commit();
+                            General.ShowMessage(string.Format("Observación del {0} Fue Eliminada Correctamente",
+                                o.Display));
+                            EdIdExpediente.IsModified = true; //marcar que se modifico el control para refrescos
+                            VerDetalleObservaciones(); //Refrescar
+                        }
+                        else
+                        {
+                            dbTrans.Rollback();
+                            cad = General.AnalizaResultadoSql(ret);
+                            General.ShowMessage(cad);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    dbTrans.Rollback();
+                    Console.Beep();
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+        }
       
         /*
         private void buttonEdit3_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)

@@ -126,15 +126,16 @@ namespace DaoLogistica.DAO
             obj.IdFuente        = dr.GetInt16(dr.GetOrdinal("IdFuente"));
             obj.CodLogin        = dr.GetString(dr.GetOrdinal("CodLogin"));
             obj.FechaRegistro   = dr.GetDateTime(dr.GetOrdinal("FechaRegistro"));
+            obj.Nlog            = dr.GetInt32(dr.GetOrdinal("nLog"));
             return obj;
         }
 
-        public static bool ExisteById(long idExpLog)
+        public static bool ExisteById(String idExpediente)
         {
-            if (idExpLog <=0) throw new ArgumentNullException("idExpLog");
+            if (String.IsNullOrEmpty(idExpediente)) throw new ArgumentNullException("idExpediente");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TExpediente");
             DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.ExistsId);
-            DATA.Db.AddInParameter(cmd, "IdExpLog", DbType.Int64, idExpLog);
+            DATA.Db.AddInParameter(cmd, "idExpediente", DbType.String, idExpediente);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             DATA.Db.ExecuteNonQuery(cmd);
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");

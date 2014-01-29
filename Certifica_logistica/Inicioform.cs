@@ -36,8 +36,10 @@ namespace Certifica_logistica
             //pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\images\\logo.gif");
         }
 
-        public void CargarDatosIniciales()
+        public bool CargarDatosIniciales()
         {
+            bool ret = true;
+            var cArchivoConfig = String.Empty;
             var con = new Conexion();
             try
             {
@@ -54,32 +56,42 @@ namespace Certifica_logistica
                 */
 
                 con.Ip = Properties.Settings.Default.IpServer;
-                con.Puerto = Properties.Settings.Default.PuertoServer;
-                con.Catalogo = Properties.Settings.Default.Catalogo;
+                con.Puerto = @"1250";
+                con.Catalogo = @"Logistica";
                 con.Pwd = CONSTANTE.PasswordDb;
                 con.Usuario = CONSTANTE.UserDb;
+                if (con.Ip.Length <= 0)
+                {
+                    General.ShowMessage("No Existe Dirección del Servidor");
+                    return false;
+                }
 
                 //TODO: cambiar encryptacion por objeto
-                /*
-                byte[] serializedObject = SerializationUtility.ToBytes(con);
-                byte[] hashed1Object = defaultCrypto.CreateHash("MD5Cng", con);
-                 * */
-                var cArchivoConfig = DatabaSeConfig.ConfiguracionDb(con);
-                if (cArchivoConfig.Length == 0)
+                try
                 {
-                    Console.Beep();
-                    MessageBox.Show(@"Error #0 - comunique al Administrador de Red");
-                    return;
-                }
-                IConfigurationSource source = new FileConfigurationSource(cArchivoConfig);
-                var factory = new DatabaseProviderFactory(source);
+                    cArchivoConfig = DatabaSeConfig.ConfiguracionDb(con);
+                    
+                    if (cArchivoConfig.Length == 0)
+                    {
+                        Console.Beep();
+                        MessageBox.Show(@"Error #0 - comunique al Administrador de Red");
+                        return false;
+                    }
 
-                MiDatabase = factory.Create("CERTIFICA");
-                File.Delete(cArchivoConfig);
-                //DATA.ClaveSyn = Security.CifrarTextoAes("3$KjqHp0rSN$>:-)",CONSTANTE.PALABRAPASO, CONSTANTE.PALABRASALTO,9,CONSTANTE.VECTOR16, CONSTANTE.LONGITUD);
-                DATA.Db = MiDatabase;
-                //Cargar Valores del Sistema
-                DATA.ClaveSyn = CONSTANTE.Syn;
+                    IConfigurationSource source = new FileConfigurationSource(cArchivoConfig);
+                    var factory = new DatabaseProviderFactory(source);
+                    MiDatabase = factory.Create("CERTIFICA");
+                    File.Delete(cArchivoConfig);
+                    //DATA.ClaveSyn = Security.CifrarTextoAes("jqHasdasdasdp0>:-)",CONSTANTE.PALABRAPASO, CONSTANTE.PALABRASALTO,9,CONSTANTE.VECTOR16, CONSTANTE.LONGITUD);
+                    DATA.Db = MiDatabase;
+                    //Cargar Valores del Sistema
+                    DATA.ClaveSyn = CONSTANTE.Syn;
+                }
+                catch (Exception ff)
+                {
+                    General.ShowMessage(ff.Message, "Alerta Error Configuracion Servidor ");
+                    return false;
+                }
                 using (var dr = ConfigDao.GetAllConfig())
                 {
                     while (dr.Read())
@@ -100,8 +112,7 @@ namespace Certifica_logistica
                 }
 
                 if (Miconfiguracion.RazonEmpresa == String.Empty)
-                {
-                    General.ShowMessage("Programa No pudo Localizar al Servidor", "Error de Conexión");
+                {General.ShowMessage("Programa No pudo Localizar al Servidor", "Error de Conexión");
                     MiDatabase = null;
                     Application.Exit();
                 }
@@ -137,6 +148,7 @@ namespace Certifica_logistica
             {
                 if (sqe.Number == 18456) //Si Clave de Database es InCorrecta
                 {
+                    ret = false;
                     General.ShowMessage("Error en Configuración de Instalación  - DB",
                         "Contactese con Administrador del Sistema");
                     Close();
@@ -144,22 +156,24 @@ namespace Certifica_logistica
             }
             catch (SqlNullValueException sqe)
             {
+                ret = false;
                 sqe.HelpLink = "rokefeler.net/sqe";
                 General.ShowMessage("Configuración de DB Alterada - Valores Nulos",
-                        "Contactese con Administrador del Sistema" );
+                        "Contactese con Administrador del Sistema");
                 Close();
             }
             catch (Exception ee)
             {
-                MessageBox.Show(ee.Message);
+                ret = false;
+                MessageBox.Show(ee.Message, @"Error Cargar datos de Configuración");
                 Close();
             }
-             
+            return ret;
         }
 
         private void inicioform_Load(object sender, EventArgs e)
         {
-            CargarDatosIniciales();
+            if(!CargarDatosIniciales()) Application.Exit();
             LoginToolStripMenuItem_Click(sender, e);
         }
 
@@ -506,7 +520,7 @@ namespace Certifica_logistica
         private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            /*
+           
             var oFrm = new FrmLogin {_FrmPadre = this};
             oFrm.ShowDialog();
             try
@@ -516,25 +530,23 @@ namespace Certifica_logistica
                 {
                     toolStripStatus_user.Text = @"Usuario: " + Miconfiguracion.Nombre;
                     Miconfiguracion.IdConexion = LoginDao.MarcarRegistro(Miconfiguracion.IdUsuario, 0,
-                        Miconfiguracion.ip);
+                        Miconfiguracion.Ip);
                 }
                 else
                 {
                     toolStripStatus_user.Text = @"Usuario:  [Ninguno]";
                 }
                 oFrm.Close();
-                oFrm.Dispose();
             }
             catch (Exception ex)
             {
                 General.ShowMessage(ex.Message);
-            } */
-            //TODO: JR restablecer al poner en producción
-            Miconfiguracion.IdUsuario = "SYSTEM";
+            } //TODO: JR restablecer al poner en producción
+            /*Miconfiguracion.IdUsuario = "SYSTEM";
             Miconfiguracion.Nombre= "PRUEBAS";
             Miconfiguracion.Sede = "";
             Miconfiguracion.Derechos = new string('9',80);ActivarMenus(true);
-             
+             */
 
         }
 
