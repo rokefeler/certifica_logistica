@@ -18,6 +18,7 @@ namespace DaoLogistica.DAO
             DATA.Db.AddInParameter(cmd, "FechaExp", DbType.DateTime, obj.FechaExp);
             DATA.Db.AddInParameter(cmd, "FechaIngreso", DbType.DateTime, obj.FechaIngreso);
             DATA.Db.AddInParameter(cmd, "CodSubDep_Origen", DbType.String, obj.CodSubDepOrigen);
+            DATA.Db.AddInParameter(cmd, "CodSubDep_Entrega", DbType.String, obj.CodSubDepEntrega);
             DATA.Db.AddInParameter(cmd, "IdxTipoDocTra", DbType.String, obj.IdxTipoDocTra);
             DATA.Db.AddInParameter(cmd, "Nrodoc", DbType.String, obj.Nrodoc);
             DATA.Db.AddInParameter(cmd, "Asunto", DbType.String, obj.Asunto);
@@ -60,6 +61,23 @@ namespace DaoLogistica.DAO
             return ret;
         }
 
+        public static Expediente GetbyId(string cIdExpediente)
+        {
+            if (String.IsNullOrEmpty(cIdExpediente)) throw new ArgumentNullException("cIdExpediente");
+            Expediente obj = null;
+            var cmd = DATA.Db.GetStoredProcCommand("sp_TExpediente");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetById);
+            DATA.Db.AddInParameter(cmd, "IdExpediente", DbType.String, cIdExpediente);
+            DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
+            using (var dr = DATA.Db.ExecuteReader(cmd))
+            {
+                if (dr.Read())
+                {
+                    obj = MakeObj(dr);
+                }
+            }
+            return obj;
+        }
         public static Expediente GetbyId(long idExpLog)
         {
             if (idExpLog<=0) throw new ArgumentNullException("idExpLog");
@@ -94,6 +112,7 @@ namespace DaoLogistica.DAO
             obj.FechaExp        = dr.GetDateTime(dr.GetOrdinal("FechaExp"));
             obj.FechaIngreso    = dr.GetDateTime(dr.GetOrdinal("FechaIngreso"));
             obj.CodSubDepOrigen = dr.GetString(dr.GetOrdinal("CodSubDep_Origen"));
+            obj.CodSubDepEntrega = dr.GetString(dr.GetOrdinal("CodSubDep_Entrega"));
             obj.IdxTipoDocTra   = dr.GetString(dr.GetOrdinal("IdxTipoDocTra"));
             obj.Nrodoc          = dr.GetString(dr.GetOrdinal("NroDoc"));
             obj.Asunto          = dr.GetString(dr.GetOrdinal("Asunto"));
@@ -104,6 +123,7 @@ namespace DaoLogistica.DAO
             obj.IdMeta          = dr.GetInt32(dr.GetOrdinal("IdMeta"));
             obj.Ccp             = dr.GetString(dr.GetOrdinal("ccp"));
             obj.Folios          = dr.GetInt16(dr.GetOrdinal("Folios"));
+            obj.IdFuente        = dr.GetInt16(dr.GetOrdinal("IdFuente"));
             obj.CodLogin        = dr.GetString(dr.GetOrdinal("CodLogin"));
             obj.FechaRegistro   = dr.GetDateTime(dr.GetOrdinal("FechaRegistro"));
             return obj;

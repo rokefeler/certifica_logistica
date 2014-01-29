@@ -6,5 +6,15 @@
         {
             InitializeComponent();
         }
+
+        private void EdIdRubro_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+
+        }
+
+        private void buttonEdit3_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+
+        }
     }
 }

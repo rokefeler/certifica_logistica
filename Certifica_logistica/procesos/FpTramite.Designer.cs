@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FpTramite));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.LstObsv = new DevExpress.XtraEditors.ListBoxControl();
+            this.BtnObsv = new System.Windows.Forms.Button();
+            this.TxtObsv = new System.Windows.Forms.TextBox();
             this.GrpOrigen_Remite = new System.Windows.Forms.GroupBox();
             this.EdCodSubDep_Recibe = new DevExpress.XtraEditors.ButtonEdit();
             this.TxtSubDependencia_Recibe = new System.Windows.Forms.TextBox();
@@ -44,19 +47,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.TxtFolios = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.TxtRubro = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.CboPeriodo = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.EdIdRubro = new DevExpress.XtraEditors.ButtonEdit();
-            this.label14 = new System.Windows.Forms.Label();
-            this.EdIdMeta = new DevExpress.XtraEditors.ButtonEdit();
-            this.TxtMeta = new System.Windows.Forms.TextBox();
-            this.TxtCcp = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.TxtInfo = new System.Windows.Forms.TextBox();
             this.GrpSubDependencia = new System.Windows.Forms.GroupBox();
             this.EdCodSubDep = new DevExpress.XtraEditors.ButtonEdit();
             this.TxtSubDependencia = new System.Windows.Forms.TextBox();
@@ -78,7 +69,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DtFechaExp = new DevExpress.XtraEditors.DateEdit();
-            this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
@@ -87,12 +79,10 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LstObsv)).BeginInit();
             this.GrpOrigen_Remite.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodSubDep_Recibe.Properties)).BeginInit();
             this.GrpDocumento.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EdIdRubro.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EdIdMeta.Properties)).BeginInit();
             this.GrpSubDependencia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodSubDep.Properties)).BeginInit();
             this.GrpAprobacion.SuspendLayout();
@@ -102,7 +92,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaIngresoExp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaExp.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaExp.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,21 +122,55 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.LstObsv);
+            this.splitContainer1.Panel1.Controls.Add(this.BtnObsv);
+            this.splitContainer1.Panel1.Controls.Add(this.TxtObsv);
             this.splitContainer1.Panel1.Controls.Add(this.GrpOrigen_Remite);
             this.splitContainer1.Panel1.Controls.Add(this.GrpDocumento);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.label15);
-            this.splitContainer1.Panel1.Controls.Add(this.TxtInfo);
             this.splitContainer1.Panel1.Controls.Add(this.GrpSubDependencia);
             this.splitContainer1.Panel1.Controls.Add(this.GrpAprobacion);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.vGridControl1);
+            this.splitContainer1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainer1.Size = new System.Drawing.Size(660, 442);
-            this.splitContainer1.SplitterDistance = 313;
+            this.splitContainer1.SplitterDistance = 299;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // LstObsv
+            // 
+            this.LstObsv.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.LstObsv.ColumnWidth = 90;
+            this.LstObsv.Location = new System.Drawing.Point(3, 223);
+            this.LstObsv.Name = "LstObsv";
+            this.LstObsv.Size = new System.Drawing.Size(95, 74);
+            this.LstObsv.TabIndex = 10;
+            this.LstObsv.SelectedIndexChanged += new System.EventHandler(this.LstObsv_SelectedIndexChanged);
+            this.LstObsv.DoubleClick += new System.EventHandler(this.LstObsv_DoubleClick);
+            // 
+            // BtnObsv
+            // 
+            this.BtnObsv.Location = new System.Drawing.Point(575, 247);
+            this.BtnObsv.Name = "BtnObsv";
+            this.BtnObsv.Size = new System.Drawing.Size(75, 50);
+            this.BtnObsv.TabIndex = 9;
+            this.BtnObsv.Text = "Agregar";
+            this.BtnObsv.UseVisualStyleBackColor = true;
+            this.BtnObsv.Click += new System.EventHandler(this.BtnObsv_Click);
+            // 
+            // TxtObsv
+            // 
+            this.TxtObsv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtObsv.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtObsv.Location = new System.Drawing.Point(104, 241);
+            this.TxtObsv.MaxLength = 256;
+            this.TxtObsv.Multiline = true;
+            this.TxtObsv.Name = "TxtObsv";
+            this.TxtObsv.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TxtObsv.Size = new System.Drawing.Size(469, 56);
+            this.TxtObsv.TabIndex = 8;
             // 
             // GrpOrigen_Remite
             // 
@@ -288,161 +313,14 @@
             this.label12.TabIndex = 6;
             this.label12.Text = "Folios";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.TxtRubro);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.CboPeriodo);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.EdIdRubro);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.EdIdMeta);
-            this.groupBox1.Controls.Add(this.TxtMeta);
-            this.groupBox1.Controls.Add(this.TxtCcp);
-            this.groupBox1.Location = new System.Drawing.Point(3, 227);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(653, 58);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "< Datos presupuestales >";
-            // 
-            // TxtRubro
-            // 
-            this.TxtRubro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtRubro.Location = new System.Drawing.Point(117, 32);
-            this.TxtRubro.Name = "TxtRubro";
-            this.TxtRubro.ReadOnly = true;
-            this.TxtRubro.Size = new System.Drawing.Size(206, 20);
-            this.TxtRubro.TabIndex = 4;
-            this.TxtRubro.TabStop = false;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 16);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(43, 13);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Periodo";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(69, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Rubro Financiamiento:";
-            // 
-            // CboPeriodo
-            // 
-            this.CboPeriodo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CboPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboPeriodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CboPeriodo.FormattingEnabled = true;
-            this.CboPeriodo.Items.AddRange(new object[] {
-            "SOLES",
-            "DOLARES",
-            "EUROS",
-            "OTRO"});
-            this.CboPeriodo.Location = new System.Drawing.Point(3, 31);
-            this.CboPeriodo.Name = "CboPeriodo";
-            this.CboPeriodo.Size = new System.Drawing.Size(61, 21);
-            this.CboPeriodo.TabIndex = 1;
-            this.CboPeriodo.TabStop = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(336, 16);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(31, 13);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Meta";
-            // 
-            // EdIdRubro
-            // 
-            this.EdIdRubro.Location = new System.Drawing.Point(68, 31);
-            this.EdIdRubro.Name = "EdIdRubro";
-            this.EdIdRubro.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.EdIdRubro.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.EdIdRubro.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.EdIdRubro.Properties.Mask.BeepOnError = true;
-            this.EdIdRubro.Properties.Mask.EditMask = "00";
-            this.EdIdRubro.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
-            this.EdIdRubro.Properties.Mask.SaveLiteral = false;
-            this.EdIdRubro.Properties.MaxLength = 15;
-            this.EdIdRubro.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdIdRubro_Properties_ButtonClick);
-            this.EdIdRubro.Size = new System.Drawing.Size(48, 20);
-            this.EdIdRubro.TabIndex = 3;
-            this.EdIdRubro.Leave += new System.EventHandler(this.EdIdRubro_Leave);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(605, 16);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(37, 13);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "C.C.P.";
-            // 
-            // EdIdMeta
-            // 
-            this.EdIdMeta.Location = new System.Drawing.Point(327, 32);
-            this.EdIdMeta.Name = "EdIdMeta";
-            this.EdIdMeta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.EdIdMeta.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.EdIdMeta.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.EdIdMeta.Properties.Mask.BeepOnError = true;
-            this.EdIdMeta.Properties.Mask.EditMask = "00";
-            this.EdIdMeta.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
-            this.EdIdMeta.Properties.Mask.SaveLiteral = false;
-            this.EdIdMeta.Properties.MaxLength = 15;
-            this.EdIdMeta.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit3_Properties_ButtonClick);
-            this.EdIdMeta.Size = new System.Drawing.Size(45, 20);
-            this.EdIdMeta.TabIndex = 6;
-            this.EdIdMeta.Leave += new System.EventHandler(this.EdIdMeta_Leave);
-            // 
-            // TxtMeta
-            // 
-            this.TxtMeta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtMeta.Location = new System.Drawing.Point(375, 33);
-            this.TxtMeta.Name = "TxtMeta";
-            this.TxtMeta.ReadOnly = true;
-            this.TxtMeta.Size = new System.Drawing.Size(221, 20);
-            this.TxtMeta.TabIndex = 7;
-            this.TxtMeta.TabStop = false;
-            // 
-            // TxtCcp
-            // 
-            this.TxtCcp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCcp.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtCcp.Location = new System.Drawing.Point(599, 33);
-            this.TxtCcp.Name = "TxtCcp";
-            this.TxtCcp.Size = new System.Drawing.Size(48, 20);
-            this.TxtCcp.TabIndex = 9;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 292);
+            this.label15.Location = new System.Drawing.Point(101, 225);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(79, 13);
+            this.label15.Size = new System.Drawing.Size(81, 13);
             this.label15.TabIndex = 6;
-            this.label15.Text = "Registrado por:";
-            // 
-            // TxtInfo
-            // 
-            this.TxtInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtInfo.Location = new System.Drawing.Point(89, 289);
-            this.TxtInfo.Name = "TxtInfo";
-            this.TxtInfo.ReadOnly = true;
-            this.TxtInfo.Size = new System.Drawing.Size(318, 20);
-            this.TxtInfo.TabIndex = 7;
-            this.TxtInfo.TabStop = false;
+            this.label15.Text = "Observaciones:";
             // 
             // GrpSubDependencia
             // 
@@ -617,6 +495,7 @@
             this.CboYearExp.Name = "CboYearExp";
             this.CboYearExp.Size = new System.Drawing.Size(61, 21);
             this.CboYearExp.TabIndex = 3;
+            this.CboYearExp.SelectedIndexChanged += new System.EventHandler(this.CboYearExp_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -650,6 +529,7 @@
             this.EdIdExpediente.Properties.MaxLength = 15;
             this.EdIdExpediente.Size = new System.Drawing.Size(67, 20);
             this.EdIdExpediente.TabIndex = 1;
+            this.EdIdExpediente.Leave += new System.EventHandler(this.EdIdExpediente_Leave);
             // 
             // DtFechaIngresoExp
             // 
@@ -695,13 +575,141 @@
             this.DtFechaExp.Size = new System.Drawing.Size(86, 20);
             this.DtFechaExp.TabIndex = 5;
             // 
-            // vGridControl1
+            // gridControl1
             // 
-            this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vGridControl1.Location = new System.Drawing.Point(0, 0);
-            this.vGridControl1.Name = "vGridControl1";
-            this.vGridControl1.Size = new System.Drawing.Size(660, 125);
-            this.vGridControl1.TabIndex = 0;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(660, 139);
+            this.gridControl1.TabIndex = 1;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.ColumnFilterButton.Options.UseForeColor = true;
+            this.gridView1.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(216)))), ((int)(((byte)(254)))));
+            this.gridView1.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(216)))), ((int)(((byte)(254)))));
+            this.gridView1.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseBackColor = true;
+            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = true;
+            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseForeColor = true;
+            this.gridView1.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.Empty.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.Appearance.Empty.Options.UseBackColor = true;
+            this.gridView1.Appearance.EvenRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.EvenRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.EvenRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.EvenRow.Options.UseBorderColor = true;
+            this.gridView1.Appearance.EvenRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.FilterCloseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.FilterCloseButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.FilterCloseButton.ForeColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FilterCloseButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.FilterCloseButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.FilterCloseButton.Options.UseForeColor = true;
+            this.gridView1.Appearance.FilterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.FilterPanel.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.Appearance.FilterPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.FilterPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.FilterPanel.Options.UseForeColor = true;
+            this.gridView1.Appearance.FixedLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(133)))), ((int)(((byte)(195)))));
+            this.gridView1.Appearance.FixedLine.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedCell.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedCell.Options.UseForeColor = true;
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(109)))), ((int)(((byte)(189)))));
+            this.gridView1.Appearance.FocusedRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(139)))), ((int)(((byte)(206)))));
+            this.gridView1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridView1.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.FooterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.FooterPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.FooterPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.FooterPanel.Options.UseBorderColor = true;
+            this.gridView1.Appearance.FooterPanel.Options.UseForeColor = true;
+            this.gridView1.Appearance.GroupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.GroupButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.GroupButton.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupButton.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(216)))), ((int)(((byte)(254)))));
+            this.gridView1.Appearance.GroupFooter.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(216)))), ((int)(((byte)(254)))));
+            this.gridView1.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.GroupFooter.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupFooter.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupFooter.Options.UseForeColor = true;
+            this.gridView1.Appearance.GroupPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.GroupPanel.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.Appearance.GroupPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.GroupPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupPanel.Options.UseForeColor = true;
+            this.gridView1.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(216)))), ((int)(((byte)(254)))));
+            this.gridView1.Appearance.GroupRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(216)))), ((int)(((byte)(254)))));
+            this.gridView1.Appearance.GroupRow.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.GroupRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupRow.Options.UseBorderColor = true;
+            this.gridView1.Appearance.GroupRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(201)))), ((int)(((byte)(254)))));
+            this.gridView1.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(201)))), ((int)(((byte)(254)))));
+            this.gridView1.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseBorderColor = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseForeColor = true;
+            this.gridView1.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(170)))), ((int)(((byte)(225)))));
+            this.gridView1.Appearance.HideSelectionRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(155)))), ((int)(((byte)(215)))));
+            this.gridView1.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.HideSelectionRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.HideSelectionRow.Options.UseBorderColor = true;
+            this.gridView1.Appearance.HideSelectionRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.HorzLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.HorzLine.Options.UseBackColor = true;
+            this.gridView1.Appearance.OddRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.OddRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.OddRow.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.OddRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.OddRow.Options.UseBorderColor = true;
+            this.gridView1.Appearance.OddRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.Preview.Font = new System.Drawing.Font("Verdana", 7.5F);
+            this.gridView1.Appearance.Preview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(155)))), ((int)(((byte)(215)))));
+            this.gridView1.Appearance.Preview.Options.UseFont = true;
+            this.gridView1.Appearance.Preview.Options.UseForeColor = true;
+            this.gridView1.Appearance.Row.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.Row.ForeColor = System.Drawing.Color.Black;
+            this.gridView1.Appearance.Row.Options.UseBackColor = true;
+            this.gridView1.Appearance.Row.Options.UseForeColor = true;
+            this.gridView1.Appearance.RowSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(246)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.RowSeparator.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.Appearance.RowSeparator.Options.UseBackColor = true;
+            this.gridView1.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(155)))), ((int)(((byte)(215)))));
+            this.gridView1.Appearance.SelectedRow.ForeColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.SelectedRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.TopNewRow.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.TopNewRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
+            this.gridView1.Appearance.VertLine.Options.UseBackColor = true;
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.EnableAppearanceOddRow = true;
+            this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupedColumns = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.PaintStyleName = "Flat";
             // 
             // dxErrorProvider1
             // 
@@ -714,7 +722,8 @@
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FpTramite";
-            this.Text = "Tramite Documentario de Expedientes";
+            this.Tag = "Trámite Documentario - ";
+            this.Text = "";
             this.Load += new System.EventHandler(this.FpTramite_Load);
             this.Controls.SetChildIndex(this.pan1, 0);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
@@ -726,15 +735,12 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LstObsv)).EndInit();
             this.GrpOrigen_Remite.ResumeLayout(false);
             this.GrpOrigen_Remite.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodSubDep_Recibe.Properties)).EndInit();
             this.GrpDocumento.ResumeLayout(false);
             this.GrpDocumento.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EdIdRubro.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EdIdMeta.Properties)).EndInit();
             this.GrpSubDependencia.ResumeLayout(false);
             this.GrpSubDependencia.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodSubDep.Properties)).EndInit();
@@ -747,7 +753,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaIngresoExp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaExp.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaExp.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
 
@@ -767,7 +774,6 @@
         private DevExpress.XtraEditors.DateEdit DtFechaExp;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.DateEdit DtFechaIngresoExp;
-        private System.Windows.Forms.Label label5;
         private DevExpress.XtraEditors.ButtonEdit EdCodSubDep;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TxtAsunto;
@@ -781,23 +787,11 @@
         private System.Windows.Forms.TextBox TxtFolios;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox GrpSubDependencia;
-        private System.Windows.Forms.TextBox TxtMeta;
-        private System.Windows.Forms.TextBox TxtRubro;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox TxtCcp;
-        private DevExpress.XtraEditors.ButtonEdit EdIdMeta;
-        private DevExpress.XtraEditors.ButtonEdit EdIdRubro;
-        private System.Windows.Forms.Label label13;
-        private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
         private System.Windows.Forms.ComboBox CboYearExp;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox TxtInfo;
         private System.Windows.Forms.ComboBox CboTipoDoc;
         private DevExpress.Utils.ToolTipController toolTipController1;
-        private System.Windows.Forms.ComboBox CboPeriodo;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.GroupBox groupBox1;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private System.Windows.Forms.GroupBox GrpOrigen_Remite;
         private DevExpress.XtraEditors.ButtonEdit EdCodSubDep_Recibe;
@@ -806,5 +800,10 @@
         private System.Windows.Forms.GroupBox GrpDocumento;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox CboFuente;
+        private System.Windows.Forms.TextBox TxtObsv;
+        private System.Windows.Forms.Button BtnObsv;
+        private DevExpress.XtraEditors.ListBoxControl LstObsv;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }

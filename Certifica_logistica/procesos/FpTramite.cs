@@ -9,13 +9,16 @@ using Certifica_logistica.Popups;
 using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
+using DevExpress.Data;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Columns;
 
 namespace Certifica_logistica.procesos
 {
     public partial class FpTramite : Masterform
     {
+        private DataTable _tb;
         private Expediente _exp;
         public FpTramite()
         {
@@ -26,7 +29,7 @@ namespace Certifica_logistica.procesos
         {
             Decimal dval;
             int ival;
-            var msg = String.Empty;
+            string msg;
             if (EdIdExpediente.EditValue == null)
                 msg = String.Empty;
             else
@@ -79,6 +82,14 @@ namespace Certifica_logistica.procesos
             if (!Decimal.TryParse(cad, out dval))
             {
                 msg = "El Monto de aprobación Rectoral que Ingreso, No es un Valor valido";
+                General.ShowMessage(msg);
+                dxErrorProvider1.SetError(TxtMontoAprobado, msg);
+                TxtMontoAprobado.Focus();
+                return false;
+            }
+            if (dval<0)
+            {
+                msg = "El Monto de aprobación Rectoral No puede ser UN VALOR NEGATIVO";
                 General.ShowMessage(msg);
                 dxErrorProvider1.SetError(TxtMontoAprobado, msg);
                 TxtMontoAprobado.Focus();
@@ -168,7 +179,17 @@ namespace Certifica_logistica.procesos
                 TxtFolios.Focus();
                 return false;
             }
-            dxErrorProvider1.SetError(TxtFolios, "");
+            dxErrorProvider1.SetError(TxtObsv, "");
+
+            if (TxtObsv.Text.Trim().Length<=4)
+            {
+                msg = "La Longitud de la Observación es muy Corta, debe ser mas de 4 caracteres";
+                General.ShowMessage(msg);
+                dxErrorProvider1.SetError(TxtObsv, msg);
+                TxtObsv.Focus();
+                return false;
+            }
+            
             /*
             if (EdIdRubro.EditValue == null)
             {
@@ -200,7 +221,8 @@ namespace Certifica_logistica.procesos
             if (!Master_Verificar())
                     return false;
 
-            Value = EdIdExpediente.Text.Trim() + "-" + CboYearExp.SelectedItem;
+            Value = EdIdExpediente.Text.Trim().PadLeft(6,'0');
+            Value = Value + "-" + CboYearExp.SelectedItem;
             if(_exp==null)
                 _exp=new Expediente();
             else
@@ -216,18 +238,20 @@ namespace Certifica_logistica.procesos
             if (TxtMontoAprobado.Text.Trim().Length > 0)
                 _exp.MontoAprobado = Convert.ToDecimal(TxtMontoAprobado.Text);
             _exp.CodSubDepOrigen = EdCodSubDep.Text;
+            _exp.CodSubDepEntrega = EdCodSubDep_Recibe.Text;
             var cod = (Codigo)CboTipoDoc.SelectedItem;
             _exp.IdxTipoDocTra = cod.Id;
             _exp.Nrodoc = TxtNroDoc.Text;
             _exp.Asunto = TxtAsunto.Text;
             _exp.Folios = Convert.ToInt16(TxtFolios.Text);
-            _exp.Ccp = TxtCcp.Text;
+            /*_exp.Ccp = TxtCcp.Text;
             if (EdIdRubro.Tag != null)
                 if (!string.IsNullOrEmpty(EdIdRubro.Tag.ToString()))
                     _exp.IdRubro = Convert.ToInt32(EdIdRubro.Tag.ToString());
             if (EdIdMeta.Tag != null)
                 if (!string.IsNullOrEmpty(EdIdMeta.Tag.ToString()))
                     _exp.IdMeta = Convert.ToInt32(EdIdMeta.Tag.ToString());
+            */
             _exp.CodLogin = _FrmPadre.Miconfiguracion.IdUsuario;
             _exp.IdFuente = ((FuenteFinanciamiento)CboFuente.SelectedItem).IdFuente;
             
@@ -255,9 +279,19 @@ namespace Certifica_logistica.procesos
                     ret=DetExpedienteDao.GrabarInicial(det, dbtrans);
                     if (ret > 0)
                     {
-                        dbtrans.Commit();
-                        MessageBox.Show(cad, @"Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                        //Ahora en Cadena, Grabar Observación Si Existe
+                        var obsv = new ObservacionExpediente(_exp.Idexpediente, TxtObsv.Text, _FrmPadre.Miconfiguracion.IdUsuario );
+                        if (!String.IsNullOrEmpty(TxtObsv.Text))
+                        {
+                            ret = ObservacionExpedienteDao.Grabar(obsv, dbtrans);
+                            if (ret > 0)
+                            {
+                                dbtrans.Commit();
+                                MessageBox.Show(cad, @"Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                VerDetalleExpediente();
+                            }
+                        }
+                     }
                 }
                 if(ret<=0)
                 {
@@ -267,14 +301,98 @@ namespace Certifica_logistica.procesos
             }
             catch (SqlException ex)
             {
-                dbtrans.Rollback();
+                if (dbtrans != null) dbtrans.Rollback();
                 General.ShowMessage(ex.Message);
             }
             finally
             {
-                if (con.State == ConnectionState.Open)
+                if (con != null && con.State == ConnectionState.Open)
                     con.Close();
             }
+            return true;
+        }
+
+        public override bool Master_NuevoFormulario()
+        {
+            return Master_LimpiarFormulario();
+        }
+
+        public override bool Master_LimpiarFormulario()
+        {
+            Value = String.Empty;
+            EdIdExpediente.EditValue = null;
+            CboYearExp.SelectedIndex = 0;
+            DtFechaExp.EditValue = null;
+            DtFechaIngresoExp.DateTime = new DateTime();
+            //CboFuente.SelectedIndex = 3;
+            CboMoneda.SelectedIndex = 0;
+            TxtNroAutorizacion.Text = "";
+            TxtMontoAprobado.Text = "";
+            //EdCodSubDep.EditValue = null;  //Queda misma Dependencia  por defecto
+            //TxtDependencia.Text = "";
+            //toolTipController1.SetToolTip(TxtDependencia,"");
+            //TxtSubDependencia.Text = "";
+            //toolTipController1.SetToolTip(TxtSubDependencia,"");
+            General.CargarDatos(CboTipoDoc, "TDTR", "TDTR-0001"); //por defecto oficio seleccionado
+            TxtNroDoc.Text = "";
+            TxtAsunto.Text = "";
+            TxtFolios.Text = "";
+            LstObsv.DataSource = null;
+            TxtObsv.Text = "";
+            toolTipController1.SetToolTip(LstObsv, "");
+            toolTipController1.SetToolTip(TxtObsv, "");
+            _tb.Rows.Clear(); //limpioar registros
+            Text = Tag + @"Modificado por : " + _FrmPadre.Miconfiguracion.IdUsuario +
+            @" El " + DateTime.Now.ToShortDateString() + @" " + DateTime.Now.ToShortTimeString();
+            EdIdExpediente.Focus();
+            return true;
+        }
+
+        public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null)
+        {
+            _exp = ExpedienteDao.GetbyId(idPrincipal);
+            if (_exp == null)
+            {
+                General.ShowMessage("El Expediente Ingresado " + idPrincipal + " No Existe");
+                return false;
+            }
+            Value = idPrincipal;
+            DtFechaExp.DateTime = _exp.FechaExp;
+            DtFechaIngresoExp.DateTime = _exp.FechaIngreso;
+            for (var x = 0; x < CboFuente.Items.Count; x++)
+            {
+                var fte = (FuenteFinanciamiento) CboFuente.Items[x];
+                if (fte.IdFuente == _exp.IdFuente)
+                {
+                    CboFuente.SelectedIndex = x;
+                    break;
+                }
+            }
+            for (int x = 0; x < CboMoneda.Items.Count; x++)
+            {
+                var m = CboMoneda.Items[x].ToString()[0];
+                if (_exp.Moneda==m)
+                {
+                    CboMoneda.SelectedIndex = x;
+                    break;
+                }
+            }
+
+            TxtNroAutorizacion.Text = _exp.CNroAuto;
+            if(_exp.MontoAprobado <= 0)
+                TxtMontoAprobado.Text = "";
+            else
+                TxtMontoAprobado.Text = _exp.MontoAprobado.ToString("####00.00");
+            EdCodSubDep.EditValue = _exp.CodSubDepOrigen;
+            EdCodSubDep_Leave(EdCodSubDep,null);
+            EdCodSubDep_Recibe.EditValue = _exp.CodSubDepEntrega;
+            EdCodSubDep_Leave(EdCodSubDep_Recibe, null);
+            General.UbicaItemsComboCodigo(CboTipoDoc,_exp.IdxTipoDocTra);
+            TxtNroDoc.Text = _exp.Nrodoc;
+            TxtAsunto.Text = _exp.Asunto;
+            TxtFolios.Text = _exp.Folios.ToString("#00");
+            //Cargar Observaciones
+            VerDetalleExpediente();
             return true;
         }
 
@@ -285,32 +403,130 @@ namespace Certifica_logistica.procesos
             for (var i = ninicial; i >= 2012; i--)
                 CboYearExp.Items.Add(i.ToString(CultureInfo.InvariantCulture));
 
-            CboPeriodo.Items.Clear();
+            /*CboPeriodo.Items.Clear();
             for (var i = ninicial; i >= 2012; i--)
                 CboPeriodo.Items.Add(i.ToString(CultureInfo.InvariantCulture));
-            
-            CboYearExp.SelectedIndex = 0;
             CboPeriodo.SelectedIndex = 0;
+             * */
+            CboYearExp.SelectedIndex = 0;
             CboMoneda.SelectedIndex = 0;
             General.CargarDatos(CboTipoDoc, "TDTR", "TDTR-0001"); //por defecto oficio seleccionado
             CboFuente.DataSource = FuenteFinanciamientoDao.SelectAll();
             CboFuente.ValueMember = "IdFuente";
             CboFuente.DisplayMember = "Abreviacion";
             CboFuente.SelectedIndex = 3;
-
-            
-
-            TxtInfo.Text = _FrmPadre.Miconfiguracion.IdUsuario + 
-                @" El " + DateTime.Now.ToShortDateString() + @" " + 
-                DateTime.Now.ToShortTimeString();
-            EdIdExpediente.Focus();
             DtFechaIngresoExp.EditValue = DateTime.Now;
             DtFechaExp.DateTime = DateTime.Now; //Por Defecto Fecha de Hoy
+
+            Text = Tag + @"Modificado por : " + _FrmPadre.Miconfiguracion.IdUsuario + 
+                        @" El " + DateTime.Now.ToShortDateString() + @" " + DateTime.Now.ToShortTimeString();
+            EdIdExpediente.Focus();
+           
+
+        }
+       
+        private void VerDetalleExpediente()
+        {
+            var ds = DetExpedienteDao.GetDetalle(Value);
+            if (ds.Tables.Count <= 0) return;
+            _tb = ds.Tables[0];
+            gridControl1.DataSource = _tb;
+            //gridView1.Columns[3].Visible = false; //Escondr Columna
+            //gridView1.Editable = false;
+            for (var i = 1; i <= 8; i++)
+                gridView1.Columns[i].OptionsFilter.AutoFilterCondition = AutoFilterCondition.Contains;
+
+            gridView1.Columns[0].SummaryItem.SummaryType = SummaryItemType.Count;
+            gridView1.Columns[0].SummaryItem.DisplayFormat = @"{0} Mov.";
+            gridView1.BestFitColumns();
+            /*
+                gridView1.Columns[16].SummaryItem.SummaryType = SummaryItemType.Sum;
+                gridView1.Columns[16].SummaryItem.DisplayFormat = "Suma={0}";
+                 * */
+
+            /* Ahora las Observaciones */
+            VerDetalleObservaciones();
         }
 
+        private void VerDetalleObservaciones()
+        {
+            if (string.IsNullOrEmpty(Value)) return;
+            LstObsv.DataSource = ObservacionExpedienteDao.SelectAllExpediente(Value);
+            LstObsv.DisplayMember = "Display";
+            LstObsv.ValueMember = "Id";
+            if (LstObsv.DataSource!=null )
+                LstObsv.SelectedIndex = 0;
+        }
+
+        private void EdIdExpediente_Leave(object sender, EventArgs e)
+        {
+            if (!EdIdExpediente.IsModified) {
+                Console.Beep();
+                return;
+            }
+            if (EdIdExpediente.EditValue == null) return;
+            var cNroExp = EdIdExpediente.EditValue.ToString();
+            if(cNroExp.Length<=0) return;
+            cNroExp = cNroExp.PadLeft(6, '0');
+            EdIdExpediente.EditValue = cNroExp;
+            cNroExp = cNroExp + "-" + CboYearExp.SelectedItem;
+            Master_CargarFicha(cNroExp);
+        }
+
+        private void LstObsv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TxtObsv.Text = "";
+            toolTipController1.SetToolTip(TxtObsv, "");
+            toolTipController1.SetToolTip(LstObsv, "");
+            try
+            {
+                var cad = @"Reg. por:";
+                var obsv = (ObservacionExpediente) LstObsv.SelectedItem;
+                cad = String.Format("{0} {1}", cad, obsv.CodLogin);
+                TxtObsv.Text = string.Format(@"[{0} {1}] Observo: {2}", obsv.CodLogin, obsv.Display, obsv.Detalle);
+                toolTipController1.SetToolTip(TxtObsv, cad);
+                toolTipController1.SetToolTip(LstObsv, cad);
+            }
+            catch 
+            {
+                Console.Beep();
+            }
+        }
+        private void LstObsv_DoubleClick(object sender, EventArgs e)
+        {
+            LstObsv_SelectedIndexChanged(sender, e);
+        }
+
+        private void CboYearExp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EdIdExpediente.EditValue == null) return;
+            var cNroExp = EdIdExpediente.EditValue.ToString();
+            if (cNroExp.Length <= 0) return;
+            cNroExp = cNroExp.PadLeft(6, '0') + "-" + CboYearExp.SelectedItem;
+            Master_CargarFicha(cNroExp);
+        }
+
+        private void BtnObsv_Click(object sender, EventArgs e)
+        {
+            if (Value.Length <= 0) return;
+            dxErrorProvider1.SetError(TxtObsv, "");
+            if (TxtObsv.Text.Length <= 3)
+            {
+                var cad = "La Longitud de la Observación es muy Corta, debe ser mas de 4 caracteres";
+                General.ShowMessage(cad);
+                dxErrorProvider1.SetError(TxtObsv,cad);
+                return;
+            }
+            var obj = new ObservacionExpediente(Value, TxtObsv.Text,_FrmPadre.Miconfiguracion.IdUsuario);
+            ObservacionExpedienteDao.Grabar(obj, null);
+            VerDetalleObservaciones();
+        }
+
+
+        #region Llamadas a SubFormularios de Busqueda y Ayuda
         private void EdCodSubDep_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            var btn = (ButtonEdit) sender;
+            var btn = (ButtonEdit)sender;
             var oFrm = new FphSubDependencia { _TiTuloForm = "Busqueda De SubDependencia Institucional", _backColor = BackColor };
             oFrm.ShowDialog();
             SuspendLayout();
@@ -323,7 +539,12 @@ namespace Certifica_logistica.procesos
         private void EdCodSubDep_Leave(object sender, EventArgs e)
         {
             var btn = (ButtonEdit)sender;
-            TextBox t1=null, t2=null;
+            if (!btn.IsModified)
+            {
+                Console.Beep();
+                return;
+            } //Si no se hizo modificaciones, salir
+        TextBox t1, t2;
             if (btn.Name.Equals("EdCodSubDep"))
             {
                 t1 = TxtSubDependencia;
@@ -353,10 +574,12 @@ namespace Certifica_logistica.procesos
             t1.Text = obj.Nombre;
             var obj2 = DependenciaDao.GetbyId(obj.CodDependencia);
             t2.Text = obj2.Nombre;
-            toolTipController1.SetToolTip(t1,obj.Nombre);
+            toolTipController1.SetToolTip(t1, obj.Nombre);
             toolTipController1.SetToolTip(t2, obj2.Nombre);
         }
-
+        #endregion
+      
+        /*
         private void buttonEdit3_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             var oFrm = new FphMeta { _TiTuloForm = "Busqueda De Metas Presupuestales", _backColor = BackColor };
@@ -373,7 +596,7 @@ namespace Certifica_logistica.procesos
             oFrm.Close();
             ResumeLayout();
         }
-
+        
         private void EdIdMeta_Leave(object sender, EventArgs e)
         {
             if (EdIdMeta.EditValue == null) return;
@@ -391,7 +614,7 @@ namespace Certifica_logistica.procesos
             TxtMeta.Text = obj.Descripcion;
             EdIdMeta.Tag = obj.IdMeta;
         }
-
+        
         private void EdIdRubro_Leave(object sender, EventArgs e)
         {
             TxtRubro.Text = "";
@@ -428,7 +651,7 @@ namespace Certifica_logistica.procesos
             oFrm.Close();
             ResumeLayout();
         }
-
+        */
  
     }
 }

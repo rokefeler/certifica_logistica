@@ -94,6 +94,14 @@ namespace DaoLogistica.DAO
             DATA.Db.AddInParameter(cmd, "IdDetExpediente", DbType.String, anio);
             return DATA.Db.ExecuteDataSet(cmd);
         }
+        //Devuelve Detalle de los Movimientos de un Expediente
+        public static DataSet GetDetalle(string idExpediente)
+        {
+            var cmd = DATA.Db.GetStoredProcCommand("sp_TDetExpediente");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetAll); //500
+            DATA.Db.AddInParameter(cmd, "IdExpediente", DbType.String, idExpediente);
+            return DATA.Db.ExecuteDataSet(cmd);
+        }
         protected static DetExpediente MakeObj(IDataReader dr)
         {
             var obj = new DetExpediente();

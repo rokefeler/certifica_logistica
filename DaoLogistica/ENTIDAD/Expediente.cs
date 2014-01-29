@@ -13,7 +13,7 @@ namespace DaoLogistica.ENTIDAD
 
 	
 		public Expediente(string idexpediente, DateTime fechaExp, DateTime fechaIngreso, 
-            string codSubDepOrigen, string idxTipoDocTra, string nrodoc, string asunto, char moneda, 
+            string codSubDepOrigen, string codSubdepEntrega, string idxTipoDocTra, string nrodoc, string asunto, char moneda, 
             decimal montoAprobado, string cNroAuto, int idRubro, int idMeta, string ccp, short folios, short idfuente, 
             string codLogin, DateTime fechaRegistro)
 		{
@@ -21,6 +21,7 @@ namespace DaoLogistica.ENTIDAD
             FechaExp = fechaExp;
             FechaIngreso = fechaIngreso;
             CodSubDepOrigen = codSubDepOrigen;
+		    CodSubDepEntrega = codSubdepEntrega;
             IdxTipoDocTra = idxTipoDocTra;
             Nrodoc = nrodoc;
             Asunto = asunto;
@@ -43,6 +44,7 @@ namespace DaoLogistica.ENTIDAD
             FechaExp = fecha;
             FechaIngreso = fecha;
             CodSubDepOrigen = String.Empty;
+            CodSubDepEntrega = String.Empty;
             IdxTipoDocTra = String.Empty;
             Nrodoc = String.Empty;
             Asunto = String.Empty;
@@ -68,7 +70,10 @@ namespace DaoLogistica.ENTIDAD
 		public DateTime FechaIngreso { get; set; }
 
 		public string CodSubDepOrigen { get; set; }
-
+        /// <summary>
+        /// SubDependencia que Entrega el Expediente en Mesa de Partes
+        /// </summary>
+        public string CodSubDepEntrega { get; set; }
 		public string IdxTipoDocTra { get; set; }
 
 		public string Nrodoc { get; set; }
