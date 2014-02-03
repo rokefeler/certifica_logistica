@@ -83,6 +83,26 @@ namespace Certifica_logistica.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addUserGroup_24 {
+            get {
+                object obj = ResourceManager.GetObject("addUserGroup-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap addUserGroup_48 {
+            get {
+                object obj = ResourceManager.GetObject("addUserGroup-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_24 {
             get {
                 object obj = ResourceManager.GetObject("Close_24", resourceCulture);
@@ -103,6 +123,16 @@ namespace Certifica_logistica.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edificio_32 {
+            get {
+                object obj = ResourceManager.GetObject("edificio_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap import_export_128 {
             get {
                 object obj = ResourceManager.GetObject("import_export_128", resourceCulture);
@@ -116,6 +146,36 @@ namespace Certifica_logistica.Properties {
         internal static System.Drawing.Bitmap import_export_24 {
             get {
                 object obj = ResourceManager.GetObject("import_export_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inbox_icon_24 {
+            get {
+                object obj = ResourceManager.GetObject("inbox-icon_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inbox_icon_32 {
+            get {
+                object obj = ResourceManager.GetObject("inbox-icon_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inbox_icon_64 {
+            get {
+                object obj = ResourceManager.GetObject("inbox-icon_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +286,56 @@ namespace Certifica_logistica.Properties {
         internal static System.Drawing.Bitmap SearchRed_16 {
             get {
                 object obj = ResourceManager.GetObject("SearchRed_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap student_24 {
+            get {
+                object obj = ResourceManager.GetObject("student_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap student_48 {
+            get {
+                object obj = ResourceManager.GetObject("student_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sunat {
+            get {
+                object obj = ResourceManager.GetObject("sunat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sunat_small_fw {
+            get {
+                object obj = ResourceManager.GetObject("sunat_small.fw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sunat_small1 {
+            get {
+                object obj = ResourceManager.GetObject("sunat_small1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

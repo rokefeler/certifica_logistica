@@ -355,6 +355,7 @@ namespace Certifica_logistica.procesos
             @" El " + DateTime.Now.ToShortDateString() + @" " + DateTime.Now.ToShortTimeString();
             TxtnLog.Text = "";
             EdIdExpediente.ResetBackColor();
+            CboYearExp.ResetBackColor();
             if(_exp!=null) _exp.Clear();
             EdIdExpediente.Focus();
             
@@ -417,6 +418,7 @@ namespace Certifica_logistica.procesos
             BtnObsv.Enabled = true;
             //Cargar Observaciones
             VerDetalleExpediente();
+            VerDetalleObservaciones();
             return true;
         }
 
@@ -471,7 +473,7 @@ namespace Certifica_logistica.procesos
                  * */
 
             /* Ahora las Observaciones */
-            VerDetalleObservaciones();
+            //VerDetalleObservaciones();
         }
 
         private void VerDetalleObservaciones()

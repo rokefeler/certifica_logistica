@@ -4,36 +4,36 @@ namespace DaoLogistica.ENTIDAD
 {
     public class Alumno
     {
-        public Alumno(string apeNom, string cui, string direccion, string dni, string email, string escuela, String fecnac, int id)
-        {
-            ApeNom = apeNom;
-            Cui = cui;
-            Direccion = direccion;
-            Dni = dni;
-            Email = email;
-            Escuela = escuela;
-            Fecnac = fecnac;
-            Id = id;
-        }
         public Alumno()
         {
-            ApeNom = String.Empty;
-            Cui = String.Empty;
-            Direccion = String.Empty;
-            Dni = String.Empty;
-            Email = String.Empty;
-            Escuela = String.Empty;
-            Fecnac = String.Empty;
-            Id = 0;
+            Clear();
         }
-        public int Id { get; set; }
+
+        public void Clear()
+        {
+            Cui = String.Empty;
+            ApeNom = String.Empty;
+            Direccion = String.Empty;
+            CodDis = String.Empty;
+            Dni = String.Empty;
+            Telefono = String.Empty;
+            Email = String.Empty;
+            Fecnac = new DateTime(1900, 1, 1);
+            Fecha = new DateTime(1900, 1, 1);
+            CodLogin = String.Empty;
+            Estado = '1';
+        }
+
         public String Cui { get; set; }
         public String ApeNom { get; set; }
-        public string Escuela { get; set; }
         public string Direccion { get; set; }
-        public String Email { get; set; }
-        public String Fecnac { get; set; }
+        public string CodDis { get; set; }
         public String Dni { get; set; }
-
+        public String Telefono { get; set; }
+        public String Email { get; set; }
+        public DateTime Fecnac { get; set; }
+        public DateTime Fecha { get; set; }
+        public String CodLogin { get; set; }
+        public char Estado { get; set; }
     }
 }

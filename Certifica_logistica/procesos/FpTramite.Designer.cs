@@ -100,9 +100,8 @@
             // 
             // pic1
             // 
-            this.pic1.Image = global::Certifica_logistica.Properties.Resources.Product_48;
-            this.pic1.Size = new System.Drawing.Size(48, 48);
-            this.pic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pic1.Image = global::Certifica_logistica.Properties.Resources.inbox_icon_32;
+            this.pic1.Size = new System.Drawing.Size(43, 43);
             // 
             // LblTitulo
             // 
@@ -201,7 +200,7 @@
             this.EdCodSubDep_Recibe.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.EdCodSubDep_Recibe.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.EdCodSubDep_Recibe.Properties.Mask.BeepOnError = true;
-            this.EdCodSubDep_Recibe.Properties.Mask.EditMask = "LLLl";
+            this.EdCodSubDep_Recibe.Properties.Mask.EditMask = "LCCl";
             this.EdCodSubDep_Recibe.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdCodSubDep_Recibe.Properties.Mask.SaveLiteral = false;
             this.EdCodSubDep_Recibe.Properties.MaxLength = 15;
@@ -353,7 +352,7 @@
             this.EdCodSubDep.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.EdCodSubDep.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.EdCodSubDep.Properties.Mask.BeepOnError = true;
-            this.EdCodSubDep.Properties.Mask.EditMask = "LLLl";
+            this.EdCodSubDep.Properties.Mask.EditMask = "LCCl";
             this.EdCodSubDep.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdCodSubDep.Properties.Mask.SaveLiteral = false;
             this.EdCodSubDep.Properties.MaxLength = 15;
@@ -735,7 +734,7 @@
             this.TxtnLog.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtnLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtnLog.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.TxtnLog.Location = new System.Drawing.Point(556, 26);
+            this.TxtnLog.Location = new System.Drawing.Point(499, 12);
             this.TxtnLog.Name = "TxtnLog";
             this.TxtnLog.Size = new System.Drawing.Size(100, 20);
             this.TxtnLog.TabIndex = 2;

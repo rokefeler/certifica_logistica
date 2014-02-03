@@ -15,17 +15,21 @@ namespace DaoLogistica.DAO
 // ReSharper disable once RedundantAssignment
             int ret = -1;
             DbCommand cmd = DATA.Db.GetStoredProcCommand("sp_tSubDependencia");
-            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.InsertUpdate);
-            DATA.Db.AddInParameter(cmd, "CodSubDep", DbType.String, (tSubDependencia.CodSubDep == String.Empty) ? Convert.DBNull : tSubDependencia.CodSubDep);
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.InsertUpdate); //100
+            DATA.Db.AddInParameter(cmd, "CodSubDep", DbType.String, tSubDependencia.CodSubDep);
             DATA.Db.AddInParameter(cmd, "CodDependencia", DbType.String, tSubDependencia.CodDependencia);
-            DATA.Db.AddInParameter(cmd, "nombre", DbType.Boolean, tSubDependencia.Nombre);
+            DATA.Db.AddInParameter(cmd, "nombre", DbType.String, tSubDependencia.Nombre);
             DATA.Db.AddInParameter(cmd, "CodPersonal", DbType.String, tSubDependencia.CodPersonal);
-            DATA.Db.AddInParameter(cmd, "Estado", DbType.String, tSubDependencia.Estado);
-            DATA.Db.AddInParameter(cmd, "Autorizacion", DbType.Int32, (tSubDependencia.Autorizacion == String.Empty) ? Convert.DBNull : tSubDependencia.Autorizacion);
+            DATA.Db.AddInParameter(cmd, "Estado", DbType.Boolean, tSubDependencia.Estado);
+            DATA.Db.AddInParameter(cmd, "Autorizacion", DbType.String, (tSubDependencia.Autorizacion == String.Empty) ? Convert.DBNull : tSubDependencia.Autorizacion);
             DATA.Db.AddInParameter(cmd, "FechaAut", DbType.DateTime, (tSubDependencia.FechaAut.Year == 1900) ? Convert.DBNull : tSubDependencia.FechaAut);
-            DATA.Db.AddInParameter(cmd, "Web", DbType.DateTime, (tSubDependencia.Web==String.Empty)?Convert.DBNull:tSubDependencia.Web);
+            DATA.Db.AddInParameter(cmd, "Telefono", DbType.String, (tSubDependencia.Telefono == String.Empty) ? Convert.DBNull : tSubDependencia.Telefono);
+            DATA.Db.AddInParameter(cmd, "Web", DbType.String, (tSubDependencia.Web==String.Empty)?Convert.DBNull:tSubDependencia.Web);
             DATA.Db.AddInParameter(cmd, "Obsv", DbType.String, (tSubDependencia.Obsv==String.Empty)?Convert.DBNull:tSubDependencia.Obsv);
-
+            DATA.Db.AddInParameter(cmd, "Email", DbType.String, (tSubDependencia.Email == String.Empty) ? Convert.DBNull : tSubDependencia.Email);
+            DATA.Db.AddInParameter(cmd, "Siglas", DbType.String, (tSubDependencia.Siglas == String.Empty) ? Convert.DBNull : tSubDependencia.Siglas);
+            DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, tSubDependencia.CodLogin);
+            DATA.Db.AddInParameter(cmd, "IsConvenio", DbType.Boolean, tSubDependencia.IsConvenio);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             if (dbTrans != null)
                 DATA.Db.ExecuteNonQuery(cmd, dbTrans);
@@ -35,13 +39,14 @@ namespace DaoLogistica.DAO
             return ret; //devuelve el id único del registro
         }
 
-        public static int Delete(String codSubDep, DbTransaction dbTrans=null)
+        public static int Delete(String codSubDep, string codlogin, DbTransaction dbTrans=null)
         {
 // ReSharper disable once RedundantAssignment
             int ret = -1;
-            DbCommand cmd = DATA.Db.GetStoredProcCommand("sp_tSubDependencia");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tSubDependencia");
             DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.DeleteLogico);
             DATA.Db.AddInParameter(cmd, "CodSubDep", DbType.String, codSubDep);
+            DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, codlogin);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             if (dbTrans != null)
                 DATA.Db.ExecuteNonQuery(cmd, dbTrans);
@@ -176,7 +181,12 @@ namespace DaoLogistica.DAO
                 ? new DateTime(1900, 01, 01) 
                 : dr.GetDateTime(dr.GetOrdinal("fechaAut")),
                 Web = dr.IsDBNull(dr.GetOrdinal("web")) ? String.Empty : dr.GetString(dr.GetOrdinal("web")),
-                Obsv = dr.IsDBNull(dr.GetOrdinal("obsv")) ? String.Empty : dr.GetString(dr.GetOrdinal("obsv"))
+                Obsv = dr.IsDBNull(dr.GetOrdinal("obsv")) ? String.Empty : dr.GetString(dr.GetOrdinal("obsv")),
+                Email = dr.GetString(dr.GetOrdinal("Email")),
+                CodLogin = dr.GetString(dr.GetOrdinal("CodLogin")),
+                Siglas = dr.GetString(dr.GetOrdinal("Siglas")),
+                IsConvenio = dr.GetBoolean(dr.GetOrdinal("IsConvenio")),
+                Telefono = dr.GetString(dr.GetOrdinal("Telefono"))
             };
 			return obj;
 		}

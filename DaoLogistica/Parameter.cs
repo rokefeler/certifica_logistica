@@ -19,7 +19,8 @@
         ExistEmail=401,
         ExistTipoDoc=402,
         ExistRazon=403,
-        GetAll = 500,       //Devolver Todos los registros ... ¡Cuidado con esto!
+        GetAll = 500,           //Devolver Todos los registros ... ¡Cuidado con esto!
+        GetAllEscuelas = 501,       //Devolver Todos los registros ... ¡Cuidado con esto!
         GetById = 511,     //*****************ID
         GetByIdForSticker = 5111,
         GetById2 = 512,
@@ -28,6 +29,7 @@
         GetbyAreaYCodSubDep = 514,
         GetByClaveUSerie = 515,
         GetByCodDep = 516,
+        GetByNombre=517, //ubigeo
         GetByCodAmbiente = 5161,
         GetByCodAmbienteForPrinterBorrador = 5162,
         GetByCodAmbienteForCodBarras01 = 5163,
@@ -70,6 +72,8 @@
         FiltroByDoc = 606,
         FiltroByPersonal = 607, //ok utilizado
         FiltroByPrograma = 608, //ok util
+        FiltroByDireccion = 609,
+        
          //FiltroByDenominacion = 6061,
         //FiltroByCodAreaCuenta = 6051,
         RetornaTotalAfectados=701,

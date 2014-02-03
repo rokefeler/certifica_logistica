@@ -91,7 +91,7 @@
             this.TxtApellidos.Name = "TxtApellidos";
             this.TxtApellidos.Size = new System.Drawing.Size(389, 20);
             this.TxtApellidos.TabIndex = 3;
-            this.TxtApellidos.Enter += new System.EventHandler(this.ObjEnter);
+            this.TxtApellidos.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // label3
             // 
@@ -115,9 +115,9 @@
             this.TxtCodPersonal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.TxtCodPersonal.Properties.MaxLength = 15;
             this.TxtCodPersonal.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TxtCodPersonal_Properties_ButtonClick);
-            this.TxtCodPersonal.Size = new System.Drawing.Size(127, 20);
+            this.TxtCodPersonal.Size = new System.Drawing.Size(100, 20);
             this.TxtCodPersonal.TabIndex = 1;
-            this.TxtCodPersonal.Enter += new System.EventHandler(this.ObjEnter);
+            this.TxtCodPersonal.Enter += new System.EventHandler(this.ObjectEnter);
             this.TxtCodPersonal.Leave += new System.EventHandler(this.TxtCodPersonal_Leave);
             this.TxtCodPersonal.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCodPersonal_Validating);
             // 
@@ -148,7 +148,7 @@
             this.TxtNombres.Name = "TxtNombres";
             this.TxtNombres.Size = new System.Drawing.Size(389, 20);
             this.TxtNombres.TabIndex = 5;
-            this.TxtNombres.Enter += new System.EventHandler(this.ObjEnter);
+            this.TxtNombres.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // label4
             // 
@@ -168,7 +168,7 @@
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(389, 20);
             this.TxtDireccion.TabIndex = 10;
-            this.TxtDireccion.Enter += new System.EventHandler(this.ObjEnter);
+            this.TxtDireccion.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // label5
             // 
@@ -196,7 +196,7 @@
             this.TxtNroDoc.Name = "TxtNroDoc";
             this.TxtNroDoc.Size = new System.Drawing.Size(206, 20);
             this.TxtNroDoc.TabIndex = 8;
-            this.TxtNroDoc.Enter += new System.EventHandler(this.ObjEnter);
+            this.TxtNroDoc.Enter += new System.EventHandler(this.ObjectEnter);
             this.TxtNroDoc.Leave += new System.EventHandler(this.TxtNroDoc_Leave);
             // 
             // label6
@@ -216,7 +216,7 @@
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(389, 20);
             this.TxtEmail.TabIndex = 15;
-            this.TxtEmail.Enter += new System.EventHandler(this.ObjEnter);
+            this.TxtEmail.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // label7
             // 
@@ -236,7 +236,7 @@
             this.TxtMovil.Name = "TxtMovil";
             this.TxtMovil.Size = new System.Drawing.Size(177, 20);
             this.TxtMovil.TabIndex = 17;
-            this.TxtMovil.Enter += new System.EventHandler(this.ObjEnter);
+            this.TxtMovil.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // label8
             // 
@@ -271,7 +271,7 @@
             this.BtnUbigeo.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.BtnUbigeo_Properties_ButtonClick);
             this.BtnUbigeo.Size = new System.Drawing.Size(87, 20);
             this.BtnUbigeo.TabIndex = 12;
-            this.BtnUbigeo.Enter += new System.EventHandler(this.ObjEnter);
+            this.BtnUbigeo.Enter += new System.EventHandler(this.ObjectEnter);
             this.BtnUbigeo.Leave += new System.EventHandler(this.BtnUbigeo_Leave);
             // 
             // TxtUbigeo
@@ -312,7 +312,7 @@
             this.TxtFijo.Name = "TxtFijo";
             this.TxtFijo.Size = new System.Drawing.Size(157, 20);
             this.TxtFijo.TabIndex = 19;
-            this.TxtFijo.Enter += new System.EventHandler(this.ObjEnter);
+            this.TxtFijo.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // CboCondicion
             // 

@@ -1,4 +1,6 @@
-﻿using System;using System.Windows.Forms;
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 using Certifica_logistica.modulos;
 using Certifica_logistica.Popups;
 using DaoLogistica;
@@ -14,7 +16,13 @@ namespace Certifica_logistica.mantenimiento
         {
             InitializeComponent();
         }
-
+        private void FmPersonal_Load(object sender, EventArgs e)
+        {
+            General.CargarDatos(CboTDoc, "TDOC", "TDOC-0000");
+            General.CargarDatos(CboCategoria, "CCAT", "CCAT-0000");
+            General.CargarDatos(CboCondicion, "CNDC", "CNDC-0000");
+            TxtCodPersonal.Focus();
+        }
         public override bool Master_Verificar()
         {
             var cad = string.Empty;
@@ -49,7 +57,11 @@ namespace Certifica_logistica.mantenimiento
             dxErrorProvider1.SetError(EdCodSubDep, "");*/
             return true;
         }
-
+        public override void ObjectEnter(object sender, EventArgs e)
+        {
+            base.ObjectEnter(sender, e);
+            return;
+        }
         public override bool Master_GrabarFormulario()
         {
             var ret = 0;
@@ -142,10 +154,15 @@ namespace Certifica_logistica.mantenimiento
 
         private void CargarFicha(string idP)
         {
+            EdCodSubDep.EditValue = String.Empty;
+            TxtSubDependencia.Text = String.Empty;
+            TxtDependencia.Text = String.Empty;
+            TxtCodPersonal.ResetBackColor();
             var p = PersonalDao.GetbyId(idP);
             if (p != null)
             {
                 Value = idP;
+                TxtCodPersonal.BackColor = Color.GreenYellow;
                 TxtApellidos.Text = p.Ape;
                 TxtNombres.Text = p.Nom;
                 General.UbicaItemsComboCodigo(CboTDoc, p.IdxTipoDoc);
@@ -176,19 +193,7 @@ namespace Certifica_logistica.mantenimiento
             e.Cancel = !string.IsNullOrEmpty(dxErrorProvider1.GetError(TxtCodPersonal));
             //BtnAdd.Enabled = !e.Cancel;
         }
-        private void ObjEnter(object sender, EventArgs e)
-        {
-            ObjectEnter(sender, e);
-        }
-
-        private void FmPersonal_Load(object sender, EventArgs e)
-        {
-            General.CargarDatos(CboTDoc, "TDOC", "TDOC-0000");
-            General.CargarDatos(CboCategoria, "CCAT", "CCAT-0000");
-            General.CargarDatos(CboCondicion, "CNDC", "CNDC-0000");
-            TxtCodPersonal.Focus();
-        }
-
+        
         private void BtnUbigeo_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             General.ShowMessage("Por lo pronto ingrese el codigo de Ubigeo respectivo\n"+

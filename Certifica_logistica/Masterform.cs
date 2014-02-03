@@ -251,7 +251,11 @@ namespace Certifica_logistica
             _FrmPadre.Run
         }*/
         
-
+        /// <summary>
+        /// Cuando Ingrese al COntrol que Seleccione T odo el Texto por Defecto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public virtual void ObjectEnter(object sender, EventArgs e)
         {
             try
@@ -290,6 +294,11 @@ namespace Certifica_logistica
             }
         }
 
+        public virtual void Object_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if(e.KeyCode== Keys.Enter)
+                SendKeys.Send("{TAB}");
+        }
         private void Masterform_Activated(object sender, EventArgs e)
         {
             try

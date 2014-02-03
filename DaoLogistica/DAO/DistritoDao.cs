@@ -86,7 +86,23 @@ namespace DaoLogistica.DAO
                 return tDistritoList;
             }
         }
-		
+
+        public static String UbicaDistrito(String nombreDis, String nombreProv, String nombreDep)
+        {
+            var codDis = String.Empty;
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tDistrito");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetByNombre); //517
+            DATA.Db.AddInParameter(cmd, "nombre", DbType.String, nombreDis);
+            DATA.Db.AddInParameter(cmd, "nombreProv", DbType.String, nombreProv);
+            DATA.Db.AddInParameter(cmd, "nombreDep", DbType.String, nombreDep);
+
+            using (var dr = DATA.Db.ExecuteReader(cmd))
+            {
+                if (dr.Read())
+                    codDis = dr.GetString(0);
+            }
+            return codDis;
+        }
         protected static Distrito MakeDistrito(IDataReader dataReader)
         {
             var obj = new Distrito

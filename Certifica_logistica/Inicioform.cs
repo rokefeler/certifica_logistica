@@ -576,7 +576,7 @@ namespace Certifica_logistica
                 myftp.Login("certifica", "<Xtp$>9312.>"); 
                 myftp.Passive = true;
                 myftp.TransferType = Rebex.Net.FtpTransferType.Binary;
-                if (General.LeerServerFtp("update_inv", ref myftp, true))
+                if (General.LeerServerFtp("update_log", ref myftp, true))
                     myftp.Disconnect();
                 Application.Restart();
                 //System.Diagnostics.Process.Start(Application.StartupPath + "\\certifica_patrimonio.exe");
@@ -659,6 +659,50 @@ namespace Certifica_logistica
        private void trámiteDocumentarioToolStripMenuItem_Click(object sender, EventArgs e)
        {
            var oFrm = new FpTramite
+           {
+               MdiParent = this,
+               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
+               _FrmPadre = this
+           };
+           oFrm.Show();
+       }
+
+       private void ordenesDeServicioToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           var oFrm = new FpOrdenLogistica
+           {
+               MdiParent = this,
+               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
+               _FrmPadre = this
+           };
+           oFrm.Show();
+       }
+
+       private void subDependenciasToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           var oFrm = new FmSubDependencia
+           {
+               MdiParent = this,
+               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
+               _FrmPadre = this
+           };
+           oFrm.Show();
+       }
+
+       private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           var oFrm = new FmProveedor
+           {
+               MdiParent = this,
+               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
+               _FrmPadre = this
+           };
+           oFrm.Show();
+       }
+
+       private void alumnosToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           var oFrm = new FmAlumno
            {
                MdiParent = this,
                _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
