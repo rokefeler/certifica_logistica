@@ -7,6 +7,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using Certifica_logistica.Ds;
 using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
@@ -264,35 +265,36 @@ static class CONSTANTE
             Console.Beep();
             MessageBox.Show(msg, titulo, button, icon);
         }
-       /*
-        public static void RellenarEstadoDataSet(ref DSets.DsImportar.TEstadoBienDataTable tbE)
+        public static void RellenarEstadoDataSet(ref DsTramite.TTipoUsuarioDataTable tbE, bool esParaLlenadoDetalle=false)
         {
+            //[V=Proveedor] - [P=Personal] - [A=Alumno] - [S=Servicios] [N=Ninguno]
             var r = tbE.NewRow();
             r[0] = ' ';
-            r[1] = " No Definido";
+            r[1] = " Ninguno";
             tbE.Rows.Add(r);
 
             r = tbE.NewRow();
-            r[0] = 'B';
-            r[1] = "Bueno";
+            r[0] = 'A';
+            r[1] = "ALUMNO";
             tbE.Rows.Add(r);
 
             r = tbE.NewRow();
-            r[0] = 'M';
-            r[1] = "Malo";
+            r[0] = 'P';
+            r[1] = "PERSONAL/DOC.EXTRANJ.";
             tbE.Rows.Add(r);
 
             r = tbE.NewRow();
-            r[0] = 'N';
-            r[1] = "Muy Bueno";
+            r[0] = 'V';
+            r[1] = "PROVEEDOR";
             tbE.Rows.Add(r);
 
+            if (!esParaLlenadoDetalle) return;
             r = tbE.NewRow();
-            r[0] = 'R';
-            r[1] = "Regular";
+            r[0] = 'S';
+            r[1] = "SERVICIOS";
             tbE.Rows.Add(r);
         }
-       */
+  
         public static Bitmap ByteToImage(byte[] blob)
         {
             var mStream = new MemoryStream();

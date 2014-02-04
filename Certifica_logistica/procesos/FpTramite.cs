@@ -25,7 +25,37 @@ namespace Certifica_logistica.procesos
         {
             InitializeComponent();
         }
+        private void FpTramite_Load(object sender, EventArgs e)
+        {
+            var ninicial = DateTime.Now.Year;
+            CboYearExp.Items.Clear();
+            for (var i = ninicial; i >= 2012; i--)
+                CboYearExp.Items.Add(i.ToString(CultureInfo.InvariantCulture));
 
+            /*CboPeriodo.Items.Clear();
+            for (var i = ninicial; i >= 2012; i--)
+                CboPeriodo.Items.Add(i.ToString(CultureInfo.InvariantCulture));
+            CboPeriodo.SelectedIndex = 0;
+             * */
+            CboYearExp.SelectedIndex = 0;
+            CboMoneda.SelectedIndex = 0;
+            General.CargarDatos(CboTipoDoc, "TDTR", "TDTR-0001"); //por defecto oficio seleccionado
+            CboFuente.DataSource = FuenteFinanciamientoDao.SelectAll();
+            CboFuente.ValueMember = "IdFuente";
+            CboFuente.DisplayMember = "Abreviacion";
+            CboFuente.SelectedIndex = 3;
+            DtFechaIngresoExp.EditValue = DateTime.Now;
+            DtFechaExp.DateTime = DateTime.Now; //Por Defecto Fecha de Hoy
+            EdCodSubDep_Recibe.EditValue = @"NCS";
+            EdCodSubDep_Recibe.IsModified = true;
+            EdCodSubDep_Leave(EdCodSubDep_Recibe, null);
+            Text = Tag + @"Modificado por : " + _FrmPadre.Miconfiguracion.IdUsuario +
+                        @" El " + DateTime.Now.ToShortDateString() + @" " + DateTime.Now.ToShortTimeString();
+            EdIdExpediente.Focus();
+
+
+        }
+       
         public override bool Master_Verificar()
         {
             Decimal dval;
@@ -421,38 +451,7 @@ namespace Certifica_logistica.procesos
             VerDetalleObservaciones();
             return true;
         }
-
-        private void FpTramite_Load(object sender, EventArgs e)
-        {
-            var ninicial = DateTime.Now.Year;
-            CboYearExp.Items.Clear();
-            for (var i = ninicial; i >= 2012; i--)
-                CboYearExp.Items.Add(i.ToString(CultureInfo.InvariantCulture));
-
-            /*CboPeriodo.Items.Clear();
-            for (var i = ninicial; i >= 2012; i--)
-                CboPeriodo.Items.Add(i.ToString(CultureInfo.InvariantCulture));
-            CboPeriodo.SelectedIndex = 0;
-             * */
-            CboYearExp.SelectedIndex = 0;
-            CboMoneda.SelectedIndex = 0;
-            General.CargarDatos(CboTipoDoc, "TDTR", "TDTR-0001"); //por defecto oficio seleccionado
-            CboFuente.DataSource = FuenteFinanciamientoDao.SelectAll();
-            CboFuente.ValueMember = "IdFuente";
-            CboFuente.DisplayMember = "Abreviacion";
-            CboFuente.SelectedIndex = 3;
-            DtFechaIngresoExp.EditValue = DateTime.Now;
-            DtFechaExp.DateTime = DateTime.Now; //Por Defecto Fecha de Hoy
-            EdCodSubDep_Recibe.EditValue = @"NCS";
-            EdCodSubDep_Recibe.IsModified = true;
-            EdCodSubDep_Leave(EdCodSubDep_Recibe,null);
-            Text = Tag + @"Modificado por : " + _FrmPadre.Miconfiguracion.IdUsuario + 
-                        @" El " + DateTime.Now.ToShortDateString() + @" " + DateTime.Now.ToShortTimeString();
-            EdIdExpediente.Focus();
-           
-
-        }
-       
+        
         private void VerDetalleExpediente()
         {
             var ds = DetExpedienteDao.GetDetalle(Value);

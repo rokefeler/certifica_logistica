@@ -182,6 +182,12 @@
     <Compile Include="Popups\FpConfig.designer.cs">
       <DependentUpon>FpConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popups\FphDetalleOrden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FphDetalleOrden.Designer.cs">
+      <DependentUpon>FphDetalleOrden.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popups\FphMeta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popups\FpConfig.resx">
       <DependentUpon>FpConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FphDetalleOrden.resx">
+      <DependentUpon>FphDetalleOrden.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popups\FphMeta.resx">
       <DependentUpon>FphMeta.cs</DependentUpon>
@@ -628,6 +637,12 @@
     <Content Include="images\open-file-32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="images\orden-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\order-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="images\plus.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

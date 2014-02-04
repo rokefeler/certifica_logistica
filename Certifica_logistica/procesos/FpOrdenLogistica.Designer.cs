@@ -29,37 +29,37 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FpOrdenLogistica));
             this.button1 = new System.Windows.Forms.Button();
             this.EdIdOrden = new DevExpress.XtraEditors.ButtonEdit();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.memoDescripcion = new DevExpress.XtraEditors.MemoEdit();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TxtReferencia = new DevExpress.XtraEditors.TextEdit();
+            this.TxtCcp = new DevExpress.XtraEditors.TextEdit();
+            this.TxtSiaf = new DevExpress.XtraEditors.TextEdit();
             this.label15 = new System.Windows.Forms.Label();
             this.CboTipoProceso = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.BtnCarga = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.TxtAsunto = new System.Windows.Forms.TextBox();
-            this.TxtCcp = new System.Windows.Forms.TextBox();
             this.DtFechaExp = new DevExpress.XtraEditors.DateEdit();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.TxtSubDependencia = new System.Windows.Forms.TextBox();
             this.GrpAprobacion = new System.Windows.Forms.GroupBox();
+            this.TxtMontoAprobado = new DevExpress.XtraEditors.TextEdit();
+            this.TxtNroAutorizacion = new DevExpress.XtraEditors.TextEdit();
             this.label17 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.CboFuente = new System.Windows.Forms.ComboBox();
             this.CboMoneda = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.TxtNroAutorizacion = new System.Windows.Forms.TextBox();
-            this.TxtMontoAprobado = new System.Windows.Forms.TextBox();
             this.DtFechaIngresoExp = new DevExpress.XtraEditors.DateEdit();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -67,16 +67,10 @@
             this.CboYearExp = new System.Windows.Forms.ComboBox();
             this.EdIdExpediente = new DevExpress.XtraEditors.ButtonEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.TxtTotal = new System.Windows.Forms.TextBox();
             this.LstMetas = new System.Windows.Forms.ListBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.CboPeriodo = new System.Windows.Forms.ComboBox();
-            this.EdIdMeta = new DevExpress.XtraEditors.ButtonEdit();
-            this.label13 = new System.Windows.Forms.Label();
             this.GrpDocumento = new System.Windows.Forms.GroupBox();
+            this.CboTipoUsuario = new DevExpress.XtraEditors.LookUpEdit();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -85,7 +79,6 @@
             this.LblTipoUsuario = new System.Windows.Forms.Label();
             this.TxtCodPersonal = new DevExpress.XtraEditors.ButtonEdit();
             this.label4 = new System.Windows.Forms.Label();
-            this.CboTipoUsuario = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -93,20 +86,24 @@
             this.pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdIdOrden.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescripcion.Properties)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtReferencia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtCcp.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtSiaf.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaExp.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaExp.Properties)).BeginInit();
             this.GrpAprobacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtMontoAprobado.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtNroAutorizacion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaIngresoExp.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaIngresoExp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdIdExpediente.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EdIdMeta.Properties)).BeginInit();
             this.GrpDocumento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCodPersonal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -114,7 +111,7 @@
             // 
             // pic1
             // 
-            this.pic1.Image = global::Certifica_logistica.Properties.Resources.Product_48;
+            this.pic1.Image = global::Certifica_logistica.Properties.Resources.order_64;
             // 
             // LblTitulo
             // 
@@ -175,7 +172,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(698, 482);
-            this.splitContainerControl1.SplitterPosition = 338;
+            this.splitContainerControl1.SplitterPosition = 307;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -185,7 +182,7 @@
             this.memoDescripcion.Name = "memoDescripcion";
             this.memoDescripcion.Properties.Appearance.BackColor = System.Drawing.Color.Lavender;
             this.memoDescripcion.Properties.Appearance.Options.UseBackColor = true;
-            this.memoDescripcion.Size = new System.Drawing.Size(345, 104);
+            this.memoDescripcion.Size = new System.Drawing.Size(345, 75);
             this.memoDescripcion.TabIndex = 12;
             this.memoDescripcion.ToolTip = "Descripción detallada de Orden de Servicio";
             this.memoDescripcion.ToolTipController = this.toolTipController1;
@@ -193,17 +190,17 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.TxtReferencia);
+            this.groupBox2.Controls.Add(this.TxtCcp);
+            this.groupBox2.Controls.Add(this.TxtSiaf);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.CboTipoProceso);
-            this.groupBox2.Controls.Add(this.textBox5);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.BtnCarga);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.TxtAsunto);
-            this.groupBox2.Controls.Add(this.TxtCcp);
             this.groupBox2.Controls.Add(this.DtFechaExp);
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.label8);
@@ -222,6 +219,33 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ingrese Expediente Relacionado:";
             // 
+            // TxtReferencia
+            // 
+            this.TxtReferencia.EnterMoveNextControl = true;
+            this.TxtReferencia.Location = new System.Drawing.Point(5, 132);
+            this.TxtReferencia.Name = "TxtReferencia";
+            this.TxtReferencia.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtReferencia.Size = new System.Drawing.Size(372, 22);
+            this.TxtReferencia.TabIndex = 21;
+            // 
+            // TxtCcp
+            // 
+            this.TxtCcp.EnterMoveNextControl = true;
+            this.TxtCcp.Location = new System.Drawing.Point(629, 131);
+            this.TxtCcp.Name = "TxtCcp";
+            this.TxtCcp.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtCcp.Size = new System.Drawing.Size(49, 22);
+            this.TxtCcp.TabIndex = 10;
+            // 
+            // TxtSiaf
+            // 
+            this.TxtSiaf.EnterMoveNextControl = true;
+            this.TxtSiaf.Location = new System.Drawing.Point(568, 131);
+            this.TxtSiaf.Name = "TxtSiaf";
+            this.TxtSiaf.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtSiaf.Size = new System.Drawing.Size(55, 22);
+            this.TxtSiaf.TabIndex = 9;
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -236,19 +260,10 @@
             this.CboTipoProceso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboTipoProceso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CboTipoProceso.FormattingEnabled = true;
-            this.CboTipoProceso.Location = new System.Drawing.Point(397, 132);
+            this.CboTipoProceso.Location = new System.Drawing.Point(386, 132);
             this.CboTipoProceso.Name = "CboTipoProceso";
-            this.CboTipoProceso.Size = new System.Drawing.Size(167, 21);
+            this.CboTipoProceso.Size = new System.Drawing.Size(178, 21);
             this.CboTipoProceso.TabIndex = 20;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox5.Location = new System.Drawing.Point(573, 132);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(48, 20);
-            this.textBox5.TabIndex = 18;
             // 
             // label5
             // 
@@ -304,28 +319,10 @@
             this.label14.TabIndex = 11;
             this.label14.Text = "C.C.P.";
             // 
-            // TxtAsunto
-            // 
-            this.TxtAsunto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtAsunto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtAsunto.Location = new System.Drawing.Point(5, 133);
-            this.TxtAsunto.MaxLength = 60;
-            this.TxtAsunto.Name = "TxtAsunto";
-            this.TxtAsunto.Size = new System.Drawing.Size(386, 20);
-            this.TxtAsunto.TabIndex = 8;
-            // 
-            // TxtCcp
-            // 
-            this.TxtCcp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCcp.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtCcp.Location = new System.Drawing.Point(627, 132);
-            this.TxtCcp.Name = "TxtCcp";
-            this.TxtCcp.Size = new System.Drawing.Size(48, 20);
-            this.TxtCcp.TabIndex = 12;
-            // 
             // DtFechaExp
             // 
             this.DtFechaExp.EditValue = null;
+            this.DtFechaExp.EnterMoveNextControl = true;
             this.DtFechaExp.Location = new System.Drawing.Point(199, 41);
             this.DtFechaExp.Name = "DtFechaExp";
             this.DtFechaExp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -333,6 +330,7 @@
             this.DtFechaExp.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DtFechaExp.Properties.Mask.BeepOnError = true;
+            this.DtFechaExp.Properties.ReadOnly = true;
             this.DtFechaExp.Size = new System.Drawing.Size(86, 20);
             this.DtFechaExp.TabIndex = 14;
             // 
@@ -367,19 +365,39 @@
             // 
             // GrpAprobacion
             // 
+            this.GrpAprobacion.Controls.Add(this.TxtMontoAprobado);
+            this.GrpAprobacion.Controls.Add(this.TxtNroAutorizacion);
             this.GrpAprobacion.Controls.Add(this.label17);
             this.GrpAprobacion.Controls.Add(this.label9);
             this.GrpAprobacion.Controls.Add(this.CboFuente);
             this.GrpAprobacion.Controls.Add(this.CboMoneda);
             this.GrpAprobacion.Controls.Add(this.label10);
-            this.GrpAprobacion.Controls.Add(this.TxtNroAutorizacion);
-            this.GrpAprobacion.Controls.Add(this.TxtMontoAprobado);
             this.GrpAprobacion.Location = new System.Drawing.Point(386, 6);
             this.GrpAprobacion.Name = "GrpAprobacion";
             this.GrpAprobacion.Size = new System.Drawing.Size(297, 66);
             this.GrpAprobacion.TabIndex = 10;
             this.GrpAprobacion.TabStop = false;
             this.GrpAprobacion.Text = "Aprobación Rectoral de Expediente";
+            // 
+            // TxtMontoAprobado
+            // 
+            this.TxtMontoAprobado.EnterMoveNextControl = true;
+            this.TxtMontoAprobado.Location = new System.Drawing.Point(236, 35);
+            this.TxtMontoAprobado.Name = "TxtMontoAprobado";
+            this.TxtMontoAprobado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtMontoAprobado.Properties.ReadOnly = true;
+            this.TxtMontoAprobado.Size = new System.Drawing.Size(55, 22);
+            this.TxtMontoAprobado.TabIndex = 8;
+            // 
+            // TxtNroAutorizacion
+            // 
+            this.TxtNroAutorizacion.EnterMoveNextControl = true;
+            this.TxtNroAutorizacion.Location = new System.Drawing.Point(174, 35);
+            this.TxtNroAutorizacion.Name = "TxtNroAutorizacion";
+            this.TxtNroAutorizacion.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtNroAutorizacion.Properties.ReadOnly = true;
+            this.TxtNroAutorizacion.Size = new System.Drawing.Size(55, 22);
+            this.TxtNroAutorizacion.TabIndex = 7;
             // 
             // label17
             // 
@@ -435,29 +453,10 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "Moneda";
             // 
-            // TxtNroAutorizacion
-            // 
-            this.TxtNroAutorizacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNroAutorizacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtNroAutorizacion.Location = new System.Drawing.Point(174, 37);
-            this.TxtNroAutorizacion.MaxLength = 70;
-            this.TxtNroAutorizacion.Name = "TxtNroAutorizacion";
-            this.TxtNroAutorizacion.Size = new System.Drawing.Size(49, 20);
-            this.TxtNroAutorizacion.TabIndex = 5;
-            // 
-            // TxtMontoAprobado
-            // 
-            this.TxtMontoAprobado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtMontoAprobado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtMontoAprobado.Location = new System.Drawing.Point(227, 37);
-            this.TxtMontoAprobado.MaxLength = 35;
-            this.TxtMontoAprobado.Name = "TxtMontoAprobado";
-            this.TxtMontoAprobado.Size = new System.Drawing.Size(63, 20);
-            this.TxtMontoAprobado.TabIndex = 6;
-            // 
             // DtFechaIngresoExp
             // 
             this.DtFechaIngresoExp.EditValue = null;
+            this.DtFechaIngresoExp.EnterMoveNextControl = true;
             this.DtFechaIngresoExp.Location = new System.Drawing.Point(291, 41);
             this.DtFechaIngresoExp.Name = "DtFechaIngresoExp";
             this.DtFechaIngresoExp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -465,6 +464,7 @@
             this.DtFechaIngresoExp.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DtFechaIngresoExp.Properties.Mask.BeepOnError = true;
+            this.DtFechaIngresoExp.Properties.ReadOnly = true;
             this.DtFechaIngresoExp.Size = new System.Drawing.Size(86, 20);
             this.DtFechaIngresoExp.TabIndex = 9;
             // 
@@ -501,11 +501,6 @@
             this.CboYearExp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboYearExp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CboYearExp.FormattingEnabled = true;
-            this.CboYearExp.Items.AddRange(new object[] {
-            "SOLES",
-            "DOLARES",
-            "EUROS",
-            "OTRO"});
             this.CboYearExp.Location = new System.Drawing.Point(75, 40);
             this.CboYearExp.Name = "CboYearExp";
             this.CboYearExp.Size = new System.Drawing.Size(61, 21);
@@ -528,123 +523,40 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.TxtTotal);
             this.groupBox1.Controls.Add(this.LstMetas);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.CboPeriodo);
-            this.groupBox1.Controls.Add(this.EdIdMeta);
-            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Location = new System.Drawing.Point(354, 224);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(341, 109);
+            this.groupBox1.Size = new System.Drawing.Size(341, 80);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "< Datos presupuestales >";
+            this.groupBox1.Text = "< Resumen Total >";
             // 
-            // label1
+            // TxtTotal
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(125, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Importe";
-            // 
-            // textBox6
-            // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox6.Location = new System.Drawing.Point(115, 27);
-            this.textBox6.MaxLength = 35;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(53, 20);
-            this.textBox6.TabIndex = 7;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(5, 53);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(199, 50);
-            this.textBox1.TabIndex = 17;
-            this.textBox1.TabStop = false;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(172, 25);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 23);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = true;
+            this.TxtTotal.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.TxtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.TxtTotal.Location = new System.Drawing.Point(181, 38);
+            this.TxtTotal.Name = "TxtTotal";
+            this.TxtTotal.ReadOnly = true;
+            this.TxtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.TxtTotal.Size = new System.Drawing.Size(152, 35);
+            this.TxtTotal.TabIndex = 8;
+            this.TxtTotal.Text = "0.00";
             // 
             // LstMetas
             // 
             this.LstMetas.FormattingEnabled = true;
-            this.LstMetas.Location = new System.Drawing.Point(210, 7);
+            this.LstMetas.Location = new System.Drawing.Point(6, 17);
             this.LstMetas.Name = "LstMetas";
-            this.LstMetas.Size = new System.Drawing.Size(125, 95);
+            this.LstMetas.Size = new System.Drawing.Size(165, 56);
             this.LstMetas.TabIndex = 7;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 12);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(43, 13);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Periodo";
-            // 
-            // CboPeriodo
-            // 
-            this.CboPeriodo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CboPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboPeriodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CboPeriodo.FormattingEnabled = true;
-            this.CboPeriodo.Items.AddRange(new object[] {
-            "SOLES",
-            "DOLARES",
-            "EUROS",
-            "OTRO"});
-            this.CboPeriodo.Location = new System.Drawing.Point(5, 27);
-            this.CboPeriodo.Name = "CboPeriodo";
-            this.CboPeriodo.Size = new System.Drawing.Size(61, 21);
-            this.CboPeriodo.TabIndex = 1;
-            this.CboPeriodo.TabStop = false;
-            // 
-            // EdIdMeta
-            // 
-            this.EdIdMeta.Location = new System.Drawing.Point(67, 27);
-            this.EdIdMeta.Name = "EdIdMeta";
-            this.EdIdMeta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.EdIdMeta.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.EdIdMeta.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.EdIdMeta.Properties.Mask.BeepOnError = true;
-            this.EdIdMeta.Properties.Mask.EditMask = "00";
-            this.EdIdMeta.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
-            this.EdIdMeta.Properties.Mask.SaveLiteral = false;
-            this.EdIdMeta.Properties.MaxLength = 15;
-            this.EdIdMeta.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit3_Properties_ButtonClick);
-            this.EdIdMeta.Size = new System.Drawing.Size(45, 20);
-            this.EdIdMeta.TabIndex = 6;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(76, 11);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(31, 13);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Meta";
             // 
             // GrpDocumento
             // 
+            this.GrpDocumento.Controls.Add(this.CboTipoUsuario);
             this.GrpDocumento.Controls.Add(this.textBox7);
             this.GrpDocumento.Controls.Add(this.label20);
             this.GrpDocumento.Controls.Add(this.textBox4);
@@ -653,7 +565,6 @@
             this.GrpDocumento.Controls.Add(this.LblTipoUsuario);
             this.GrpDocumento.Controls.Add(this.TxtCodPersonal);
             this.GrpDocumento.Controls.Add(this.label4);
-            this.GrpDocumento.Controls.Add(this.CboTipoUsuario);
             this.GrpDocumento.Controls.Add(this.label11);
             this.GrpDocumento.Location = new System.Drawing.Point(4, 162);
             this.GrpDocumento.Name = "GrpDocumento";
@@ -661,6 +572,20 @@
             this.GrpDocumento.TabIndex = 9;
             this.GrpDocumento.TabStop = false;
             this.GrpDocumento.Text = "Datos del Beneficiario:";
+            // 
+            // CboTipoUsuario
+            // 
+            this.CboTipoUsuario.Location = new System.Drawing.Point(5, 32);
+            this.CboTipoUsuario.Name = "CboTipoUsuario";
+            this.CboTipoUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CboTipoUsuario.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Sigla", "Sigla", 10, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("nombre", "Nombre", 50, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.CboTipoUsuario.Properties.DisplayMember = "nombre";
+            this.CboTipoUsuario.Properties.ValueMember = "Sigla";
+            this.CboTipoUsuario.Size = new System.Drawing.Size(115, 20);
+            this.CboTipoUsuario.TabIndex = 34;
             // 
             // textBox7
             // 
@@ -744,22 +669,6 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Tipo de Usuario:";
             // 
-            // CboTipoUsuario
-            // 
-            this.CboTipoUsuario.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CboTipoUsuario.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CboTipoUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CboTipoUsuario.FormattingEnabled = true;
-            this.CboTipoUsuario.Items.AddRange(new object[] {
-            "ALUMNO",
-            "PERSONAL",
-            "PROVEEDOR",
-            "NINGUNO"});
-            this.CboTipoUsuario.Location = new System.Drawing.Point(5, 32);
-            this.CboTipoUsuario.Name = "CboTipoUsuario";
-            this.CboTipoUsuario.Size = new System.Drawing.Size(115, 21);
-            this.CboTipoUsuario.TabIndex = 4;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -775,7 +684,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(698, 139);
+            this.gridControl1.Size = new System.Drawing.Size(698, 170);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -910,8 +819,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(698, 525);
             this.Controls.Add(this.splitContainerControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FpOrdenLogistica";
             this.Text = "Trabajo de Ordenes de Servicio";
+            this.Load += new System.EventHandler(this.FpOrdenLogistica_Load);
             this.Controls.SetChildIndex(this.pan1, 0);
             this.Controls.SetChildIndex(this.splitContainerControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
@@ -919,24 +830,28 @@
             this.pan1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdIdOrden.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoDescripcion.Properties)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtReferencia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtCcp.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtSiaf.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaExp.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaExp.Properties)).EndInit();
             this.GrpAprobacion.ResumeLayout(false);
             this.GrpAprobacion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtMontoAprobado.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtNroAutorizacion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaIngresoExp.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFechaIngresoExp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdIdExpediente.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EdIdMeta.Properties)).EndInit();
             this.GrpDocumento.ResumeLayout(false);
             this.GrpDocumento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCodPersonal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -950,21 +865,17 @@
         private System.Windows.Forms.Button button1;
         private DevExpress.Utils.ToolTipController toolTipController1;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
-        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.MemoEdit memoDescripcion;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox CboTipoProceso;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button BtnCarga;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox TxtAsunto;
-        private System.Windows.Forms.TextBox TxtCcp;
         private DevExpress.XtraEditors.DateEdit DtFechaExp;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label8;
@@ -975,8 +886,6 @@
         private System.Windows.Forms.ComboBox CboFuente;
         private System.Windows.Forms.ComboBox CboMoneda;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox TxtNroAutorizacion;
-        private System.Windows.Forms.TextBox TxtMontoAprobado;
         private DevExpress.XtraEditors.DateEdit DtFechaIngresoExp;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
@@ -984,15 +893,7 @@
         private System.Windows.Forms.ComboBox CboYearExp;
         private DevExpress.XtraEditors.ButtonEdit EdIdExpediente;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox LstMetas;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox CboPeriodo;
-        private DevExpress.XtraEditors.ButtonEdit EdIdMeta;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox GrpDocumento;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label20;
@@ -1002,9 +903,15 @@
         private System.Windows.Forms.Label LblTipoUsuario;
         private DevExpress.XtraEditors.ButtonEdit TxtCodPersonal;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox CboTipoUsuario;
         private System.Windows.Forms.Label label11;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.TextEdit TxtNroAutorizacion;
+        private DevExpress.XtraEditors.TextEdit TxtReferencia;
+        private DevExpress.XtraEditors.TextEdit TxtCcp;
+        private DevExpress.XtraEditors.TextEdit TxtSiaf;
+        private DevExpress.XtraEditors.TextEdit TxtMontoAprobado;
+        private System.Windows.Forms.TextBox TxtTotal;
+        private DevExpress.XtraEditors.LookUpEdit CboTipoUsuario;
     }
 }

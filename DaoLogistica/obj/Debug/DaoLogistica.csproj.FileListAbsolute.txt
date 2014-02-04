@@ -10,6 +10,6 @@ E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Mi
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.Unity.xml
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.Unity.Interception.xml
+E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\obj\Debug\DaoLogistica.csprojResolveAssemblyReference.cache
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\obj\Debug\DaoLogistica.dll
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\obj\Debug\DaoLogistica.pdb
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\obj\Debug\DaoLogistica.csprojResolveAssemblyReference.cache

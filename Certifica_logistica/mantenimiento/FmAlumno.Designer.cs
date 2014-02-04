@@ -33,6 +33,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.EdCUI = new DevExpress.XtraEditors.ButtonEdit();
             this.Grp01 = new DevExpress.XtraEditors.GroupControl();
+            this.EdEscuelas = new DevExpress.XtraEditors.LookUpEdit();
+            this.LstEscuelas = new DevExpress.XtraEditors.ListBoxControl();
+            this.TxtEmail = new DevExpress.XtraEditors.TextEdit();
+            this.label7 = new System.Windows.Forms.Label();
             this.DtFecNac = new DevExpress.XtraEditors.DateEdit();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -48,11 +52,7 @@
             this.TxtRazon = new DevExpress.XtraEditors.TextEdit();
             this.label30 = new System.Windows.Forms.Label();
             this.EdUbigeo = new DevExpress.XtraEditors.ButtonEdit();
-            this.TxtEmail = new DevExpress.XtraEditors.TextEdit();
-            this.label7 = new System.Windows.Forms.Label();
             this.TxtModificacion = new System.Windows.Forms.TextBox();
-            this.LstEscuelas = new DevExpress.XtraEditors.ListBoxControl();
-            this.EdEscuelas = new DevExpress.XtraEditors.LookUpEdit();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
@@ -60,6 +60,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdCUI.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grp01)).BeginInit();
             this.Grp01.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EdEscuelas.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LstEscuelas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFecNac.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFecNac.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDni.Properties)).BeginInit();
@@ -68,9 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtDireccion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtRazon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdUbigeo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtEmail.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LstEscuelas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EdEscuelas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,6 +110,7 @@
             this.EdCUI.Properties.MaxLength = 15;
             this.EdCUI.Size = new System.Drawing.Size(89, 20);
             this.EdCUI.TabIndex = 3;
+            this.EdCUI.Leave += new System.EventHandler(this.EdCUI_Leave);
             // 
             // Grp01
             // 
@@ -139,6 +140,54 @@
             this.Grp01.Size = new System.Drawing.Size(659, 223);
             this.Grp01.TabIndex = 6;
             this.Grp01.Text = "Datos Principales";
+            // 
+            // EdEscuelas
+            // 
+            this.EdEscuelas.EnterMoveNextControl = true;
+            this.EdEscuelas.Location = new System.Drawing.Point(333, 40);
+            this.EdEscuelas.Name = "EdEscuelas";
+            this.EdEscuelas.Properties.Appearance.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.EdEscuelas.Properties.Appearance.ForeColor = System.Drawing.Color.DarkRed;
+            this.EdEscuelas.Properties.Appearance.Options.UseBackColor = true;
+            this.EdEscuelas.Properties.Appearance.Options.UseForeColor = true;
+            this.EdEscuelas.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.EdEscuelas.Size = new System.Drawing.Size(321, 20);
+            this.EdEscuelas.TabIndex = 19;
+            this.EdEscuelas.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            // 
+            // LstEscuelas
+            // 
+            this.LstEscuelas.Appearance.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.LstEscuelas.Appearance.ForeColor = System.Drawing.Color.DarkRed;
+            this.LstEscuelas.Appearance.Options.UseBackColor = true;
+            this.LstEscuelas.Appearance.Options.UseForeColor = true;
+            this.LstEscuelas.Location = new System.Drawing.Point(333, 63);
+            this.LstEscuelas.Name = "LstEscuelas";
+            this.LstEscuelas.Size = new System.Drawing.Size(321, 95);
+            this.LstEscuelas.TabIndex = 18;
+            this.LstEscuelas.TabStop = false;
+            // 
+            // TxtEmail
+            // 
+            this.TxtEmail.EnterMoveNextControl = true;
+            this.TxtEmail.Location = new System.Drawing.Point(5, 189);
+            this.TxtEmail.Name = "TxtEmail";
+            this.TxtEmail.Properties.Appearance.BackColor = System.Drawing.Color.NavajoWhite;
+            this.TxtEmail.Properties.Appearance.Options.UseBackColor = true;
+            this.TxtEmail.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtEmail.Properties.MaxLength = 70;
+            this.TxtEmail.Size = new System.Drawing.Size(322, 22);
+            this.TxtEmail.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 173);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(97, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Correo Electrónico:";
             // 
             // DtFecNac
             // 
@@ -298,27 +347,7 @@
             this.EdUbigeo.Properties.MaxLength = 15;
             this.EdUbigeo.Size = new System.Drawing.Size(68, 20);
             this.EdUbigeo.TabIndex = 7;
-            // 
-            // TxtEmail
-            // 
-            this.TxtEmail.EnterMoveNextControl = true;
-            this.TxtEmail.Location = new System.Drawing.Point(5, 189);
-            this.TxtEmail.Name = "TxtEmail";
-            this.TxtEmail.Properties.Appearance.BackColor = System.Drawing.Color.NavajoWhite;
-            this.TxtEmail.Properties.Appearance.Options.UseBackColor = true;
-            this.TxtEmail.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.TxtEmail.Properties.MaxLength = 70;
-            this.TxtEmail.Size = new System.Drawing.Size(322, 22);
-            this.TxtEmail.TabIndex = 17;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 173);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Correo Electrónico:";
+            this.EdUbigeo.Leave += new System.EventHandler(this.EdUbigeo_Leave);
             // 
             // TxtModificacion
             // 
@@ -332,33 +361,6 @@
             this.TxtModificacion.Size = new System.Drawing.Size(660, 20);
             this.TxtModificacion.TabIndex = 13;
             this.TxtModificacion.TabStop = false;
-            // 
-            // LstEscuelas
-            // 
-            this.LstEscuelas.Appearance.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.LstEscuelas.Appearance.ForeColor = System.Drawing.Color.DarkRed;
-            this.LstEscuelas.Appearance.Options.UseBackColor = true;
-            this.LstEscuelas.Appearance.Options.UseForeColor = true;
-            this.LstEscuelas.Location = new System.Drawing.Point(333, 63);
-            this.LstEscuelas.Name = "LstEscuelas";
-            this.LstEscuelas.Size = new System.Drawing.Size(321, 95);
-            this.LstEscuelas.TabIndex = 18;
-            this.LstEscuelas.TabStop = false;
-            // 
-            // EdEscuelas
-            // 
-            this.EdEscuelas.EnterMoveNextControl = true;
-            this.EdEscuelas.Location = new System.Drawing.Point(333, 40);
-            this.EdEscuelas.Name = "EdEscuelas";
-            this.EdEscuelas.Properties.Appearance.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.EdEscuelas.Properties.Appearance.ForeColor = System.Drawing.Color.DarkRed;
-            this.EdEscuelas.Properties.Appearance.Options.UseBackColor = true;
-            this.EdEscuelas.Properties.Appearance.Options.UseForeColor = true;
-            this.EdEscuelas.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.EdEscuelas.Size = new System.Drawing.Size(321, 20);
-            this.EdEscuelas.TabIndex = 19;
-            this.EdEscuelas.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             // 
             // dxErrorProvider1
             // 
@@ -388,6 +390,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Grp01)).EndInit();
             this.Grp01.ResumeLayout(false);
             this.Grp01.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EdEscuelas.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LstEscuelas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFecNac.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtFecNac.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDni.Properties)).EndInit();
@@ -396,9 +401,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtDireccion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtRazon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdUbigeo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtEmail.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LstEscuelas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EdEscuelas.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

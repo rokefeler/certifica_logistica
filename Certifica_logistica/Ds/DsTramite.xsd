@@ -27,7 +27,25 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="TTipoUsuario" msprop:Generator_TableClassName="TTipoUsuarioDataTable" msprop:Generator_TableVarName="tableTTipoUsuario" msprop:Generator_RowChangedName="TTipoUsuarioRowChanged" msprop:Generator_TablePropName="TTipoUsuario" msprop:Generator_RowDeletingName="TTipoUsuarioRowDeleting" msprop:Generator_RowChangingName="TTipoUsuarioRowChanging" msprop:Generator_RowEvHandlerName="TTipoUsuarioRowChangeEventHandler" msprop:Generator_RowDeletedName="TTipoUsuarioRowDeleted" msprop:Generator_RowClassName="TTipoUsuarioRow" msprop:Generator_UserTableName="TTipoUsuario" msprop:Generator_RowEvArgName="TTipoUsuarioRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sigla" msprop:Generator_ColumnVarNameInTable="columnSigla" msprop:Generator_ColumnPropNameInRow="Sigla" msprop:Generator_ColumnPropNameInTable="SiglaColumn" msprop:Generator_UserColumnName="Sigla" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre" msdata:Caption="Nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:TTipoUsuario" />
+      <xs:field xpath="mstns:Sigla" />
+    </xs:unique>
   </xs:element>
 </xs:schema>

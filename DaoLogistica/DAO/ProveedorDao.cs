@@ -24,7 +24,7 @@ namespace DaoLogistica.DAO
             if(!string.IsNullOrEmpty(obj.Contacto))
                 DATA.Db.AddInParameter(cmd, "Contacto", DbType.String, obj.Contacto);
             if(!string.IsNullOrEmpty(obj.Telefono))
-                DATA.Db.AddInParameter(cmd, "Telefono", DbType.DateTime, obj.Telefono);
+                DATA.Db.AddInParameter(cmd, "Telefono", DbType.String, obj.Telefono);
             if(!string.IsNullOrEmpty(obj.Email))
                 DATA.Db.AddInParameter(cmd, "Email", DbType.String, obj.Email);
             if(!string.IsNullOrEmpty(obj.AgenteRetencion))

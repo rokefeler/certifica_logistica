@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\AlumnoDao.cs" />
+    <Compile Include="DAO\AlumnoDetalleEscuelaDao.cs" />
+    <Compile Include="DAO\AlumnoEscuelaDao.cs" />
     <Compile Include="DAO\CodigoDao.cs" />
     <Compile Include="DAO\ConfigDao.cs" />
     <Compile Include="DAO\DepartamentoDao.cs" />
@@ -70,6 +72,8 @@
     <Compile Include="DAO\MetaDao.cs" />
     <Compile Include="DAO\NumeroDao.cs" />
     <Compile Include="DAO\ObservacionExpedienteDao.cs" />
+    <Compile Include="DAO\OrdenLogisticaDao.cs" />
+    <Compile Include="DAO\OrdenLogisticaDetalle.cs" />
     <Compile Include="DAO\PersonalDao.cs" />
     <Compile Include="DAO\ProveedorDao.cs" />
     <Compile Include="DAO\ProvinciaDao.cs" />
@@ -95,6 +99,7 @@
     <Compile Include="ENTIDAD\Numero.cs" />
     <Compile Include="ENTIDAD\ObservacionExpediente.cs" />
     <Compile Include="ENTIDAD\OrdenLogistica.cs" />
+    <Compile Include="ENTIDAD\OrdenLogisticaDetalle.cs" />
     <Compile Include="ENTIDAD\Personal.cs" />
     <Compile Include="ENTIDAD\ProcesoAdquisicion.cs" />
     <Compile Include="ENTIDAD\Proveedor.cs" />

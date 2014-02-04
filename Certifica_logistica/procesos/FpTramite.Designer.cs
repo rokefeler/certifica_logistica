@@ -494,11 +494,6 @@
             this.CboYearExp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboYearExp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CboYearExp.FormattingEnabled = true;
-            this.CboYearExp.Items.AddRange(new object[] {
-            "SOLES",
-            "DOLARES",
-            "EUROS",
-            "OTRO"});
             this.CboYearExp.Location = new System.Drawing.Point(80, 36);
             this.CboYearExp.Name = "CboYearExp";
             this.CboYearExp.Size = new System.Drawing.Size(61, 21);

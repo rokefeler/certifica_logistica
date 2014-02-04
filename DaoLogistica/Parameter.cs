@@ -7,6 +7,7 @@
         MarcarIngresouSalida=102,
         InsertDefecto = 103,
         InsertDerivar = 104,
+        InsertRelacionado=105,
         Anular = 200,
         DeleteLogico = 300,
         DeleteFisico = 301,
@@ -22,7 +23,6 @@
         GetAll = 500,           //Devolver Todos los registros ... ¡Cuidado con esto!
         GetAllEscuelas = 501,       //Devolver Todos los registros ... ¡Cuidado con esto!
         GetById = 511,     //*****************ID
-        GetByIdForSticker = 5111,
         GetById2 = 512,
         GetByArea = 513,
         GetByAreaReporting = 5131,

@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="student_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\student_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="New_room_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\New-room-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,14 +145,14 @@
   <data name="import_export_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\import-export-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logout24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\logout24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="delete24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\delete24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sunat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\sunat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inventario2_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\inventario2-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="import_export_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\import-export-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="login24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\login24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,8 +160,8 @@
   <data name="addUserGroup-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\addUserGroup-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\delete24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inventario2_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\inventario2-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edificio_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\edificio_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,8 +169,8 @@
   <data name="run_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\run-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inbox-icon_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\inbox-icon_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="student_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\student_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="inbox-icon_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\inbox-icon_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,11 +178,11 @@
   <data name="SearchRed_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\SearchRed-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="student_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\student_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inbox-icon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\inbox-icon_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="import_export_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\import-export-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="orden-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\orden-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Product_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Product-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,16 +193,19 @@
   <data name="Save24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Save24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="inbox-icon_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\inbox-icon_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="process_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\process-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="inbox-icon_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\inbox-icon_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logout24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\logout24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sunat_small.fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\sunat_small.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="student_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\student_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="order-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\order-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
