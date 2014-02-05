@@ -36,7 +36,9 @@
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.memoDescripcion = new DevExpress.XtraEditors.MemoEdit();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GrpTramite = new System.Windows.Forms.GroupBox();
+            this.TxtNroProceso = new DevExpress.XtraEditors.TextEdit();
+            this.label1 = new System.Windows.Forms.Label();
             this.TxtReferencia = new DevExpress.XtraEditors.TextEdit();
             this.TxtCcp = new DevExpress.XtraEditors.TextEdit();
             this.TxtSiaf = new DevExpress.XtraEditors.TextEdit();
@@ -49,7 +51,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.DtFechaExp = new DevExpress.XtraEditors.DateEdit();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TxtDocumento = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.TxtSubDependencia = new System.Windows.Forms.TextBox();
             this.GrpAprobacion = new System.Windows.Forms.GroupBox();
@@ -71,17 +73,32 @@
             this.LstMetas = new System.Windows.Forms.ListBox();
             this.GrpDocumento = new System.Windows.Forms.GroupBox();
             this.CboTipoUsuario = new DevExpress.XtraEditors.LookUpEdit();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.TxtDirec = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.TxtDni = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TxtRazon = new System.Windows.Forms.TextBox();
             this.LblTipoUsuario = new System.Windows.Forms.Label();
-            this.TxtCodPersonal = new DevExpress.XtraEditors.ButtonEdit();
+            this.EdCodigo = new DevExpress.XtraEditors.ButtonEdit();
             this.label4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.detalleOrdenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsTramite = new Certifica_logistica.Ds.DsTramite();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdOrden = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdClasificador = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colclasificador = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdTipoUsuario = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSearchTipoUsuario = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colcodigo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDetalle = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdMeta = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSearchIdMeta = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMonto = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdIdOrden.Properties)).BeginInit();
@@ -89,7 +106,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescripcion.Properties)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.GrpTramite.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtNroProceso.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtReferencia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCcp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSiaf.Properties)).BeginInit();
@@ -104,9 +122,15 @@
             this.groupBox1.SuspendLayout();
             this.GrpDocumento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCodPersonal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdCodigo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleOrdenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsTramite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchTipoUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchIdMeta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).BeginInit();
             this.SuspendLayout();
             // 
             // pic1
@@ -140,6 +164,7 @@
             // 
             // EdIdOrden
             // 
+            this.EdIdOrden.EnterMoveNextControl = true;
             this.EdIdOrden.Location = new System.Drawing.Point(519, 11);
             this.EdIdOrden.Name = "EdIdOrden";
             this.EdIdOrden.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -165,7 +190,7 @@
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 43);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.memoDescripcion);
-            this.splitContainerControl1.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainerControl1.Panel1.Controls.Add(this.GrpTramite);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainerControl1.Panel1.Controls.Add(this.GrpDocumento);
             this.splitContainerControl1.Panel1.Text = "Panel1";
@@ -183,76 +208,104 @@
             this.memoDescripcion.Properties.Appearance.BackColor = System.Drawing.Color.Lavender;
             this.memoDescripcion.Properties.Appearance.Options.UseBackColor = true;
             this.memoDescripcion.Size = new System.Drawing.Size(345, 75);
-            this.memoDescripcion.TabIndex = 12;
+            this.memoDescripcion.TabIndex = 2;
             this.memoDescripcion.ToolTip = "Descripción detallada de Orden de Servicio";
             this.memoDescripcion.ToolTipController = this.toolTipController1;
             this.memoDescripcion.UseOptimizedRendering = true;
             // 
-            // groupBox2
+            // GrpTramite
             // 
-            this.groupBox2.Controls.Add(this.TxtReferencia);
-            this.groupBox2.Controls.Add(this.TxtCcp);
-            this.groupBox2.Controls.Add(this.TxtSiaf);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.CboTipoProceso);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.BtnCarga);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.DtFechaExp);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.TxtSubDependencia);
-            this.groupBox2.Controls.Add(this.GrpAprobacion);
-            this.groupBox2.Controls.Add(this.DtFechaIngresoExp);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.CboYearExp);
-            this.groupBox2.Controls.Add(this.EdIdExpediente);
-            this.groupBox2.Location = new System.Drawing.Point(4, 1);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(689, 159);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ingrese Expediente Relacionado:";
+            this.GrpTramite.Controls.Add(this.TxtNroProceso);
+            this.GrpTramite.Controls.Add(this.label1);
+            this.GrpTramite.Controls.Add(this.TxtReferencia);
+            this.GrpTramite.Controls.Add(this.TxtCcp);
+            this.GrpTramite.Controls.Add(this.TxtSiaf);
+            this.GrpTramite.Controls.Add(this.label15);
+            this.GrpTramite.Controls.Add(this.CboTipoProceso);
+            this.GrpTramite.Controls.Add(this.label5);
+            this.GrpTramite.Controls.Add(this.label19);
+            this.GrpTramite.Controls.Add(this.label6);
+            this.GrpTramite.Controls.Add(this.BtnCarga);
+            this.GrpTramite.Controls.Add(this.label18);
+            this.GrpTramite.Controls.Add(this.label14);
+            this.GrpTramite.Controls.Add(this.DtFechaExp);
+            this.GrpTramite.Controls.Add(this.TxtDocumento);
+            this.GrpTramite.Controls.Add(this.label8);
+            this.GrpTramite.Controls.Add(this.TxtSubDependencia);
+            this.GrpTramite.Controls.Add(this.GrpAprobacion);
+            this.GrpTramite.Controls.Add(this.DtFechaIngresoExp);
+            this.GrpTramite.Controls.Add(this.label2);
+            this.GrpTramite.Controls.Add(this.label7);
+            this.GrpTramite.Controls.Add(this.label3);
+            this.GrpTramite.Controls.Add(this.CboYearExp);
+            this.GrpTramite.Controls.Add(this.EdIdExpediente);
+            this.GrpTramite.Location = new System.Drawing.Point(1, 1);
+            this.GrpTramite.Name = "GrpTramite";
+            this.GrpTramite.Size = new System.Drawing.Size(694, 159);
+            this.GrpTramite.TabIndex = 0;
+            this.GrpTramite.TabStop = false;
+            this.GrpTramite.Text = "Ingrese Expediente Relacionado:";
+            // 
+            // TxtNroProceso
+            // 
+            this.TxtNroProceso.EnterMoveNextControl = true;
+            this.TxtNroProceso.Location = new System.Drawing.Point(467, 131);
+            this.TxtNroProceso.Name = "TxtNroProceso";
+            this.TxtNroProceso.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtNroProceso.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtNroProceso.Size = new System.Drawing.Size(112, 22);
+            this.TxtNroProceso.TabIndex = 19;
+            this.TxtNroProceso.Enter += new System.EventHandler(this.ObjectEnter);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(482, 115);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Nro Proceso:";
             // 
             // TxtReferencia
             // 
             this.TxtReferencia.EnterMoveNextControl = true;
-            this.TxtReferencia.Location = new System.Drawing.Point(5, 132);
+            this.TxtReferencia.Location = new System.Drawing.Point(3, 133);
             this.TxtReferencia.Name = "TxtReferencia";
-            this.TxtReferencia.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.TxtReferencia.Size = new System.Drawing.Size(372, 22);
-            this.TxtReferencia.TabIndex = 21;
+            this.TxtReferencia.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.TxtReferencia.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtReferencia.Size = new System.Drawing.Size(280, 20);
+            this.TxtReferencia.TabIndex = 15;
+            this.TxtReferencia.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // TxtCcp
             // 
             this.TxtCcp.EnterMoveNextControl = true;
-            this.TxtCcp.Location = new System.Drawing.Point(629, 131);
+            this.TxtCcp.Location = new System.Drawing.Point(640, 131);
             this.TxtCcp.Name = "TxtCcp";
             this.TxtCcp.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.TxtCcp.Size = new System.Drawing.Size(49, 22);
-            this.TxtCcp.TabIndex = 10;
+            this.TxtCcp.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtCcp.Size = new System.Drawing.Size(50, 22);
+            this.TxtCcp.TabIndex = 23;
+            this.TxtCcp.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // TxtSiaf
             // 
             this.TxtSiaf.EnterMoveNextControl = true;
-            this.TxtSiaf.Location = new System.Drawing.Point(568, 131);
+            this.TxtSiaf.Location = new System.Drawing.Point(582, 131);
             this.TxtSiaf.Name = "TxtSiaf";
             this.TxtSiaf.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtSiaf.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtSiaf.Size = new System.Drawing.Size(55, 22);
-            this.TxtSiaf.TabIndex = 9;
+            this.TxtSiaf.TabIndex = 21;
+            this.TxtSiaf.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(579, 115);
+            this.label15.Location = new System.Drawing.Point(586, 115);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(30, 13);
-            this.label15.TabIndex = 17;
+            this.label15.TabIndex = 20;
             this.label15.Text = "SIAF";
             // 
             // CboTipoProceso
@@ -260,18 +313,20 @@
             this.CboTipoProceso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboTipoProceso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CboTipoProceso.FormattingEnabled = true;
-            this.CboTipoProceso.Location = new System.Drawing.Point(386, 132);
+            this.CboTipoProceso.Location = new System.Drawing.Point(287, 132);
             this.CboTipoProceso.Name = "CboTipoProceso";
             this.CboTipoProceso.Size = new System.Drawing.Size(178, 21);
-            this.CboTipoProceso.TabIndex = 20;
+            this.CboTipoProceso.TabIndex = 17;
+            this.CboTipoProceso.SelectedIndexChanged += new System.EventHandler(this.CboTipoProceso_SelectedIndexChanged);
+            this.CboTipoProceso.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(389, 117);
+            this.label5.Location = new System.Drawing.Point(290, 117);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 13);
-            this.label5.TabIndex = 19;
+            this.label5.TabIndex = 16;
             this.label5.Text = "Tipo de Proceso:";
             // 
             // label19
@@ -280,7 +335,7 @@
             this.label19.Location = new System.Drawing.Point(6, 116);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(100, 13);
-            this.label19.TabIndex = 17;
+            this.label19.TabIndex = 14;
             this.label19.Text = "Detalle/Referencia:";
             // 
             // label6
@@ -289,17 +344,18 @@
             this.label6.Location = new System.Drawing.Point(397, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 13);
-            this.label6.TabIndex = 16;
+            this.label6.TabIndex = 12;
             this.label6.Text = "Documento Origen:";
             // 
             // BtnCarga
             // 
-            this.BtnCarga.Location = new System.Drawing.Point(142, 39);
+            this.BtnCarga.Location = new System.Drawing.Point(142, 38);
             this.BtnCarga.Name = "BtnCarga";
             this.BtnCarga.Size = new System.Drawing.Size(51, 23);
-            this.BtnCarga.TabIndex = 15;
+            this.BtnCarga.TabIndex = 4;
             this.BtnCarga.Text = "Carga";
             this.BtnCarga.UseVisualStyleBackColor = true;
+            this.BtnCarga.Click += new System.EventHandler(this.BtnCarga_Click);
             // 
             // label18
             // 
@@ -307,16 +363,16 @@
             this.label18.Location = new System.Drawing.Point(196, 25);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(79, 13);
-            this.label18.TabIndex = 13;
+            this.label18.TabIndex = 5;
             this.label18.Text = "Fecha de Exp.:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(633, 115);
+            this.label14.Location = new System.Drawing.Point(640, 115);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(37, 13);
-            this.label14.TabIndex = 11;
+            this.label14.TabIndex = 22;
             this.label14.Text = "C.C.P.";
             // 
             // DtFechaExp
@@ -332,17 +388,17 @@
             this.DtFechaExp.Properties.Mask.BeepOnError = true;
             this.DtFechaExp.Properties.ReadOnly = true;
             this.DtFechaExp.Size = new System.Drawing.Size(86, 20);
-            this.DtFechaExp.TabIndex = 14;
+            this.DtFechaExp.TabIndex = 6;
             // 
-            // textBox2
+            // TxtDocumento
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(392, 89);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(286, 20);
-            this.textBox2.TabIndex = 11;
-            this.textBox2.TabStop = false;
+            this.TxtDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtDocumento.Location = new System.Drawing.Point(395, 89);
+            this.TxtDocumento.Name = "TxtDocumento";
+            this.TxtDocumento.ReadOnly = true;
+            this.TxtDocumento.Size = new System.Drawing.Size(294, 20);
+            this.TxtDocumento.TabIndex = 13;
+            this.TxtDocumento.TabStop = false;
             // 
             // label8
             // 
@@ -360,7 +416,7 @@
             this.TxtSubDependencia.Name = "TxtSubDependencia";
             this.TxtSubDependencia.ReadOnly = true;
             this.TxtSubDependencia.Size = new System.Drawing.Size(387, 20);
-            this.TxtSubDependencia.TabIndex = 1;
+            this.TxtSubDependencia.TabIndex = 11;
             this.TxtSubDependencia.TabStop = false;
             // 
             // GrpAprobacion
@@ -372,32 +428,32 @@
             this.GrpAprobacion.Controls.Add(this.CboFuente);
             this.GrpAprobacion.Controls.Add(this.CboMoneda);
             this.GrpAprobacion.Controls.Add(this.label10);
-            this.GrpAprobacion.Location = new System.Drawing.Point(386, 6);
+            this.GrpAprobacion.Location = new System.Drawing.Point(393, 6);
             this.GrpAprobacion.Name = "GrpAprobacion";
             this.GrpAprobacion.Size = new System.Drawing.Size(297, 66);
-            this.GrpAprobacion.TabIndex = 10;
+            this.GrpAprobacion.TabIndex = 9;
             this.GrpAprobacion.TabStop = false;
             this.GrpAprobacion.Text = "Aprobación Rectoral de Expediente";
             // 
             // TxtMontoAprobado
             // 
             this.TxtMontoAprobado.EnterMoveNextControl = true;
-            this.TxtMontoAprobado.Location = new System.Drawing.Point(236, 35);
+            this.TxtMontoAprobado.Location = new System.Drawing.Point(236, 34);
             this.TxtMontoAprobado.Name = "TxtMontoAprobado";
             this.TxtMontoAprobado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.TxtMontoAprobado.Properties.ReadOnly = true;
             this.TxtMontoAprobado.Size = new System.Drawing.Size(55, 22);
-            this.TxtMontoAprobado.TabIndex = 8;
+            this.TxtMontoAprobado.TabIndex = 6;
             // 
             // TxtNroAutorizacion
             // 
             this.TxtNroAutorizacion.EnterMoveNextControl = true;
-            this.TxtNroAutorizacion.Location = new System.Drawing.Point(174, 35);
+            this.TxtNroAutorizacion.Location = new System.Drawing.Point(174, 34);
             this.TxtNroAutorizacion.Name = "TxtNroAutorizacion";
             this.TxtNroAutorizacion.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.TxtNroAutorizacion.Properties.ReadOnly = true;
             this.TxtNroAutorizacion.Size = new System.Drawing.Size(55, 22);
-            this.TxtNroAutorizacion.TabIndex = 7;
+            this.TxtNroAutorizacion.TabIndex = 5;
             // 
             // label17
             // 
@@ -423,10 +479,11 @@
             this.CboFuente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CboFuente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CboFuente.FormattingEnabled = true;
-            this.CboFuente.Location = new System.Drawing.Point(6, 36);
+            this.CboFuente.Location = new System.Drawing.Point(6, 35);
             this.CboFuente.Name = "CboFuente";
             this.CboFuente.Size = new System.Drawing.Size(79, 21);
             this.CboFuente.TabIndex = 1;
+            this.CboFuente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // CboMoneda
             // 
@@ -439,10 +496,11 @@
             "DOLARES",
             "EUROS",
             "OTRO"});
-            this.CboMoneda.Location = new System.Drawing.Point(92, 36);
+            this.CboMoneda.Location = new System.Drawing.Point(92, 35);
             this.CboMoneda.Name = "CboMoneda";
             this.CboMoneda.Size = new System.Drawing.Size(76, 21);
             this.CboMoneda.TabIndex = 3;
+            this.CboMoneda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label10
             // 
@@ -466,7 +524,7 @@
             this.DtFechaIngresoExp.Properties.Mask.BeepOnError = true;
             this.DtFechaIngresoExp.Properties.ReadOnly = true;
             this.DtFechaIngresoExp.Size = new System.Drawing.Size(86, 20);
-            this.DtFechaIngresoExp.TabIndex = 9;
+            this.DtFechaIngresoExp.TabIndex = 8;
             // 
             // label2
             // 
@@ -474,7 +532,7 @@
             this.label2.Location = new System.Drawing.Point(287, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 8;
+            this.label2.TabIndex = 7;
             this.label2.Text = "Fecha de Ingreso:";
             // 
             // label7
@@ -483,7 +541,7 @@
             this.label7.Location = new System.Drawing.Point(92, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(26, 13);
-            this.label7.TabIndex = 7;
+            this.label7.TabIndex = 2;
             this.label7.Text = "Año";
             // 
             // label3
@@ -492,7 +550,7 @@
             this.label3.Location = new System.Drawing.Point(14, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 6;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Nº &Exp.:";
             // 
             // CboYearExp
@@ -504,10 +562,12 @@
             this.CboYearExp.Location = new System.Drawing.Point(75, 40);
             this.CboYearExp.Name = "CboYearExp";
             this.CboYearExp.Size = new System.Drawing.Size(61, 21);
-            this.CboYearExp.TabIndex = 5;
+            this.CboYearExp.TabIndex = 3;
+            this.CboYearExp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // EdIdExpediente
             // 
+            this.EdIdExpediente.EnterMoveNextControl = true;
             this.EdIdExpediente.Location = new System.Drawing.Point(5, 41);
             this.EdIdExpediente.Name = "EdIdExpediente";
             this.EdIdExpediente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -519,16 +579,17 @@
             this.EdIdExpediente.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdIdExpediente.Properties.MaxLength = 15;
             this.EdIdExpediente.Size = new System.Drawing.Size(67, 20);
-            this.EdIdExpediente.TabIndex = 4;
+            this.EdIdExpediente.TabIndex = 1;
+            this.EdIdExpediente.Enter += new System.EventHandler(this.ObjectEnter);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.TxtTotal);
             this.groupBox1.Controls.Add(this.LstMetas);
-            this.groupBox1.Location = new System.Drawing.Point(354, 224);
+            this.groupBox1.Location = new System.Drawing.Point(355, 224);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(341, 80);
-            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "< Resumen Total >";
             // 
@@ -543,7 +604,7 @@
             this.TxtTotal.ReadOnly = true;
             this.TxtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TxtTotal.Size = new System.Drawing.Size(152, 35);
-            this.TxtTotal.TabIndex = 8;
+            this.TxtTotal.TabIndex = 1;
             this.TxtTotal.Text = "0.00";
             // 
             // LstMetas
@@ -552,29 +613,30 @@
             this.LstMetas.Location = new System.Drawing.Point(6, 17);
             this.LstMetas.Name = "LstMetas";
             this.LstMetas.Size = new System.Drawing.Size(165, 56);
-            this.LstMetas.TabIndex = 7;
+            this.LstMetas.TabIndex = 0;
             // 
             // GrpDocumento
             // 
             this.GrpDocumento.Controls.Add(this.CboTipoUsuario);
-            this.GrpDocumento.Controls.Add(this.textBox7);
+            this.GrpDocumento.Controls.Add(this.TxtDirec);
             this.GrpDocumento.Controls.Add(this.label20);
-            this.GrpDocumento.Controls.Add(this.textBox4);
+            this.GrpDocumento.Controls.Add(this.TxtDni);
             this.GrpDocumento.Controls.Add(this.label12);
-            this.GrpDocumento.Controls.Add(this.textBox3);
+            this.GrpDocumento.Controls.Add(this.TxtRazon);
             this.GrpDocumento.Controls.Add(this.LblTipoUsuario);
-            this.GrpDocumento.Controls.Add(this.TxtCodPersonal);
+            this.GrpDocumento.Controls.Add(this.EdCodigo);
             this.GrpDocumento.Controls.Add(this.label4);
             this.GrpDocumento.Controls.Add(this.label11);
-            this.GrpDocumento.Location = new System.Drawing.Point(4, 162);
+            this.GrpDocumento.Location = new System.Drawing.Point(2, 162);
             this.GrpDocumento.Name = "GrpDocumento";
-            this.GrpDocumento.Size = new System.Drawing.Size(689, 61);
-            this.GrpDocumento.TabIndex = 9;
+            this.GrpDocumento.Size = new System.Drawing.Size(693, 61);
+            this.GrpDocumento.TabIndex = 1;
             this.GrpDocumento.TabStop = false;
             this.GrpDocumento.Text = "Datos del Beneficiario:";
             // 
             // CboTipoUsuario
             // 
+            this.CboTipoUsuario.EnterMoveNextControl = true;
             this.CboTipoUsuario.Location = new System.Drawing.Point(5, 32);
             this.CboTipoUsuario.Name = "CboTipoUsuario";
             this.CboTipoUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -583,19 +645,20 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Sigla", "Sigla", 10, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("nombre", "Nombre", 50, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
             this.CboTipoUsuario.Properties.DisplayMember = "nombre";
+            this.CboTipoUsuario.Properties.DropDownRows = 3;
             this.CboTipoUsuario.Properties.ValueMember = "Sigla";
             this.CboTipoUsuario.Size = new System.Drawing.Size(115, 20);
-            this.CboTipoUsuario.TabIndex = 34;
+            this.CboTipoUsuario.TabIndex = 1;
             // 
-            // textBox7
+            // TxtDirec
             // 
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox7.Location = new System.Drawing.Point(438, 32);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(177, 20);
-            this.textBox7.TabIndex = 18;
-            this.textBox7.TabStop = false;
+            this.TxtDirec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtDirec.Location = new System.Drawing.Point(438, 32);
+            this.TxtDirec.Name = "TxtDirec";
+            this.TxtDirec.ReadOnly = true;
+            this.TxtDirec.Size = new System.Drawing.Size(177, 20);
+            this.TxtDirec.TabIndex = 7;
+            this.TxtDirec.TabStop = false;
             // 
             // label20
             // 
@@ -603,18 +666,18 @@
             this.label20.Location = new System.Drawing.Point(435, 16);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(55, 13);
-            this.label20.TabIndex = 17;
+            this.label20.TabIndex = 6;
             this.label20.Text = "Dirección:";
             // 
-            // textBox4
+            // TxtDni
             // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Location = new System.Drawing.Point(621, 32);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(62, 20);
-            this.textBox4.TabIndex = 16;
-            this.textBox4.TabStop = false;
+            this.TxtDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtDni.Location = new System.Drawing.Point(621, 32);
+            this.TxtDni.Name = "TxtDni";
+            this.TxtDni.ReadOnly = true;
+            this.TxtDni.Size = new System.Drawing.Size(68, 20);
+            this.TxtDni.TabIndex = 9;
+            this.TxtDni.TabStop = false;
             // 
             // label12
             // 
@@ -622,18 +685,18 @@
             this.label12.Location = new System.Drawing.Point(614, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 15;
+            this.label12.TabIndex = 8;
             this.label12.Text = "RUC/DNI/CE";
             // 
-            // textBox3
+            // TxtRazon
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(228, 32);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(204, 20);
-            this.textBox3.TabIndex = 10;
-            this.textBox3.TabStop = false;
+            this.TxtRazon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtRazon.Location = new System.Drawing.Point(228, 32);
+            this.TxtRazon.Name = "TxtRazon";
+            this.TxtRazon.ReadOnly = true;
+            this.TxtRazon.Size = new System.Drawing.Size(204, 20);
+            this.TxtRazon.TabIndex = 5;
+            this.TxtRazon.TabStop = false;
             // 
             // LblTipoUsuario
             // 
@@ -641,24 +704,28 @@
             this.LblTipoUsuario.Location = new System.Drawing.Point(123, 16);
             this.LblTipoUsuario.Name = "LblTipoUsuario";
             this.LblTipoUsuario.Size = new System.Drawing.Size(43, 13);
-            this.LblTipoUsuario.TabIndex = 13;
+            this.LblTipoUsuario.TabIndex = 2;
             this.LblTipoUsuario.Text = "Usuario";
             // 
-            // TxtCodPersonal
+            // EdCodigo
             // 
-            this.TxtCodPersonal.Location = new System.Drawing.Point(126, 32);
-            this.TxtCodPersonal.Name = "TxtCodPersonal";
-            this.TxtCodPersonal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.EdCodigo.EnterMoveNextControl = true;
+            this.EdCodigo.Location = new System.Drawing.Point(126, 32);
+            this.EdCodigo.Name = "EdCodigo";
+            this.EdCodigo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.TxtCodPersonal.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.TxtCodPersonal.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtCodPersonal.Properties.Mask.BeepOnError = true;
-            this.TxtCodPersonal.Properties.Mask.EditMask = "99999999";
-            this.TxtCodPersonal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
-            this.TxtCodPersonal.Properties.MaxLength = 15;
-            this.TxtCodPersonal.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TxtCodPersonal_Properties_ButtonClick);
-            this.TxtCodPersonal.Size = new System.Drawing.Size(99, 20);
-            this.TxtCodPersonal.TabIndex = 14;
+            this.EdCodigo.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.EdCodigo.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.EdCodigo.Properties.Mask.BeepOnError = true;
+            this.EdCodigo.Properties.Mask.EditMask = "99999999999";
+            this.EdCodigo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
+            this.EdCodigo.Properties.Mask.SaveLiteral = false;
+            this.EdCodigo.Properties.MaxLength = 15;
+            this.EdCodigo.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TxtCodPersonal_Properties_ButtonClick);
+            this.EdCodigo.Size = new System.Drawing.Size(99, 20);
+            this.EdCodigo.TabIndex = 3;
+            this.EdCodigo.Enter += new System.EventHandler(this.ObjectEnter);
+            this.EdCodigo.Leave += new System.EventHandler(this.EdCodigo_Leave);
             // 
             // label4
             // 
@@ -666,7 +733,7 @@
             this.label4.Location = new System.Drawing.Point(2, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 13);
-            this.label4.TabIndex = 3;
+            this.label4.TabIndex = 0;
             this.label4.Text = "Tipo de Usuario:";
             // 
             // label11
@@ -675,19 +742,33 @@
             this.label11.Location = new System.Drawing.Point(225, 16);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 13);
-            this.label11.TabIndex = 7;
+            this.label11.TabIndex = 4;
             this.label11.Text = "Razon Social / Nombre:";
             // 
             // gridControl1
             // 
+            this.gridControl1.DataSource = this.detalleOrdenBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemSearchTipoUsuario,
+            this.repositoryItemSearchIdMeta});
             this.gridControl1.Size = new System.Drawing.Size(698, 170);
-            this.gridControl1.TabIndex = 2;
+            this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // detalleOrdenBindingSource
+            // 
+            this.detalleOrdenBindingSource.DataMember = "DetalleOrden";
+            this.detalleOrdenBindingSource.DataSource = this.dsTramite;
+            // 
+            // dsTramite
+            // 
+            this.dsTramite.DataSetName = "DsTramite";
+            this.dsTramite.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // gridView1
             // 
@@ -801,7 +882,19 @@
             this.gridView1.Appearance.TopNewRow.Options.UseBackColor = true;
             this.gridView1.Appearance.VertLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(184)))), ((int)(((byte)(251)))));
             this.gridView1.Appearance.VertLine.Options.UseBackColor = true;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colId,
+            this.colIdOrden,
+            this.colIdClasificador,
+            this.colclasificador,
+            this.colIdTipoUsuario,
+            this.colcodigo,
+            this.colDetalle,
+            this.colIdMeta,
+            this.colMonto});
             this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Monto", this.colMonto, "")});
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
@@ -813,6 +906,106 @@
             this.gridView1.OptionsView.ShowGroupedColumns = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.PaintStyleName = "Flat";
+            // 
+            // colId
+            // 
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            // 
+            // colIdOrden
+            // 
+            this.colIdOrden.FieldName = "IdOrden";
+            this.colIdOrden.Name = "colIdOrden";
+            // 
+            // colIdClasificador
+            // 
+            this.colIdClasificador.FieldName = "IdClasificador";
+            this.colIdClasificador.Name = "colIdClasificador";
+            // 
+            // colclasificador
+            // 
+            this.colclasificador.Caption = "Clasificador";
+            this.colclasificador.FieldName = "clasificador";
+            this.colclasificador.Name = "colclasificador";
+            this.colclasificador.Visible = true;
+            this.colclasificador.VisibleIndex = 0;
+            this.colclasificador.Width = 93;
+            // 
+            // colIdTipoUsuario
+            // 
+            this.colIdTipoUsuario.Caption = "Tipo Usuario";
+            this.colIdTipoUsuario.ColumnEdit = this.repositoryItemSearchTipoUsuario;
+            this.colIdTipoUsuario.FieldName = "IdTipoUsuario";
+            this.colIdTipoUsuario.Name = "colIdTipoUsuario";
+            this.colIdTipoUsuario.Visible = true;
+            this.colIdTipoUsuario.VisibleIndex = 1;
+            this.colIdTipoUsuario.Width = 74;
+            // 
+            // repositoryItemSearchTipoUsuario
+            // 
+            this.repositoryItemSearchTipoUsuario.AutoHeight = false;
+            this.repositoryItemSearchTipoUsuario.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSearchTipoUsuario.Name = "repositoryItemSearchTipoUsuario";
+            this.repositoryItemSearchTipoUsuario.View = this.repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colcodigo
+            // 
+            this.colcodigo.Caption = "Código";
+            this.colcodigo.FieldName = "codigo";
+            this.colcodigo.Name = "colcodigo";
+            this.colcodigo.Visible = true;
+            this.colcodigo.VisibleIndex = 2;
+            this.colcodigo.Width = 70;
+            // 
+            // colDetalle
+            // 
+            this.colDetalle.Caption = "Detalle / Nombre";
+            this.colDetalle.FieldName = "Detalle";
+            this.colDetalle.Name = "colDetalle";
+            this.colDetalle.Visible = true;
+            this.colDetalle.VisibleIndex = 3;
+            this.colDetalle.Width = 304;
+            // 
+            // colIdMeta
+            // 
+            this.colIdMeta.Caption = "Meta";
+            this.colIdMeta.ColumnEdit = this.repositoryItemSearchIdMeta;
+            this.colIdMeta.FieldName = "IdMeta";
+            this.colIdMeta.Name = "colIdMeta";
+            this.colIdMeta.Visible = true;
+            this.colIdMeta.VisibleIndex = 4;
+            // 
+            // repositoryItemSearchIdMeta
+            // 
+            this.repositoryItemSearchIdMeta.AutoHeight = false;
+            this.repositoryItemSearchIdMeta.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSearchIdMeta.Name = "repositoryItemSearchIdMeta";
+            this.repositoryItemSearchIdMeta.View = this.repositoryItemSearchLookUpEdit2View;
+            // 
+            // repositoryItemSearchLookUpEdit2View
+            // 
+            this.repositoryItemSearchLookUpEdit2View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit2View.Name = "repositoryItemSearchLookUpEdit2View";
+            this.repositoryItemSearchLookUpEdit2View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit2View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colMonto
+            // 
+            this.colMonto.Caption = "Monto";
+            this.colMonto.FieldName = "Monto";
+            this.colMonto.Name = "colMonto";
+            this.colMonto.Visible = true;
+            this.colMonto.VisibleIndex = 5;
+            this.colMonto.Width = 98;
             // 
             // FpOrdenLogistica
             // 
@@ -833,8 +1026,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoDescripcion.Properties)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.GrpTramite.ResumeLayout(false);
+            this.GrpTramite.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtNroProceso.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtReferencia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCcp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSiaf.Properties)).EndInit();
@@ -852,9 +1046,15 @@
             this.GrpDocumento.ResumeLayout(false);
             this.GrpDocumento.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCodPersonal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdCodigo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleOrdenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsTramite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchTipoUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchIdMeta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -867,7 +1067,7 @@
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.MemoEdit memoDescripcion;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox GrpTramite;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox CboTipoProceso;
         private System.Windows.Forms.Label label5;
@@ -877,7 +1077,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label14;
         private DevExpress.XtraEditors.DateEdit DtFechaExp;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TxtDocumento;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TxtSubDependencia;
         private System.Windows.Forms.GroupBox GrpAprobacion;
@@ -895,13 +1095,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox LstMetas;
         private System.Windows.Forms.GroupBox GrpDocumento;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox TxtDirec;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox TxtDni;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TxtRazon;
         private System.Windows.Forms.Label LblTipoUsuario;
-        private DevExpress.XtraEditors.ButtonEdit TxtCodPersonal;
+        private DevExpress.XtraEditors.ButtonEdit EdCodigo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label11;
         private DevExpress.XtraGrid.GridControl gridControl1;
@@ -913,5 +1113,22 @@
         private DevExpress.XtraEditors.TextEdit TxtMontoAprobado;
         private System.Windows.Forms.TextBox TxtTotal;
         private DevExpress.XtraEditors.LookUpEdit CboTipoUsuario;
+        private DevExpress.XtraEditors.TextEdit TxtNroProceso;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.BindingSource detalleOrdenBindingSource;
+        private Ds.DsTramite dsTramite;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdOrden;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdClasificador;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdMeta;
+        private DevExpress.XtraGrid.Columns.GridColumn colclasificador;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdTipoUsuario;
+        private DevExpress.XtraGrid.Columns.GridColumn colcodigo;
+        private DevExpress.XtraGrid.Columns.GridColumn colDetalle;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonto;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchTipoUsuario;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchIdMeta;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit2View;
     }
 }

@@ -29,6 +29,7 @@ namespace DaoLogistica.ENTIDAD
 	        IsConvenio = false;
 	        CodLogin = String.Empty;
 	        Email = String.Empty;
+	        NombreDependencia = String.Empty;
 	    }
 
 	    public SubDependencia(string codSubDep, string codDependencia, string nombre, string codPersonal, 
@@ -59,6 +60,7 @@ namespace DaoLogistica.ENTIDAD
 
 	    public string CodSubDep { get; set; }
 	    public string CodDependencia { get; set; }
+        public string NombreDependencia { get; set; }
 	    public string Nombre { get; set; }
 	    public string CodPersonal { get; set; }
 	    public bool Estado { get; set; }

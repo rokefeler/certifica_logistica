@@ -182,4 +182,6 @@ E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\obj\D
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.exe.manifest
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.application
 E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.pdb
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.Popups.FphDetalleOrden.resources
+E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\bin\Debug\images\orden-48.png
+E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\bin\Debug\images\order-64.png
+E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.Popups.FphOrdenDetalle.resources

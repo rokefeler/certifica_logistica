@@ -25,6 +25,8 @@ namespace DaoLogistica.DAO
             if(obj.IdAlmacen>0)
                 DATA.Db.AddInParameter(cmd, "IdAlmacen", DbType.String, obj.IdAlmacen);
             DATA.Db.AddInParameter(cmd, "IdxProceso", DbType.String, obj.IdxProceso);
+            if(String.IsNullOrEmpty(obj.NroProceso))
+                DATA.Db.AddInParameter(cmd, "NroProceso", DbType.String, obj.NroProceso);
             if(!string.IsNullOrEmpty(obj.Referencia))
                 DATA.Db.AddInParameter(cmd, "Referencia", DbType.String, obj.Referencia);
             if(!string.IsNullOrEmpty(obj.Descripcion))
@@ -114,6 +116,7 @@ namespace DaoLogistica.DAO
             obj.FechaGiro = dr.GetDateTime(dr.GetOrdinal("FechaGiro"));
             obj.IdAlmacen = dr.GetInt16(dr.GetOrdinal("IdAlmacen"));
             obj.IdxProceso = dr.GetString(dr.GetOrdinal("IdxProceso"));
+            obj.NroProceso = dr.GetString(dr.GetOrdinal("NroProceso"));
             obj.Referencia = dr.GetString(dr.GetOrdinal("Referencia"));
             obj.Descripcion = dr.GetString(dr.GetOrdinal("Descripcion"));
             obj.Total = dr.GetDecimal(dr.GetOrdinal("Total"));

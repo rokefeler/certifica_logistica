@@ -168,14 +168,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Certifica_logistica.exe" size="3341824">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Certifica_logistica.exe" size="3483136">
       <assemblyIdentity name="Certifica_logistica" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ffW2vOHdcxAR9MH2KQK2O8SU8Y0=</dsig:DigestValue>
+        <dsig:DigestValue>cFgRMVxdx02HPYg0y2XznSQda28=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -187,7 +187,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>yTp+wYvL/jbFQGualP+OHk5t93I=</dsig:DigestValue>
+        <dsig:DigestValue>Zezr5VVmdnQm3er1BN7/4a/RZSQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -216,14 +216,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DaoLogistica.dll" size="93696">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DaoLogistica.dll" size="100864">
       <assemblyIdentity name="DaoLogistica" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>naGjEUWpBQZoT9qkm0W6hPLczcw=</dsig:DigestValue>
+        <dsig:DigestValue>MN6iAb2xWG3ISl1e5RtC1TvpycA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

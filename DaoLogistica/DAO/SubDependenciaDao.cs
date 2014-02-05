@@ -170,6 +170,7 @@ namespace DaoLogistica.DAO
                 ? String.Empty
                 : dr.GetString(dr.GetOrdinal("CodDependencia")),
                 Nombre = dr.IsDBNull(dr.GetOrdinal("nombre")) ? String.Empty : dr.GetString(dr.GetOrdinal("nombre")),
+                NombreDependencia = dr.IsDBNull(dr.GetOrdinal("nombreDependencia")) ? String.Empty : dr.GetString(dr.GetOrdinal("nombreDependencia")),
                 CodPersonal = dr.IsDBNull(dr.GetOrdinal("CodPersonal")) 
                 ? String.Empty 
                 : dr.GetString(dr.GetOrdinal("CodPersonal")),

@@ -21,6 +21,7 @@ namespace DaoLogistica.ENTIDAD
             FechaGiro = new DateTime(1900, 1, 1);
             IdAlmacen = 0;
             IdxProceso = String.Empty;
+            NroProceso = String.Empty;
             Referencia = String.Empty;
             Descripcion = String.Empty;
             Total = 0m;
@@ -51,6 +52,7 @@ namespace DaoLogistica.ENTIDAD
 		public DateTime FechaGiro { get; set; }
 		public int IdAlmacen { get; set; }
 		public string IdxProceso { get; set; }
+        public string NroProceso { get; set; }
 		public string Referencia { get; set; }
 		public string Descripcion { get; set; }
 		public Decimal Total { get; set; }

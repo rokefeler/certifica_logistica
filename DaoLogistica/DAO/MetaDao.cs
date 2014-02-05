@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using DaoLogistica.ENTIDAD;
 
@@ -6,7 +7,6 @@ namespace DaoLogistica.DAO
 {
     public class MetaDao
     {
-       
 
         public static Meta GetbyId(int codMeta)
         {
@@ -45,7 +45,43 @@ namespace DaoLogistica.DAO
             return obj;
         }
 
-       
+        public static List<String> GetStringAllByAnio(String anio)
+        {
+            if (string.IsNullOrEmpty(anio)) throw new ArgumentNullException("anio");
+            var tList = new List<String>();
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tMeta");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, 5121); 
+            DATA.Db.AddInParameter(cmd, "anio", DbType.String, anio);
+            using (var datareader = DATA.Db.ExecuteReader(cmd))
+            {
+                while (datareader.Read())
+                {
+                    var ts = datareader.GetString(1);
+                    tList.Add(ts);
+                }
+
+            }
+            return tList;
+        }
+
+        public static List<Meta> SelectAllByAnio(String anio)
+        {
+            if (string.IsNullOrEmpty(anio)) throw new ArgumentNullException("anio");
+            var tList = new List<Meta>();
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tMeta");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, 5122);
+            DATA.Db.AddInParameter(cmd, "anio", DbType.String, anio);
+            using (var datareader = DATA.Db.ExecuteReader(cmd))
+            {
+                while (datareader.Read())
+                {
+                    var ts = MakeMeta(datareader);
+                    tList.Add(ts);
+                }
+
+            }
+            return tList;
+        }
 
 
         public static DataSet FiltroByNombre(string cFil1 = null, string cfil2 = null)
@@ -74,16 +110,18 @@ namespace DaoLogistica.DAO
 
         protected static Meta MakeMeta(IDataReader dr)
         {
-            var obj = new Meta();
-            obj.IdMeta = dr.GetInt32(dr.GetOrdinal("IdMeta"));
-            obj.Cnro = dr.GetString(dr.GetOrdinal("cnro"));
-            obj.Anio = dr.GetString(dr.GetOrdinal("anio"));
-            obj.Descripcion = dr.GetString(dr.GetOrdinal("Descripcion"));
-            obj.Dependencia = dr.GetString(dr.GetOrdinal("Dependencia"));
-            obj.Referencia = dr.GetString(dr.GetOrdinal("Referencia"));
-            obj.Unidad = dr.GetString(dr.GetOrdinal("Unidad"));
-            obj.Responsable = dr.GetString(dr.GetOrdinal("Responsable"));
-            obj.Cadena = dr.GetString(dr.GetOrdinal("Cadena"));
+            var obj = new Meta
+            {
+                IdMeta = dr.GetInt32(dr.GetOrdinal("IdMeta")),
+                Cnro = dr.GetString(dr.GetOrdinal("cnro")),
+                Anio = dr.GetString(dr.GetOrdinal("anio")),
+                Descripcion = dr.GetString(dr.GetOrdinal("Descripcion")),
+                Dependencia = dr.GetString(dr.GetOrdinal("Dependencia")),
+                Referencia = dr.GetString(dr.GetOrdinal("Referencia")),
+                Unidad = dr.GetString(dr.GetOrdinal("Unidad")),
+                Responsable = dr.GetString(dr.GetOrdinal("Responsable")),
+                Cadena = dr.GetString(dr.GetOrdinal("Cadena"))
+            };
             return obj;
         }
 

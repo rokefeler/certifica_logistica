@@ -41,6 +41,27 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="DetalleOrden" msprop:Generator_TableClassName="DetalleOrdenDataTable" msprop:Generator_TableVarName="tableDetalleOrden" msprop:Generator_RowChangedName="DetalleOrdenRowChanged" msprop:Generator_TablePropName="DetalleOrden" msprop:Generator_RowDeletingName="DetalleOrdenRowDeleting" msprop:Generator_RowChangingName="DetalleOrdenRowChanging" msprop:Generator_RowEvHandlerName="DetalleOrdenRowChangeEventHandler" msprop:Generator_RowDeletedName="DetalleOrdenRowDeleted" msprop:Generator_RowClassName="DetalleOrdenRow" msprop:Generator_UserTableName="DetalleOrden" msprop:Generator_RowEvArgName="DetalleOrdenRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" minOccurs="0" />
+              <xs:element name="IdOrden" msprop:Generator_ColumnVarNameInTable="columnIdOrden" msprop:Generator_ColumnPropNameInRow="IdOrden" msprop:Generator_ColumnPropNameInTable="IdOrdenColumn" msprop:Generator_UserColumnName="IdOrden" type="xs:long" minOccurs="0" />
+              <xs:element name="IdClasificador" msprop:Generator_ColumnVarNameInTable="columnIdClasificador" msprop:Generator_ColumnPropNameInRow="IdClasificador" msprop:Generator_ColumnPropNameInTable="IdClasificadorColumn" msprop:Generator_UserColumnName="IdClasificador" type="xs:int" minOccurs="0" />
+              <xs:element name="IdMeta" msprop:Generator_ColumnVarNameInTable="columnIdMeta" msprop:Generator_ColumnPropNameInRow="IdMeta" msprop:Generator_ColumnPropNameInTable="IdMetaColumn" msprop:Generator_UserColumnName="IdMeta" type="xs:int" minOccurs="0" />
+              <xs:element name="IdTipoUsuario" msprop:Generator_ColumnVarNameInTable="columnIdTipoUsuario" msprop:Generator_ColumnPropNameInRow="IdTipoUsuario" msprop:Generator_ColumnPropNameInTable="IdTipoUsuarioColumn" msprop:Generator_UserColumnName="IdTipoUsuario" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="clasificador" msprop:Generator_ColumnVarNameInTable="columnclasificador" msprop:Generator_ColumnPropNameInRow="clasificador" msprop:Generator_ColumnPropNameInTable="clasificadorColumn" msprop:Generator_UserColumnName="clasificador" type="xs:string" minOccurs="0" />
+              <xs:element name="codigo" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:string" minOccurs="0" />
+              <xs:element name="Detalle" msprop:Generator_ColumnVarNameInTable="columnDetalle" msprop:Generator_ColumnPropNameInRow="Detalle" msprop:Generator_ColumnPropNameInTable="DetalleColumn" msprop:Generator_UserColumnName="Detalle" type="xs:string" minOccurs="0" />
+              <xs:element name="Monto" msprop:Generator_ColumnVarNameInTable="columnMonto" msprop:Generator_ColumnPropNameInRow="Monto" msprop:Generator_ColumnPropNameInTable="MontoColumn" msprop:Generator_UserColumnName="Monto" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1">

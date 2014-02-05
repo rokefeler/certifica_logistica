@@ -60,6 +60,7 @@
     <Compile Include="DAO\AlumnoDao.cs" />
     <Compile Include="DAO\AlumnoDetalleEscuelaDao.cs" />
     <Compile Include="DAO\AlumnoEscuelaDao.cs" />
+    <Compile Include="DAO\ClasificadorGastoDao.cs" />
     <Compile Include="DAO\CodigoDao.cs" />
     <Compile Include="DAO\ConfigDao.cs" />
     <Compile Include="DAO\DepartamentoDao.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="DAO\ProveedorDao.cs" />
     <Compile Include="DAO\ProvinciaDao.cs" />
     <Compile Include="DAO\RubroFinanciamientoDao.cs" />
+    <Compile Include="DAO\ServiciosDao.cs" />
     <Compile Include="DAO\SubDependenciaDao.cs" />
     <Compile Include="DATA.cs" />
     <Compile Include="ENTIDAD\Alumno.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="ENTIDAD\Proveedor.cs" />
     <Compile Include="ENTIDAD\Provincia.cs" />
     <Compile Include="ENTIDAD\RubroFinanciamiento.cs" />
+    <Compile Include="ENTIDAD\Servicios.cs" />
     <Compile Include="ENTIDAD\SubDependencia.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

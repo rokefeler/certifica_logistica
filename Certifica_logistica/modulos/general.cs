@@ -33,14 +33,36 @@ static class CONSTANTE
 }
     public enum ENumTabla
     {
-        Cliente = 1,
-        Contacto,
-        Ingenieros, //Tabla de Ing. responsbales para CErtificados de Conformidad
-        Rpin,       //Tabla de RPIN cada Rpin asociado a un codigo de cliente
-        Tramitador,  //Tabla Tramitador
-        Proveedor //Tabla Proveedores
+        // ReSharper disable once InconsistentNaming
+        NINGUNO = 0,
+        // ReSharper disable once InconsistentNaming
+        ALUMNO,
+        // ReSharper disable once InconsistentNaming
+        PROVEEDOR,
+        // ReSharper disable once InconsistentNaming
+        PERSONAL, 
+        // ReSharper disable once InconsistentNaming
+        SERVICIOS
     };
-
+    public enum ENumTipoOrden
+    {
+        // ReSharper disable once InconsistentNaming
+        PARAORDEN = -1,
+        // ReSharper disable once InconsistentNaming
+        NINGUNO = 0,
+        // ReSharper disable once InconsistentNaming
+        SERVICIO = 1,
+        // ReSharper disable once InconsistentNaming
+        VIATICOS=2,
+        // ReSharper disable once InconsistentNaming
+        CONVENIO=3,
+        // ReSharper disable once InconsistentNaming
+        PROPINAS=4,
+        // ReSharper disable once InconsistentNaming
+        MOVILIDAD=5,
+        // ReSharper disable once InconsistentNaming
+        COMPRA=6
+    };
     public struct SDerechoFormulario
     {
         public bool Nuevo;
@@ -265,34 +287,41 @@ static class CONSTANTE
             Console.Beep();
             MessageBox.Show(msg, titulo, button, icon);
         }
-        public static void RellenarEstadoDataSet(ref DsTramite.TTipoUsuarioDataTable tbE, bool esParaLlenadoDetalle=false)
+        public static void RellenarEstadoDataSet(ref DsTramite.TTipoUsuarioDataTable tbE, ENumTipoOrden tipoOrden= ENumTipoOrden.PARAORDEN, bool EsParaDetalle=false)
         {
             //[V=Proveedor] - [P=Personal] - [A=Alumno] - [S=Servicios] [N=Ninguno]
             var r = tbE.NewRow();
-            r[0] = ' ';
+            r[0] = 'N';
             r[1] = " Ninguno";
             tbE.Rows.Add(r);
-
-            r = tbE.NewRow();
-            r[0] = 'A';
-            r[1] = "ALUMNO";
-            tbE.Rows.Add(r);
-
-            r = tbE.NewRow();
-            r[0] = 'P';
-            r[1] = "PERSONAL/DOC.EXTRANJ.";
-            tbE.Rows.Add(r);
-
-            r = tbE.NewRow();
-            r[0] = 'V';
-            r[1] = "PROVEEDOR";
-            tbE.Rows.Add(r);
-
-            if (!esParaLlenadoDetalle) return;
-            r = tbE.NewRow();
-            r[0] = 'S';
-            r[1] = "SERVICIOS";
-            tbE.Rows.Add(r);
+            if (tipoOrden == ENumTipoOrden.PROPINAS)
+            {
+                r = tbE.NewRow();
+                r[0] = 'A';
+                r[1] = "ALUMNO";
+                tbE.Rows.Add(r);
+                return;
+            }
+            if (tipoOrden == ENumTipoOrden.MOVILIDAD)
+            {
+                r = tbE.NewRow();
+                r[0] = 'P';
+                r[1] = "PERSONAL / DOC.EXTRANJ.";
+                tbE.Rows.Add(r);
+                return;
+            }
+            if (tipoOrden == ENumTipoOrden.SERVICIO)
+            {
+                r = tbE.NewRow();
+                r[0] = 'V';
+                r[1] = "PROVEEDOR";
+                tbE.Rows.Add(r);
+                if (!EsParaDetalle) return;
+                r = tbE.NewRow();
+                r[0] = 'S';
+                r[1] = "SERVICIOS";
+                tbE.Rows.Add(r);
+            }
         }
   
         public static Bitmap ByteToImage(byte[] blob)
@@ -382,6 +411,34 @@ static class CONSTANTE
            return tb;
        }
 
+       public static ENumTabla DeterminaTipoUsuario(char cTipo, out string cNombre)
+       {
+           ENumTabla tipo;//[V=Proveedor] - [P=Personal] - [A=Alumno] - [S=Servicios] [N=Ninguno]
+           switch (cTipo)
+           {
+               case 'V':
+                   tipo= ENumTabla.PROVEEDOR;
+                   cNombre = "PROVEEDOR";
+                   break;
+               case 'P':
+                   tipo = ENumTabla.PERSONAL;
+                   cNombre = "PERSONAL";
+                   break;
+               case 'A':
+                   tipo = ENumTabla.ALUMNO;
+                   cNombre = "ALUMNO";
+                   break;
+               case 'S':
+                   tipo = ENumTabla.SERVICIOS;
+                   cNombre = "SERVICIOS";
+                   break;
+               default:
+                   tipo = ENumTabla.NINGUNO;
+                   cNombre = "NINGUNO";
+                   break;
+           }
+           return tipo;
+       }
        public static bool AnalizarEstadoAmbiente(int estado, out String msgEstado)
        {
             var isBloqueado = false;

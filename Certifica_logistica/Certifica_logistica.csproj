@@ -182,17 +182,17 @@
     <Compile Include="Popups\FpConfig.designer.cs">
       <DependentUpon>FpConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Popups\FphDetalleOrden.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Popups\FphDetalleOrden.Designer.cs">
-      <DependentUpon>FphDetalleOrden.cs</DependentUpon>
-    </Compile>
     <Compile Include="Popups\FphMeta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Popups\FphMeta.designer.cs">
       <DependentUpon>FphMeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\FphOrdenDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FphOrdenDetalle.Designer.cs">
+      <DependentUpon>FphOrdenDetalle.cs</DependentUpon>
     </Compile>
     <Compile Include="Popups\FphPersonal.cs">
       <SubType>Form</SubType>
@@ -411,11 +411,11 @@
     <EmbeddedResource Include="Popups\FpConfig.resx">
       <DependentUpon>FpConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Popups\FphDetalleOrden.resx">
-      <DependentUpon>FphDetalleOrden.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Popups\FphMeta.resx">
       <DependentUpon>FphMeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FphOrdenDetalle.resx">
+      <DependentUpon>FphOrdenDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popups\FphPersonal.resx">
       <DependentUpon>FphPersonal.cs</DependentUpon>
