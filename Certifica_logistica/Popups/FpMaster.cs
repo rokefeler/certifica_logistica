@@ -30,7 +30,7 @@ namespace Certifica_logistica.Popups
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             GrabarFormulario();
-            Hide();
+            //Hide();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

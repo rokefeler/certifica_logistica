@@ -22,6 +22,7 @@
         ExistRazon=403,
         GetAll = 500,           //Devolver Todos los registros ... ¡Cuidado con esto!
         GetAllEscuelas = 501,       //Devolver Todos los registros ... ¡Cuidado con esto!
+        GetAllCollection1 = 502,
         GetById = 511,     //*****************ID
         GetById2 = 512,
         GetByArea = 513,

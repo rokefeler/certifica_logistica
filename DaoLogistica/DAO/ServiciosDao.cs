@@ -10,18 +10,39 @@ namespace DaoLogistica.DAO
         {
             if (string.IsNullOrEmpty(nroservicio)) throw new ArgumentNullException("nroservicio");
             Servicios obj = null;
-            var cmd = DATA.Db.GetStoredProcCommand("sp_tServicios");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tServicio");
             DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetById);
-            DATA.Db.AddInParameter(cmd, "nroservicio", DbType.String, nroservicio);
+            DATA.Db.AddInParameter(cmd, "numero", DbType.String, nroservicio);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             using (var dr = DATA.Db.ExecuteReader(cmd))
-            {
-                if (dr.Read())
+            {if (dr.Read())
                 {
                     obj = Make(dr);
                 }
             }
             return obj;
+        }
+        public static DataSet FiltroByRazon(string cFil1, string cfil2 = null)
+        {
+            if (String.IsNullOrEmpty(cFil1)) throw new ArgumentNullException("cFil1");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tServicio");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.FiltroByRazon); //601
+            if (!string.IsNullOrEmpty(cFil1))
+                DATA.Db.AddInParameter(cmd, "Autorizacion", DbType.String, cFil1);
+            if (!string.IsNullOrEmpty(cfil2))
+                DATA.Db.AddInParameter(cmd, "Cese", DbType.String, cfil2);
+            return DATA.Db.ExecuteDataSet(cmd);
+        }
+        public static DataSet FiltroByAutorizacion(string cFil1, string cfil2 = null)
+        {
+            if (String.IsNullOrEmpty(cFil1)) throw new ArgumentNullException("cFil1");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tServicio");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.FiltroByDoc); //606
+            if (!string.IsNullOrEmpty(cFil1))
+                DATA.Db.AddInParameter(cmd, "Autorizacion", DbType.String, cFil1);
+            if (!string.IsNullOrEmpty(cfil2))
+                DATA.Db.AddInParameter(cmd, "Cese", DbType.String, cfil2);
+            return DATA.Db.ExecuteDataSet(cmd);
         }
         protected static Servicios Make(IDataReader dr)
         {
@@ -57,7 +78,7 @@ namespace DaoLogistica.DAO
         public static bool ExisteById(String codServicio)
         {
             if (string.IsNullOrEmpty(codServicio)) throw new ArgumentNullException("codServicio");
-            var cmd = DATA.Db.GetStoredProcCommand("sp_tServicios");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tServicio");
             DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.ExistsId);
             DATA.Db.AddInParameter(cmd, "codServicio", DbType.String, codServicio);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);

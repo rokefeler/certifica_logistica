@@ -48,7 +48,24 @@ namespace DaoLogistica.DAO
             }
             return obj;
         }
-
+        public static DataSet FiltroByRazon(string cFil1 = null, string cfil2 = null)
+        {
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tAlumno");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.FiltroByRazon); //601
+            if (!string.IsNullOrEmpty(cFil1))
+                DATA.Db.AddInParameter(cmd, "Apenom", DbType.String, cFil1);
+            if (!string.IsNullOrEmpty(cfil2))
+                DATA.Db.AddInParameter(cmd, "Escuela", DbType.String, cfil2);
+            return DATA.Db.ExecuteDataSet(cmd);
+        }
+        public static DataSet FiltroByDoc(string cFil1)
+        {
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tAlumno");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.FiltroByDoc); //606
+            if (!string.IsNullOrEmpty(cFil1))
+                DATA.Db.AddInParameter(cmd, "Dni", DbType.String, cFil1);
+            return DATA.Db.ExecuteDataSet(cmd);
+        }
         protected static Alumno MakeAlumno(IDataReader dr)
         {
             var obj = new Alumno();

@@ -554,7 +554,7 @@ namespace Certifica_logistica.procesos
         private void EdCodSubDep_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             var btn = (ButtonEdit)sender;
-            var oFrm = new FphSubDependencia { _TiTuloForm = "Busqueda De SubDependencia Institucional", _backColor = BackColor };
+            var oFrm = new FphBusqueda { _TiTuloForm = "Busqueda De SubDependencia Institucional", _backColor = BackColor, _TipoTabla = ENumTabla.SUBDEPENDENCIA};
             oFrm.ShowDialog();
             SuspendLayout();
             btn.Text = oFrm._Codigo;

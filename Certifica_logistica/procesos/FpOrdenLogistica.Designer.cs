@@ -69,14 +69,15 @@
             this.CboYearExp = new System.Windows.Forms.ComboBox();
             this.EdIdExpediente = new DevExpress.XtraEditors.ButtonEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnAgregar = new System.Windows.Forms.Button();
             this.TxtTotal = new System.Windows.Forms.TextBox();
             this.LstMetas = new System.Windows.Forms.ListBox();
             this.GrpDocumento = new System.Windows.Forms.GroupBox();
             this.CboTipoUsuario = new DevExpress.XtraEditors.LookUpEdit();
             this.TxtDirec = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
+            this.LblDirec = new System.Windows.Forms.Label();
             this.TxtDni = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.LblRuc = new System.Windows.Forms.Label();
             this.TxtRazon = new System.Windows.Forms.TextBox();
             this.LblTipoUsuario = new System.Windows.Forms.Label();
             this.EdCodigo = new DevExpress.XtraEditors.ButtonEdit();
@@ -584,6 +585,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BtnAgregar);
             this.groupBox1.Controls.Add(this.TxtTotal);
             this.groupBox1.Controls.Add(this.LstMetas);
             this.groupBox1.Location = new System.Drawing.Point(355, 224);
@@ -593,13 +595,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "< Resumen Total >";
             // 
+            // BtnAgregar
+            // 
+            this.BtnAgregar.Location = new System.Drawing.Point(187, 51);
+            this.BtnAgregar.Name = "BtnAgregar";
+            this.BtnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.BtnAgregar.TabIndex = 2;
+            this.BtnAgregar.Text = "button2";
+            this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
+            // 
             // TxtTotal
             // 
             this.TxtTotal.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.TxtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.TxtTotal.Location = new System.Drawing.Point(181, 38);
+            this.TxtTotal.Location = new System.Drawing.Point(185, 7);
             this.TxtTotal.Name = "TxtTotal";
             this.TxtTotal.ReadOnly = true;
             this.TxtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -619,9 +631,9 @@
             // 
             this.GrpDocumento.Controls.Add(this.CboTipoUsuario);
             this.GrpDocumento.Controls.Add(this.TxtDirec);
-            this.GrpDocumento.Controls.Add(this.label20);
+            this.GrpDocumento.Controls.Add(this.LblDirec);
             this.GrpDocumento.Controls.Add(this.TxtDni);
-            this.GrpDocumento.Controls.Add(this.label12);
+            this.GrpDocumento.Controls.Add(this.LblRuc);
             this.GrpDocumento.Controls.Add(this.TxtRazon);
             this.GrpDocumento.Controls.Add(this.LblTipoUsuario);
             this.GrpDocumento.Controls.Add(this.EdCodigo);
@@ -649,6 +661,7 @@
             this.CboTipoUsuario.Properties.ValueMember = "Sigla";
             this.CboTipoUsuario.Size = new System.Drawing.Size(115, 20);
             this.CboTipoUsuario.TabIndex = 1;
+            this.CboTipoUsuario.EditValueChanged += new System.EventHandler(this.CboTipoUsuario_EditValueChanged);
             // 
             // TxtDirec
             // 
@@ -660,14 +673,14 @@
             this.TxtDirec.TabIndex = 7;
             this.TxtDirec.TabStop = false;
             // 
-            // label20
+            // LblDirec
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(435, 16);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(55, 13);
-            this.label20.TabIndex = 6;
-            this.label20.Text = "Dirección:";
+            this.LblDirec.AutoSize = true;
+            this.LblDirec.Location = new System.Drawing.Point(435, 16);
+            this.LblDirec.Name = "LblDirec";
+            this.LblDirec.Size = new System.Drawing.Size(55, 13);
+            this.LblDirec.TabIndex = 6;
+            this.LblDirec.Text = "Dirección:";
             // 
             // TxtDni
             // 
@@ -679,14 +692,14 @@
             this.TxtDni.TabIndex = 9;
             this.TxtDni.TabStop = false;
             // 
-            // label12
+            // LblRuc
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(614, 16);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "RUC/DNI/CE";
+            this.LblRuc.AutoSize = true;
+            this.LblRuc.Location = new System.Drawing.Point(614, 16);
+            this.LblRuc.Name = "LblRuc";
+            this.LblRuc.Size = new System.Drawing.Size(73, 13);
+            this.LblRuc.TabIndex = 8;
+            this.LblRuc.Text = "RUC/DNI/CE";
             // 
             // TxtRazon
             // 
@@ -759,6 +772,7 @@
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridControl1_KeyDown);
             // 
             // detalleOrdenBindingSource
             // 
@@ -1013,6 +1027,7 @@
             this.ClientSize = new System.Drawing.Size(698, 525);
             this.Controls.Add(this.splitContainerControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "FpOrdenLogistica";
             this.Text = "Trabajo de Ordenes de Servicio";
             this.Load += new System.EventHandler(this.FpOrdenLogistica_Load);
@@ -1096,9 +1111,9 @@
         private System.Windows.Forms.ListBox LstMetas;
         private System.Windows.Forms.GroupBox GrpDocumento;
         private System.Windows.Forms.TextBox TxtDirec;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label LblDirec;
         private System.Windows.Forms.TextBox TxtDni;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label LblRuc;
         private System.Windows.Forms.TextBox TxtRazon;
         private System.Windows.Forms.Label LblTipoUsuario;
         private DevExpress.XtraEditors.ButtonEdit EdCodigo;
@@ -1130,5 +1145,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchIdMeta;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit2View;
+        private System.Windows.Forms.Button BtnAgregar;
     }
 }

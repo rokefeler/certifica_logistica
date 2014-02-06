@@ -120,7 +120,7 @@ namespace Certifica_logistica.mantenimiento
 
         private void TxtCodPersonal_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var oFrm = new FphPersonal { _TiTuloForm = "Busqueda De Personal Institucional", _backColor = BackColor };
+            var oFrm = new FphBusqueda { _TiTuloForm = "Busqueda De Personal Institucional", _backColor = BackColor, _TipoTabla = ENumTabla.PERSONAL};
             oFrm.ShowDialog();
             SuspendLayout();
             TxtCodPersonal.Text = oFrm._Codigo;
@@ -234,7 +234,7 @@ namespace Certifica_logistica.mantenimiento
 
         private void EdCodSubDep_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var oFrm = new FphSubDependencia { _TiTuloForm = "Busqueda De SubDependencia Institucional", _backColor = BackColor };
+            var oFrm = new FphBusqueda { _TiTuloForm = "Busqueda De SubDependencia Institucional", _backColor = BackColor, _TipoTabla = ENumTabla.SUBDEPENDENCIA};
             oFrm.ShowDialog();
             SuspendLayout();
             EdCodSubDep.Text = oFrm._Codigo;

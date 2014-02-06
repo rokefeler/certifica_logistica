@@ -26,13 +26,13 @@ namespace DaoLogistica.DAO
             return obj;
         }
 
-        public static Meta GetbyNroAnio(String cNro, String anio)
+        public static Meta GetbyId(String cNro, String anio)
         {
             if (String.IsNullOrEmpty(cNro)) throw new ArgumentNullException("cNro");
             if (String.IsNullOrEmpty(anio)) throw new ArgumentNullException("anio");
             Meta obj = null;
             var cmd = DATA.Db.GetStoredProcCommand("sp_tMeta");
-            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetById2);
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetById2); //512
             DATA.Db.AddInParameter(cmd, "cnro", DbType.String, cNro);
             DATA.Db.AddInParameter(cmd, "anio", DbType.String, anio);
             using (var dr = DATA.Db.ExecuteReader(cmd))

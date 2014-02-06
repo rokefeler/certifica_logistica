@@ -38,11 +38,17 @@ static class CONSTANTE
         // ReSharper disable once InconsistentNaming
         ALUMNO,
         // ReSharper disable once InconsistentNaming
-        PROVEEDOR,
+        META,
         // ReSharper disable once InconsistentNaming
         PERSONAL, 
         // ReSharper disable once InconsistentNaming
-        SERVICIOS
+        PROVEEDOR,
+        // ReSharper disable once InconsistentNaming
+        SERVICIOS,
+        // ReSharper disable once InconsistentNaming
+        SUBDEPENDENCIA,
+        // ReSharper disable once InconsistentNaming
+        RUBRO
     };
     public enum ENumTipoOrden
     {

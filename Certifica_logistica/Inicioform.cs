@@ -672,6 +672,7 @@ namespace Certifica_logistica
            var oFrm = new FpOrdenLogistica
            {
                MdiParent = this,
+               _TipoOrden = ENumTipoOrden.SERVICIO,
                _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
                _FrmPadre = this
            };
@@ -709,6 +710,58 @@ namespace Certifica_logistica
                _FrmPadre = this
            };
            oFrm.Show();
+       }
+
+       private void planillaDeMovilidadToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           var oFrm = new FpOrdenLogistica
+           {
+               MdiParent = this,
+               _TipoOrden = ENumTipoOrden.MOVILIDAD,
+               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
+               _FrmPadre = this
+           };
+           oFrm.Show();
+
+       }
+
+       private void planillaDePropinasToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           var oFrm = new FpOrdenLogistica
+           {
+               MdiParent = this,
+               _TipoOrden = ENumTipoOrden.PROPINAS,
+               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
+               _FrmPadre = this
+           };
+           oFrm.Show();
+
+       }
+
+       private void contratoConvenioToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           var oFrm = new FpOrdenLogistica
+           {
+               MdiParent = this,
+               _TipoOrden = ENumTipoOrden.CONVENIO,
+               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
+               _FrmPadre = this
+           };
+           oFrm.Show();
+
+       }
+
+       private void viaticosToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           var oFrm = new FpOrdenLogistica
+           {
+               MdiParent = this,
+               _TipoOrden = ENumTipoOrden.VIATICOS,
+               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
+               _FrmPadre = this
+           };
+           oFrm.Show();
+
        }
     }
 }

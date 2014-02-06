@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 using Certifica_logistica.Ds;
 using Certifica_logistica.modulos;
+using Certifica_logistica.Popups;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
-using DevExpress.XtraEditors.Repository;
 
 namespace Certifica_logistica.procesos
 {
@@ -17,13 +16,15 @@ namespace Certifica_logistica.procesos
         public ENumTipoOrden _TipoOrden;
         private DsTramite.TTipoUsuarioDataTable _tbUsuario;
         private DsTramite.DetalleOrdenDataTable _tbOrdenDetalle;
+/*
         private DataSet _ds;
-        private RepositoryItemComboBox _cbo;
+*/
         public FpOrdenLogistica()
         {
             InitializeComponent();
             _tbUsuario = new DsTramite.TTipoUsuarioDataTable();
             _TipoOrden= ENumTipoOrden.SERVICIO;
+            _tbOrdenDetalle = new DsTramite.DetalleOrdenDataTable();
         }
 
         private void TxtCodPersonal_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -64,10 +65,15 @@ namespace Certifica_logistica.procesos
             repositoryItemSearchTipoUsuario.ValueMember = "Sigla";
 
             //TODO GRAVE: Se debe consistenciar para consultas de años posteriores
-            repositoryItemSearchIdMeta.DataSource = MetaDao.SelectAllByAnio(DateTime.Now.Year.ToString()); //TipoFormapagoDao.GetAllList();
+            repositoryItemSearchIdMeta.DataSource = MetaDao.SelectAllByAnio(DateTime.Now.Year.ToString(CultureInfo.InvariantCulture)); //TipoFormapagoDao.GetAllList();
             repositoryItemSearchIdMeta.DisplayMember = "Cnro";
             repositoryItemSearchIdMeta.ValueMember = "IdMeta";
-            //---------------------------------------------------------------------------
+            RefreshDetalle();
+        }
+
+        private void RefreshDetalle()
+        {
+//---------------------------------------------------------------------------
             //_tbOrdenDetalle = General.GenerarCuotasdePrestamo(dPrestamo, dInteresTea, iMeses, (DateTime)dtFechaEntrega.EditValue, out fechaFin);
             dsTramite.Tables[name: "DetalleOrdenDataTable"].Clear();
             dsTramite.Tables[name: "DetalleOrdenDataTable"].Load(_tbOrdenDetalle.CreateDataReader());
@@ -236,6 +242,74 @@ namespace Certifica_logistica.procesos
                     break;
 
             } //fin de switch
+        }
+
+        private void gridControl1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Insert)
+            {
+               BtnAgregar_Click(sender,null);
+            }
+        }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            var oFrm2 = new FphDetalleOrden
+            {
+                _TiTuloForm = "Busqueda o Modificación de un Item",
+                _backColor = Color.PaleGoldenrod,
+                _TipoOrden = ENumTipoOrden.SERVICIO
+            };
+            //oFrm2.CargarDatos();
+            oFrm2.ShowDialog();
+            SuspendLayout();
+            if (String.IsNullOrEmpty(oFrm2._Codigo)) //valor vacio si cerro o hizo click en Cancelar
+            {
+                oFrm2.Close();
+                return;
+            }
+            var drow = _tbOrdenDetalle.NewRow();
+            drow["Id"] = 0; //Es Nuevo
+            drow["IdOrden"] = String.IsNullOrEmpty(Value) ? 0 : Convert.ToInt64(Value);
+            drow["IdClasificador"] = Convert.ToInt32(oFrm2.EdIdClasificador.Tag);
+            drow["IdMeta"] = Convert.ToInt32(oFrm2.EdIdMeta.Tag);
+            drow["IdTipoUsuario"] = oFrm2.CboTipoUsuario.EditValue.ToString()[0];
+            drow["Clasificador"] = oFrm2.EdIdClasificador.EditValue.ToString();
+            drow["Codigo"] = oFrm2.EdCodigo.EditValue.ToString();
+            drow["Detalle"] = oFrm2.TxtDetalle.Text.Trim();
+            drow["Monto"] = oFrm2.SpnMonto.EditValue;
+            _tbOrdenDetalle.Rows.Add(drow);
+            RefreshDetalle();
+            ResumeLayout();
+        }
+
+        private void CboTipoUsuario_EditValueChanged(object sender, EventArgs e)
+        {
+            var c = (char)CboTipoUsuario.EditValue;
+            switch (c)
+            {
+                case 'V': //Proveedor
+                case 'A': //Alumno
+                case 'P': //Personal
+                    EdCodigo.Visible = true;
+                    LblTipoUsuario.Visible = true;
+                    TxtDirec.Visible = true;
+                    TxtRazon.Visible = true;
+                    TxtDni.Visible = true;
+                    LblDirec.Visible = true;
+                    LblRuc.Visible = true;
+                    break;
+                case 'S': //Servicios
+                case 'N': //Ninguno
+                    EdCodigo.Visible = false;
+                    LblTipoUsuario.Visible = false;
+                    TxtDirec.Visible = false;
+                    TxtRazon.Visible = false;
+                    TxtDni.Visible = false;
+                    LblDirec.Visible = false;
+                    LblRuc.Visible = false;
+                    break;
+            }
         }
     } //Fin de Clase
 }
