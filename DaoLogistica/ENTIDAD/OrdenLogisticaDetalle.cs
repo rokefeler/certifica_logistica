@@ -24,14 +24,14 @@ namespace DaoLogistica.ENTIDAD
 
         public void Clear()
         {
+            Id = 0;
+            IdOrden = 0;
+            IdClasificador = 0;
+            TipoUsuario = 'N';
             Codigo = String.Empty;
             Detalle = String.Empty;
-            Id = 0;
-            IdClasificador = 0;
             IdMeta = 0;
-            IdOrden = 0;
             Monto = 0m;
-            TipoUsuario = ' ';
         }
 
         #region Properties

@@ -11,6 +11,7 @@ using Certifica_logistica.Ds;
 using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
+using DevExpress.Data.Selection;
 using Rebex.Net;
 
 namespace Certifica_logistica.modulos
@@ -300,34 +301,61 @@ static class CONSTANTE
             r[0] = 'N';
             r[1] = " Ninguno";
             tbE.Rows.Add(r);
-            if (tipoOrden == ENumTipoOrden.PROPINAS)
+            switch (tipoOrden)
             {
-                r = tbE.NewRow();
-                r[0] = 'A';
-                r[1] = "ALUMNO";
-                tbE.Rows.Add(r);
-                return;
+                case ENumTipoOrden.NINGUNO:
+                    r = tbE.NewRow();
+                    r[0] = 'A';
+                    r[1] = "ALUMNO";
+                    tbE.Rows.Add(r);
+
+                    r = tbE.NewRow();
+                    r[0] = 'P';
+                    r[1] = "PERSONAL / DOC.EXTRANJ.";
+                    tbE.Rows.Add(r);
+
+                    r = tbE.NewRow();
+                    r[0] = 'V';
+                    r[1] = "PROVEEDOR";
+                    tbE.Rows.Add(r);
+
+                    r = tbE.NewRow();
+                    r[0] = 'S';
+                    r[1] = "SERVICIOS";
+                    tbE.Rows.Add(r);
+                    break;
+                case ENumTipoOrden.PROPINAS:
+                    r = tbE.NewRow();
+                    r[0] = 'A';
+                    r[1] = "ALUMNO";
+                    tbE.Rows.Add(r);
+                    break;
+                case ENumTipoOrden.MOVILIDAD:
+                    r = tbE.NewRow();
+                    r[0] = 'P';
+                    r[1] = "PERSONAL / DOC.EXTRANJ.";
+                    tbE.Rows.Add(r);
+                    break;
+                case ENumTipoOrden.SERVICIO:
+                    r = tbE.NewRow();
+                    r[0] = 'V';
+                    r[1] = "PROVEEDOR";
+                    tbE.Rows.Add(r);
+                    if (!EsParaDetalle) break;
+                    r = tbE.NewRow();
+                    r[0] = 'S';
+                    r[1] = "SERVICIOS";
+                    tbE.Rows.Add(r);
+                    break;
+                case ENumTipoOrden.CONVENIO:
+                    r = tbE.NewRow();
+                    r[0] = 'P';
+                    r[1] = "PERSONAL / DOC.EXTRANJ.";
+                    tbE.Rows.Add(r);
+                    break;
+
             }
-            if (tipoOrden == ENumTipoOrden.MOVILIDAD)
-            {
-                r = tbE.NewRow();
-                r[0] = 'P';
-                r[1] = "PERSONAL / DOC.EXTRANJ.";
-                tbE.Rows.Add(r);
-                return;
-            }
-            if (tipoOrden == ENumTipoOrden.SERVICIO)
-            {
-                r = tbE.NewRow();
-                r[0] = 'V';
-                r[1] = "PROVEEDOR";
-                tbE.Rows.Add(r);
-                if (!EsParaDetalle) return;
-                r = tbE.NewRow();
-                r[0] = 'S';
-                r[1] = "SERVICIOS";
-                tbE.Rows.Add(r);
-            }
+            
         }
   
         public static Bitmap ByteToImage(byte[] blob)

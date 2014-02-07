@@ -8,8 +8,9 @@ namespace DaoLogistica.DAO
     public class OrdenLogisticaDao
     {
 
-        public static int Grabar(OrdenLogistica obj, DbTransaction dbTrans)
+        public static int Grabar(OrdenLogistica obj, DbTransaction dbTrans,out String cNroExp)
         {
+            cNroExp = String.Empty;
             if (obj==null) throw new ArgumentNullException("obj");
             if (String.IsNullOrEmpty(obj.Cnro)) throw new ArgumentNullException("obj","Falta Nro. Exp.");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
@@ -34,13 +35,19 @@ namespace DaoLogistica.DAO
             DATA.Db.AddInParameter(cmd, "Total", DbType.Decimal, obj.Total);
             if(!string.IsNullOrEmpty(obj.Siaf))
                 DATA.Db.AddInParameter(cmd, "Siaf", DbType.String, obj.Siaf);
+            if (!string.IsNullOrEmpty(obj.Ccp))
+                DATA.Db.AddInParameter(cmd, "Ccp", DbType.String, obj.Ccp);
+            if (!string.IsNullOrEmpty(obj.RdAutoriza))
+                DATA.Db.AddInParameter(cmd, "RdAutoriza", DbType.String, obj.RdAutoriza);
             DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, obj.CodLogin);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
+            DATA.Db.AddOutParameter(cmd, "NroExp", DbType.String, 12);
             if (dbTrans != null)
                 DATA.Db.ExecuteNonQuery(cmd, dbTrans);
             else
                 DATA.Db.ExecuteNonQuery(cmd);
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
+            cNroExp = (String)DATA.Db.GetParameterValue(cmd, "@NroExp");
             return ret; //devuelve el id único del registro
         }
 
@@ -122,6 +129,8 @@ namespace DaoLogistica.DAO
             obj.Total = dr.GetDecimal(dr.GetOrdinal("Total"));
             obj.Estado = dr.GetInt16(dr.GetOrdinal("Estado"));
             obj.Siaf = dr.GetString(dr.GetOrdinal("Siaf"));
+            obj.Ccp  = dr.GetString(dr.GetOrdinal("Ccp"));
+            obj.RdAutoriza = dr.GetString(dr.GetOrdinal("RdAutoriza"));
             obj.FechaBloqueo = dr.IsDBNull(dr.GetOrdinal("FechaBloqueo"))
                 ? new DateTime(1900, 1, 1)
                 : dr.GetDateTime(dr.GetOrdinal("FechaBloqueo"));

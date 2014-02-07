@@ -74,7 +74,7 @@
     <Compile Include="DAO\NumeroDao.cs" />
     <Compile Include="DAO\ObservacionExpedienteDao.cs" />
     <Compile Include="DAO\OrdenLogisticaDao.cs" />
-    <Compile Include="DAO\OrdenLogisticaDetalle.cs" />
+    <Compile Include="DAO\OrdenLogisticaDetalleDao.cs" />
     <Compile Include="DAO\PersonalDao.cs" />
     <Compile Include="DAO\ProveedorDao.cs" />
     <Compile Include="DAO\ProvinciaDao.cs" />

@@ -973,6 +973,8 @@ namespace Certifica_logistica.Ds {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DetalleOrdenDataTable : global::System.Data.TypedTableBase<DetalleOrdenRow> {
             
+            private global::System.Data.DataColumn columnIndex;
+            
             private global::System.Data.DataColumn columnId;
             
             private global::System.Data.DataColumn columnIdOrden;
@@ -1022,6 +1024,14 @@ namespace Certifica_logistica.Ds {
             protected DetalleOrdenDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IndexColumn {
+                get {
+                    return this.columnIndex;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1136,6 +1146,7 @@ namespace Certifica_logistica.Ds {
             public DetalleOrdenRow AddDetalleOrdenRow(long Id, long IdOrden, int IdClasificador, int IdMeta, char IdTipoUsuario, string clasificador, string codigo, string Detalle, decimal Monto) {
                 DetalleOrdenRow rowDetalleOrdenRow = ((DetalleOrdenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        null,
                         Id,
                         IdOrden,
                         IdClasificador,
@@ -1167,6 +1178,7 @@ namespace Certifica_logistica.Ds {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnIndex = base.Columns["Index"];
                 this.columnId = base.Columns["Id"];
                 this.columnIdOrden = base.Columns["IdOrden"];
                 this.columnIdClasificador = base.Columns["IdClasificador"];
@@ -1181,6 +1193,8 @@ namespace Certifica_logistica.Ds {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnIndex = new global::System.Data.DataColumn("Index", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIndex);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
                 this.columnIdOrden = new global::System.Data.DataColumn("IdOrden", typeof(long), null, global::System.Data.MappingType.Element);
@@ -1199,6 +1213,13 @@ namespace Certifica_logistica.Ds {
                 base.Columns.Add(this.columnDetalle);
                 this.columnMonto = new global::System.Data.DataColumn("Monto", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMonto);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIndex}, false));
+                this.columnIndex.AutoIncrement = true;
+                this.columnIndex.AutoIncrementSeed = 1;
+                this.columnIndex.Unique = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1679,6 +1700,22 @@ namespace Certifica_logistica.Ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Index {
+                get {
+                    try {
+                        return ((int)(this[this.tableDetalleOrden.IndexColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Index\' de la tabla \'DetalleOrden\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDetalleOrden.IndexColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long Id {
                 get {
                     try {
@@ -1819,6 +1856,18 @@ namespace Certifica_logistica.Ds {
                 set {
                     this[this.tableDetalleOrden.MontoColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIndexNull() {
+                return this.IsNull(this.tableDetalleOrden.IndexColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIndexNull() {
+                this[this.tableDetalleOrden.IndexColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

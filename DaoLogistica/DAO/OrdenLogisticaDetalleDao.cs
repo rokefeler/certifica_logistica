@@ -5,7 +5,7 @@ using DaoLogistica.ENTIDAD;
 
 namespace DaoLogistica.DAO
 {
-    public class OrdenLogisticaDetalleDetalle
+    public class OrdenLogisticaDetalleDao
     {
 
         public static int Grabar(OrdenLogisticaDetalle obj, DbTransaction dbTrans)
@@ -47,6 +47,8 @@ namespace DaoLogistica.DAO
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
             return ret;
         }
+       
+
 
         public static OrdenLogisticaDetalle GetbyId(int id)
         {

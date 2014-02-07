@@ -15,7 +15,7 @@ namespace DaoLogistica.ENTIDAD
             Cnro = String.Empty;
             IdExpediente = String.Empty;
             IdxTipoOrden = String.Empty;
-            TipoUsuario = 'N'; //[V=Proveedor] - [P=Personal] - [A=Alumno] - [N=Ninguno]
+            TipoUsuario = 'N'; //[V=Proveedor] - [P=Personal] - [A=Alumno] - [S=Servicio] - [N=Ninguno]
             Codigo = String.Empty;
             StampNombre = String.Empty;
             FechaGiro = new DateTime(1900, 1, 1);
@@ -27,9 +27,10 @@ namespace DaoLogistica.ENTIDAD
             Total = 0m;
             Estado = 0;
             Siaf = String.Empty;
-
+            Ccp = String.Empty;
+            RdAutoriza = String.Empty;
             FechaBloqueo = new DateTime(1900, 1, 1);
-            ;
+            
             IsCoa = false;
             CodLogin = String.Empty;
             FechaRegistro = new DateTime(1900, 1, 1);
@@ -58,6 +59,8 @@ namespace DaoLogistica.ENTIDAD
 		public Decimal Total { get; set; }
 		public short Estado { get; set; }
 		public string Siaf { get; set; }
+        public string Ccp { get; set; }
+        public string RdAutoriza { get; set; } //long 45
 		public DateTime FechaBloqueo { get; set; }
 		public bool IsCoa { get; set; }
 		public string CodLogin { get; set; }

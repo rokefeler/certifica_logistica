@@ -34,6 +34,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CboPeriodo = new System.Windows.Forms.ComboBox();
             this.SpnMonto = new DevExpress.XtraEditors.SpinEdit();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.label16 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.EdIdClasificador = new DevExpress.XtraEditors.ButtonEdit();
             this.EdIdMeta = new DevExpress.XtraEditors.ButtonEdit();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.TxtServicio = new System.Windows.Forms.TextBox();
+            this.LblServicio = new System.Windows.Forms.Label();
             this.TxtDetalle = new DevExpress.XtraEditors.TextEdit();
             this.CboTipoUsuario = new DevExpress.XtraEditors.LookUpEdit();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,7 +51,6 @@
             this.LblTipoUsuario = new System.Windows.Forms.Label();
             this.EdCodigo = new DevExpress.XtraEditors.ButtonEdit();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -140,6 +142,8 @@
             131072});
             this.SpnMonto.Size = new System.Drawing.Size(89, 20);
             this.SpnMonto.TabIndex = 15;
+            this.SpnMonto.ToolTipController = this.toolTipController1;
+            this.SpnMonto.Leave += new System.EventHandler(this.SpnMonto_Leave);
             // 
             // label16
             // 
@@ -192,6 +196,7 @@
             this.EdIdClasificador.Properties.MaxLength = 15;
             this.EdIdClasificador.Size = new System.Drawing.Size(147, 20);
             this.EdIdClasificador.TabIndex = 11;
+            this.EdIdClasificador.ToolTipController = this.toolTipController1;
             this.EdIdClasificador.Leave += new System.EventHandler(this.EdIdClasificador_Leave);
             // 
             // EdIdMeta
@@ -209,10 +214,13 @@
             this.EdIdMeta.Properties.MaxLength = 15;
             this.EdIdMeta.Size = new System.Drawing.Size(58, 20);
             this.EdIdMeta.TabIndex = 13;
+            this.EdIdMeta.ToolTipController = this.toolTipController1;
             this.EdIdMeta.Leave += new System.EventHandler(this.EdIdMeta_Leave);
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.TxtServicio);
+            this.panel4.Controls.Add(this.LblServicio);
             this.panel4.Controls.Add(this.TxtDetalle);
             this.panel4.Controls.Add(this.CboTipoUsuario);
             this.panel4.Controls.Add(this.label4);
@@ -225,20 +233,44 @@
             this.panel4.Size = new System.Drawing.Size(413, 116);
             this.panel4.TabIndex = 2;
             // 
+            // TxtServicio
+            // 
+            this.TxtServicio.BackColor = System.Drawing.Color.Snow;
+            this.TxtServicio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtServicio.Location = new System.Drawing.Point(236, 23);
+            this.TxtServicio.Name = "TxtServicio";
+            this.TxtServicio.ReadOnly = true;
+            this.TxtServicio.Size = new System.Drawing.Size(155, 20);
+            this.TxtServicio.TabIndex = 5;
+            this.TxtServicio.TabStop = false;
+            this.TxtServicio.Visible = false;
+            // 
+            // LblServicio
+            // 
+            this.LblServicio.AutoSize = true;
+            this.LblServicio.Location = new System.Drawing.Point(256, 7);
+            this.LblServicio.Name = "LblServicio";
+            this.LblServicio.Size = new System.Drawing.Size(84, 13);
+            this.LblServicio.TabIndex = 4;
+            this.LblServicio.Text = "Tipo de Servicio";
+            this.LblServicio.Visible = false;
+            // 
             // TxtDetalle
             // 
+            this.TxtDetalle.EnterMoveNextControl = true;
             this.TxtDetalle.Location = new System.Drawing.Point(12, 74);
             this.TxtDetalle.Name = "TxtDetalle";
             this.TxtDetalle.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtDetalle.Properties.MaxLength = 70;
-            this.TxtDetalle.Size = new System.Drawing.Size(396, 20);
-            this.TxtDetalle.TabIndex = 11;
+            this.TxtDetalle.Size = new System.Drawing.Size(381, 20);
+            this.TxtDetalle.TabIndex = 7;
+            this.TxtDetalle.ToolTipController = this.toolTipController1;
             this.TxtDetalle.Leave += new System.EventHandler(this.TxtDetalle_Leave);
             // 
             // CboTipoUsuario
             // 
             this.CboTipoUsuario.EnterMoveNextControl = true;
-            this.CboTipoUsuario.Location = new System.Drawing.Point(12, 26);
+            this.CboTipoUsuario.Location = new System.Drawing.Point(12, 23);
             this.CboTipoUsuario.Name = "CboTipoUsuario";
             this.CboTipoUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -248,16 +280,17 @@
             this.CboTipoUsuario.Properties.DisplayMember = "nombre";
             this.CboTipoUsuario.Properties.ValueMember = "Sigla";
             this.CboTipoUsuario.Size = new System.Drawing.Size(112, 20);
-            this.CboTipoUsuario.TabIndex = 7;
+            this.CboTipoUsuario.TabIndex = 1;
+            this.CboTipoUsuario.ToolTipController = this.toolTipController1;
             this.CboTipoUsuario.EditValueChanged += new System.EventHandler(this.CboTipoUsuario_EditValueChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 10);
+            this.label4.Location = new System.Drawing.Point(22, 7);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 13);
-            this.label4.TabIndex = 6;
+            this.label4.TabIndex = 0;
             this.label4.Text = "&Tipo de Usuario:";
             // 
             // label11
@@ -266,22 +299,22 @@
             this.label11.Location = new System.Drawing.Point(12, 58);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 13);
-            this.label11.TabIndex = 10;
+            this.label11.TabIndex = 6;
             this.label11.Text = "&Detalle";
             // 
             // LblTipoUsuario
             // 
             this.LblTipoUsuario.AutoSize = true;
-            this.LblTipoUsuario.Location = new System.Drawing.Point(138, 10);
+            this.LblTipoUsuario.Location = new System.Drawing.Point(138, 7);
             this.LblTipoUsuario.Name = "LblTipoUsuario";
             this.LblTipoUsuario.Size = new System.Drawing.Size(43, 13);
-            this.LblTipoUsuario.TabIndex = 8;
+            this.LblTipoUsuario.TabIndex = 2;
             this.LblTipoUsuario.Text = "&Usuario";
             // 
             // EdCodigo
             // 
             this.EdCodigo.EnterMoveNextControl = true;
-            this.EdCodigo.Location = new System.Drawing.Point(131, 26);
+            this.EdCodigo.Location = new System.Drawing.Point(131, 23);
             this.EdCodigo.Name = "EdCodigo";
             this.EdCodigo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -292,8 +325,10 @@
             this.EdCodigo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdCodigo.Properties.Mask.SaveLiteral = false;
             this.EdCodigo.Properties.MaxLength = 15;
+            this.EdCodigo.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdCodigo_Properties_ButtonClick);
             this.EdCodigo.Size = new System.Drawing.Size(99, 20);
-            this.EdCodigo.TabIndex = 9;
+            this.EdCodigo.TabIndex = 3;
+            this.EdCodigo.ToolTipController = this.toolTipController1;
             this.EdCodigo.Leave += new System.EventHandler(this.EdCodigo_Leave);
             // 
             // dxErrorProvider1
@@ -349,5 +384,7 @@
         public DevExpress.XtraEditors.ButtonEdit EdCodigo;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.Utils.ToolTipController toolTipController1;
+        private System.Windows.Forms.Label LblServicio;
+        private System.Windows.Forms.TextBox TxtServicio;
     }
 }

@@ -17,17 +17,20 @@ namespace Certifica_logistica.Popups
         {
             InitializeComponent();
             _tbUsuarioDetalle = new DsTramite.TTipoUsuarioDataTable();
-            _TipoOrden = new ENumTipoOrden();
+//            _TipoOrden = new ENumTipoOrden();
         }
         private void FphDetalleOrden_Load(object sender, EventArgs e)
         {
-            CargarDatos();
+            //CargarDatos();
             CboTipoUsuario_EditValueChanged(sender,e);
-            EdIdClasificador.Focus();
+            if (TxtDetalle.Text.Trim().Length > 0)
+                SpnMonto.Focus();
+            else
+                EdIdClasificador.Focus();
         }
 
 
-        private void CargarDatos()
+        public void CargarDatos()
         {
             SuspendLayout();
             try
@@ -60,10 +63,9 @@ namespace Certifica_logistica.Popups
                         EdCodigo.EditValue = null;
                         break;
                     case ENumTipoOrden.SERVICIO:
-                        CboTipoUsuario.EditValue = 'V';
+                        CboTipoUsuario.EditValue = 'N';
                         LblTipoUsuario.Visible = true;
                         EdCodigo.Visible = true;
-                        LblTipoUsuario.Text = @"&Detalle - Apellidos/Nombres";
                         EdCodigo.EditValue = null;
                         break;
 
@@ -120,11 +122,44 @@ namespace Certifica_logistica.Popups
             EdIdClasificador_Leave(sender,e);
             EdIdMeta_Leave(sender,e);
         }
+        private void EdCodigo_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var cTipoUsuario = (char)CboTipoUsuario.EditValue;
+            var eTipoTabla = ENumTabla.NINGUNO;
+            var msg = String.Empty;
+            switch (cTipoUsuario)
+            {
+                case 'V':
+                    eTipoTabla = ENumTabla.PROVEEDOR;
+                    msg = "Busqueda de Proveedor";
+                    break;
+                case 'P':
+                    eTipoTabla = ENumTabla.PERSONAL;
+                    msg = "Busqueda de Personal";
+                    break;
+                case 'A':
+                    eTipoTabla = ENumTabla.ALUMNO;
+                    msg = "Busqueda de Alumnos";
+                    break;
+                case 'S':
+                    eTipoTabla = ENumTabla.SERVICIOS;
+                    msg = "Busqueda de Servicios";
+                    break;
+            }
 
+            var oFrm = new FphBusqueda { _TiTuloForm = msg, _backColor = BackColor, _TipoTabla = eTipoTabla };
+            oFrm.ShowDialog();
+            SuspendLayout();
+            EdCodigo.Text = oFrm._Codigo;
+            TxtDetalle.Text = oFrm._Nombre;
+            oFrm.Close();
+            ResumeLayout();
+            
+        }
         private void EdCodigo_Leave(object sender, EventArgs e)
         {
             String cod, cNombreTabla = String.Empty;
-            if (!EdCodigo.IsModified) return; //Si no hay modificaciones, salir
+            //if (!EdCodigo.IsModified) return; //Si no hay modificaciones, salir
             dxErrorProvider1.SetError(EdCodigo, "");
             toolTipController1.SetToolTip(TxtDetalle, "");
             EdCodigo.ResetBackColor();
@@ -192,6 +227,28 @@ namespace Certifica_logistica.Popups
                     }
 
                     EdCodigo.BackColor = Color.LightGreen;
+                    //Se actualiza la Meta segun la base de Servicios
+                    EdIdMeta.EditValue = objS.Meta;
+                    EdIdMeta_Leave(sender,e);
+                    //[TM=Moviles] [TF=Telefonia Fija] [SE=Suministro de Energia] [SA=Suministro de Agua y Desague] [SI=Suministro de Internet]
+                    switch (objS.TipoServicio)
+                    {
+                        case "TM":
+                            TxtServicio.Text = @"TELEFONIA MOVIL";
+                            break;
+                        case "TF":
+                            TxtServicio.Text = @"TELEFONIA FIJA";
+                            break;
+                        case "SE":
+                            TxtServicio.Text = @"SUMINISTRO ENERGIA";
+                            break;
+                        case "SA":
+                            TxtServicio.Text = @"SERVICIO AGUA/DESAGUE";
+                            break;
+                        case "SI":
+                            TxtServicio.Text = @"SERVICIO INTERNET";
+                            break;
+                    }
                     TxtDetalle.Text = objS.Responsable;
                     toolTipController1.SetToolTip(TxtDetalle, objS.NombreServicio);
                     break;
@@ -222,6 +279,13 @@ namespace Certifica_logistica.Popups
                 if (String.IsNullOrEmpty(cad))
                 {
                     cad ="Ingrese La Meta del Presente Periodo";
+                    General.ShowMessage(cad);
+                    return;
+                }
+                if (SpnMonto.Value<=0)
+                {
+                    cad = "Le Falta ingresar el Monto del Servicio";
+                    dxErrorProvider1.SetError(SpnMonto,cad);
                     General.ShowMessage(cad);
                     return;
                 }
@@ -261,12 +325,19 @@ namespace Certifica_logistica.Popups
         private void CboTipoUsuario_EditValueChanged(object sender, EventArgs e)
         {
             var c = (char)CboTipoUsuario.EditValue;
+            LblServicio.Visible = false;
+            TxtServicio.Visible = false;
             switch (c)
             {
                 case 'V': //Proveedor
                 case 'A': //Alumno
                 case 'P': //Personal
+                    EdCodigo.Visible = true;
+                    LblTipoUsuario.Visible = true;
+                    break;
                 case 'S': //Servicios
+                    LblServicio.Visible = true;
+                    TxtServicio.Visible = true;
                     EdCodigo.Visible = true;
                     LblTipoUsuario.Visible = true;
                     break;
@@ -301,6 +372,7 @@ namespace Certifica_logistica.Popups
             {
                 EdIdClasificador.BackColor = Color.LightGreen;
                 EdIdClasificador.Tag = cla.IdClasificador.ToString(CultureInfo.InvariantCulture);
+                TxtDetalle.Text = cla.Descripcion;
             }
         }
 
@@ -348,6 +420,23 @@ namespace Certifica_logistica.Popups
                 Console.Beep();
             }
         }
+
+        private void SpnMonto_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if(SpnMonto.Value>0)
+                    dxErrorProvider1.SetError(SpnMonto,"");
+                else
+                    dxErrorProvider1.SetError(SpnMonto, "Monto no puede ser Vacio");
+            }
+            catch
+            {
+                dxErrorProvider1.SetError(SpnMonto, "");
+            }
+        }
+
+        
 
     }
 }
