@@ -170,7 +170,7 @@ namespace Certifica_logistica.mantenimiento
             return (ret>0);
         }
 
-        public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null)
+        public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null,int anio=2014)
         {
             _obj = AlumnoDao.GetBy(idPrincipal);
             EdCUI.ResetBackColor();

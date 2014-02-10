@@ -96,15 +96,39 @@ namespace DaoLogistica.DAO
             return obj;
         }
         
-        public static DataSet FiltroByNroDocAsunto(string cFiltro, String anio)
+        public static DataSet FiltroByNroDocAsunto(string cFiltro, int anio, String cFiltro2)
         {
+            if (String.IsNullOrEmpty(cFiltro)) throw new ArgumentNullException("cFiltro");
+            if (anio<=0) throw new ArgumentNullException("anio");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TExpediente");
-            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.FiltroByDoc); //606
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.FiltroByRazon); //601
             DATA.Db.AddInParameter(cmd, "@NroDoc", DbType.String, cFiltro);
-            DATA.Db.AddInParameter(cmd, "@IdExpediente", DbType.String, anio);
+            DATA.Db.AddInParameter(cmd, "@Anio", DbType.Int32, anio);
+            if(!String.IsNullOrEmpty(cFiltro2))
+                DATA.Db.AddInParameter(cmd, "@cFiltro2", DbType.String, cFiltro2);
+            return DATA.Db.ExecuteDataSet(cmd);
+        }
+        public static DataSet FiltroByLog(String cLog, int anio)
+        {
+            if (String.IsNullOrEmpty(cLog)) throw new ArgumentNullException("cLog");
+            if (anio <= 0) throw new ArgumentNullException("anio");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_TExpediente");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.FiltroByDoc); //606 
+            DATA.Db.AddInParameter(cmd, "@NroDoc", DbType.String, cLog);
+            DATA.Db.AddInParameter(cmd, "@Anio", DbType.Int32, anio);
             return DATA.Db.ExecuteDataSet(cmd);
         }
 
+        public static DataSet FiltroBySubDependencia(string cFiltro, int anio, String cFiltro2)
+        {
+            var cmd = DATA.Db.GetStoredProcCommand("sp_TExpediente");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.FiltroByPersonal); //607
+            DATA.Db.AddInParameter(cmd, "@NroDoc", DbType.String, cFiltro);
+            DATA.Db.AddInParameter(cmd, "@Anio", DbType.Int32, anio);
+            if(!String.IsNullOrEmpty(cFiltro2))
+                DATA.Db.AddInParameter(cmd, "@Asunto", DbType.String, cFiltro2);
+            return DATA.Db.ExecuteDataSet(cmd);
+        }
         protected static Expediente MakeObj(IDataReader dr)
         {
             var obj = new Expediente();

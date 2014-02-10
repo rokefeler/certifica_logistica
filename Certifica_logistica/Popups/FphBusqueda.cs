@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 using Certifica_logistica.modulos;
 using DaoLogistica.DAO;
@@ -44,7 +45,25 @@ namespace Certifica_logistica.Popups
                     groupBox1.Visible = false;
                     Rnd1.Checked = true;
                     break;
+                case ENumTabla.ORDENSERVICIO:
+                    Rnd1.Text = @"Razon Social";
+                    Rnd2.Text = @"Razon de Detalle";
+                    break;
+                case ENumTabla.EXPEDIENTE:
+                    Rnd1.Text = @"Nro. Documento / Asunto";
+                    Rnd2.Text = @"Nro de Log";
+                    Rnd3.Text = @"SubDependencia Origen";
+                    var ninicial = DateTime.Now.Year;
+                    CboYearExp.Items.Clear();
+                    for (var i = ninicial; i >= 2012; i--)
+                        CboYearExp.Items.Add(i.ToString(CultureInfo.InvariantCulture));
+                    CboYearExp.SelectedIndex = 0;
+                    LblPeriodo.Visible = true;
+                    CboYearExp.Visible = true;
+                    Rnd3.Visible = true;
+                    break;
             }
+
             TxtFiltro.Focus();
         }
 
@@ -57,7 +76,10 @@ namespace Certifica_logistica.Popups
                 var cFiltro2 = String.Empty;
                 var cFilter = TxtFiltro.Text.Trim() + "   ";
                 var cFil = cFilter;
-                if (cFil.Trim().Length <= 2)
+                var nlong = 3;
+                if (_TipoTabla == ENumTabla.EXPEDIENTE && Rnd2.Checked)
+                    nlong = 2;
+                if (cFil.Trim().Length < nlong)
                 {
                     General.ShowMessage("La Longitud del Texto a buscar es muy corto\nIntentelo Nuevamente");
                     TxtFiltro.Focus();
@@ -110,10 +132,16 @@ namespace Certifica_logistica.Popups
                             case ENumTabla.RUBRO: //Siempre ocurrira solo esto
                                 _ds = RubroFinanciamientoDao.FiltroByNombre(cFilter, cFiltro2);
                                 break;
+                            case ENumTabla.ORDENSERVICIO:
+                                //_ds = OrdenLogisticaDao.FiltroByNroDocAsunto(cFilter, cFiltro2);
+                                break;
+                            case ENumTabla.EXPEDIENTE:
+                                _ds = ExpedienteDao.FiltroByNroDocAsunto(cFilter, Convert.ToInt32(CboYearExp.SelectedItem), cFiltro2);
+                                break;
                         }
                         
                     }
-                    else
+                    else if (Rnd2.Checked)
                     {
                         switch (_TipoTabla)
                         {
@@ -135,9 +163,20 @@ namespace Certifica_logistica.Popups
                             case ENumTabla.SUBDEPENDENCIA:
                                 _ds = SubDependenciaDao.FiltroByEncargadoSubDependencia(cFilter, cFiltro2);
                                 break;
+                            case ENumTabla.EXPEDIENTE:
+                                _ds = ExpedienteDao.FiltroByLog(cFilter, Convert.ToInt32(CboYearExp.SelectedItem));
+                                break;
                         }                        
                         
                     }
+                    else //si esta seleccionado 3era opcion
+                        switch (_TipoTabla)
+                        {
+
+                            case ENumTabla.EXPEDIENTE:
+                                _ds = ExpedienteDao.FiltroBySubDependencia(cFilter, Convert.ToInt32(CboYearExp.SelectedItem), cFiltro2);
+                                break;
+                        }  
                 } //try
                 catch (Exception ee)
                 {
@@ -200,5 +239,11 @@ namespace Certifica_logistica.Popups
             gridView1.BestFitColumns();
         }
         #endregion
+
+        private void TxtFiltro_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode== Keys.Enter)
+                BtnFiltrar_Click(sender,null);
+        }
     }
 }

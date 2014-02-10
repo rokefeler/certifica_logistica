@@ -168,14 +168,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Certifica_logistica.exe" size="2806272">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Certifica_logistica.exe" size="2891264">
       <assemblyIdentity name="Certifica_logistica" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>sC9YjBYH+k4hpGL66O1Lixf4bN8=</dsig:DigestValue>
+        <dsig:DigestValue>mpChZ9455RfAmmPuJmuDhI4TzUk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -187,7 +187,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>dbZOtDDI6zUeDhfhaAYNuugAER4=</dsig:DigestValue>
+        <dsig:DigestValue>XhPPGROEgtZw0QvFjWz5jNK5kVo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -216,14 +216,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DaoLogistica.dll" size="102400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DaoLogistica.dll" size="103424">
       <assemblyIdentity name="DaoLogistica" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>+uNgeveZceABpuU/+DyXo3P0/LM=</dsig:DigestValue>
+        <dsig:DigestValue>KBKHrcgiS+3oQb6CsS6LNi1lr/8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -935,13 +935,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Certifica_logistica.exe.config" size="1037">
+  <file name="Certifica_logistica.exe.config" size="1179">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>/iKqRuOmKA2C0nqEkMq+WUz5HYM=</dsig:DigestValue>
+      <dsig:DigestValue>Qzt+fXQa7pF7CyAWJHqhOVAjgRQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="unsa.ico" size="15086">

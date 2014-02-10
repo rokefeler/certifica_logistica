@@ -43,6 +43,9 @@ namespace Certifica_logistica.Popups
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.CboYearExp = new System.Windows.Forms.ComboBox();
+            this.Rnd3 = new System.Windows.Forms.RadioButton();
+            this.LblPeriodo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -82,10 +85,10 @@ namespace Certifica_logistica.Popups
             // ChkFilter
             // 
             this.ChkFilter.AutoSize = true;
-            this.ChkFilter.Location = new System.Drawing.Point(450, 37);
+            this.ChkFilter.Location = new System.Drawing.Point(453, 71);
             this.ChkFilter.Name = "ChkFilter";
             this.ChkFilter.Size = new System.Drawing.Size(199, 17);
-            this.ChkFilter.TabIndex = 8;
+            this.ChkFilter.TabIndex = 4;
             this.ChkFilter.Text = "Mostrar Fila de Filtrado por Columnas";
             this.ChkFilter.UseVisualStyleBackColor = true;
             this.ChkFilter.CheckedChanged += new System.EventHandler(this.ChkFilter_CheckedChanged);
@@ -93,21 +96,24 @@ namespace Certifica_logistica.Popups
             // ChkMostrarGrupo
             // 
             this.ChkMostrarGrupo.AutoSize = true;
-            this.ChkMostrarGrupo.Location = new System.Drawing.Point(450, 12);
+            this.ChkMostrarGrupo.Location = new System.Drawing.Point(453, 50);
             this.ChkMostrarGrupo.Name = "ChkMostrarGrupo";
             this.ChkMostrarGrupo.Size = new System.Drawing.Size(193, 17);
-            this.ChkMostrarGrupo.TabIndex = 7;
+            this.ChkMostrarGrupo.TabIndex = 3;
             this.ChkMostrarGrupo.Text = "Mostrar Cabecera de Agrupamiento";
             this.ChkMostrarGrupo.UseVisualStyleBackColor = true;
             this.ChkMostrarGrupo.CheckedChanged += new System.EventHandler(this.ChkMostrarGrupo_CheckedChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.LblPeriodo);
+            this.groupBox1.Controls.Add(this.Rnd3);
+            this.groupBox1.Controls.Add(this.CboYearExp);
             this.groupBox1.Controls.Add(this.Rnd2);
             this.groupBox1.Controls.Add(this.Rnd1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(345, 48);
+            this.groupBox1.Size = new System.Drawing.Size(637, 48);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar por:";
@@ -115,7 +121,7 @@ namespace Certifica_logistica.Popups
             // Rnd2
             // 
             this.Rnd2.AutoSize = true;
-            this.Rnd2.Location = new System.Drawing.Point(152, 19);
+            this.Rnd2.Location = new System.Drawing.Point(183, 19);
             this.Rnd2.Name = "Rnd2";
             this.Rnd2.Size = new System.Drawing.Size(110, 17);
             this.Rnd2.TabIndex = 1;
@@ -126,7 +132,7 @@ namespace Certifica_logistica.Popups
             // 
             this.Rnd1.AutoSize = true;
             this.Rnd1.Checked = true;
-            this.Rnd1.Location = new System.Drawing.Point(28, 19);
+            this.Rnd1.Location = new System.Drawing.Point(10, 19);
             this.Rnd1.Name = "Rnd1";
             this.Rnd1.Size = new System.Drawing.Size(107, 17);
             this.Rnd1.TabIndex = 0;
@@ -141,8 +147,9 @@ namespace Certifica_logistica.Popups
             this.TxtFiltro.MaxLength = 35;
             this.TxtFiltro.Name = "TxtFiltro";
             this.TxtFiltro.Size = new System.Drawing.Size(221, 20);
-            this.TxtFiltro.TabIndex = 2;
+            this.TxtFiltro.TabIndex = 1;
             this.TxtFiltro.Enter += new System.EventHandler(this.TxtFiltro_Enter);
+            this.TxtFiltro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtFiltro_KeyDown);
             // 
             // label3
             // 
@@ -150,17 +157,17 @@ namespace Certifica_logistica.Popups
             this.label3.Location = new System.Drawing.Point(2, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 13);
-            this.label3.TabIndex = 1;
+            this.label3.TabIndex = 0;
             this.label3.Text = "&Ingrese Claves a buscar:";
             // 
             // BtnFiltrar
             // 
             this.BtnFiltrar.Image = global::Certifica_logistica.Properties.Resources.SearchRed_16;
             this.BtnFiltrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnFiltrar.Location = new System.Drawing.Point(351, 37);
+            this.BtnFiltrar.Location = new System.Drawing.Point(354, 53);
             this.BtnFiltrar.Name = "BtnFiltrar";
-            this.BtnFiltrar.Size = new System.Drawing.Size(81, 44);
-            this.BtnFiltrar.TabIndex = 3;
+            this.BtnFiltrar.Size = new System.Drawing.Size(78, 34);
+            this.BtnFiltrar.TabIndex = 2;
             this.BtnFiltrar.Text = "&Filtrar";
             this.BtnFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnFiltrar.UseVisualStyleBackColor = true;
@@ -173,7 +180,7 @@ namespace Certifica_logistica.Popups
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.Size = new System.Drawing.Size(652, 207);
-            this.gridControl1.TabIndex = 1;
+            this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -310,6 +317,39 @@ namespace Certifica_logistica.Popups
             this.panel4.Size = new System.Drawing.Size(652, 207);
             this.panel4.TabIndex = 2;
             // 
+            // CboYearExp
+            // 
+            this.CboYearExp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CboYearExp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboYearExp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CboYearExp.FormattingEnabled = true;
+            this.CboYearExp.Location = new System.Drawing.Point(570, 18);
+            this.CboYearExp.Name = "CboYearExp";
+            this.CboYearExp.Size = new System.Drawing.Size(61, 21);
+            this.CboYearExp.TabIndex = 4;
+            this.CboYearExp.Visible = false;
+            // 
+            // Rnd3
+            // 
+            this.Rnd3.AutoSize = true;
+            this.Rnd3.Location = new System.Drawing.Point(343, 19);
+            this.Rnd3.Name = "Rnd3";
+            this.Rnd3.Size = new System.Drawing.Size(108, 17);
+            this.Rnd3.TabIndex = 2;
+            this.Rnd3.Text = "SubDependencia";
+            this.Rnd3.UseVisualStyleBackColor = true;
+            this.Rnd3.Visible = false;
+            // 
+            // LblPeriodo
+            // 
+            this.LblPeriodo.AutoSize = true;
+            this.LblPeriodo.Location = new System.Drawing.Point(518, 21);
+            this.LblPeriodo.Name = "LblPeriodo";
+            this.LblPeriodo.Size = new System.Drawing.Size(46, 13);
+            this.LblPeriodo.TabIndex = 3;
+            this.LblPeriodo.Text = "Periodo:";
+            this.LblPeriodo.Visible = false;
+            // 
             // FphBusqueda
             // 
             this.AcceptButton = null;
@@ -349,5 +389,8 @@ namespace Certifica_logistica.Popups
         private System.Windows.Forms.CheckBox ChkFilter;
         private System.Windows.Forms.CheckBox ChkMostrarGrupo;
         public  ENumTabla _TipoTabla;
+        private System.Windows.Forms.Label LblPeriodo;
+        private System.Windows.Forms.RadioButton Rnd3;
+        private System.Windows.Forms.ComboBox CboYearExp;
     }
 }

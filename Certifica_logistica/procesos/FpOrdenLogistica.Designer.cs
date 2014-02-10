@@ -30,13 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FpOrdenLogistica));
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnCargaOrden = new System.Windows.Forms.Button();
             this.EdIdOrden = new DevExpress.XtraEditors.ButtonEdit();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.LblRd = new System.Windows.Forms.Label();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.TxtRd = new DevExpress.XtraEditors.TextEdit();
             this.memoDescripcion = new DevExpress.XtraEditors.MemoEdit();
             this.GrpTramite = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.DtFechaGiro = new DevExpress.XtraEditors.DateEdit();
             this.TxtNroProceso = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtReferencia = new DevExpress.XtraEditors.TextEdit();
@@ -62,7 +66,6 @@
             this.CboFuente = new System.Windows.Forms.ComboBox();
             this.CboMoneda = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.DtFechaGiro = new DevExpress.XtraEditors.DateEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CboYearExp = new System.Windows.Forms.ComboBox();
@@ -98,17 +101,19 @@
             this.repositoryItemSearchIdMeta = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMonto = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TxtRd = new DevExpress.XtraEditors.TextEdit();
-            this.LblRd = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CboYearOrden = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdIdOrden.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtRd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescripcion.Properties)).BeginInit();
             this.GrpTramite.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtFechaGiro.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtFechaGiro.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNroProceso.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtReferencia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCcp.Properties)).BeginInit();
@@ -118,8 +123,6 @@
             this.GrpAprobacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMontoAprobado.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNroAutorizacion.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DtFechaGiro.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DtFechaGiro.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdIdExpediente.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.GrpDocumento.SuspendLayout();
@@ -133,8 +136,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchIdMeta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtRd.Properties)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pic1
@@ -149,28 +150,31 @@
             // 
             // pan1
             // 
+            this.pan1.Controls.Add(this.CboYearOrden);
             this.pan1.Controls.Add(this.EdIdOrden);
-            this.pan1.Controls.Add(this.button1);
+            this.pan1.Controls.Add(this.BtnCargaOrden);
             this.pan1.Size = new System.Drawing.Size(698, 43);
             this.pan1.Controls.SetChildIndex(this.LblTitulo, 0);
             this.pan1.Controls.SetChildIndex(this.pic1, 0);
-            this.pan1.Controls.SetChildIndex(this.button1, 0);
+            this.pan1.Controls.SetChildIndex(this.BtnCargaOrden, 0);
             this.pan1.Controls.SetChildIndex(this.EdIdOrden, 0);
+            this.pan1.Controls.SetChildIndex(this.CboYearOrden, 0);
             // 
-            // button1
+            // BtnCargaOrden
             // 
-            this.button1.BackColor = System.Drawing.Color.Gold;
-            this.button1.Location = new System.Drawing.Point(641, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Carga";
-            this.button1.UseVisualStyleBackColor = false;
+            this.BtnCargaOrden.BackColor = System.Drawing.Color.Gold;
+            this.BtnCargaOrden.Location = new System.Drawing.Point(646, 10);
+            this.BtnCargaOrden.Name = "BtnCargaOrden";
+            this.BtnCargaOrden.Size = new System.Drawing.Size(51, 23);
+            this.BtnCargaOrden.TabIndex = 2;
+            this.BtnCargaOrden.Text = "Carga";
+            this.BtnCargaOrden.UseVisualStyleBackColor = false;
+            this.BtnCargaOrden.Click += new System.EventHandler(this.BtnCargaOrden_Click);
             // 
             // EdIdOrden
             // 
             this.EdIdOrden.EnterMoveNextControl = true;
-            this.EdIdOrden.Location = new System.Drawing.Point(533, 11);
+            this.EdIdOrden.Location = new System.Drawing.Point(521, 11);
             this.EdIdOrden.Name = "EdIdOrden";
             this.EdIdOrden.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -181,8 +185,18 @@
             this.EdIdOrden.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdIdOrden.Properties.MaxLength = 15;
             this.EdIdOrden.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TxtCodPersonal_Properties_ButtonClick);
-            this.EdIdOrden.Size = new System.Drawing.Size(104, 20);
+            this.EdIdOrden.Size = new System.Drawing.Size(61, 20);
             this.EdIdOrden.TabIndex = 1;
+            // 
+            // LblRd
+            // 
+            this.LblRd.AutoSize = true;
+            this.LblRd.Location = new System.Drawing.Point(440, 232);
+            this.LblRd.Name = "LblRd";
+            this.LblRd.Size = new System.Drawing.Size(56, 13);
+            this.LblRd.TabIndex = 3;
+            this.LblRd.Text = "Nº de Aut.";
+            this.toolTipController1.SetToolTip(this.LblRd, "Nro. de Autorización de Pago Extemporaneo");
             // 
             // dxErrorProvider1
             // 
@@ -207,6 +221,17 @@
             this.splitContainerControl1.SplitterPosition = 307;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // TxtRd
+            // 
+            this.TxtRd.EnterMoveNextControl = true;
+            this.TxtRd.Location = new System.Drawing.Point(495, 227);
+            this.TxtRd.Name = "TxtRd";
+            this.TxtRd.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtRd.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.TxtRd.Properties.MaxLength = 45;
+            this.TxtRd.Size = new System.Drawing.Size(198, 22);
+            this.TxtRd.TabIndex = 4;
             // 
             // memoDescripcion
             // 
@@ -250,6 +275,31 @@
             this.GrpTramite.TabIndex = 0;
             this.GrpTramite.TabStop = false;
             this.GrpTramite.Text = "Ingrese Expediente Relacionado:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Gold;
+            this.groupBox2.Controls.Add(this.DtFechaGiro);
+            this.groupBox2.Location = new System.Drawing.Point(585, 11);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(104, 61);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "< Fecha Giro >";
+            // 
+            // DtFechaGiro
+            // 
+            this.DtFechaGiro.EditValue = null;
+            this.DtFechaGiro.EnterMoveNextControl = true;
+            this.DtFechaGiro.Location = new System.Drawing.Point(12, 29);
+            this.DtFechaGiro.Name = "DtFechaGiro";
+            this.DtFechaGiro.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DtFechaGiro.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DtFechaGiro.Properties.Mask.BeepOnError = true;
+            this.DtFechaGiro.Size = new System.Drawing.Size(86, 20);
+            this.DtFechaGiro.TabIndex = 8;
             // 
             // TxtNroProceso
             // 
@@ -523,21 +573,6 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "Moneda";
             // 
-            // DtFechaGiro
-            // 
-            this.DtFechaGiro.EditValue = null;
-            this.DtFechaGiro.EnterMoveNextControl = true;
-            this.DtFechaGiro.Location = new System.Drawing.Point(12, 29);
-            this.DtFechaGiro.Name = "DtFechaGiro";
-            this.DtFechaGiro.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DtFechaGiro.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DtFechaGiro.Properties.Mask.BeepOnError = true;
-            this.DtFechaGiro.Properties.ReadOnly = true;
-            this.DtFechaGiro.Size = new System.Drawing.Size(86, 20);
-            this.DtFechaGiro.TabIndex = 8;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -581,6 +616,7 @@
             this.EdIdExpediente.Properties.Mask.EditMask = "99999999";
             this.EdIdExpediente.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdIdExpediente.Properties.MaxLength = 15;
+            this.EdIdExpediente.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdIdExpediente_Properties_ButtonClick);
             this.EdIdExpediente.Size = new System.Drawing.Size(67, 20);
             this.EdIdExpediente.TabIndex = 1;
             this.EdIdExpediente.Enter += new System.EventHandler(this.ObjectEnter);
@@ -1022,37 +1058,16 @@
             this.colMonto.VisibleIndex = 6;
             this.colMonto.Width = 86;
             // 
-            // TxtRd
+            // CboYearOrden
             // 
-            this.TxtRd.EnterMoveNextControl = true;
-            this.TxtRd.Location = new System.Drawing.Point(495, 227);
-            this.TxtRd.Name = "TxtRd";
-            this.TxtRd.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.TxtRd.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtRd.Properties.MaxLength = 45;
-            this.TxtRd.Size = new System.Drawing.Size(198, 22);
-            this.TxtRd.TabIndex = 4;
-            // 
-            // LblRd
-            // 
-            this.LblRd.AutoSize = true;
-            this.LblRd.Location = new System.Drawing.Point(440, 232);
-            this.LblRd.Name = "LblRd";
-            this.LblRd.Size = new System.Drawing.Size(56, 13);
-            this.LblRd.TabIndex = 3;
-            this.LblRd.Text = "Nº de Aut.";
-            this.toolTipController1.SetToolTip(this.LblRd, "Nro. de Autorización de Pago Extemporaneo");
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Gold;
-            this.groupBox2.Controls.Add(this.DtFechaGiro);
-            this.groupBox2.Location = new System.Drawing.Point(585, 11);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(104, 61);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "< Fecha Giro >";
+            this.CboYearOrden.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CboYearOrden.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboYearOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CboYearOrden.FormattingEnabled = true;
+            this.CboYearOrden.Location = new System.Drawing.Point(585, 10);
+            this.CboYearOrden.Name = "CboYearOrden";
+            this.CboYearOrden.Size = new System.Drawing.Size(59, 21);
+            this.CboYearOrden.TabIndex = 24;
             // 
             // FpOrdenLogistica
             // 
@@ -1073,9 +1088,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TxtRd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoDescripcion.Properties)).EndInit();
             this.GrpTramite.ResumeLayout(false);
             this.GrpTramite.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DtFechaGiro.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtFechaGiro.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNroProceso.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtReferencia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCcp.Properties)).EndInit();
@@ -1086,8 +1105,6 @@
             this.GrpAprobacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMontoAprobado.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtNroAutorizacion.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DtFechaGiro.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DtFechaGiro.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdIdExpediente.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1103,8 +1120,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchIdMeta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtRd.Properties)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1112,7 +1127,7 @@
         #endregion
 
         private DevExpress.XtraEditors.ButtonEdit EdIdOrden;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnCargaOrden;
         private DevExpress.Utils.ToolTipController toolTipController1;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
@@ -1182,5 +1197,6 @@
         private DevExpress.XtraEditors.TextEdit TxtRd;
         private System.Windows.Forms.Label LblRd;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox CboYearOrden;
     }
 }

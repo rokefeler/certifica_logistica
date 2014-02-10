@@ -74,6 +74,7 @@
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.TxtnLog = new System.Windows.Forms.TextBox();
+            this.BtnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -126,6 +127,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.BtnLimpiar);
             this.splitContainer1.Panel1.Controls.Add(this.LstObsv);
             this.splitContainer1.Panel1.Controls.Add(this.BtnObsv);
             this.splitContainer1.Panel1.Controls.Add(this.TxtObsv);
@@ -158,9 +160,9 @@
             // BtnObsv
             // 
             this.BtnObsv.Enabled = false;
-            this.BtnObsv.Location = new System.Drawing.Point(575, 247);
+            this.BtnObsv.Location = new System.Drawing.Point(575, 261);
             this.BtnObsv.Name = "BtnObsv";
-            this.BtnObsv.Size = new System.Drawing.Size(75, 50);
+            this.BtnObsv.Size = new System.Drawing.Size(60, 36);
             this.BtnObsv.TabIndex = 9;
             this.BtnObsv.Text = "Agregar";
             this.BtnObsv.UseVisualStyleBackColor = true;
@@ -530,6 +532,7 @@
             this.EdIdExpediente.Properties.Mask.EditMask = "99999999";
             this.EdIdExpediente.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdIdExpediente.Properties.MaxLength = 15;
+            this.EdIdExpediente.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdIdExpediente_Properties_ButtonClick);
             this.EdIdExpediente.Size = new System.Drawing.Size(67, 20);
             this.EdIdExpediente.TabIndex = 1;
             this.EdIdExpediente.Leave += new System.EventHandler(this.EdIdExpediente_Leave);
@@ -735,6 +738,17 @@
             this.TxtnLog.TabIndex = 2;
             this.TxtnLog.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // BtnLimpiar
+            // 
+            this.BtnLimpiar.Enabled = false;
+            this.BtnLimpiar.Location = new System.Drawing.Point(575, 228);
+            this.BtnLimpiar.Name = "BtnLimpiar";
+            this.BtnLimpiar.Size = new System.Drawing.Size(60, 33);
+            this.BtnLimpiar.TabIndex = 11;
+            this.BtnLimpiar.Text = "&Limpiar";
+            this.BtnLimpiar.UseVisualStyleBackColor = true;
+            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
+            // 
             // FpTramite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -826,5 +840,6 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.TextBox TxtnLog;
+        private System.Windows.Forms.Button BtnLimpiar;
     }
 }

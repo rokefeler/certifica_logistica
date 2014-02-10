@@ -54,8 +54,7 @@
         GetByNumMotor = 530,
         GetByOficina = 531,
         GetByPeriodo = 532,
-        GetByPeriodoYCargo=5321,
-        GetByPeriodoYJefe = 5322,
+        GetPrinter=5321,
         GetByRazon = 533,
         GetByRubroDependencia = 534,
         GetByReferencia = 5341,
@@ -70,7 +69,7 @@
         FiltroByCategoria=603,
         FiltroByCodSbn=604,
         FiltroByCodArea = 605,
-        FiltroByDoc = 606,
+        FiltroByDoc = 606, 
         FiltroByPersonal = 607, //ok utilizado
         FiltroByPrograma = 608, //ok util
         FiltroByDireccion = 609,

@@ -348,13 +348,14 @@ namespace Certifica_logistica
             return false;
         }
 
-       /// <summary>
-       /// Permite cargar los datos del Valor Primario que se desee
-       /// </summary>
-       /// <param name="idPrincipal"></param>
-       /// <param name="idSecundario"></param>
-       /// <returns></returns>
-        public virtual bool Master_CargarFicha(String idPrincipal, String idSecundario=null)
+        /// <summary>
+        /// Permite cargar los datos del Valor Primario que se desee
+        /// </summary>
+        /// <param name="idPrincipal"></param>
+        /// <param name="idSecundario"></param>
+        /// <param name="anio"></param>
+        /// <returns></returns>
+        public virtual bool Master_CargarFicha(String idPrincipal, String idSecundario=null, int anio=2014)
         {
             return false;
         }

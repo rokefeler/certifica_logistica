@@ -8,16 +8,17 @@ namespace DaoLogistica.DAO
     public class OrdenLogisticaDao
     {
 
-        public static int Grabar(OrdenLogistica obj, DbTransaction dbTrans,out String cNroExp)
+        public static int Grabar(OrdenLogistica obj, DbTransaction dbTrans,out int cNroOrden)
         {
-            cNroExp = String.Empty;
+            cNroOrden = 0;
             if (obj==null) throw new ArgumentNullException("obj");
-            if (String.IsNullOrEmpty(obj.Cnro)) throw new ArgumentNullException("obj","Falta Nro. Exp.");
+            //if (obj.Nro==0) throw new ArgumentNullException("obj","Falta Nro. de Orden");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
             DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.InsertUpdate);
             if(obj.IdOrden>0)
                 DATA.Db.AddInParameter(cmd, "IdOrden", DbType.Int64, obj.IdOrden);
-            DATA.Db.AddInParameter(cmd, "Cnro", DbType.String, obj.Cnro);
+            DATA.Db.AddInParameter(cmd, "Nro", DbType.Int32, obj.Nro);
+            DATA.Db.AddInParameter(cmd, "Anio", DbType.Int32, obj.Anio);
             DATA.Db.AddInParameter(cmd, "IdExpediente", DbType.String, obj.IdExpediente);
             DATA.Db.AddInParameter(cmd, "IdxTipoOrden", DbType.String, obj.IdxTipoOrden);
             DATA.Db.AddInParameter(cmd, "TipoUsuario", DbType.String, obj.TipoUsuario);
@@ -41,13 +42,14 @@ namespace DaoLogistica.DAO
                 DATA.Db.AddInParameter(cmd, "RdAutoriza", DbType.String, obj.RdAutoriza);
             DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, obj.CodLogin);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
-            DATA.Db.AddOutParameter(cmd, "NroExp", DbType.String, 12);
+            DATA.Db.AddOutParameter(cmd, "NroOrden", DbType.Int32, 12);
             if (dbTrans != null)
                 DATA.Db.ExecuteNonQuery(cmd, dbTrans);
             else
                 DATA.Db.ExecuteNonQuery(cmd);
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
-            cNroExp = (String)DATA.Db.GetParameterValue(cmd, "@NroExp");
+            if(obj.IdOrden<=0)
+                cNroOrden = (int)DATA.Db.GetParameterValue(cmd, "@NroOrden");
             return ret; //devuelve el id único del registro
         }
 
@@ -66,7 +68,7 @@ namespace DaoLogistica.DAO
             return ret;
         }
 
-        public static OrdenLogistica GetbyId(int idOrden)
+        public static OrdenLogistica GetbyId(long idOrden)
         {
             if (idOrden<=0) throw new ArgumentNullException("idOrden");
             OrdenLogistica obj = null;
@@ -83,13 +85,17 @@ namespace DaoLogistica.DAO
             }
             return obj;
         }
-        public static OrdenLogistica GetbyId(String cNroOrden)
+        public static OrdenLogistica GetbyId(int nroOrden, int anio, string idxTipoOrden)
         {
-            if (String.IsNullOrEmpty(cNroOrden)) throw new ArgumentNullException("cNroOrden");
+            if (nroOrden<=0) throw new ArgumentNullException("nroOrden");
+            if (anio<= 0) throw new ArgumentNullException("anio");
+            if (String.IsNullOrEmpty(idxTipoOrden)) throw new ArgumentNullException("idxTipoOrden");
             OrdenLogistica obj = null;
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
-            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetById);
-            DATA.Db.AddInParameter(cmd, "cNro", DbType.String, cNroOrden);
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetById2); //512
+            DATA.Db.AddInParameter(cmd, "Nro", DbType.Int32, nroOrden);
+            DATA.Db.AddInParameter(cmd, "Anio", DbType.Int32, anio);
+            DATA.Db.AddInParameter(cmd, "idxTipoOrden", DbType.String, idxTipoOrden);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             using (var dr = DATA.Db.ExecuteReader(cmd))
             {
@@ -100,26 +106,26 @@ namespace DaoLogistica.DAO
             }
             return obj;
         }
-        /*
-        public static DataSet FiltroByNroDocAsunto(string cFiltro, String anio)
+        
+        public static DataSet ImprimirOrden(long IdOrden)
         {
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
-            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.FiltroByDoc); //606
-            DATA.Db.AddInParameter(cmd, "@NroDoc", DbType.String, cFiltro);
-            DATA.Db.AddInParameter(cmd, "@IdOrdenLogistica", DbType.String, anio);
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetPrinter); //5321
+            DATA.Db.AddInParameter(cmd, "IdOrden", DbType.Int64, IdOrden);
             return DATA.Db.ExecuteDataSet(cmd);
         }
-        */
+
         protected static OrdenLogistica MakeObj(IDataReader dr)
         {
             var obj = new OrdenLogistica();
             obj.IdOrden = dr.GetInt64(dr.GetOrdinal("IdOrden"));
-            obj.Cnro = dr.GetString(dr.GetOrdinal("Cnro"));
+            obj.Nro = dr.GetInt32(dr.GetOrdinal("Nro"));
+            obj.Anio = dr.GetInt32(dr.GetOrdinal("Anio"));
             obj.IdExpediente = dr.GetString(dr.GetOrdinal("IdExpediente"));
             obj.IdxTipoOrden = dr.GetString(dr.GetOrdinal("IdxTipoOrden"));
             obj.TipoUsuario = Convert.ToChar(dr.GetValue(dr.GetOrdinal("TipoUsuario")));
             obj.Codigo = dr.GetString(dr.GetOrdinal("Codigo"));
-            obj.StampNombre= dr.GetString(dr.GetOrdinal("StampNombre"));
+            obj.StampNombre = dr.GetString(dr.GetOrdinal("stamp_nombre"));
             obj.FechaGiro = dr.GetDateTime(dr.GetOrdinal("FechaGiro"));
             obj.IdAlmacen = dr.GetInt16(dr.GetOrdinal("IdAlmacen"));
             obj.IdxProceso = dr.GetString(dr.GetOrdinal("IdxProceso"));
@@ -158,12 +164,14 @@ namespace DaoLogistica.DAO
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
             return (ret > 0);
         }
-        public static bool ExisteById(String cNroOrden)
+        public static bool ExisteById(int nroOrden, int anio)
         {
-            if (string.IsNullOrEmpty(cNroOrden)) throw new ArgumentNullException("cNroOrden");
+            if (nroOrden<=0) throw new ArgumentNullException("nroOrden");
+            if (anio<= 0) throw new ArgumentNullException("anio");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
             DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.ExistsId);
-            DATA.Db.AddInParameter(cmd, "cNroOrden", DbType.String, cNroOrden);
+            DATA.Db.AddInParameter(cmd, "Nro", DbType.Int32, nroOrden);
+            DATA.Db.AddInParameter(cmd, "Anio", DbType.Int32, anio);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             DATA.Db.ExecuteNonQuery(cmd);
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");

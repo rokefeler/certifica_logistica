@@ -392,7 +392,7 @@ namespace Certifica_logistica.procesos
             return true;
         }
 
-        public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null)
+        public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null,int anio=2014)
         {
             BtnObsv.Enabled = false;
             _exp = ExpedienteDao.GetbyId(idPrincipal);
@@ -653,6 +653,30 @@ namespace Certifica_logistica.procesos
                         con.Close();
                 }
             }
+        }
+
+        private void EdIdExpediente_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            var oFrm = new FphBusqueda { _TiTuloForm = "Busqueda De Expedientes Ingresados", _backColor = BackColor, _TipoTabla = ENumTabla.EXPEDIENTE };
+            oFrm.ShowDialog();
+            SuspendLayout();
+            var cad = oFrm._Codigo;
+            var sLista = cad.Split('-');
+            toolTipController1.SetToolTip(EdIdExpediente, oFrm._Nombre);
+            EdIdExpediente.EditValue=sLista[0];
+            foreach (var anio in CboYearExp.Items)
+            {
+                if (!anio.Equals(sLista[1])) continue;
+                CboYearExp.SelectedItem = anio;
+                break;
+            }
+            oFrm.Close();
+            ResumeLayout();
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            TxtObsv.Text = "";
         }
       
         /*

@@ -12,7 +12,8 @@ namespace DaoLogistica.ENTIDAD
         public void Clear()
         {
             IdOrden = 0;
-            Cnro = String.Empty;
+            Nro = 0;
+            Anio = 0;
             IdExpediente = String.Empty;
             IdxTipoOrden = String.Empty;
             TipoUsuario = 'N'; //[V=Proveedor] - [P=Personal] - [A=Alumno] - [S=Servicio] - [N=Ninguno]
@@ -34,7 +35,7 @@ namespace DaoLogistica.ENTIDAD
             IsCoa = false;
             CodLogin = String.Empty;
             FechaRegistro = new DateTime(1900, 1, 1);
-            ;
+            
             FechaImpresion = new DateTime(1900, 1, 1);
             FechaAnulacion = new DateTime(1900, 1, 1);
             CodLoginAnula = String.Empty;
@@ -43,7 +44,8 @@ namespace DaoLogistica.ENTIDAD
         #region Properties
 	
 		public long IdOrden { get; set; }
-        public string Cnro { get; set; }
+        public int Nro { get; set; }
+        public int Anio { get; set; }
         public string IdExpediente { get; set; }
         public string IdxTipoOrden { get; set; }
 

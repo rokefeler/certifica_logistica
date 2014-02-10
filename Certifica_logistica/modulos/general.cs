@@ -11,7 +11,6 @@ using Certifica_logistica.Ds;
 using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
-using DevExpress.Data.Selection;
 using Rebex.Net;
 
 namespace Certifica_logistica.modulos
@@ -49,7 +48,11 @@ static class CONSTANTE
         // ReSharper disable once InconsistentNaming
         SUBDEPENDENCIA,
         // ReSharper disable once InconsistentNaming
-        RUBRO
+        RUBRO,
+        // ReSharper disable once InconsistentNaming
+        ORDENSERVICIO,
+        // ReSharper disable once InconsistentNaming
+        EXPEDIENTE
     };
     public enum ENumTipoOrden
     {
@@ -294,7 +297,7 @@ static class CONSTANTE
             Console.Beep();
             MessageBox.Show(msg, titulo, button, icon);
         }
-        public static void RellenarEstadoDataSet(ref DsTramite.TTipoUsuarioDataTable tbE, ENumTipoOrden tipoOrden= ENumTipoOrden.PARAORDEN, bool EsParaDetalle=false)
+        public static void RellenarEstadoDataSet(ref DsTramite.TTipoUsuarioDataTable tbE, ENumTipoOrden tipoOrden= ENumTipoOrden.PARAORDEN, bool esParaDetalle=false)
         {
             //[V=Proveedor] - [P=Personal] - [A=Alumno] - [S=Servicios] [N=Ninguno]
             var r = tbE.NewRow();
@@ -341,7 +344,7 @@ static class CONSTANTE
                     r[0] = 'V';
                     r[1] = "PROVEEDOR";
                     tbE.Rows.Add(r);
-                    if (!EsParaDetalle) break;
+                    if (!esParaDetalle) break;
                     r = tbE.NewRow();
                     r[0] = 'S';
                     r[1] = "SERVICIOS";
@@ -533,6 +536,37 @@ static class CONSTANTE
                    break;
            }
            return cad;
+       }
+
+       public static string AnalizaTipoOrden(ENumTipoOrden tipoOrden)
+       {
+           string cod;
+           switch (tipoOrden)
+           {
+               case ENumTipoOrden.CONVENIO:
+                   cod= "TOGL-0005"; // Tipo=TOGL
+                   break;
+               case ENumTipoOrden.MOVILIDAD:
+                   cod= "TOGL-0003"; // Tipo=TOGL
+                   break;
+               case ENumTipoOrden.PROPINAS:
+                   cod= "TOGL-0004"; // Tipo=TOGL
+                   break;
+               case ENumTipoOrden.SERVICIO:
+                   cod= "TOGL-0001"; // Tipo=TOGL
+                   break;
+               case ENumTipoOrden.VIATICOS:
+                   cod= "TOGL-0002"; // Tipo=TOGL
+                   break;
+               case ENumTipoOrden.COMPRA:
+                   cod= "TOGL-0006"; // Tipo=TOGL
+                   break;
+               default:
+                   cod = ""; //("ERROR EN TIPO DE ORDEN", "SOS PIRATA?");
+                   //Application.Exit(); //culminar aplicación
+                   break;
+           }
+           return cod;
        }
     } //--no borrar
 }

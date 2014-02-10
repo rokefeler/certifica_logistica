@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using Certifica_logistica.Ds;
 using Certifica_logistica.modulos;
 using Certifica_logistica.Popups;
+using Certifica_logistica.utiles;
+using CrystalDecisions.CrystalReports.Engine;
 using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
@@ -22,6 +24,7 @@ namespace Certifica_logistica.procesos
         private DsTramite.DetalleOrdenDataTable _tbOrdenDetalle;
         private string _lastClasificador;
         private string _lastMeta;
+        private Ds.PrinterOrden _DsPrint;
 /*
         private DataSet _ds;
 */
@@ -34,6 +37,77 @@ namespace Certifica_logistica.procesos
             _tbOrdenDetalle = (DsTramite.DetalleOrdenDataTable) dsTramite.Tables[name: "DetalleOrden"];
         }
 
+        private void FpOrdenLogistica_Load(object sender, EventArgs e)
+        {
+            var cad = String.Empty;
+            var collection = new AutoCompleteStringCollection();
+            string[] str = { "FACTURA", "BOLETA DE VENTA", "SERV.LUZ ELECTRICA", "SERV.LUZ TRIFASICA", "SERV.AGUA", "SERV.TELEFONIA MOVIL", "SERV.TELEFONIA FIJA", "SERV.INTERNET", "LABOR REALIZADA (rph)", "PROPINAS", "MOVILIDAD", "VIATICOS", "PASAJES AEREOS", "RECIBO", "PASAJES TERRESTRES", "SERV.CABLE", "DOCENTE EXTRANJERO" };
+            collection.AddRange(str);
+            TxtReferencia.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            TxtReferencia.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            TxtReferencia.MaskBox.AutoCompleteCustomSource = collection;
+            var ninicial = DateTime.Now.Year;
+            CboYearExp.Items.Clear();
+            for (var i = ninicial; i >= 2012; i--)
+            {
+                CboYearExp.Items.Add(i.ToString(CultureInfo.InvariantCulture));
+                CboYearOrden.Items.Add(i.ToString(CultureInfo.InvariantCulture));
+            }
+
+
+            CboYearExp.SelectedIndex = 0;
+            CboYearOrden.SelectedIndex = 0;
+            CboMoneda.SelectedIndex = 0;
+            General.CargarDatos(CboTipoProceso, "PCAD", "PCAD-0000");
+            CboFuente.DataSource = FuenteFinanciamientoDao.SelectAll();
+            CboFuente.ValueMember = "IdFuente";
+            CboFuente.DisplayMember = "Abreviacion";
+            CboFuente.SelectedIndex = 3;
+
+            General.RellenarEstadoDataSet(ref _tbUsuario, _TipoOrden);
+            CboTipoUsuario.Properties.DataSource = _tbUsuario;
+            CboTipoUsuario.Properties.DisplayMember = "nombre";
+            CboTipoUsuario.Properties.ValueMember = "Sigla";
+            EdIdExpediente.IsModified = true;
+            switch (_TipoOrden)
+            {
+                case ENumTipoOrden.PROPINAS:
+                    CboTipoUsuario.EditValue = 'N';
+                    cad = @"PLANILLA DE PROPINAS";
+                    break;
+                case ENumTipoOrden.MOVILIDAD: //PERSONAL
+                    cad = @"PLANILLA DE MOVILIDAD";
+                    CboTipoUsuario.EditValue = 'N';
+                    break;
+                case ENumTipoOrden.CONVENIO: //DOC EXTRANJERO
+                    cad = @"CONTRATO CONVENIO";
+                    CboTipoUsuario.EditValue = 'P';
+                    break;
+                case ENumTipoOrden.VIATICOS: //PERSONAL
+                    cad = @"PLANILLA DE VIATICOS";
+                    CboTipoUsuario.EditValue = 'P';
+                    break;
+                case ENumTipoOrden.SERVICIO: //PROVEEDOR
+                    cad = @"ORDEN DE SERVICIO U TRABAJO";
+                    CboTipoUsuario.EditValue = 'V';
+                    break;
+            }
+            LblTitulo.Text = cad;
+            Text = cad;
+            //Para Columnas del GridView
+            General.RellenarEstadoDataSet(ref _tbUsuarioGrid, ENumTipoOrden.NINGUNO);
+            repositoryItemSearchTipoUsuario.DataSource = _tbUsuarioGrid;
+            repositoryItemSearchTipoUsuario.DisplayMember = "nombre";
+            repositoryItemSearchTipoUsuario.ValueMember = "Sigla";
+
+            //TODO GRAVE: Se debe consistenciar para consultas de años posteriores
+            repositoryItemSearchIdMeta.DataSource = MetaDao.SelectAllByAnio(DateTime.Now.Year.ToString(CultureInfo.InvariantCulture)); //TipoFormapagoDao.GetAllList();
+            repositoryItemSearchIdMeta.DisplayMember = "Cnro";
+            repositoryItemSearchIdMeta.ValueMember = "IdMeta";
+            RefreshDetalle();
+            //Por defecto fecha actual para la orden en pantalla
+            DtFechaGiro.DateTime = DateTime.Now;
+        }
 
 
         public override bool Master_GrabarFormulario()
@@ -43,31 +117,12 @@ namespace Certifica_logistica.procesos
             obj = new OrdenLogistica();
             if (!String.IsNullOrEmpty(Value))
                 obj.IdOrden = Convert.ToInt64(Value); //Indicar el Id de la Orden.
-            obj.IdExpediente = EdIdExpediente.EditValue.ToString().Trim();
-            switch (_TipoOrden)
+            obj.IdExpediente = EdIdExpediente.Tag.ToString();
+            obj.IdxTipoOrden = General.AnalizaTipoOrden(_TipoOrden);
+            if (obj.IdxTipoOrden.Length == 0)
             {
-                case ENumTipoOrden.CONVENIO:
-                    obj.IdxTipoOrden = "TOGL-0005"; // Tipo=TOGL
-                    break;
-                case ENumTipoOrden.MOVILIDAD:
-                    obj.IdxTipoOrden = "TOGL-0003"; // Tipo=TOGL
-                    break;
-                case ENumTipoOrden.PROPINAS:
-                    obj.IdxTipoOrden = "TOGL-0004"; // Tipo=TOGL
-                    break;
-                case ENumTipoOrden.SERVICIO:
-                    obj.IdxTipoOrden = "TOGL-0001"; // Tipo=TOGL
-                    break;
-                case ENumTipoOrden.VIATICOS:
-                    obj.IdxTipoOrden = "TOGL-0002"; // Tipo=TOGL
-                    break;
-                case ENumTipoOrden.COMPRA:
-                    obj.IdxTipoOrden = "TOGL-0006"; // Tipo=TOGL
-                    break;
-                default:
-                    General.ShowMessage("ERROR EN TIPO DE ORDEN", "SOS PIRATA?");
-                    Application.Exit(); //culminar aplicación
-                    break;
+                General.ShowMessage("No Puedo Controlar este Tipo de Formulario","Datos Modificados");
+                Application.Exit();
             }
             obj.TipoUsuario = (char) CboTipoUsuario.EditValue;
             try
@@ -82,6 +137,8 @@ namespace Certifica_logistica.procesos
             Codigo cod;
             cod = (Codigo) CboTipoProceso.SelectedItem;
             obj.IdxProceso = cod.Id;
+            obj.Nro = Convert.ToInt32(EdIdOrden.EditValue);
+            obj.Anio = Convert.ToInt32(CboYearOrden.SelectedItem.ToString());
             obj.NroProceso = TxtNroProceso.Text;
             obj.Referencia = TxtReferencia.Text;
             obj.Descripcion = memoDescripcion.Text;
@@ -92,14 +149,14 @@ namespace Certifica_logistica.procesos
             obj.RdAutoriza = TxtRd.Text;
             DbConnection con = null;
             string msg;
-            string cNroExpediente;
             DbTransaction dbTrans = null;
             try
             {
                 con = DATA.Db.CreateConnection();
                 con.Open();
                 dbTrans = con.BeginTransaction();
-                var ret = OrdenLogisticaDao.Grabar(obj, dbTrans, out cNroExpediente);
+                int nroOrden, IdOrden;
+                var ret = OrdenLogisticaDao.Grabar(obj, dbTrans, out nroOrden);
                 msg = General.AnalizaResultadoSql(ret);
                 if (ret <= 0)
                 {
@@ -108,14 +165,14 @@ namespace Certifica_logistica.procesos
                     dbTrans.Rollback();
                     return false;
                 }
-
+                IdOrden = ret;
                 OrdenLogisticaDetalle det;
                 //Ahora Grabar u Modificar los Detalles de la Orden
                 foreach (DsTramite.DetalleOrdenRow dr in _tbOrdenDetalle.Rows)
                 {
                     det=new OrdenLogisticaDetalle();
                     det.Id = (long) dr["Id"];
-                    det.IdOrden = String.IsNullOrEmpty(Value) ? 0 : Convert.ToInt64(Value);
+                    det.IdOrden = IdOrden ;
                     det.IdClasificador = (int) dr["IdClasificador"];
                     det.IdMeta = (int) dr["IdMeta"];
                     det.TipoUsuario = (char) dr["IdTipoUsuario"];
@@ -130,9 +187,11 @@ namespace Certifica_logistica.procesos
                     General.ShowMessage(msg,"ERROR EN TRANSACCION", icon: MessageBoxIcon.Error);
                     return false; //Salir y CAncelar
                 } //fin de ForEachdbTrans.Commit();
-                Value = ret.ToString(CultureInfo.InvariantCulture);                 //grabar En Memoria el Nro de IdOrden.
-                EdIdOrden.EditValue = cNroExpediente;   //Colocar el Nro de Orden
+                Value = IdOrden.ToString(CultureInfo.InvariantCulture); //grabar En Memoria el Nro de IdOrden.
+                if(nroOrden>0)
+                    EdIdOrden.EditValue = nroOrden;   //Colocar el Nro de Orden
                 EdIdOrden.BackColor = Color.LightGreen;
+                dbTrans.Commit();
                 General.ShowMessage(msg,"PROCESO OK");
             }
             catch (Exception ex)
@@ -146,6 +205,54 @@ namespace Certifica_logistica.procesos
             }
 
             return true;
+        }
+        public override bool Master_ImprimirFormulario(bool isPrevio, int nCopias)
+        {
+            var ret = false;
+            #region Verificar Datos suficientes para Imprimir
+            if (String.IsNullOrEmpty(Value))
+            {
+                General.ShowMessage("Primero debe cargar los Datos del Prestamo en Pantalla", "Faltan Datos");
+                EdIdOrden.Focus();
+                return false;
+            }
+            #endregion
+
+
+            var rpt = new ReportDocument();
+            
+            var Ds= OrdenLogisticaDao.ImprimirOrden(Convert.ToInt64(Value));
+            _DsPrint = new PrinterOrden();
+            // dsTramite.Tables[name: "DetalleOrden"].Clear();
+            // dsTramite.Tables[name: "DetalleOrden"].Load(_tbOrdenDetalle.CreateDataReader());
+            _DsPrint.Tables["Orden"].Load(Ds.Tables[0].CreateDataReader());
+            _DsPrint.Tables["Detalle"].Load(Ds.Tables[1].CreateDataReader());
+            _DsPrint.Tables["resumen_metas"].Load(Ds.Tables[2].CreateDataReader());
+
+            if (_DsPrint.Tables.Count > 0)
+            {
+                rpt.Load(Application.StartupPath + @"\reportes\ordenservicio.rpt");
+                rpt.SetDataSource(_DsPrint);
+                ret = true;
+                if (isPrevio)
+                {
+                    var previewDoc = new FrmPrevio { RptDoc = rpt };
+                    previewDoc.ShowDialog();
+                }
+                else
+                {
+                    //Rpt.PrintOptions.PrinterName = _FrmPadre.Miconfiguracion.PrinterName;
+                    rpt.PrintToPrinter(nCopias, true, 1, 99999);
+                }
+            }
+            else
+            {
+                General.ShowMessage("No Existe Nada que Imprimir", "Resultado Vacio");
+                EdIdOrden.Focus();
+            }
+            _DsPrint.Clear();
+            _DsPrint = null;
+            return ret;
         }
         public override bool Master_Verificar()
         {
@@ -203,6 +310,85 @@ namespace Certifica_logistica.procesos
             dxErrorProvider1.SetError(gridControl1, "");
             return true;
         }
+
+        public override bool Master_NuevoFormulario()
+        {
+            toolTipController1.SetToolTip(DtFechaExp, "");
+            EdIdOrden.EditValue = null;
+            EdIdOrden.ResetBackColor();
+            
+            EdIdExpediente.EditValue = null;
+            EdIdExpediente.ResetBackColor();
+            
+            CboYearOrden.SelectedIndex = 0;
+            CboYearOrden.ResetBackColor();
+            
+            CboYearExp.SelectedIndex = 0;
+            CboYearExp.ResetBackColor();
+            
+            DtFechaExp.EditValue = null;
+            CboFuente.SelectedIndex = 0;
+            CboMoneda.SelectedIndex = 0;
+            TxtNroAutorizacion.Text = "";
+            TxtMontoAprobado.Text = "";
+            DtFechaGiro.DateTime = DateTime.Now;
+            TxtSubDependencia.Text = "";
+            TxtDocumento.Text = "";
+            TxtReferencia.Text = "";
+            CboTipoProceso.SelectedIndex = 0;
+            TxtNroProceso.Text = "";
+            TxtSiaf.Text = "";
+            TxtCcp.Text = "";
+            EdCodigo.EditValue = null;
+            TxtRazon.Text = "";
+            TxtDirec.Text = "";
+            TxtDni.Text = "";
+            memoDescripcion.EditValue = null;
+            TxtRd.Text = "";
+            TxtTotal.Text = @"0.00";
+            _tbOrdenDetalle.Rows.Clear();
+            dxErrorProvider1.ClearErrors();
+            EdIdExpediente.Focus();
+            return true;
+        }
+
+        public override bool Master_CargarFicha(string idPrincipal, string idSecundario, int anio)
+        {
+            var ord = OrdenLogisticaDao.GetbyId(Convert.ToInt32(idPrincipal),anio, idSecundario);
+            if (ord == null)
+            {
+                General.ShowMessage("El Numero de Orden Ingresado, No Se encuentra Registrado","Intentelo Nuevamente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            CargarExpediente(ord.IdExpediente);
+            Value = ord.IdOrden.ToString();
+            //TODO PROBAR CARGA DE ORDEN AQUI ME QUEDE
+            //Ahora cargar los demas Datos
+            DtFechaGiro.EditValue = ord.FechaGiro;
+            TxtReferencia.Text = ord.Referencia;
+            EdIdOrden.BackColor = Color.LightGreen;
+            CboYearOrden.BackColor = Color.LightGreen;
+            General.UbicaItemsComboCodigo(CboTipoProceso, ord.IdxProceso);
+            CboTipoProceso_SelectedIndexChanged(this,null);
+            TxtNroProceso.Text = ord.NroProceso;
+            TxtSiaf.Text = ord.Siaf;
+            TxtCcp.Text = ord.Ccp;
+            CboTipoUsuario.EditValue = ord.TipoUsuario;
+            CboTipoUsuario_EditValueChanged(this,null);
+            EdCodigo.EditValue = ord.Codigo;
+            EdCodigo_Leave(this,null);
+            memoDescripcion.EditValue = ord.Descripcion;
+            TxtRd.Text = ord.RdAutoriza;
+            var ds = OrdenLogisticaDetalleDao.GetbyAll(ord.IdOrden);
+            _tbOrdenDetalle.Clear();
+            _tbOrdenDetalle.Load(ds.CreateDataReader());
+            TxtTotal.Text = ord.Total.ToString();
+            TxtTotal.Tag = ord.Total.ToString();
+            // dsTramite.Tables[name: "DetalleOrden"].Clear();
+            // dsTramite.Tables[name: "DetalleOrden"].Load(_tbOrdenDetalle.CreateDataReader());
+            return false;
+        }
+
         private void TxtCodPersonal_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             var cTipoUsuario = (char) CboTipoUsuario.EditValue;
@@ -237,72 +423,6 @@ namespace Certifica_logistica.procesos
             ResumeLayout();
         }
 
-        private void FpOrdenLogistica_Load(object sender, EventArgs e)
-        {
-            var cad = String.Empty;
-            var collection = new AutoCompleteStringCollection();
-            string[] str ={"FACTURA","BOLETA DE VENTA","SERV.LUZ ELECTRICA","SERV.LUZ TRIFASICA","SERV.AGUA","SERV.TELEFONIA MOVIL","SERV.TELEFONIA FIJA","SERV.INTERNET","LABOR REALIZADA (rph)","PROPINAS","MOVILIDAD","VIATICOS","PASAJES AEREOS","RECIBO","PASAJES TERRESTRES","SERV.CABLE","DOCENTE EXTRANJERO"};
-            collection.AddRange(str);
-            TxtReferencia.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            TxtReferencia.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            TxtReferencia.MaskBox.AutoCompleteCustomSource = collection;
-            var ninicial = DateTime.Now.Year;
-            CboYearExp.Items.Clear();
-            for (var i = ninicial; i >= 2012; i--)
-                CboYearExp.Items.Add(i.ToString(CultureInfo.InvariantCulture));
-
-            CboYearExp.SelectedIndex = 0;
-            CboMoneda.SelectedIndex = 0;
-            General.CargarDatos(CboTipoProceso, "PCAD", "PCAD-0000");
-            CboFuente.DataSource = FuenteFinanciamientoDao.SelectAll();
-            CboFuente.ValueMember = "IdFuente";
-            CboFuente.DisplayMember = "Abreviacion";
-            CboFuente.SelectedIndex = 3;
-
-            General.RellenarEstadoDataSet(ref _tbUsuario, _TipoOrden);
-            CboTipoUsuario.Properties.DataSource = _tbUsuario;
-            CboTipoUsuario.Properties.DisplayMember = "nombre";
-            CboTipoUsuario.Properties.ValueMember = "Sigla";
-            EdIdExpediente.IsModified = true;
-            switch (_TipoOrden)
-            {
-                case ENumTipoOrden.PROPINAS:
-                    CboTipoUsuario.EditValue='N';
-                    cad = @"PLANILLA DE PROPINAS";
-                    break;
-                case ENumTipoOrden.MOVILIDAD: //PERSONAL
-                    cad = @"PLANILLA DE MOVILIDAD";
-                    CboTipoUsuario.EditValue='N';
-                    break;
-                case ENumTipoOrden.CONVENIO: //DOC EXTRANJERO
-                    cad = @"CONTRATO CONVENIO";
-                    CboTipoUsuario.EditValue = 'P';
-                    break;
-                case ENumTipoOrden.VIATICOS: //PERSONAL
-                    cad = @"PLANILLA DE VIATICOS";
-                    CboTipoUsuario.EditValue = 'P';
-                    break;
-                case ENumTipoOrden.SERVICIO: //PROVEEDOR
-                    cad = @"ORDEN DE SERVICIO U TRABAJO";
-                    CboTipoUsuario.EditValue = 'V';
-                    break;
-            }
-            LblTitulo.Text = cad;
-            Text = cad;            
-            //Para Columnas del GridView
-            General.RellenarEstadoDataSet(ref _tbUsuarioGrid, ENumTipoOrden.NINGUNO);
-            repositoryItemSearchTipoUsuario.DataSource = _tbUsuarioGrid;
-            repositoryItemSearchTipoUsuario.DisplayMember = "nombre";
-            repositoryItemSearchTipoUsuario.ValueMember = "Sigla";
-
-            //TODO GRAVE: Se debe consistenciar para consultas de años posteriores
-            repositoryItemSearchIdMeta.DataSource = MetaDao.SelectAllByAnio(DateTime.Now.Year.ToString(CultureInfo.InvariantCulture)); //TipoFormapagoDao.GetAllList();
-            repositoryItemSearchIdMeta.DisplayMember = "Cnro";
-            repositoryItemSearchIdMeta.ValueMember = "IdMeta";
-            RefreshDetalle();
-            //Por defecto fecha actual para la orden en pantalla
-            DtFechaGiro.DateTime = DateTime.Now;
-        }
 
         private void RefreshDetalle()
         {
@@ -343,7 +463,6 @@ namespace Certifica_logistica.procesos
 
         private void BtnCarga_Click(object sender, EventArgs e)
         {
-            string msg;
             if (EdIdExpediente.EditValue == null) return;
             if (EdIdExpediente.IsModified) return;
             var cNroExp = EdIdExpediente.EditValue.ToString();
@@ -351,24 +470,33 @@ namespace Certifica_logistica.procesos
             cNroExp = cNroExp.PadLeft(6, '0');
             EdIdExpediente.EditValue = cNroExp;
             cNroExp = cNroExp + "-" + CboYearExp.SelectedItem;
+            CargarExpediente(cNroExp);
+        }
 
+        private void CargarExpediente(string cNroExp)
+        {
+            string msg;
             var exp = ExpedienteDao.GetbyId(cNroExp);
             EdIdExpediente.ResetBackColor();
             CboYearExp.ResetBackColor();
             if (exp == null)
             {
+                EdIdExpediente.Tag = "";
                 Console.Beep();
                 msg = "El Expediente Ingresado " + cNroExp + " No Existe";
-                toolTipController1.ShowHint(msg);
-                return ;
+                toolTipController1.ShowHint((string) msg);
+                return;
             }
+            EdIdExpediente.Tag = cNroExp;
             EdIdExpediente.BackColor = Color.LightGreen;
             CboYearExp.BackColor = Color.LightGreen;
-            
-            DtFechaGiro.DateTime = exp.FechaIngreso;
+            var words = cNroExp.Split('-');
+            EdIdExpediente.EditValue = words[0];
+            toolTipController1.SetToolTip(label18, "F.Exp =" + exp.FechaExp.ToShortDateString());
+            DtFechaExp.DateTime = exp.FechaIngreso;
             for (var x = 0; x < CboFuente.Items.Count; x++)
             {
-                var fte = (FuenteFinanciamiento)CboFuente.Items[x];
+                var fte = (FuenteFinanciamiento) CboFuente.Items[x];
                 if (fte.IdFuente != exp.IdFuente) continue;
                 CboFuente.SelectedIndex = x;
                 break;
@@ -385,12 +513,13 @@ namespace Certifica_logistica.procesos
             TxtMontoAprobado.Text = exp.MontoAprobado <= 0 ? "" : exp.MontoAprobado.ToString("####00.00");
 
             var codSubDep = SubDependenciaDao.GetbyId(exp.CodSubDepOrigen);
-            TxtSubDependencia.Text = codSubDep != null ? string.Format("{0} / {1}", codSubDep.Nombre, codSubDep.NombreDependencia) : @"NO EXISTE !!!";
+            TxtSubDependencia.Text = codSubDep != null
+                ? string.Format("{0} / {1}", codSubDep.Nombre, codSubDep.NombreDependencia)
+                : @"NO EXISTE !!!";
 
             var td = CodigoDao.GetbyId(exp.IdxTipoDocTra);
             TxtDocumento.Text = td != null ? string.Format("{0} {1}", td.Nombre, exp.Nrodoc) : String.Empty;
             TxtReferencia.Text = exp.Asunto;
-            
         }
 
         private void CboTipoProceso_SelectedIndexChanged(object sender, EventArgs e)
@@ -576,7 +705,7 @@ namespace Certifica_logistica.procesos
                     drow["IdTipoUsuario"] = oFrm2.CboTipoUsuario.EditValue.ToString()[0];
                     _lastClasificador = oFrm2.EdIdClasificador.EditValue.ToString();
                     drow["Clasificador"] = _lastClasificador;
-                    drow["Codigo"] = oFrm2.EdCodigo.EditValue.ToString();
+                    drow["Codigo"] = (oFrm2.EdCodigo==null) ? "" : oFrm2.EdCodigo.EditValue.ToString() ;
                     drow["Detalle"] = oFrm2.TxtDetalle.Text.Trim();
                     drow["Monto"] = oFrm2.SpnMonto.EditValue;
                     _tbOrdenDetalle.Rows.Add(drow);
@@ -646,6 +775,51 @@ namespace Certifica_logistica.procesos
             }
             return Convert.ToInt32(cod);
         }
+
+        private void BtnCargaOrden_Click(object sender, EventArgs e)
+        {
+            if (EdIdOrden.EditValue == null) return;
+            if (EdIdOrden.IsModified) return;
+            var cNroExp = EdIdOrden.EditValue.ToString();
+            var nExp = Convert.ToInt32(cNroExp);
+            if (nExp<= 0) return;
+            try
+            {
+                var cIdxTipoOrden = General.AnalizaTipoOrden(_TipoOrden);
+                if (cIdxTipoOrden.Length == 0)
+                {
+                    General.ShowMessage("No Puedo Controlar este Tipo de Formulario", "Datos Modificados");
+                    Application.Exit();
+                }
+                Master_CargarFicha(cNroExp, cIdxTipoOrden, Convert.ToInt32(CboYearOrden.SelectedItem.ToString()));
+            }
+            catch
+            {
+                Console.Beep();
+                return;
+            }
+        }
+
+        private void EdIdExpediente_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var oFrm = new FphBusqueda { _TiTuloForm = "Busqueda De Expedientes Ingresados", _backColor = BackColor, _TipoTabla = ENumTabla.EXPEDIENTE };
+            oFrm.ShowDialog();
+            SuspendLayout();
+            var cad = oFrm._Codigo;
+            var sLista = cad.Split('-');
+            toolTipController1.SetToolTip(EdIdExpediente, oFrm._Nombre);
+            EdIdExpediente.EditValue=sLista[0];
+            foreach (var anio in CboYearExp.Items)
+            {
+                if (!anio.Equals(sLista[1])) continue;
+                CboYearExp.SelectedItem = anio;
+                break;
+            }
+            oFrm.Close();
+            ResumeLayout();
+        
+        }
+
         
     } //Fin de Clase
 }
