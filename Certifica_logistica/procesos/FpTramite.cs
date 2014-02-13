@@ -246,24 +246,37 @@ namespace Certifica_logistica.procesos
 
         public override bool Master_GrabarFormulario()
         {
-            var bExisteExp = false;
-            string cad;
+            string cad, codigoExp;
             DbConnection con=null;
             DbTransaction dbtrans = null;
             if (!Master_Verificar())
                     return false;
-
-            Value = EdIdExpediente.Text.Trim().PadLeft(6,'0');
-            Value = Value + "-" + CboYearExp.SelectedItem;
+            if (!String.IsNullOrEmpty(Value))
+            {
+                codigoExp = Value;
+                if (
+                    MessageBox.Show("Desea Ud. Modificar los Datos de este Expediente?", "Confirme Por Favor",
+                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) !=
+                    DialogResult.Yes)
+                    return false;
+            }
+            else
+            {
+                codigoExp= EdIdExpediente.Text.Trim();
+                while (codigoExp.Length < 6)
+                    codigoExp = "0" + codigoExp;
+                codigoExp = codigoExp + "-" + CboYearExp.SelectedItem;
+            }
+            
             if(_exp==null)
                 _exp=new Expediente();
             else
                 _exp.Clear();
 
             //Verificar si Existe
-            bExisteExp = ExpedienteDao.ExisteById(Value);
+            var bExisteExp = ExpedienteDao.ExisteById(Value);
 
-            _exp.Idexpediente = Value;
+            _exp.Idexpediente = codigoExp;
             _exp.FechaIngreso = DtFechaIngresoExp.DateTime;
             _exp.FechaExp = DtFechaExp.DateTime;
             if (TxtNroAutorizacion.Text.Trim().Length > 0)
@@ -321,12 +334,18 @@ namespace Certifica_logistica.procesos
                         //Ahora en Cadena, Grabar Observación Si Existe
                         if (!String.IsNullOrEmpty(TxtObsv.Text))
                         {
-                            var obsv = new ObservacionExpediente(_exp.Idexpediente, TxtObsv.Text, _FrmPadre.Miconfiguracion.IdUsuario);
-                            ret = ObservacionExpedienteDao.Grabar(obsv, dbtrans);
+                            //Si se puede Escribir en Comentario
+                            if (!TxtObsv.ReadOnly)
+                            {
+                                var obsv = new ObservacionExpediente(_exp.Idexpediente, TxtObsv.Text,
+                                    _FrmPadre.Miconfiguracion.IdUsuario);
+                                ret = ObservacionExpedienteDao.Grabar(obsv, dbtrans);
+                            }
                         }
                         if (ret > 0)
                         {
                             dbtrans.Commit();
+                            Value = codigoExp; //Copiar Codigo de Exp. Correcto a Variable Principal de Formulario
                             MessageBox.Show(cad, @"Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             VerDetalleExpediente();
                         }
@@ -390,6 +409,18 @@ namespace Certifica_logistica.procesos
             EdIdExpediente.Focus();
             
             return true;
+        }
+
+// ReSharper disable once RedundantOverridenMember
+        public override void Object_KeyDown(object sender, KeyEventArgs e)
+        {
+                base.Object_KeyDown(sender, e);
+        }
+
+// ReSharper disable once RedundantOverridenMember
+        public override void ObjectEnter(object sender, EventArgs e)
+        {
+            base.ObjectEnter(sender, e);
         }
 
         public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null,int anio=2014)
@@ -481,8 +512,13 @@ namespace Certifica_logistica.procesos
             LstObsv.DataSource = ObservacionExpedienteDao.SelectAllExpediente(Value);
             LstObsv.DisplayMember = "Display";
             LstObsv.ValueMember = "Id";
-            if (LstObsv.DataSource!=null )
+            TxtObsv.ReadOnly = false; 
+            if (LstObsv.DataSource != null)
+            {
+                TxtObsv.BackColor = Color.LightSlateGray;
                 LstObsv.SelectedIndex = 0;
+                TxtObsv.ReadOnly = true; //Solo Lectura
+            }
         }
 
         private void EdIdExpediente_Leave(object sender, EventArgs e)
@@ -511,6 +547,8 @@ namespace Certifica_logistica.procesos
                 var obsv = (ObservacionExpediente) LstObsv.SelectedItem;
                 cad = String.Format("{0} {1}", cad, obsv.CodLogin);
                 TxtObsv.Text = string.Format(@"[{0} {1}] {2}", obsv.CodLogin, obsv.Display, obsv.Detalle);
+                TxtObsv.BackColor = Color.LightSlateGray;
+                TxtObsv.ReadOnly = true;
                 toolTipController1.SetToolTip(TxtObsv, cad);
                 toolTipController1.SetToolTip(LstObsv, cad);
             }
@@ -535,11 +573,12 @@ namespace Certifica_logistica.procesos
 
         private void BtnObsv_Click(object sender, EventArgs e)
         {
-            if (Value.Length <= 0) return;
+            if (String.IsNullOrEmpty(Value)) return;
+            if (TxtObsv.ReadOnly) return;
             dxErrorProvider1.SetError(TxtObsv, "");
             if (TxtObsv.Text.Length <= 3)
             {
-                var cad = "La Longitud de la Observación es muy Corta, debe ser mas de 4 caracteres";
+                var cad = @"La Longitud de la Observación es muy Corta, debe ser mas de 4 caracteres";
                 General.ShowMessage(cad);
                 dxErrorProvider1.SetError(TxtObsv,cad);
                 return;
@@ -616,9 +655,9 @@ namespace Certifica_logistica.procesos
                 var dbTrans = con.BeginTransaction();
                 try
                 {
-// ReSharper disable once RedundantAssignment
+                    // ReSharper disable once RedundantAssignment
                     var ret = 0;
-// ReSharper disable once RedundantAssignment
+                    // ReSharper disable once RedundantAssignment
                     var cad = String.Empty;
                     var o = (ObservacionExpediente) LstObsv.SelectedItem;
 
@@ -676,7 +715,23 @@ namespace Certifica_logistica.procesos
 
         private void BtnLimpiar_Click(object sender, EventArgs e)
         {
+            TxtObsv.ReadOnly = false;
+            TxtObsv.ResetBackColor();
             TxtObsv.Text = "";
+        }
+
+        private void EdIdExpediente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode== Keys.F1)
+                EdIdExpediente_Properties_ButtonClick(sender,null);
+        }
+
+        private void EdCodSubDep_KeyDown(object sender, KeyEventArgs e)
+        {
+             if(e.KeyCode== Keys.F1)
+                EdCodSubDep_Properties_ButtonClick(sender,null);
+             else
+                 base.Object_KeyDown(sender,e);
         }
       
         /*

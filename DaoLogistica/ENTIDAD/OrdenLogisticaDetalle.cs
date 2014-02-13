@@ -5,7 +5,7 @@ namespace DaoLogistica.ENTIDAD
     public class OrdenLogisticaDetalle
     {
         public OrdenLogisticaDetalle(string codigo, string detalle, long id, int idClasificador, int idMeta,
-            long idOrden, decimal monto, char tipoUsuario)
+            long idOrden, int cantidad, decimal monto, char tipoUsuario)
         {
             Codigo = codigo;
             Detalle = detalle;
@@ -14,6 +14,7 @@ namespace DaoLogistica.ENTIDAD
             IdMeta = idMeta;
             IdOrden = idOrden;
             Monto = monto;
+            Cantidad = cantidad;
             TipoUsuario = tipoUsuario;
         }
 
@@ -31,6 +32,7 @@ namespace DaoLogistica.ENTIDAD
             Codigo = String.Empty;
             Detalle = String.Empty;
             IdMeta = 0;
+            Cantidad = 0;
             Monto = 0m;
         }
 
@@ -42,6 +44,7 @@ namespace DaoLogistica.ENTIDAD
         public string Codigo { get; set; }
         public string Detalle { get; set; }
         public int IdMeta { get; set; }
+        public int Cantidad { get; set; }
         public decimal Monto { get; set; }
 
         #endregion

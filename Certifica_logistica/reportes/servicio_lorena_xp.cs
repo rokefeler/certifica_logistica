@@ -16,14 +16,14 @@ namespace Certifica_logistica.reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ordenservicio : ReportClass {
+    public class servicio_lorena_xp : ReportClass {
         
-        public ordenservicio() {
+        public servicio_lorena_xp() {
         }
         
         public override string ResourceName {
             get {
-                return "ordenservicio.rpt";
+                return "servicio_lorena_xp.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Certifica_logistica.reportes {
         
         public override string FullResourceName {
             get {
-                return "Certifica_logistica.reportes.ordenservicio.rpt";
+                return "Certifica_logistica.reportes.servicio_lorena_xp.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Certifica_logistica.reportes {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class Cachedordenservicio : Component, ICachedReport {
+    public class Cachedservicio_lorena_xp : Component, ICachedReport {
         
-        public Cachedordenservicio() {
+        public Cachedservicio_lorena_xp() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Certifica_logistica.reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ordenservicio rpt = new ordenservicio();
+            servicio_lorena_xp rpt = new servicio_lorena_xp();
             rpt.Site = this.Site;
             return rpt;
         }

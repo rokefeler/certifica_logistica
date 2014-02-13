@@ -1,4 +1,6 @@
-﻿namespace Certifica_logistica.procesos
+﻿using Certifica_logistica.Ds;
+
+namespace Certifica_logistica.procesos
 {
     partial class FpOrdenLogistica
     {
@@ -36,6 +38,7 @@
             this.LblRd = new System.Windows.Forms.Label();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.BtnClonar = new System.Windows.Forms.Button();
             this.TxtRd = new DevExpress.XtraEditors.TextEdit();
             this.memoDescripcion = new DevExpress.XtraEditors.MemoEdit();
             this.GrpTramite = new System.Windows.Forms.GroupBox();
@@ -91,16 +94,18 @@
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIdOrden = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIdClasificador = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colclasificador = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIdTipoUsuario = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemSearchTipoUsuario = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colcodigo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDetalle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIdMeta = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSearchIdMeta = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colIdTipoUsuario = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSearchTipoUsuario = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colclasificador = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcodigo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDetalle = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCantidad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMonto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colImporte = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CboYearOrden = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
@@ -132,10 +137,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.detalleOrdenBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTramite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchTipoUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchIdMeta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchTipoUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // pic1
@@ -184,7 +189,7 @@
             this.EdIdOrden.Properties.Mask.EditMask = "99999999";
             this.EdIdOrden.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdIdOrden.Properties.MaxLength = 15;
-            this.EdIdOrden.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TxtCodPersonal_Properties_ButtonClick);
+            this.EdIdOrden.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdIdOrden_Properties_ButtonClick);
             this.EdIdOrden.Size = new System.Drawing.Size(61, 20);
             this.EdIdOrden.TabIndex = 1;
             // 
@@ -193,10 +198,10 @@
             this.LblRd.AutoSize = true;
             this.LblRd.Location = new System.Drawing.Point(440, 232);
             this.LblRd.Name = "LblRd";
-            this.LblRd.Size = new System.Drawing.Size(56, 13);
+            this.LblRd.Size = new System.Drawing.Size(47, 13);
             this.LblRd.TabIndex = 3;
-            this.LblRd.Text = "Nº de Aut.";
-            this.toolTipController1.SetToolTip(this.LblRd, "Nro. de Autorización de Pago Extemporaneo");
+            this.LblRd.Text = "R.D. Nº.";
+            this.toolTipController1.SetToolTip(this.LblRd, "Nº Resolución de RECONOCIMIENTO DE DEUDA");
             // 
             // dxErrorProvider1
             // 
@@ -208,6 +213,7 @@
             this.splitContainerControl1.Horizontal = false;
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 43);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.BtnClonar);
             this.splitContainerControl1.Panel1.Controls.Add(this.TxtRd);
             this.splitContainerControl1.Panel1.Controls.Add(this.LblRd);
             this.splitContainerControl1.Panel1.Controls.Add(this.memoDescripcion);
@@ -221,6 +227,17 @@
             this.splitContainerControl1.SplitterPosition = 307;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // BtnClonar
+            // 
+            this.BtnClonar.Location = new System.Drawing.Point(440, 265);
+            this.BtnClonar.Name = "BtnClonar";
+            this.BtnClonar.Size = new System.Drawing.Size(75, 37);
+            this.BtnClonar.TabIndex = 6;
+            this.BtnClonar.Text = "Clonar Orden";
+            this.BtnClonar.UseVisualStyleBackColor = true;
+            this.BtnClonar.Visible = false;
+            this.BtnClonar.Click += new System.EventHandler(this.BtnClonar_Click);
             // 
             // TxtRd
             // 
@@ -624,9 +641,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.TxtTotal);
-            this.groupBox1.Location = new System.Drawing.Point(495, 250);
+            this.groupBox1.Location = new System.Drawing.Point(518, 250);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(198, 58);
+            this.groupBox1.Size = new System.Drawing.Size(175, 58);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "< Resumen Total >";
@@ -641,7 +658,7 @@
             this.TxtTotal.Name = "TxtTotal";
             this.TxtTotal.ReadOnly = true;
             this.TxtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TxtTotal.Size = new System.Drawing.Size(184, 35);
+            this.TxtTotal.Size = new System.Drawing.Size(163, 35);
             this.TxtTotal.TabIndex = 0;
             this.TxtTotal.Text = "0.00";
             // 
@@ -749,7 +766,6 @@
             this.EdCodigo.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.EdCodigo.Properties.Mask.BeepOnError = true;
             this.EdCodigo.Properties.Mask.EditMask = "99999999999";
-            this.EdCodigo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdCodigo.Properties.Mask.SaveLiteral = false;
             this.EdCodigo.Properties.MaxLength = 15;
             this.EdCodigo.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TxtCodPersonal_Properties_ButtonClick);
@@ -920,12 +936,14 @@
             this.colId,
             this.colIdOrden,
             this.colIdClasificador,
-            this.colclasificador,
+            this.colIdMeta,
             this.colIdTipoUsuario,
+            this.colclasificador,
             this.colcodigo,
             this.colDetalle,
-            this.colIdMeta,
-            this.colMonto});
+            this.colCantidad,
+            this.colMonto,
+            this.colImporte});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Monto", this.colIdMeta, "")});
@@ -944,12 +962,12 @@
             // 
             // colIndex
             // 
-            this.colIndex.Caption = "Nro";
+            this.colIndex.Caption = "Nº";
             this.colIndex.FieldName = "Index";
             this.colIndex.Name = "colIndex";
             this.colIndex.Visible = true;
             this.colIndex.VisibleIndex = 0;
-            this.colIndex.Width = 31;
+            this.colIndex.Width = 29;
             // 
             // colId
             // 
@@ -966,60 +984,6 @@
             this.colIdClasificador.FieldName = "IdClasificador";
             this.colIdClasificador.Name = "colIdClasificador";
             // 
-            // colclasificador
-            // 
-            this.colclasificador.Caption = "Clasificador";
-            this.colclasificador.FieldName = "clasificador";
-            this.colclasificador.Name = "colclasificador";
-            this.colclasificador.Visible = true;
-            this.colclasificador.VisibleIndex = 1;
-            this.colclasificador.Width = 84;
-            // 
-            // colIdTipoUsuario
-            // 
-            this.colIdTipoUsuario.Caption = "Tipo Usuario";
-            this.colIdTipoUsuario.ColumnEdit = this.repositoryItemSearchTipoUsuario;
-            this.colIdTipoUsuario.FieldName = "IdTipoUsuario";
-            this.colIdTipoUsuario.Name = "colIdTipoUsuario";
-            this.colIdTipoUsuario.Visible = true;
-            this.colIdTipoUsuario.VisibleIndex = 2;
-            this.colIdTipoUsuario.Width = 66;
-            // 
-            // repositoryItemSearchTipoUsuario
-            // 
-            this.repositoryItemSearchTipoUsuario.AutoHeight = false;
-            this.repositoryItemSearchTipoUsuario.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchTipoUsuario.Name = "repositoryItemSearchTipoUsuario";
-            this.repositoryItemSearchTipoUsuario.View = this.repositoryItemSearchLookUpEdit1View;
-            // 
-            // repositoryItemSearchLookUpEdit1View
-            // 
-            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
-            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // colcodigo
-            // 
-            this.colcodigo.Caption = "Código";
-            this.colcodigo.FieldName = "codigo";
-            this.colcodigo.Name = "colcodigo";
-            this.colcodigo.Visible = true;
-            this.colcodigo.VisibleIndex = 3;
-            this.colcodigo.Width = 63;
-            // 
-            // colDetalle
-            // 
-            this.colDetalle.Caption = "Detalle / Nombre";
-            this.colDetalle.FieldName = "Detalle";
-            this.colDetalle.Name = "colDetalle";
-            this.colDetalle.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Monto", "Total S/. {0}")});
-            this.colDetalle.Visible = true;
-            this.colDetalle.VisibleIndex = 4;
-            this.colDetalle.Width = 304;
-            // 
             // colIdMeta
             // 
             this.colIdMeta.Caption = "Meta";
@@ -1027,8 +991,8 @@
             this.colIdMeta.FieldName = "IdMeta";
             this.colIdMeta.Name = "colIdMeta";
             this.colIdMeta.Visible = true;
-            this.colIdMeta.VisibleIndex = 5;
-            this.colIdMeta.Width = 47;
+            this.colIdMeta.VisibleIndex = 2;
+            this.colIdMeta.Width = 35;
             // 
             // repositoryItemSearchIdMeta
             // 
@@ -1045,18 +1009,82 @@
             this.repositoryItemSearchLookUpEdit2View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemSearchLookUpEdit2View.OptionsView.ShowGroupPanel = false;
             // 
+            // colIdTipoUsuario
+            // 
+            this.colIdTipoUsuario.Caption = "TipoUsuario";
+            this.colIdTipoUsuario.ColumnEdit = this.repositoryItemSearchTipoUsuario;
+            this.colIdTipoUsuario.FieldName = "IdTipoUsuario";
+            this.colIdTipoUsuario.Name = "colIdTipoUsuario";
+            this.colIdTipoUsuario.Visible = true;
+            this.colIdTipoUsuario.VisibleIndex = 3;
+            this.colIdTipoUsuario.Width = 91;
+            // 
+            // repositoryItemSearchTipoUsuario
+            // 
+            this.repositoryItemSearchTipoUsuario.AutoHeight = false;
+            this.repositoryItemSearchTipoUsuario.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSearchTipoUsuario.Name = "repositoryItemSearchTipoUsuario";
+            this.repositoryItemSearchTipoUsuario.View = this.repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colclasificador
+            // 
+            this.colclasificador.Caption = "Clasificador";
+            this.colclasificador.FieldName = "clasificador";
+            this.colclasificador.Name = "colclasificador";
+            this.colclasificador.Visible = true;
+            this.colclasificador.VisibleIndex = 1;
+            this.colclasificador.Width = 72;
+            // 
+            // colcodigo
+            // 
+            this.colcodigo.Caption = "Código";
+            this.colcodigo.FieldName = "codigo";
+            this.colcodigo.Name = "colcodigo";
+            this.colcodigo.Visible = true;
+            this.colcodigo.VisibleIndex = 4;
+            this.colcodigo.Width = 85;
+            // 
+            // colDetalle
+            // 
+            this.colDetalle.Caption = "Detalle";
+            this.colDetalle.FieldName = "Detalle";
+            this.colDetalle.Name = "colDetalle";
+            this.colDetalle.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Importe", "Total S/. {0}")});
+            this.colDetalle.Visible = true;
+            this.colDetalle.VisibleIndex = 5;
+            this.colDetalle.Width = 295;
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.FieldName = "Cantidad";
+            this.colCantidad.Name = "colCantidad";
+            this.colCantidad.Width = 58;
+            // 
             // colMonto
             // 
-            this.colMonto.AppearanceHeader.Options.UseTextOptions = true;
-            this.colMonto.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colMonto.Caption = "Monto";
-            this.colMonto.DisplayFormat.FormatString = "n2";
-            this.colMonto.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colMonto.FieldName = "Monto";
             this.colMonto.Name = "colMonto";
-            this.colMonto.Visible = true;
-            this.colMonto.VisibleIndex = 6;
-            this.colMonto.Width = 86;
+            this.colMonto.Width = 180;
+            // 
+            // colImporte
+            // 
+            this.colImporte.Caption = "Importe";
+            this.colImporte.DisplayFormat.FormatString = "#.00;[#.00];CERO";
+            this.colImporte.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colImporte.FieldName = "Importe";
+            this.colImporte.Name = "colImporte";
+            this.colImporte.Visible = true;
+            this.colImporte.VisibleIndex = 6;
+            this.colImporte.Width = 74;
             // 
             // CboYearOrden
             // 
@@ -1078,6 +1106,7 @@
             this.KeyPreview = true;
             this.Name = "FpOrdenLogistica";
             this.Text = "Trabajo de Ordenes de Servicio";
+            this.Activated += new System.EventHandler(this.FpOrdenLogistica_Activated);
             this.Load += new System.EventHandler(this.FpOrdenLogistica_Load);
             this.Controls.SetChildIndex(this.pan1, 0);
             this.Controls.SetChildIndex(this.splitContainerControl1, 0);
@@ -1116,10 +1145,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.detalleOrdenBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTramite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchTipoUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchIdMeta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchTipoUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1180,23 +1209,28 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource detalleOrdenBindingSource;
         private Ds.DsTramite dsTramite;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colIdOrden;
-        private DevExpress.XtraGrid.Columns.GridColumn colIdClasificador;
-        private DevExpress.XtraGrid.Columns.GridColumn colIdMeta;
-        private DevExpress.XtraGrid.Columns.GridColumn colclasificador;
-        private DevExpress.XtraGrid.Columns.GridColumn colIdTipoUsuario;
-        private DevExpress.XtraGrid.Columns.GridColumn colcodigo;
-        private DevExpress.XtraGrid.Columns.GridColumn colDetalle;
-        private DevExpress.XtraGrid.Columns.GridColumn colMonto;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchTipoUsuario;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchIdMeta;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit2View;
-        private DevExpress.XtraGrid.Columns.GridColumn colIndex;
         private DevExpress.XtraEditors.TextEdit TxtRd;
         private System.Windows.Forms.Label LblRd;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox CboYearOrden;
+        private DevExpress.XtraGrid.Columns.GridColumn colIndex;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdOrden;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdClasificador;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdMeta;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdTipoUsuario;
+        private DevExpress.XtraGrid.Columns.GridColumn colclasificador;
+        private DevExpress.XtraGrid.Columns.GridColumn colcodigo;
+        private DevExpress.XtraGrid.Columns.GridColumn colDetalle;
+        private DevExpress.XtraGrid.Columns.GridColumn colCantidad;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonto;
+        private DevExpress.XtraGrid.Columns.GridColumn colImporte;
+        private System.Windows.Forms.Button BtnClonar;
+        public long _idOrdenAClonar;
+        private PrinterOrden _dsPrint;
     }
 }

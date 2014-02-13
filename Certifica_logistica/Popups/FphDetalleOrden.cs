@@ -21,10 +21,13 @@ namespace Certifica_logistica.Popups
         }
         private void FphDetalleOrden_Load(object sender, EventArgs e)
         {
-            //CargarDatos();
+            var msg = TxtDetalle.Text;
             CboTipoUsuario_EditValueChanged(sender,e);
             if (TxtDetalle.Text.Trim().Length > 0)
+            {
                 SpnMonto.Focus();
+                TxtDetalle.Text = msg;
+            }
             else
                 EdIdClasificador.Focus();
         }
@@ -58,9 +61,15 @@ namespace Certifica_logistica.Popups
                 switch (_TipoOrden)
                 {
                     case ENumTipoOrden.CONVENIO:
+                        CboTipoUsuario.EditValue = 'N';
+                        EdCodigo.EditValue = null;
+                        break;
                     case ENumTipoOrden.VIATICOS:
                         CboTipoUsuario.EditValue = 'N';
                         EdCodigo.EditValue = null;
+                        LblCantidad.Visible = true;
+                        SpnCant.Visible = true;
+                        SpnCant.TabStop = true;
                         break;
                     case ENumTipoOrden.SERVICIO:
                         CboTipoUsuario.EditValue = 'N';
@@ -84,6 +93,7 @@ namespace Certifica_logistica.Popups
                         EdCodigo.EditValue = null;
                         break;
                 }
+                
             }
             catch (Exception ex)
             {
@@ -299,7 +309,8 @@ namespace Certifica_logistica.Popups
                         General.ShowMessage(cad);
                         return;
                     }
-                   
+                    EdCodigo.EditValue = "";
+
                 }
                 else //Verificar si Ingreso Algun Codigo
                 {

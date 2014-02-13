@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FpTramite));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.BtnLimpiar = new System.Windows.Forms.Button();
             this.LstObsv = new DevExpress.XtraEditors.ListBoxControl();
             this.BtnObsv = new System.Windows.Forms.Button();
             this.TxtObsv = new System.Windows.Forms.TextBox();
@@ -74,7 +75,6 @@
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.TxtnLog = new System.Windows.Forms.TextBox();
-            this.BtnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -145,6 +145,16 @@
             this.splitContainer1.SplitterDistance = 299;
             this.splitContainer1.TabIndex = 1;
             // 
+            // BtnLimpiar
+            // 
+            this.BtnLimpiar.Location = new System.Drawing.Point(575, 228);
+            this.BtnLimpiar.Name = "BtnLimpiar";
+            this.BtnLimpiar.Size = new System.Drawing.Size(60, 33);
+            this.BtnLimpiar.TabIndex = 11;
+            this.BtnLimpiar.Text = "&Limpiar";
+            this.BtnLimpiar.UseVisualStyleBackColor = true;
+            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
+            // 
             // LstObsv
             // 
             this.LstObsv.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
@@ -195,6 +205,7 @@
             // EdCodSubDep_Recibe
             // 
             this.EdCodSubDep_Recibe.EditValue = "NCS";
+            this.EdCodSubDep_Recibe.EnterMoveNextControl = true;
             this.EdCodSubDep_Recibe.Location = new System.Drawing.Point(5, 18);
             this.EdCodSubDep_Recibe.Name = "EdCodSubDep_Recibe";
             this.EdCodSubDep_Recibe.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -203,12 +214,12 @@
             this.EdCodSubDep_Recibe.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.EdCodSubDep_Recibe.Properties.Mask.BeepOnError = true;
             this.EdCodSubDep_Recibe.Properties.Mask.EditMask = "LCCl";
-            this.EdCodSubDep_Recibe.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdCodSubDep_Recibe.Properties.Mask.SaveLiteral = false;
             this.EdCodSubDep_Recibe.Properties.MaxLength = 15;
             this.EdCodSubDep_Recibe.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdCodSubDep_Properties_ButtonClick);
             this.EdCodSubDep_Recibe.Size = new System.Drawing.Size(65, 20);
             this.EdCodSubDep_Recibe.TabIndex = 0;
+            this.EdCodSubDep_Recibe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EdCodSubDep_KeyDown);
             this.EdCodSubDep_Recibe.Leave += new System.EventHandler(this.EdCodSubDep_Leave);
             // 
             // TxtSubDependencia_Recibe
@@ -265,6 +276,7 @@
             this.TxtNroDoc.Name = "TxtNroDoc";
             this.TxtNroDoc.Size = new System.Drawing.Size(84, 20);
             this.TxtNroDoc.TabIndex = 3;
+            this.TxtNroDoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // CboTipoDoc
             // 
@@ -276,6 +288,7 @@
             this.CboTipoDoc.Name = "CboTipoDoc";
             this.CboTipoDoc.Size = new System.Drawing.Size(121, 21);
             this.CboTipoDoc.TabIndex = 1;
+            this.CboTipoDoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label6
             // 
@@ -294,6 +307,7 @@
             this.TxtAsunto.Name = "TxtAsunto";
             this.TxtAsunto.Size = new System.Drawing.Size(375, 20);
             this.TxtAsunto.TabIndex = 5;
+            this.TxtAsunto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label11
             // 
@@ -313,6 +327,7 @@
             this.TxtFolios.Size = new System.Drawing.Size(48, 20);
             this.TxtFolios.TabIndex = 7;
             this.TxtFolios.Text = "1";
+            this.TxtFolios.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label12
             // 
@@ -347,6 +362,7 @@
             // 
             // EdCodSubDep
             // 
+            this.EdCodSubDep.EnterMoveNextControl = true;
             this.EdCodSubDep.Location = new System.Drawing.Point(5, 18);
             this.EdCodSubDep.Name = "EdCodSubDep";
             this.EdCodSubDep.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -355,12 +371,13 @@
             this.EdCodSubDep.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.EdCodSubDep.Properties.Mask.BeepOnError = true;
             this.EdCodSubDep.Properties.Mask.EditMask = "LCCl";
-            this.EdCodSubDep.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdCodSubDep.Properties.Mask.SaveLiteral = false;
             this.EdCodSubDep.Properties.MaxLength = 15;
             this.EdCodSubDep.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdCodSubDep_Properties_ButtonClick);
             this.EdCodSubDep.Size = new System.Drawing.Size(65, 20);
             this.EdCodSubDep.TabIndex = 0;
+            this.EdCodSubDep.Enter += new System.EventHandler(this.ObjectEnter);
+            this.EdCodSubDep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EdCodSubDep_KeyDown);
             this.EdCodSubDep.Leave += new System.EventHandler(this.EdCodSubDep_Leave);
             // 
             // TxtSubDependencia
@@ -427,6 +444,7 @@
             this.CboFuente.Name = "CboFuente";
             this.CboFuente.Size = new System.Drawing.Size(79, 21);
             this.CboFuente.TabIndex = 1;
+            this.CboFuente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // CboMoneda
             // 
@@ -443,6 +461,7 @@
             this.CboMoneda.Name = "CboMoneda";
             this.CboMoneda.Size = new System.Drawing.Size(76, 21);
             this.CboMoneda.TabIndex = 3;
+            this.CboMoneda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label10
             // 
@@ -462,6 +481,8 @@
             this.TxtNroAutorizacion.Name = "TxtNroAutorizacion";
             this.TxtNroAutorizacion.Size = new System.Drawing.Size(49, 20);
             this.TxtNroAutorizacion.TabIndex = 5;
+            this.TxtNroAutorizacion.Enter += new System.EventHandler(this.ObjectEnter);
+            this.TxtNroAutorizacion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // TxtMontoAprobado
             // 
@@ -472,6 +493,8 @@
             this.TxtMontoAprobado.Name = "TxtMontoAprobado";
             this.TxtMontoAprobado.Size = new System.Drawing.Size(63, 20);
             this.TxtMontoAprobado.TabIndex = 6;
+            this.TxtMontoAprobado.Enter += new System.EventHandler(this.ObjectEnter);
+            this.TxtMontoAprobado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // groupBox2
             // 
@@ -501,6 +524,7 @@
             this.CboYearExp.Size = new System.Drawing.Size(61, 21);
             this.CboYearExp.TabIndex = 3;
             this.CboYearExp.SelectedIndexChanged += new System.EventHandler(this.CboYearExp_SelectedIndexChanged);
+            this.CboYearExp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label7
             // 
@@ -522,6 +546,7 @@
             // 
             // EdIdExpediente
             // 
+            this.EdIdExpediente.EnterMoveNextControl = true;
             this.EdIdExpediente.Location = new System.Drawing.Point(4, 37);
             this.EdIdExpediente.Name = "EdIdExpediente";
             this.EdIdExpediente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -529,17 +554,19 @@
             this.EdIdExpediente.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.EdIdExpediente.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.EdIdExpediente.Properties.Mask.BeepOnError = true;
-            this.EdIdExpediente.Properties.Mask.EditMask = "99999999";
+            this.EdIdExpediente.Properties.Mask.EditMask = "A99999";
             this.EdIdExpediente.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdIdExpediente.Properties.MaxLength = 15;
             this.EdIdExpediente.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdIdExpediente_Properties_ButtonClick);
             this.EdIdExpediente.Size = new System.Drawing.Size(67, 20);
             this.EdIdExpediente.TabIndex = 1;
+            this.EdIdExpediente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EdIdExpediente_KeyDown);
             this.EdIdExpediente.Leave += new System.EventHandler(this.EdIdExpediente_Leave);
             // 
             // DtFechaIngresoExp
             // 
             this.DtFechaIngresoExp.EditValue = null;
+            this.DtFechaIngresoExp.EnterMoveNextControl = true;
             this.DtFechaIngresoExp.Location = new System.Drawing.Point(253, 37);
             this.DtFechaIngresoExp.Name = "DtFechaIngresoExp";
             this.DtFechaIngresoExp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -571,6 +598,7 @@
             // DtFechaExp
             // 
             this.DtFechaExp.EditValue = null;
+            this.DtFechaExp.EnterMoveNextControl = true;
             this.DtFechaExp.Location = new System.Drawing.Point(158, 37);
             this.DtFechaExp.Name = "DtFechaExp";
             this.DtFechaExp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -737,17 +765,6 @@
             this.TxtnLog.Size = new System.Drawing.Size(100, 20);
             this.TxtnLog.TabIndex = 2;
             this.TxtnLog.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // BtnLimpiar
-            // 
-            this.BtnLimpiar.Enabled = false;
-            this.BtnLimpiar.Location = new System.Drawing.Point(575, 228);
-            this.BtnLimpiar.Name = "BtnLimpiar";
-            this.BtnLimpiar.Size = new System.Drawing.Size(60, 33);
-            this.BtnLimpiar.TabIndex = 11;
-            this.BtnLimpiar.Text = "&Limpiar";
-            this.BtnLimpiar.UseVisualStyleBackColor = true;
-            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // FpTramite
             // 

@@ -389,6 +389,7 @@ namespace Certifica_logistica.Popups
         private System.Windows.Forms.CheckBox ChkFilter;
         private System.Windows.Forms.CheckBox ChkMostrarGrupo;
         public  ENumTabla _TipoTabla;
+        public ENumTipoOrden _TipoOrdenBusqueda;
         private System.Windows.Forms.Label LblPeriodo;
         private System.Windows.Forms.RadioButton Rnd3;
         private System.Windows.Forms.ComboBox CboYearExp;

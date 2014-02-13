@@ -78,6 +78,10 @@ namespace Certifica_logistica
             this.trámiteDocumentarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.ordenesDeServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planillaDeMovilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planillaDePropinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contratoConvenioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viaticosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReportesMenuItemSup = new System.Windows.Forms.ToolStripMenuItem();
             this.relaciónDeAmbientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
@@ -114,10 +118,6 @@ namespace Certifica_logistica
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.planillaDeMovilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.planillaDePropinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contratoConvenioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viaticosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -550,22 +550,59 @@ namespace Certifica_logistica
             this.trámiteDocumentarioToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.inbox_icon_24;
             this.trámiteDocumentarioToolStripMenuItem.Name = "trámiteDocumentarioToolStripMenuItem";
             this.trámiteDocumentarioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.trámiteDocumentarioToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.trámiteDocumentarioToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.trámiteDocumentarioToolStripMenuItem.Text = "Trámite Documentario";
             this.trámiteDocumentarioToolStripMenuItem.Click += new System.EventHandler(this.trámiteDocumentarioToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(214, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(252, 6);
             // 
             // ordenesDeServicioToolStripMenuItem
             // 
             this.ordenesDeServicioToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.orden_48;
             this.ordenesDeServicioToolStripMenuItem.Name = "ordenesDeServicioToolStripMenuItem";
-            this.ordenesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.ordenesDeServicioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
+            this.ordenesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.ordenesDeServicioToolStripMenuItem.Text = "Ordenes de Servicio / Trabajo";
             this.ordenesDeServicioToolStripMenuItem.Click += new System.EventHandler(this.ordenesDeServicioToolStripMenuItem_Click);
+            // 
+            // planillaDeMovilidadToolStripMenuItem
+            // 
+            this.planillaDeMovilidadToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.taxi_32;
+            this.planillaDeMovilidadToolStripMenuItem.Name = "planillaDeMovilidadToolStripMenuItem";
+            this.planillaDeMovilidadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
+            this.planillaDeMovilidadToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.planillaDeMovilidadToolStripMenuItem.Text = "Planilla de Movilidad";
+            this.planillaDeMovilidadToolStripMenuItem.Click += new System.EventHandler(this.planillaDeMovilidadToolStripMenuItem_Click);
+            // 
+            // planillaDePropinasToolStripMenuItem
+            // 
+            this.planillaDePropinasToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.moneda_32;
+            this.planillaDePropinasToolStripMenuItem.Name = "planillaDePropinasToolStripMenuItem";
+            this.planillaDePropinasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
+            this.planillaDePropinasToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.planillaDePropinasToolStripMenuItem.Text = "Planilla de Propinas";
+            this.planillaDePropinasToolStripMenuItem.Click += new System.EventHandler(this.planillaDePropinasToolStripMenuItem_Click);
+            // 
+            // contratoConvenioToolStripMenuItem
+            // 
+            this.contratoConvenioToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.contrato_24;
+            this.contratoConvenioToolStripMenuItem.Name = "contratoConvenioToolStripMenuItem";
+            this.contratoConvenioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
+            this.contratoConvenioToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.contratoConvenioToolStripMenuItem.Text = "Contrato Convenio";
+            this.contratoConvenioToolStripMenuItem.Click += new System.EventHandler(this.contratoConvenioToolStripMenuItem_Click);
+            // 
+            // viaticosToolStripMenuItem
+            // 
+            this.viaticosToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.avion_24;
+            this.viaticosToolStripMenuItem.Name = "viaticosToolStripMenuItem";
+            this.viaticosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5)));
+            this.viaticosToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.viaticosToolStripMenuItem.Text = "Viaticos";
+            this.viaticosToolStripMenuItem.Click += new System.EventHandler(this.viaticosToolStripMenuItem_Click);
             // 
             // ReportesMenuItemSup
             // 
@@ -791,8 +828,8 @@ namespace Certifica_logistica
             this.LblVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.LblVersion.ForeColor = System.Drawing.Color.OliveDrab;
             this.LblVersion.Name = "LblVersion";
-            this.LblVersion.Size = new System.Drawing.Size(143, 22);
-            this.LblVersion.Text = "Compilación: 04Feb2014";
+            this.LblVersion.Size = new System.Drawing.Size(149, 22);
+            this.LblVersion.Text = "Compilación: 09Feb2014F";
             // 
             // toolStripCDeposito
             // 
@@ -864,34 +901,6 @@ namespace Certifica_logistica
             // popupMenu1
             // 
             this.popupMenu1.Name = "popupMenu1";
-            // 
-            // planillaDeMovilidadToolStripMenuItem
-            // 
-            this.planillaDeMovilidadToolStripMenuItem.Name = "planillaDeMovilidadToolStripMenuItem";
-            this.planillaDeMovilidadToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.planillaDeMovilidadToolStripMenuItem.Text = "Planilla de Movilidad";
-            this.planillaDeMovilidadToolStripMenuItem.Click += new System.EventHandler(this.planillaDeMovilidadToolStripMenuItem_Click);
-            // 
-            // planillaDePropinasToolStripMenuItem
-            // 
-            this.planillaDePropinasToolStripMenuItem.Name = "planillaDePropinasToolStripMenuItem";
-            this.planillaDePropinasToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.planillaDePropinasToolStripMenuItem.Text = "Planilla de Propinas";
-            this.planillaDePropinasToolStripMenuItem.Click += new System.EventHandler(this.planillaDePropinasToolStripMenuItem_Click);
-            // 
-            // contratoConvenioToolStripMenuItem
-            // 
-            this.contratoConvenioToolStripMenuItem.Name = "contratoConvenioToolStripMenuItem";
-            this.contratoConvenioToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.contratoConvenioToolStripMenuItem.Text = "Contrato Convenio";
-            this.contratoConvenioToolStripMenuItem.Click += new System.EventHandler(this.contratoConvenioToolStripMenuItem_Click);
-            // 
-            // viaticosToolStripMenuItem
-            // 
-            this.viaticosToolStripMenuItem.Name = "viaticosToolStripMenuItem";
-            this.viaticosToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.viaticosToolStripMenuItem.Text = "Viaticos";
-            this.viaticosToolStripMenuItem.Click += new System.EventHandler(this.viaticosToolStripMenuItem_Click);
             // 
             // Inicioform
             // 

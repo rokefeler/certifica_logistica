@@ -90,14 +90,14 @@ namespace Certifica_logistica.utiles
             }
 
             if (log != null)
-                if (Security.CompareHash(pwd, log.Clave))
+                if (pwd.Equals(log.Clave))
                 {
                     if (pwd1.Equals(pwd2))
                     {
                         _estado = true;
                         try
                         {
-                            log.Clave = Security.CreateHash(pwd1);
+                            log.Clave = pwd1; // Security.CreateHash(pwd1);
                             LoginDao.CambiarClave(log, null);
                         }
                         catch (SqlException ee)

@@ -133,7 +133,7 @@ namespace Certifica_logistica.Popups
                                 _ds = RubroFinanciamientoDao.FiltroByNombre(cFilter, cFiltro2);
                                 break;
                             case ENumTabla.ORDENSERVICIO:
-                                //_ds = OrdenLogisticaDao.FiltroByNroDocAsunto(cFilter, cFiltro2);
+                                //Todo: PENDIENTE 11.02.2014 ;OrdenLogisticaDao
                                 break;
                             case ENumTabla.EXPEDIENTE:
                                 _ds = ExpedienteDao.FiltroByNroDocAsunto(cFilter, Convert.ToInt32(CboYearExp.SelectedItem), cFiltro2);
@@ -205,7 +205,14 @@ namespace Certifica_logistica.Popups
                 _Codigo = r[0].ToString();
 // ReSharper disable once RedundantToStringCall
 // ReSharper disable once RedundantToStringCall
-                _Nombre = r[2].ToString() + ", "+ r[1].ToString();
+                try
+                {
+                    _Nombre = r[2].ToString() + ", " + r[1].ToString();
+                }
+                catch
+                {
+                    _Nombre = r[1].ToString();
+                }
             }
             catch 
             {

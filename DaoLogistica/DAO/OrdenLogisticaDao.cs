@@ -27,7 +27,7 @@ namespace DaoLogistica.DAO
             if(obj.IdAlmacen>0)
                 DATA.Db.AddInParameter(cmd, "IdAlmacen", DbType.String, obj.IdAlmacen);
             DATA.Db.AddInParameter(cmd, "IdxProceso", DbType.String, obj.IdxProceso);
-            if(String.IsNullOrEmpty(obj.NroProceso))
+            if(!String.IsNullOrEmpty(obj.NroProceso))
                 DATA.Db.AddInParameter(cmd, "NroProceso", DbType.String, obj.NroProceso);
             if(!string.IsNullOrEmpty(obj.Referencia))
                 DATA.Db.AddInParameter(cmd, "Referencia", DbType.String, obj.Referencia);
@@ -106,7 +106,15 @@ namespace DaoLogistica.DAO
             }
             return obj;
         }
-        
+        public static DataSet GetAllByRazon(String cod1, String cod2 = null)
+        {
+            if (cod1 == null) throw new ArgumentNullException("cod1");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetByRazon);
+            DATA.Db.AddInParameter(cmd, "Ape", DbType.String, cod1);
+            DATA.Db.AddInParameter(cmd, "Nom", DbType.String, cod2);
+            return DATA.Db.ExecuteDataSet(cmd);
+        }
         public static DataSet ImprimirOrden(long IdOrden)
         {
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");

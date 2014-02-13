@@ -36,25 +36,8 @@ namespace Certifica_logistica.mantenimiento
                 General.ShowMessage("Primero Complete u Corriga Las Observaciones Encontradas ");
                 return false;
             }
-            /*
-            msg = "Debe Seleccionar la SubDependencia a la que pertence el Documento que esta Registrando";
-            if (EdCodSubDep.EditValue != null)
-            {
-                General.ShowMessage(msg);
-                dxErrorProvider1.SetError(EdCodSubDep, msg);
-                EdCodSubDep.Focus();
-                return false;
-            }
-
-            cad = EdCodSubDep.Text.Trim();
-            if (cad.Length <= 0)
-            {
-                General.ShowMessage(msg);
-                dxErrorProvider1.SetError(EdCodSubDep, msg);
-                EdCodSubDep.Focus();
-                return false;
-            }
-            dxErrorProvider1.SetError(EdCodSubDep, "");*/
+            
+            
             return true;
         }
         public override void ObjectEnter(object sender, EventArgs e)
@@ -62,6 +45,13 @@ namespace Certifica_logistica.mantenimiento
             base.ObjectEnter(sender, e);
             return;
         }
+
+        public override void Object_KeyDown(object sender, KeyEventArgs e)
+        {
+            base.Object_KeyDown(sender, e);
+            return;
+        }
+
         public override bool Master_GrabarFormulario()
         {
             var ret = 0;
@@ -184,6 +174,7 @@ namespace Certifica_logistica.mantenimiento
             else 
             {
                 Value = string.Empty;
+                TxtNroDoc.Text = TxtCodPersonal.Text;
                 General.ShowMessage("Este Código no Existe");
             }
         }
@@ -267,5 +258,7 @@ namespace Certifica_logistica.mantenimiento
             toolTipController1.SetToolTip(TxtSubDependencia, obj.Nombre);
             toolTipController1.SetToolTip(TxtDependencia, obj2.Nombre);
         }
+
+      
     }
 }

@@ -23,6 +23,7 @@ namespace DaoLogistica.DAO
             if (!string.IsNullOrEmpty(obj.Detalle))
                 DATA.Db.AddInParameter(cmd, "Detalle", DbType.String, obj.Detalle);
             DATA.Db.AddInParameter(cmd, "IdMeta", DbType.Int32, obj.IdMeta);
+            DATA.Db.AddInParameter(cmd, "Cantidad", DbType.Int32, obj.Cantidad);
             DATA.Db.AddInParameter(cmd, "Monto", DbType.Decimal, obj.Monto);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             if (dbTrans != null)
@@ -33,12 +34,13 @@ namespace DaoLogistica.DAO
             return ret; //devuelve el id único del registro
         }
 
-        public static int Delete(long idDet, DbTransaction dbTrans)
+        public static int Delete(long idDet, string codLogin, DbTransaction dbTrans)
         {
             if (idDet <= 0) throw new ArgumentNullException("idDet");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogisticaDetalle");
             DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.DeleteLogico);
             DATA.Db.AddInParameter(cmd, "Id", DbType.Int64, idDet);
+            DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, codLogin);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             if (dbTrans != null)
                 DATA.Db.ExecuteNonQuery(cmd, dbTrans);
@@ -48,8 +50,6 @@ namespace DaoLogistica.DAO
             return ret;
         }
        
-
-
         public static OrdenLogisticaDetalle GetbyId(int id)
         {
             if (id <= 0) throw new ArgumentNullException("id");
@@ -96,6 +96,7 @@ namespace DaoLogistica.DAO
             obj.Codigo= dr.GetString(dr.GetOrdinal("codigo"));
             obj.Detalle = dr.GetString(dr.GetOrdinal("Detalle"));
             obj.IdMeta = dr.GetInt32(dr.GetOrdinal("IdMeta"));
+            obj.Cantidad = dr.GetInt32(dr.GetOrdinal("Cantidad"));
             obj.Monto = dr.GetDecimal(dr.GetOrdinal("Monto"));
             return obj;
         }

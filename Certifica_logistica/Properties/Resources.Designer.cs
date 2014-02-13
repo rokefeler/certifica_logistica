@@ -103,9 +103,29 @@ namespace Certifica_logistica.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avion_24 {
+            get {
+                object obj = ResourceManager.GetObject("avion_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_24 {
             get {
                 object obj = ResourceManager.GetObject("Close_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap contrato_24 {
+            get {
+                object obj = ResourceManager.GetObject("contrato_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +236,16 @@ namespace Certifica_logistica.Properties {
         internal static System.Drawing.Bitmap logout24 {
             get {
                 object obj = ResourceManager.GetObject("logout24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap moneda_32 {
+            get {
+                object obj = ResourceManager.GetObject("moneda_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -356,6 +386,16 @@ namespace Certifica_logistica.Properties {
         internal static System.Drawing.Bitmap sunat_small1 {
             get {
                 object obj = ResourceManager.GetObject("sunat_small1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap taxi_32 {
+            get {
+                object obj = ResourceManager.GetObject("taxi_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

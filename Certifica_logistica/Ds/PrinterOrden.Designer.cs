@@ -669,6 +669,8 @@ namespace Certifica_logistica.Ds {
             
             private global::System.Data.DataColumn columnDetalle;
             
+            private global::System.Data.DataColumn columncantidad;
+            
             private global::System.Data.DataColumn columnmonto;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -762,6 +764,14 @@ namespace Certifica_logistica.Ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cantidadColumn {
+                get {
+                    return this.columncantidad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn montoColumn {
                 get {
                     return this.columnmonto;
@@ -805,7 +815,7 @@ namespace Certifica_logistica.Ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleRow AddDetalleRow(OrdenRow parentOrdenRowByOrden_Detalle, string clasificador, string meta, string TipoUsuario, string SIGLAUSER, string codigo, string Detalle, decimal monto) {
+            public DetalleRow AddDetalleRow(OrdenRow parentOrdenRowByOrden_Detalle, string clasificador, string meta, string TipoUsuario, string SIGLAUSER, string codigo, string Detalle, int cantidad, decimal monto) {
                 DetalleRow rowDetalleRow = ((DetalleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -815,6 +825,7 @@ namespace Certifica_logistica.Ds {
                         SIGLAUSER,
                         codigo,
                         Detalle,
+                        cantidad,
                         monto};
                 if ((parentOrdenRowByOrden_Detalle != null)) {
                     columnValuesArray[0] = parentOrdenRowByOrden_Detalle[0];
@@ -848,6 +859,7 @@ namespace Certifica_logistica.Ds {
                 this.columnSIGLAUSER = base.Columns["SIGLAUSER"];
                 this.columncodigo = base.Columns["codigo"];
                 this.columnDetalle = base.Columns["Detalle"];
+                this.columncantidad = base.Columns["cantidad"];
                 this.columnmonto = base.Columns["monto"];
             }
             
@@ -868,6 +880,8 @@ namespace Certifica_logistica.Ds {
                 base.Columns.Add(this.columncodigo);
                 this.columnDetalle = new global::System.Data.DataColumn("Detalle", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDetalle);
+                this.columncantidad = new global::System.Data.DataColumn("cantidad", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncantidad);
                 this.columnmonto = new global::System.Data.DataColumn("monto", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmonto);
             }
@@ -1060,6 +1074,10 @@ namespace Certifica_logistica.Ds {
             private global::System.Data.DataColumn columnnomDependencia;
             
             private global::System.Data.DataColumn columnFteFinanciamiento;
+            
+            private global::System.Data.DataColumn columnJefeSeccion;
+            
+            private global::System.Data.DataColumn columnmetas;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1328,6 +1346,22 @@ namespace Certifica_logistica.Ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JefeSeccionColumn {
+                get {
+                    return this.columnJefeSeccion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn metasColumn {
+                get {
+                    return this.columnmetas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1392,7 +1426,9 @@ namespace Certifica_logistica.Ds {
                         string AutorizadoRectorado, 
                         string nomSubDependencia, 
                         string nomDependencia, 
-                        string FteFinanciamiento) {
+                        string FteFinanciamiento, 
+                        string JefeSeccion, 
+                        string metas) {
                 OrdenRow rowOrdenRow = ((OrdenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdOrden,
@@ -1423,7 +1459,9 @@ namespace Certifica_logistica.Ds {
                         AutorizadoRectorado,
                         nomSubDependencia,
                         nomDependencia,
-                        FteFinanciamiento};
+                        FteFinanciamiento,
+                        JefeSeccion,
+                        metas};
                 rowOrdenRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowOrdenRow);
                 return rowOrdenRow;
@@ -1482,6 +1520,8 @@ namespace Certifica_logistica.Ds {
                 this.columnnomSubDependencia = base.Columns["nomSubDependencia"];
                 this.columnnomDependencia = base.Columns["nomDependencia"];
                 this.columnFteFinanciamiento = base.Columns["FteFinanciamiento"];
+                this.columnJefeSeccion = base.Columns["JefeSeccion"];
+                this.columnmetas = base.Columns["metas"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1545,6 +1585,10 @@ namespace Certifica_logistica.Ds {
                 base.Columns.Add(this.columnnomDependencia);
                 this.columnFteFinanciamiento = new global::System.Data.DataColumn("FteFinanciamiento", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFteFinanciamiento);
+                this.columnJefeSeccion = new global::System.Data.DataColumn("JefeSeccion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJefeSeccion);
+                this.columnmetas = new global::System.Data.DataColumn("metas", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmetas);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdOrden}, true));
                 this.columnIdOrden.AllowDBNull = false;
@@ -1941,6 +1985,22 @@ namespace Certifica_logistica.Ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int cantidad {
+                get {
+                    try {
+                        return ((int)(this[this.tableDetalle.cantidadColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'cantidad\' de la tabla \'Detalle\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDetalle.cantidadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal monto {
                 get {
                     try {
@@ -2048,6 +2108,18 @@ namespace Certifica_logistica.Ds {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDetalleNull() {
                 this[this.tableDetalle.DetalleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscantidadNull() {
+                return this.IsNull(this.tableDetalle.cantidadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcantidadNull() {
+                this[this.tableDetalle.cantidadColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2538,6 +2610,38 @@ namespace Certifica_logistica.Ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string JefeSeccion {
+                get {
+                    try {
+                        return ((string)(this[this.tableOrden.JefeSeccionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'JefeSeccion\' de la tabla \'Orden\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOrden.JefeSeccionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string metas {
+                get {
+                    try {
+                        return ((string)(this[this.tableOrden.metasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'metas\' de la tabla \'Orden\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOrden.metasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNroNull() {
                 return this.IsNull(this.tableOrden.NroColumn);
             }
@@ -2870,6 +2974,30 @@ namespace Certifica_logistica.Ds {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFteFinanciamientoNull() {
                 this[this.tableOrden.FteFinanciamientoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJefeSeccionNull() {
+                return this.IsNull(this.tableOrden.JefeSeccionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJefeSeccionNull() {
+                this[this.tableOrden.JefeSeccionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmetasNull() {
+                return this.IsNull(this.tableOrden.metasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmetasNull() {
+                this[this.tableOrden.metasColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

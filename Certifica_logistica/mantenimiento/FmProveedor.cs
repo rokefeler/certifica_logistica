@@ -305,7 +305,7 @@ namespace Certifica_logistica.mantenimiento
                 y = cad.IndexOf(cad2, 1, StringComparison.InvariantCulture);
                 x = x + cad1.Length;
                 var cDireccion = cad.Substring(x, (y - x)).Trim();
-                string[] split = cDireccion.Split(new[] { ' ' });
+                var split = cDireccion.Split(new[] { ' ' });
                 var cDis = split[split.Length - 1];
                 var cProv = split[split.Length - 2];
                 var cDep = split[split.Length - 3];
@@ -409,7 +409,7 @@ namespace Certifica_logistica.mantenimiento
                     DtFecNac.EditValue = null;
                 }
                 TxtTipoNegocio.Text = cTipo;
-
+                client.Dispose();
                 //------------------------------
             }
         }

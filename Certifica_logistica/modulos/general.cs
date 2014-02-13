@@ -334,6 +334,8 @@ static class CONSTANTE
                     tbE.Rows.Add(r);
                     break;
                 case ENumTipoOrden.MOVILIDAD:
+                case ENumTipoOrden.VIATICOS:
+                case ENumTipoOrden.CONVENIO:
                     r = tbE.NewRow();
                     r[0] = 'P';
                     r[1] = "PERSONAL / DOC.EXTRANJ.";
@@ -350,13 +352,13 @@ static class CONSTANTE
                     r[1] = "SERVICIOS";
                     tbE.Rows.Add(r);
                     break;
-                case ENumTipoOrden.CONVENIO:
+               /*
                     r = tbE.NewRow();
                     r[0] = 'P';
                     r[1] = "PERSONAL / DOC.EXTRANJ.";
                     tbE.Rows.Add(r);
                     break;
-
+                    */
             }
             
         }
@@ -531,12 +533,20 @@ static class CONSTANTE
                case -2:
                    cad = "El Expediente en Mención Esta Bloqueado o Cerrado, Consulte con su Administrador";
                    break;
+               case -3:
+                   cad = "El Monto Actual, Supera El SALDO APROBADO, registrado en TRAMITE";
+                   break;
+               case -4:
+                   cad = "Imposible Continuar, Estado de Registro Es ANULADO";
+                   break;
+               case -5:
+                   cad = "Imposible Continuar, Estado de Registro Es BLOQUEADO TOTAL";
+                   break;
                default:
                    cad = "Los Datos Fueron Correctamente Grabados en la Base de Datos";
                    break;
            }
-           return cad;
-       }
+           return cad;}
 
        public static string AnalizaTipoOrden(ENumTipoOrden tipoOrden)
        {

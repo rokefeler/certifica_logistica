@@ -74,8 +74,6 @@ namespace DaoLogistica.DAO
             return obj;
         }
 
-      
-
         public static DataSet GetAllByDirec(String cod1, String cod2 = null)
         {
             if (cod1 == null) throw new ArgumentNullException("cod1");

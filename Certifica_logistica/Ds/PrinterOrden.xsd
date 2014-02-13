@@ -32,6 +32,7 @@
               <xs:element name="SIGLAUSER" msprop:Generator_ColumnVarNameInTable="columnSIGLAUSER" msprop:Generator_ColumnPropNameInRow="SIGLAUSER" msprop:Generator_ColumnPropNameInTable="SIGLAUSERColumn" msprop:Generator_UserColumnName="SIGLAUSER" type="xs:string" minOccurs="0" />
               <xs:element name="codigo" msprop:Generator_ColumnVarNameInTable="columncodigo" msprop:Generator_ColumnPropNameInRow="codigo" msprop:Generator_ColumnPropNameInTable="codigoColumn" msprop:Generator_UserColumnName="codigo" type="xs:string" minOccurs="0" />
               <xs:element name="Detalle" msprop:Generator_ColumnVarNameInTable="columnDetalle" msprop:Generator_ColumnPropNameInRow="Detalle" msprop:Generator_ColumnPropNameInTable="DetalleColumn" msprop:Generator_UserColumnName="Detalle" type="xs:string" minOccurs="0" />
+              <xs:element name="cantidad" msprop:Generator_ColumnVarNameInTable="columncantidad" msprop:Generator_ColumnPropNameInRow="cantidad" msprop:Generator_ColumnPropNameInTable="cantidadColumn" msprop:Generator_UserColumnName="cantidad" type="xs:int" minOccurs="0" />
               <xs:element name="monto" msprop:Generator_ColumnVarNameInTable="columnmonto" msprop:Generator_ColumnPropNameInRow="monto" msprop:Generator_ColumnPropNameInTable="montoColumn" msprop:Generator_UserColumnName="monto" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
@@ -68,6 +69,8 @@
               <xs:element name="nomSubDependencia" msprop:Generator_ColumnVarNameInTable="columnnomSubDependencia" msprop:Generator_ColumnPropNameInRow="nomSubDependencia" msprop:Generator_ColumnPropNameInTable="nomSubDependenciaColumn" msprop:Generator_UserColumnName="nomSubDependencia" type="xs:string" minOccurs="0" />
               <xs:element name="nomDependencia" msprop:Generator_ColumnVarNameInTable="columnnomDependencia" msprop:Generator_ColumnPropNameInRow="nomDependencia" msprop:Generator_ColumnPropNameInTable="nomDependenciaColumn" msprop:Generator_UserColumnName="nomDependencia" type="xs:string" minOccurs="0" />
               <xs:element name="FteFinanciamiento" msprop:Generator_ColumnVarNameInTable="columnFteFinanciamiento" msprop:Generator_ColumnPropNameInRow="FteFinanciamiento" msprop:Generator_ColumnPropNameInTable="FteFinanciamientoColumn" msprop:Generator_UserColumnName="FteFinanciamiento" type="xs:string" minOccurs="0" />
+              <xs:element name="JefeSeccion" msprop:Generator_ColumnVarNameInTable="columnJefeSeccion" msprop:Generator_ColumnPropNameInRow="JefeSeccion" msprop:Generator_ColumnPropNameInTable="JefeSeccionColumn" msprop:Generator_UserColumnName="JefeSeccion" type="xs:string" minOccurs="0" />
+              <xs:element name="metas" msprop:Generator_ColumnVarNameInTable="columnmetas" msprop:Generator_ColumnPropNameInRow="metas" msprop:Generator_ColumnPropNameInTable="metasColumn" msprop:Generator_UserColumnName="metas" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

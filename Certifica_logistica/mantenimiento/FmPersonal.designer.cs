@@ -92,6 +92,7 @@
             this.TxtApellidos.Size = new System.Drawing.Size(389, 20);
             this.TxtApellidos.TabIndex = 3;
             this.TxtApellidos.Enter += new System.EventHandler(this.ObjectEnter);
+            this.TxtApellidos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label3
             // 
@@ -104,6 +105,7 @@
             // 
             // TxtCodPersonal
             // 
+            this.TxtCodPersonal.EnterMoveNextControl = true;
             this.TxtCodPersonal.Location = new System.Drawing.Point(88, 49);
             this.TxtCodPersonal.Name = "TxtCodPersonal";
             this.TxtCodPersonal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -111,8 +113,7 @@
             this.TxtCodPersonal.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.TxtCodPersonal.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtCodPersonal.Properties.Mask.BeepOnError = true;
-            this.TxtCodPersonal.Properties.Mask.EditMask = "99999999";
-            this.TxtCodPersonal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
+            this.TxtCodPersonal.Properties.Mask.EditMask = "A99999999";
             this.TxtCodPersonal.Properties.MaxLength = 15;
             this.TxtCodPersonal.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TxtCodPersonal_Properties_ButtonClick);
             this.TxtCodPersonal.Size = new System.Drawing.Size(100, 20);
@@ -149,6 +150,7 @@
             this.TxtNombres.Size = new System.Drawing.Size(389, 20);
             this.TxtNombres.TabIndex = 5;
             this.TxtNombres.Enter += new System.EventHandler(this.ObjectEnter);
+            this.TxtNombres.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label4
             // 
@@ -169,6 +171,7 @@
             this.TxtDireccion.Size = new System.Drawing.Size(389, 20);
             this.TxtDireccion.TabIndex = 10;
             this.TxtDireccion.Enter += new System.EventHandler(this.ObjectEnter);
+            this.TxtDireccion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label5
             // 
@@ -186,6 +189,7 @@
             this.CboTDoc.Name = "CboTDoc";
             this.CboTDoc.Size = new System.Drawing.Size(177, 21);
             this.CboTDoc.TabIndex = 7;
+            this.CboTDoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // TxtNroDoc
             // 
@@ -197,6 +201,7 @@
             this.TxtNroDoc.Size = new System.Drawing.Size(206, 20);
             this.TxtNroDoc.TabIndex = 8;
             this.TxtNroDoc.Enter += new System.EventHandler(this.ObjectEnter);
+            this.TxtNroDoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             this.TxtNroDoc.Leave += new System.EventHandler(this.TxtNroDoc_Leave);
             // 
             // label6
@@ -217,6 +222,7 @@
             this.TxtEmail.Size = new System.Drawing.Size(389, 20);
             this.TxtEmail.TabIndex = 15;
             this.TxtEmail.Enter += new System.EventHandler(this.ObjectEnter);
+            this.TxtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label7
             // 
@@ -237,6 +243,7 @@
             this.TxtMovil.Size = new System.Drawing.Size(177, 20);
             this.TxtMovil.TabIndex = 17;
             this.TxtMovil.Enter += new System.EventHandler(this.ObjectEnter);
+            this.TxtMovil.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label8
             // 
@@ -258,6 +265,8 @@
             // 
             // BtnUbigeo
             // 
+            this.BtnUbigeo.EditValue = "000000";
+            this.BtnUbigeo.EnterMoveNextControl = true;
             this.BtnUbigeo.Location = new System.Drawing.Point(88, 184);
             this.BtnUbigeo.Name = "BtnUbigeo";
             this.BtnUbigeo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -313,6 +322,7 @@
             this.TxtFijo.Size = new System.Drawing.Size(157, 20);
             this.TxtFijo.TabIndex = 19;
             this.TxtFijo.Enter += new System.EventHandler(this.ObjectEnter);
+            this.TxtFijo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // CboCondicion
             // 
@@ -322,6 +332,7 @@
             this.CboCondicion.Name = "CboCondicion";
             this.CboCondicion.Size = new System.Drawing.Size(389, 21);
             this.CboCondicion.TabIndex = 21;
+            this.CboCondicion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // CboCategoria
             // 
@@ -331,6 +342,7 @@
             this.CboCategoria.Name = "CboCategoria";
             this.CboCategoria.Size = new System.Drawing.Size(389, 21);
             this.CboCategoria.TabIndex = 23;
+            this.CboCategoria.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // GrpSubDependencia
             // 
@@ -347,6 +359,7 @@
             // 
             // EdCodSubDep
             // 
+            this.EdCodSubDep.EnterMoveNextControl = true;
             this.EdCodSubDep.Location = new System.Drawing.Point(5, 18);
             this.EdCodSubDep.Name = "EdCodSubDep";
             this.EdCodSubDep.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -355,7 +368,6 @@
             this.EdCodSubDep.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.EdCodSubDep.Properties.Mask.BeepOnError = true;
             this.EdCodSubDep.Properties.Mask.EditMask = "LLLl";
-            this.EdCodSubDep.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.EdCodSubDep.Properties.Mask.SaveLiteral = false;
             this.EdCodSubDep.Properties.MaxLength = 15;
             this.EdCodSubDep.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EdCodSubDep_Properties_ButtonClick);
