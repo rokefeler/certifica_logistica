@@ -46,6 +46,35 @@ namespace Certifica_logistica.procesos
                 PrepararDatosInternos();
             if(_idOrdenAClonar>0)
                 ClonarDatos(_idOrdenAClonar);
+            else //Si no es Clonar, poner Especificas Relativas
+            {
+                if (_TipoOrden != ENumTipoOrden.VIATICOS) return;
+                var cClasificador = @"2.3.2 1.2 1";
+                
+                for (var i = 1; i <= 2; i++)
+                {
+                    var drow = _tbOrdenDetalle.NewDetalleOrdenRow();
+                    if(i!=1)
+                        cClasificador = @"2.3.2 1.2 2";
+                    drow["Id"] = 0; //Este es Id de Base de Datos CUIDADO
+                    drow["IdOrden"] = 0;
+                    var cla = ClasificadorGastoDao.GetbyId(cClasificador,
+                        DateTime.Now.Year.ToString(CultureInfo.InvariantCulture));
+                    if (cla == null) break; 
+                    drow["IdClasificador"] = cla.IdClasificador;
+                    drow["IdMeta"] = 0;
+                    _lastMeta = "";
+                    drow["IdTipoUsuario"] = 'N';
+                    _lastClasificador = cClasificador;
+                    drow["Clasificador"] = _lastClasificador;
+                    drow["Codigo"] = "";
+                    drow["Detalle"] = cla.Descripcion;
+                    drow["Cantidad"] = 1;
+                    drow["Monto"] = 0;
+                    _tbOrdenDetalle.Rows.Add(drow);
+                }
+
+            }
         }
 
         public void PrepararDatosInternos()
@@ -201,12 +230,20 @@ namespace Certifica_logistica.procesos
             {
                 obj.Codigo = "";
             }
-            if(!string.IsNullOrEmpty(Value))
+            if (!string.IsNullOrEmpty(Value))
+            {
                 if (
                     MessageBox.Show(@"Desea Ud. Actualizar los Datos de la presente Orden?", @"Confirme por Favor",
                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) !=
                     DialogResult.Yes)
                     return false;
+            }
+            else
+            {
+                if (
+                   MessageBox.Show(@"Esta Ud. Seguro de Grabar Esta Orden de Servicio?\nDebe Verificar bien LA FUENTE y CENTRO DE COSTO\nUna Vez Guardado, Estos Datos Quedaran Bloqueados por Seguridad", @"Confirme por Favor",MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) !=DialogResult.Yes)
+                    return false;
+            }
 
             obj.FechaGiro = DtFechaGiro.DateTime;
             Codigo cod;

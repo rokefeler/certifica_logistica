@@ -42,14 +42,17 @@ namespace DaoLogistica.DAO
                 DATA.Db.AddInParameter(cmd, "RdAutoriza", DbType.String, obj.RdAutoriza);
             DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, obj.CodLogin);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
-            DATA.Db.AddOutParameter(cmd, "NroOrden", DbType.Int32, 12);
+            DATA.Db.AddOutParameter(cmd, "NroOrden", DbType.Int32, 10);
             if (dbTrans != null)
                 DATA.Db.ExecuteNonQuery(cmd, dbTrans);
             else
                 DATA.Db.ExecuteNonQuery(cmd);
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
-            if(obj.IdOrden<=0)
-                cNroOrden = (int)DATA.Db.GetParameterValue(cmd, "@NroOrden");
+            if (obj.IdOrden <= 0)
+            {
+                if(ret>0) //Si no existio ningun Error
+                    cNroOrden = (int) DATA.Db.GetParameterValue(cmd, "@NroOrden");
+            }
             return ret; //devuelve el id único del registro
         }
 

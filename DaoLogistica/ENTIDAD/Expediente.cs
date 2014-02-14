@@ -36,6 +36,7 @@ namespace DaoLogistica.ENTIDAD
             FechaRegistro = fechaRegistro;
 		    IdFuente = idfuente;
 		    Nlog = nlog;
+		    Estado = '1';
 		}
 
         public void Clear()
@@ -60,6 +61,7 @@ namespace DaoLogistica.ENTIDAD
             FechaRegistro = fecha;
             IdFuente = 0;
             Nlog = 0;
+            Estado = '1';
         }
 		#endregion
 
@@ -102,6 +104,7 @@ namespace DaoLogistica.ENTIDAD
 		public DateTime FechaRegistro { get; set; }
         public short IdFuente { get; set; }
         public int Nlog { get; set; }
+        public char Estado { get; set; }
 		#endregion
     }
 }

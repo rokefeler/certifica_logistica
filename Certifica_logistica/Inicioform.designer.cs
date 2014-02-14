@@ -828,8 +828,8 @@ namespace Certifica_logistica
             this.LblVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.LblVersion.ForeColor = System.Drawing.Color.OliveDrab;
             this.LblVersion.Name = "LblVersion";
-            this.LblVersion.Size = new System.Drawing.Size(149, 22);
-            this.LblVersion.Text = "Compilación: 09Feb2014F";
+            this.LblVersion.Size = new System.Drawing.Size(151, 22);
+            this.LblVersion.Text = "Compilación: 09Feb2014G";
             // 
             // toolStripCDeposito
             // 

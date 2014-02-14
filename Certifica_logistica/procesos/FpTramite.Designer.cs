@@ -272,9 +272,9 @@
             // 
             this.TxtNroDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNroDoc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtNroDoc.Location = new System.Drawing.Point(131, 34);
+            this.TxtNroDoc.Location = new System.Drawing.Point(115, 34);
             this.TxtNroDoc.Name = "TxtNroDoc";
-            this.TxtNroDoc.Size = new System.Drawing.Size(84, 20);
+            this.TxtNroDoc.Size = new System.Drawing.Size(139, 20);
             this.TxtNroDoc.TabIndex = 3;
             this.TxtNroDoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
@@ -286,7 +286,7 @@
             this.CboTipoDoc.FormattingEnabled = true;
             this.CboTipoDoc.Location = new System.Drawing.Point(5, 33);
             this.CboTipoDoc.Name = "CboTipoDoc";
-            this.CboTipoDoc.Size = new System.Drawing.Size(121, 21);
+            this.CboTipoDoc.Size = new System.Drawing.Size(106, 21);
             this.CboTipoDoc.TabIndex = 1;
             this.CboTipoDoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
@@ -303,9 +303,9 @@
             // 
             this.TxtAsunto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtAsunto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtAsunto.Location = new System.Drawing.Point(221, 34);
+            this.TxtAsunto.Location = new System.Drawing.Point(257, 34);
             this.TxtAsunto.Name = "TxtAsunto";
-            this.TxtAsunto.Size = new System.Drawing.Size(375, 20);
+            this.TxtAsunto.Size = new System.Drawing.Size(356, 20);
             this.TxtAsunto.TabIndex = 5;
             this.TxtAsunto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
@@ -322,9 +322,9 @@
             // 
             this.TxtFolios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtFolios.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtFolios.Location = new System.Drawing.Point(599, 34);
+            this.TxtFolios.Location = new System.Drawing.Point(615, 34);
             this.TxtFolios.Name = "TxtFolios";
-            this.TxtFolios.Size = new System.Drawing.Size(48, 20);
+            this.TxtFolios.Size = new System.Drawing.Size(32, 20);
             this.TxtFolios.TabIndex = 7;
             this.TxtFolios.Text = "1";
             this.TxtFolios.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
@@ -332,7 +332,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(598, 18);
+            this.label12.Location = new System.Drawing.Point(613, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(34, 13);
             this.label12.TabIndex = 6;

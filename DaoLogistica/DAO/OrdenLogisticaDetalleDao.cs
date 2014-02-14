@@ -38,7 +38,7 @@ namespace DaoLogistica.DAO
         {
             if (idDet <= 0) throw new ArgumentNullException("idDet");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogisticaDetalle");
-            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.DeleteLogico);
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.DeleteLogico); //300
             DATA.Db.AddInParameter(cmd, "Id", DbType.Int64, idDet);
             DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, codLogin);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);

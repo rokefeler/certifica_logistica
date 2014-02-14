@@ -546,8 +546,8 @@ static class CONSTANTE
                    cad = "Los Datos Fueron Correctamente Grabados en la Base de Datos";
                    break;
            }
-           return cad;}
-
+           return cad;
+       }
        public static string AnalizaTipoOrden(ENumTipoOrden tipoOrden)
        {
            string cod;

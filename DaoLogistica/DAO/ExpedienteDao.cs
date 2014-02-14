@@ -151,6 +151,7 @@ namespace DaoLogistica.DAO
             obj.CodLogin        = dr.GetString(dr.GetOrdinal("CodLogin"));
             obj.FechaRegistro   = dr.GetDateTime(dr.GetOrdinal("FechaRegistro"));
             obj.Nlog            = dr.GetInt32(dr.GetOrdinal("nLog"));
+            obj.Estado          = Convert.ToChar(dr.GetValue(dr.GetOrdinal("Estado")));
             return obj;
         }
 

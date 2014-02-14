@@ -274,7 +274,7 @@ namespace Certifica_logistica.procesos
                 _exp.Clear();
 
             //Verificar si Existe
-            var bExisteExp = ExpedienteDao.ExisteById(Value);
+            var bExisteExp = ExpedienteDao.ExisteById(codigoExp);
 
             _exp.Idexpediente = codigoExp;
             _exp.FechaIngreso = DtFechaIngresoExp.DateTime;
@@ -426,7 +426,11 @@ namespace Certifica_logistica.procesos
         public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null,int anio=2014)
         {
             BtnObsv.Enabled = false;
-            _exp = ExpedienteDao.GetbyId(idPrincipal);
+            CboFuente.Enabled = true;
+            EdCodSubDep.Enabled = true;
+            CboTipoDoc.Enabled = true;
+            TxtNroDoc.Enabled = true;
+            _exp = ExpedienteDao.GetbyId(idPrincipal); //Cargar Estado
             EdIdExpediente.ResetBackColor();
             CboYearExp.ResetBackColor();
             if (_exp == null)
@@ -476,6 +480,13 @@ namespace Certifica_logistica.procesos
             TxtAsunto.Text = _exp.Asunto;
             TxtFolios.Text = _exp.Folios.ToString("#00");
             TxtnLog.Text = @"Log:" + _exp.Nlog.ToString(CultureInfo.InvariantCulture).PadLeft(6, '0');
+            if (_exp.Estado == '2' || _exp.Estado == '3')
+            {
+                CboFuente.Enabled = false;
+                EdCodSubDep.Enabled = false;
+                CboTipoDoc.Enabled = false;
+                TxtNroDoc.Enabled = false;
+            }
             BtnObsv.Enabled = true;
             //Cargar Observaciones
             VerDetalleExpediente();
