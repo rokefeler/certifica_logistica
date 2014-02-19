@@ -381,15 +381,15 @@ namespace Certifica_logistica.mantenimiento
                     cFecNac = cad.Substring(x, (y - x)).Trim();
                 }
 
-                xRazSoc = Limpiar(xRazSoc);
-                cNombreComercial = Limpiar(cNombreComercial);
-                cDireccion = Limpiar(cDireccion);
-                cEstado = Limpiar(cEstado);
-                cSituacion = Limpiar(cSituacion);
-                cTelefono = Limpiar(cTelefono);
-                cDni = Limpiar(cDni);
-                cFecNac = Limpiar(cFecNac);
-                cTipo = Limpiar(cTipo);
+                xRazSoc = General.Limpiar(xRazSoc);
+                cNombreComercial = General.Limpiar(cNombreComercial);
+                cDireccion = General.Limpiar(cDireccion);
+                cEstado = General.Limpiar(cEstado);
+                cSituacion = General.Limpiar(cSituacion);
+                cTelefono = General.Limpiar(cTelefono);
+                cDni = General.Limpiar(cDni);
+                cFecNac = General.Limpiar(cFecNac);
+                cTipo = General.Limpiar(cTipo);
                 //------------------------------
                 TxtSituacion.Text = cEstado;
                 ChkHabido.Checked = cSituacion.Equals("HABIDO");
@@ -414,24 +414,7 @@ namespace Certifica_logistica.mantenimiento
             }
         }
 
-        private static String Limpiar(String cad)
-        {
-            cad = cad.Replace("&#209;", "Ñ");
-            cad = cad.Replace("&#xD1;", "Ñ");
-            cad = cad.Replace("&#193;", "Á");
-            cad = cad.Replace("&#201;", "É");
-            cad = cad.Replace("&#205;", "Í");
-            cad = cad.Replace("&#211;", "Ó");
-            cad = cad.Replace("&#218;", "Ú");
-            cad = cad.Replace("&#xC1;", "Á");
-            cad = cad.Replace("&#xC9;", "É");
-            cad = cad.Replace("&#xCD;", "Í");
-            cad = cad.Replace("&#xD3;", "Ó");
-            cad = cad.Replace("&#xDA;", "Ú");
-
-            return cad;
-        }
-
+        
         private void FmProveedor_Load(object sender, EventArgs e)
         {
             TxtModificacion.Text = String.Format("Creado el {0} {1} - Por: {2}",

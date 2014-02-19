@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmPersonal));
             this.TxtApellidos = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.TxtCodPersonal = new DevExpress.XtraEditors.ButtonEdit();
+            this.EdCodPersonal = new DevExpress.XtraEditors.ButtonEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TxtNombres = new System.Windows.Forms.TextBox();
@@ -59,10 +59,12 @@
             this.TxtSubDependencia = new System.Windows.Forms.TextBox();
             this.TxtDependencia = new System.Windows.Forms.TextBox();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.BtnImportarSunat = new System.Windows.Forms.Button();
+            this.BtnImportarMTC = new System.Windows.Forms.Button();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCodPersonal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdCodPersonal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnUbigeo.Properties)).BeginInit();
             this.GrpSubDependencia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodSubDep.Properties)).BeginInit();
@@ -86,7 +88,7 @@
             // 
             this.TxtApellidos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtApellidos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtApellidos.Location = new System.Drawing.Point(88, 75);
+            this.TxtApellidos.Location = new System.Drawing.Point(88, 80);
             this.TxtApellidos.MaxLength = 35;
             this.TxtApellidos.Name = "TxtApellidos";
             this.TxtApellidos.Size = new System.Drawing.Size(389, 20);
@@ -103,29 +105,29 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "&Usuario Resp.:";
             // 
-            // TxtCodPersonal
+            // EdCodPersonal
             // 
-            this.TxtCodPersonal.EnterMoveNextControl = true;
-            this.TxtCodPersonal.Location = new System.Drawing.Point(88, 49);
-            this.TxtCodPersonal.Name = "TxtCodPersonal";
-            this.TxtCodPersonal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.EdCodPersonal.EnterMoveNextControl = true;
+            this.EdCodPersonal.Location = new System.Drawing.Point(88, 49);
+            this.EdCodPersonal.Name = "EdCodPersonal";
+            this.EdCodPersonal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.TxtCodPersonal.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.TxtCodPersonal.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtCodPersonal.Properties.Mask.BeepOnError = true;
-            this.TxtCodPersonal.Properties.Mask.EditMask = "A99999999";
-            this.TxtCodPersonal.Properties.MaxLength = 15;
-            this.TxtCodPersonal.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TxtCodPersonal_Properties_ButtonClick);
-            this.TxtCodPersonal.Size = new System.Drawing.Size(100, 20);
-            this.TxtCodPersonal.TabIndex = 1;
-            this.TxtCodPersonal.Enter += new System.EventHandler(this.ObjectEnter);
-            this.TxtCodPersonal.Leave += new System.EventHandler(this.TxtCodPersonal_Leave);
-            this.TxtCodPersonal.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCodPersonal_Validating);
+            this.EdCodPersonal.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.EdCodPersonal.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.EdCodPersonal.Properties.Mask.BeepOnError = true;
+            this.EdCodPersonal.Properties.Mask.EditMask = "A99999999";
+            this.EdCodPersonal.Properties.MaxLength = 15;
+            this.EdCodPersonal.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TxtCodPersonal_Properties_ButtonClick);
+            this.EdCodPersonal.Size = new System.Drawing.Size(100, 20);
+            this.EdCodPersonal.TabIndex = 1;
+            this.EdCodPersonal.Enter += new System.EventHandler(this.ObjectEnter);
+            this.EdCodPersonal.Leave += new System.EventHandler(this.TxtCodPersonal_Leave);
+            this.EdCodPersonal.Validating += new System.ComponentModel.CancelEventHandler(this.TxtCodPersonal_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 78);
+            this.label1.Location = new System.Drawing.Point(35, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 2;
@@ -134,7 +136,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 104);
+            this.label2.Location = new System.Drawing.Point(32, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 4;
@@ -144,7 +146,7 @@
             // 
             this.TxtNombres.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtNombres.Location = new System.Drawing.Point(88, 101);
+            this.TxtNombres.Location = new System.Drawing.Point(88, 106);
             this.TxtNombres.MaxLength = 35;
             this.TxtNombres.Name = "TxtNombres";
             this.TxtNombres.Size = new System.Drawing.Size(389, 20);
@@ -155,7 +157,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 161);
+            this.label4.Location = new System.Drawing.Point(29, 166);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 9;
@@ -165,18 +167,19 @@
             // 
             this.TxtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtDireccion.Location = new System.Drawing.Point(88, 157);
+            this.TxtDireccion.Location = new System.Drawing.Point(88, 162);
             this.TxtDireccion.MaxLength = 70;
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(389, 20);
             this.TxtDireccion.TabIndex = 10;
+            this.TxtDireccion.Text = ".";
             this.TxtDireccion.Enter += new System.EventHandler(this.ObjectEnter);
             this.TxtDireccion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Object_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 133);
+            this.label5.Location = new System.Drawing.Point(4, 138);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 6;
@@ -185,7 +188,7 @@
             // CboTDoc
             // 
             this.CboTDoc.FormattingEnabled = true;
-            this.CboTDoc.Location = new System.Drawing.Point(88, 129);
+            this.CboTDoc.Location = new System.Drawing.Point(88, 134);
             this.CboTDoc.Name = "CboTDoc";
             this.CboTDoc.Size = new System.Drawing.Size(177, 21);
             this.CboTDoc.TabIndex = 7;
@@ -195,7 +198,7 @@
             // 
             this.TxtNroDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNroDoc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtNroDoc.Location = new System.Drawing.Point(271, 129);
+            this.TxtNroDoc.Location = new System.Drawing.Point(271, 134);
             this.TxtNroDoc.MaxLength = 15;
             this.TxtNroDoc.Name = "TxtNroDoc";
             this.TxtNroDoc.Size = new System.Drawing.Size(206, 20);
@@ -207,7 +210,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(49, 217);
+            this.label6.Location = new System.Drawing.Point(49, 222);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 14;
@@ -216,7 +219,7 @@
             // TxtEmail
             // 
             this.TxtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtEmail.Location = new System.Drawing.Point(88, 214);
+            this.TxtEmail.Location = new System.Drawing.Point(88, 219);
             this.TxtEmail.MaxLength = 70;
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(389, 20);
@@ -227,7 +230,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 244);
+            this.label7.Location = new System.Drawing.Point(26, 249);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 16;
@@ -237,7 +240,7 @@
             // 
             this.TxtMovil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtMovil.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtMovil.Location = new System.Drawing.Point(88, 240);
+            this.TxtMovil.Location = new System.Drawing.Point(88, 245);
             this.TxtMovil.MaxLength = 15;
             this.TxtMovil.Name = "TxtMovil";
             this.TxtMovil.Size = new System.Drawing.Size(177, 20);
@@ -248,7 +251,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 270);
+            this.label8.Location = new System.Drawing.Point(27, 275);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 13);
             this.label8.TabIndex = 20;
@@ -257,7 +260,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(40, 188);
+            this.label9.Location = new System.Drawing.Point(40, 193);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 11;
@@ -267,7 +270,7 @@
             // 
             this.BtnUbigeo.EditValue = "000000";
             this.BtnUbigeo.EnterMoveNextControl = true;
-            this.BtnUbigeo.Location = new System.Drawing.Point(88, 184);
+            this.BtnUbigeo.Location = new System.Drawing.Point(88, 189);
             this.BtnUbigeo.Name = "BtnUbigeo";
             this.BtnUbigeo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -287,7 +290,7 @@
             // 
             this.TxtUbigeo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtUbigeo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtUbigeo.Location = new System.Drawing.Point(181, 184);
+            this.TxtUbigeo.Location = new System.Drawing.Point(181, 189);
             this.TxtUbigeo.MaxLength = 255;
             this.TxtUbigeo.Name = "TxtUbigeo";
             this.TxtUbigeo.ReadOnly = true;
@@ -297,7 +300,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(268, 242);
+            this.label10.Location = new System.Drawing.Point(268, 247);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 13);
             this.label10.TabIndex = 18;
@@ -306,7 +309,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(27, 294);
+            this.label11.Location = new System.Drawing.Point(27, 299);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(57, 13);
             this.label11.TabIndex = 22;
@@ -316,7 +319,7 @@
             // 
             this.TxtFijo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtFijo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.TxtFijo.Location = new System.Drawing.Point(320, 240);
+            this.TxtFijo.Location = new System.Drawing.Point(320, 245);
             this.TxtFijo.MaxLength = 15;
             this.TxtFijo.Name = "TxtFijo";
             this.TxtFijo.Size = new System.Drawing.Size(157, 20);
@@ -328,7 +331,7 @@
             // 
             this.CboCondicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboCondicion.FormattingEnabled = true;
-            this.CboCondicion.Location = new System.Drawing.Point(88, 266);
+            this.CboCondicion.Location = new System.Drawing.Point(88, 271);
             this.CboCondicion.Name = "CboCondicion";
             this.CboCondicion.Size = new System.Drawing.Size(389, 21);
             this.CboCondicion.TabIndex = 21;
@@ -338,7 +341,7 @@
             // 
             this.CboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboCategoria.FormattingEnabled = true;
-            this.CboCategoria.Location = new System.Drawing.Point(88, 291);
+            this.CboCategoria.Location = new System.Drawing.Point(88, 296);
             this.CboCategoria.Name = "CboCategoria";
             this.CboCategoria.Size = new System.Drawing.Size(389, 21);
             this.CboCategoria.TabIndex = 23;
@@ -350,7 +353,7 @@
             this.GrpSubDependencia.Controls.Add(this.EdCodSubDep);
             this.GrpSubDependencia.Controls.Add(this.TxtSubDependencia);
             this.GrpSubDependencia.Controls.Add(this.TxtDependencia);
-            this.GrpSubDependencia.Location = new System.Drawing.Point(0, 318);
+            this.GrpSubDependencia.Location = new System.Drawing.Point(0, 323);
             this.GrpSubDependencia.Name = "GrpSubDependencia";
             this.GrpSubDependencia.Size = new System.Drawing.Size(479, 74);
             this.GrpSubDependencia.TabIndex = 24;
@@ -359,6 +362,7 @@
             // 
             // EdCodSubDep
             // 
+            this.EdCodSubDep.EditValue = "000";
             this.EdCodSubDep.EnterMoveNextControl = true;
             this.EdCodSubDep.Location = new System.Drawing.Point(5, 18);
             this.EdCodSubDep.Name = "EdCodSubDep";
@@ -395,6 +399,29 @@
             this.TxtDependencia.TabIndex = 2;
             this.TxtDependencia.TabStop = false;
             // 
+            // BtnImportarSunat
+            // 
+            this.BtnImportarSunat.Image = global::Certifica_logistica.Properties.Resources.sunat_small1;
+            this.BtnImportarSunat.Location = new System.Drawing.Point(230, 46);
+            this.BtnImportarSunat.Name = "BtnImportarSunat";
+            this.BtnImportarSunat.Size = new System.Drawing.Size(111, 30);
+            this.BtnImportarSunat.TabIndex = 25;
+            this.BtnImportarSunat.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTipController1.SetToolTip(this.BtnImportarSunat, "Importar Datos de SUNAT (Requiere Conexión a Internet)");
+            this.BtnImportarSunat.UseVisualStyleBackColor = true;
+            this.BtnImportarSunat.Click += new System.EventHandler(this.BtnImportarSunat_Click);
+            // 
+            // BtnImportarMTC
+            // 
+            this.BtnImportarMTC.Image = global::Certifica_logistica.Properties.Resources.mtc;
+            this.BtnImportarMTC.Location = new System.Drawing.Point(347, 46);
+            this.BtnImportarMTC.Name = "BtnImportarMTC";
+            this.BtnImportarMTC.Size = new System.Drawing.Size(111, 30);
+            this.BtnImportarMTC.TabIndex = 26;
+            this.BtnImportarMTC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTipController1.SetToolTip(this.BtnImportarMTC, "Importar Datos de SUNAT (Requiere Conexión a Internet)");
+            this.BtnImportarMTC.UseVisualStyleBackColor = true;
+            // 
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
@@ -402,7 +429,9 @@
             // FmPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(479, 397);
+            this.ClientSize = new System.Drawing.Size(479, 405);
+            this.Controls.Add(this.BtnImportarMTC);
+            this.Controls.Add(this.BtnImportarSunat);
             this.Controls.Add(this.GrpSubDependencia);
             this.Controls.Add(this.CboCategoria);
             this.Controls.Add(this.CboCondicion);
@@ -427,13 +456,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtApellidos);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.TxtCodPersonal);
+            this.Controls.Add(this.EdCodPersonal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FmPersonal";
             this.Text = "Mantenimiento Ficha de Personal Institucional";
             this.Load += new System.EventHandler(this.FmPersonal_Load);
             this.Controls.SetChildIndex(this.pan1, 0);
-            this.Controls.SetChildIndex(this.TxtCodPersonal, 0);
+            this.Controls.SetChildIndex(this.EdCodPersonal, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.TxtApellidos, 0);
             this.Controls.SetChildIndex(this.label1, 0);
@@ -458,10 +487,12 @@
             this.Controls.SetChildIndex(this.CboCondicion, 0);
             this.Controls.SetChildIndex(this.CboCategoria, 0);
             this.Controls.SetChildIndex(this.GrpSubDependencia, 0);
+            this.Controls.SetChildIndex(this.BtnImportarSunat, 0);
+            this.Controls.SetChildIndex(this.BtnImportarMTC, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
             this.pan1.ResumeLayout(false);
             this.pan1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCodPersonal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdCodPersonal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnUbigeo.Properties)).EndInit();
             this.GrpSubDependencia.ResumeLayout(false);
             this.GrpSubDependencia.PerformLayout();
@@ -476,7 +507,7 @@
 
         private System.Windows.Forms.TextBox TxtApellidos;
         private System.Windows.Forms.Label label3;
-        private DevExpress.XtraEditors.ButtonEdit TxtCodPersonal;
+        private DevExpress.XtraEditors.ButtonEdit EdCodPersonal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtNombres;
@@ -504,5 +535,7 @@
         private System.Windows.Forms.TextBox TxtDependencia;
         private DevExpress.Utils.ToolTipController toolTipController1;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
+        private System.Windows.Forms.Button BtnImportarMTC;
+        private System.Windows.Forms.Button BtnImportarSunat;
     }
 }

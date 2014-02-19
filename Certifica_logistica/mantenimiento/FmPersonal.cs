@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
+using System.Net;
 using System.Windows.Forms;
 using Certifica_logistica.modulos;
 using Certifica_logistica.Popups;
@@ -21,13 +23,76 @@ namespace Certifica_logistica.mantenimiento
             General.CargarDatos(CboTDoc, "TDOC", "TDOC-0000");
             General.CargarDatos(CboCategoria, "CCAT", "CCAT-0000");
             General.CargarDatos(CboCondicion, "CNDC", "CNDC-0000");
-            TxtCodPersonal.Focus();
+            EdCodPersonal.Focus();
         }
         public override bool Master_Verificar()
         {
-            var cad = string.Empty;
-            var msg = string.Empty;
-            if (dxErrorProvider1.GetError(TxtCodPersonal).Length > 0
+            string cad;
+            try
+            {
+                cad = EdCodPersonal.EditValue.ToString();
+            }
+            catch
+            {
+                cad = "";
+            }
+            if (String.IsNullOrEmpty(cad))
+            {
+                cad = "El Código debe concordar con el Numero del Doc. de Identidad/Pasaporte o Carnet de Extranjeria";
+                dxErrorProvider1.SetError(EdCodPersonal, cad);
+                toolTipController1.SetToolTip(EdCodPersonal, cad);
+                return false;
+            }
+            dxErrorProvider1.SetError(EdCodPersonal, "");
+            toolTipController1.SetToolTip(EdCodPersonal, "");
+
+            if (!TxtNroDoc.Text.Trim().Equals(cad))
+            {
+                cad = "El Nro de Documento, debe concordar con el Código Ingresado";
+                dxErrorProvider1.SetError(TxtNroDoc, cad);
+                toolTipController1.SetToolTip(TxtNroDoc, cad);
+                return false;
+            }
+            dxErrorProvider1.SetError(TxtNroDoc, "");
+            toolTipController1.SetToolTip(TxtNroDoc, "");
+            if (TxtApellidos.Text.Trim().Length <= 0)
+            {
+                cad = "Debe Ingrese los Apellidos";
+                dxErrorProvider1.SetError(TxtApellidos,cad);
+                toolTipController1.SetToolTip(TxtApellidos,cad);
+                return false;
+            }
+            dxErrorProvider1.SetError(TxtApellidos, "");
+            toolTipController1.SetToolTip(TxtApellidos, "");
+            if (TxtNombres.Text.Trim().Length <= 0)
+            {
+                cad = "Debe Ingrese los Nombres";
+                dxErrorProvider1.SetError(TxtNombres, cad);
+                toolTipController1.SetToolTip(TxtNombres, cad);
+                return false;
+            }
+            dxErrorProvider1.SetError(TxtNombres, "");
+            toolTipController1.SetToolTip(TxtNombres, "");
+
+            try
+            {
+                cad = EdCodSubDep.EditValue.ToString();
+            }
+            catch
+            {
+                cad = "";
+            }
+            if (String.IsNullOrEmpty(cad))
+            {
+                cad = "Debe ubicar a que SubDependencia esta Asignada";
+                dxErrorProvider1.SetError(EdCodSubDep, cad);
+                toolTipController1.SetToolTip(EdCodSubDep, cad);
+                return false;
+            }
+            dxErrorProvider1.SetError(EdCodSubDep, "");
+            toolTipController1.SetToolTip(EdCodSubDep, "");
+            
+            if (dxErrorProvider1.GetError(EdCodPersonal).Length > 0
                 || dxErrorProvider1.GetError(BtnUbigeo).Length > 0
                 || dxErrorProvider1.GetError(TxtNroDoc).Length > 0
                 || dxErrorProvider1.GetError(EdCodSubDep).Length > 0
@@ -43,12 +108,14 @@ namespace Certifica_logistica.mantenimiento
         public override void ObjectEnter(object sender, EventArgs e)
         {
             base.ObjectEnter(sender, e);
+// ReSharper disable once RedundantJumpStatement
             return;
         }
 
         public override void Object_KeyDown(object sender, KeyEventArgs e)
         {
             base.Object_KeyDown(sender, e);
+// ReSharper disable once RedundantJumpStatement
             return;
         }
 
@@ -57,7 +124,7 @@ namespace Certifica_logistica.mantenimiento
             var ret = 0;
             if (!Master_Verificar()) return false;
 
-                Value = TxtCodPersonal.Text.Trim();
+                Value = EdCodPersonal.Text.Trim();
                 if(_obj==null) 
                     _obj = new Personal();
                 _obj.CodPersonal = Value;
@@ -113,28 +180,28 @@ namespace Certifica_logistica.mantenimiento
             var oFrm = new FphBusqueda { _TiTuloForm = "Busqueda De Personal Institucional", _backColor = BackColor, _TipoTabla = ENumTabla.PERSONAL};
             oFrm.ShowDialog();
             SuspendLayout();
-            TxtCodPersonal.Text = oFrm._Codigo;
-            toolTipController1.SetToolTip(TxtCodPersonal, oFrm._Nombre);
+            EdCodPersonal.Text = oFrm._Codigo;
+            toolTipController1.SetToolTip(EdCodPersonal, oFrm._Nombre);
             oFrm.Close();
             ResumeLayout();
         }
         private void TxtCodPersonal_Leave(object sender, EventArgs e)
         {
-            dxErrorProvider1.SetError(TxtCodPersonal, "");
-            if (TxtCodPersonal.EditValue == null)
-                TxtCodPersonal.EditValue = "";
+            dxErrorProvider1.SetError(EdCodPersonal, "");
+            if (EdCodPersonal.EditValue == null)
+                EdCodPersonal.EditValue = "";
 
-            var idP = TxtCodPersonal.EditValue.ToString();
+            var idP = EdCodPersonal.EditValue.ToString();
 
             if (idP.Length == 0)
             {
                 TxtApellidos.Text = "";
-                dxErrorProvider1.SetError(TxtCodPersonal, "Debe Ingresar Codigo de Usuario Final u digitar 0");
+                dxErrorProvider1.SetError(EdCodPersonal, "Debe Ingresar Codigo de Usuario Final u digitar 0");
             }
             else if (idP.Length < 8)
             {
                 TxtApellidos.Text = "";
-                dxErrorProvider1.SetError(TxtCodPersonal, "Código Ingresado es Muy Corto (Log. Minima 08 Dig)");
+                dxErrorProvider1.SetError(EdCodPersonal, "Código Ingresado es Muy Corto (Log. Minima 08 Dig)");
             }
             else
             {
@@ -147,12 +214,13 @@ namespace Certifica_logistica.mantenimiento
             EdCodSubDep.EditValue = String.Empty;
             TxtSubDependencia.Text = String.Empty;
             TxtDependencia.Text = String.Empty;
-            TxtCodPersonal.ResetBackColor();
+            EdCodPersonal.ResetBackColor();
+            toolTipController1.SetToolTip(EdCodPersonal, "");
             var p = PersonalDao.GetbyId(idP);
             if (p != null)
             {
                 Value = idP;
-                TxtCodPersonal.BackColor = Color.GreenYellow;
+                EdCodPersonal.BackColor = Color.GreenYellow;
                 TxtApellidos.Text = p.Ape;
                 TxtNombres.Text = p.Nom;
                 General.UbicaItemsComboCodigo(CboTDoc, p.IdxTipoDoc);
@@ -174,14 +242,17 @@ namespace Certifica_logistica.mantenimiento
             else 
             {
                 Value = string.Empty;
-                TxtNroDoc.Text = TxtCodPersonal.Text;
-                General.ShowMessage("Este Código no Existe");
+                TxtNroDoc.Text = EdCodPersonal.Text;
+                General.UbicaItemsComboCodigo(CboTDoc, "TDOC-0001"); //ubicar DNI
+                General.UbicaItemsComboCodigo(CboCondicion, "CNDC-0006"); //ubicar 4ta cat. SNP
+                EdCodSubDep.EditValue = @"000";
+                toolTipController1.SetToolTip(EdCodPersonal,"Este Código no Existe");
             }
         }
 
         private void TxtCodPersonal_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = !string.IsNullOrEmpty(dxErrorProvider1.GetError(TxtCodPersonal));
+            e.Cancel = !string.IsNullOrEmpty(dxErrorProvider1.GetError(EdCodPersonal));
             //BtnAdd.Enabled = !e.Cancel;
         }
         
@@ -259,6 +330,79 @@ namespace Certifica_logistica.mantenimiento
             toolTipController1.SetToolTip(TxtDependencia, obj2.Nombre);
         }
 
+        private void BtnImportarSunat_Click(object sender, EventArgs e)
+        {
+            string cod;
+            try  { cod = EdCodPersonal.Text.Trim();}
+            catch{ cod = ""; }
+            if (string.IsNullOrEmpty(cod)) return;
+            ImportarDnIsunat(cod);
+        }
+        private void ImportarDnIsunat(String dni)
+        {
+            var url = string.Format("http://www.sunat.gob.pe/ol-ti-itdenuncia/denS01Alias?tipodoc=1&numdoc={0}&accion=buscar", dni);
+            using (var client = new WebClient())
+            {
+                client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
+                Stream data;
+                try
+                {
+                    BtnImportarSunat.Enabled = false;
+                    Cursor.Current = Cursors.WaitCursor;
+                    data = client.OpenRead(url);
+                    Cursor.Current = Cursors.Default;
+                    BtnImportarSunat.Enabled = true;
+                }
+                catch (WebException wex)
+                {
+                    General.ShowMessage(wex.Message);
+                    return;
+                }
+                if (data == null) return;
+
+                var reader = new StreamReader(data);
+                var cad = reader.ReadToEnd();
+                data.Close();
+                reader.Close();
+
+                cad = cad.Trim();
+                if (cad.Length <= 120000)
+                {
+                    MessageBox.Show(@"El número de DNI ingresado no existe en la Base de datos de la SUNAT");
+                    return;
+                }
+                cad = cad.Substring(113000); //empezar desde aqui, porque siempre saldra
+                var buscar =
+                    String.Format(
+                        "<input NAME={0}nombre{1} CLASS={2}bg{3} type={4}text{5} maxlength={6}70{7} size={8}70{9} value=",
+                        '\u0022', '\u0022', '\u0022', '\u0022', '\u0022', '\u0022', '\u0022', '\u0022', '\u0022', '\u0022');
+                cad = cad.Replace(buscar, "RAZONDEPERSONA:");
+                buscar = string.Format("onChange={0}this.value=this.value.toUpperCase(){1} disabled>", '\u0022',
+                    '\u0022');
+                cad = cad.Replace(buscar, "FINXXX");
+                const string cad1 = "RAZONDEPERSONA:";
+                const string cad2 = "FINXXX";
+                var x = cad.IndexOf(cad1, 1, StringComparison.InvariantCulture);
+                var y = cad.IndexOf(cad2, 1, StringComparison.InvariantCulture);
+                x = x + cad1.Length + 1;
+                var xRazSoc = cad.Substring(x, (y - x)).Trim();
+                xRazSoc = General.Limpiar(xRazSoc);
+                var nombres = xRazSoc.Split(' ');
+                if (nombres.Length <=3)
+                {
+                    TxtApellidos.Text = String.Format("- {0}",nombres[0]);
+                    TxtNombres.Text = String.Format("{0} {1}", nombres[1], nombres[2]);
+                }
+                else
+                {
+                    TxtApellidos.Text = String.Format("{0} {1}", nombres[0], nombres[1]);
+                    TxtNombres.Text = String.Format("{0} {1}", nombres[2], nombres[3]);
+                }
+                
+                client.Dispose();
+                //------------------------------
+            }
+        }
       
     }
 }

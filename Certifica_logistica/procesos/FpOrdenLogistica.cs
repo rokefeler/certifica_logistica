@@ -25,6 +25,7 @@ namespace Certifica_logistica.procesos
         private DsTramite.DetalleOrdenDataTable _tbOrdenDetalle;
         private string _lastClasificador;
         private string _lastMeta;
+        private char _lastTipoUsuario;
         private bool _isCargadoDatosInternos;
 /*
         private DataSet _ds;
@@ -38,6 +39,7 @@ namespace Certifica_logistica.procesos
             _tbOrdenDetalle = (DsTramite.DetalleOrdenDataTable) dsTramite.Tables[name: "DetalleOrden"];
             _isCargadoDatosInternos = false;
             _idOrdenAClonar=0;
+            _lastTipoUsuario = ' ';
         }
 
         private void FpOrdenLogistica_Load(object sender, EventArgs e)
@@ -48,32 +50,41 @@ namespace Certifica_logistica.procesos
                 ClonarDatos(_idOrdenAClonar);
             else //Si no es Clonar, poner Especificas Relativas
             {
-                if (_TipoOrden != ENumTipoOrden.VIATICOS) return;
-                var cClasificador = @"2.3.2 1.2 1";
-                
-                for (var i = 1; i <= 2; i++)
+                switch (_TipoOrden)
                 {
-                    var drow = _tbOrdenDetalle.NewDetalleOrdenRow();
-                    if(i!=1)
-                        cClasificador = @"2.3.2 1.2 2";
-                    drow["Id"] = 0; //Este es Id de Base de Datos CUIDADO
-                    drow["IdOrden"] = 0;
-                    var cla = ClasificadorGastoDao.GetbyId(cClasificador,
-                        DateTime.Now.Year.ToString(CultureInfo.InvariantCulture));
-                    if (cla == null) break; 
-                    drow["IdClasificador"] = cla.IdClasificador;
-                    drow["IdMeta"] = 0;
-                    _lastMeta = "";
-                    drow["IdTipoUsuario"] = 'N';
-                    _lastClasificador = cClasificador;
-                    drow["Clasificador"] = _lastClasificador;
-                    drow["Codigo"] = "";
-                    drow["Detalle"] = cla.Descripcion;
-                    drow["Cantidad"] = 1;
-                    drow["Monto"] = 0;
-                    _tbOrdenDetalle.Rows.Add(drow);
-                }
-
+                    case ENumTipoOrden.VIATICOS:
+                        var cClasificador = @"2.3.2 1.2 1";
+                        for (var i = 1; i <= 2; i++)
+                        {
+                            var drow = _tbOrdenDetalle.NewDetalleOrdenRow();
+                            if (i != 1)
+                                cClasificador = @"2.3.2 1.2 2";
+                            drow["Id"] = 0; //Este es Id de Base de Datos CUIDADO
+                            drow["IdOrden"] = 0;
+                            var cla = ClasificadorGastoDao.GetbyId(cClasificador,
+                                DateTime.Now.Year.ToString(CultureInfo.InvariantCulture));
+                            if (cla == null) break;
+                            drow["IdClasificador"] = cla.IdClasificador;
+                            drow["IdMeta"] = 23; //por Defecto
+                            _lastMeta = "23";    //por Defecto
+                            drow["IdTipoUsuario"] = 'N';
+                            _lastClasificador = cClasificador;
+                            drow["Clasificador"] = _lastClasificador;
+                            drow["Codigo"] = "";
+                            drow["Detalle"] = cla.Descripcion;
+                            drow["Cantidad"] = 1;
+                            drow["Monto"] = 0;
+                            _tbOrdenDetalle.Rows.Add(drow);
+                        }
+                            break;
+                        case ENumTipoOrden.PROPINAS:
+                            _lastClasificador = "2.3.2 7.5 2";
+                            break;
+                        case ENumTipoOrden.CONVENIO:
+                        case ENumTipoOrden.MOVILIDAD:
+                            _lastClasificador = "2.3.2 7.11 99";
+                            break;
+                   }
             }
         }
 
@@ -349,6 +360,7 @@ namespace Certifica_logistica.procesos
             _dsPrint.Tables["Orden"].Load(ds.Tables[0].CreateDataReader());
             _dsPrint.Tables["Detalle"].Load(ds.Tables[1].CreateDataReader());
             _dsPrint.Tables["resumen_metas"].Load(ds.Tables[2].CreateDataReader());
+            _dsPrint.Tables["resumen_clasificador"].Load(ds.Tables[3].CreateDataReader());
 
             if (_dsPrint.Tables.Count > 0)
             {
@@ -369,7 +381,7 @@ namespace Certifica_logistica.procesos
                             stringmetas += ", " + meta;
                         }
                     }
-
+                    i++;
                 }
                 //Solo hay una meta
                 _dsPrint.Tables["Orden"].Rows[0]["metas"] = stringmetas;
@@ -929,6 +941,9 @@ Los Cambios se Haran Directamente en la Base de Datos",
                         oFrm2.EdIdClasificador.EditValue = _lastClasificador;
                     if (!String.IsNullOrEmpty(_lastMeta))
                         oFrm2.EdIdMeta.EditValue = _lastMeta;
+                    if (_lastTipoUsuario!=' ')
+                        oFrm2.CboTipoUsuario.EditValue = _lastTipoUsuario;
+                    oFrm2.EdCodigo.IsModified = true;
                 }
                 
                 oFrm2.ShowDialog();
@@ -940,14 +955,14 @@ Los Cambios se Haran Directamente en la Base de Datos",
                 }
 
                 if (isNuevo)
-                {
-                    var drow = _tbOrdenDetalle.NewDetalleOrdenRow();
+                {var drow = _tbOrdenDetalle.NewDetalleOrdenRow();
                     drow["Id"] = 0; //Este es Id de Base de Datos CUIDADO
                     drow["IdOrden"] = String.IsNullOrEmpty(Value) ? 0 : Convert.ToInt64(Value);
                     drow["IdClasificador"] = Convert.ToInt32(oFrm2.EdIdClasificador.Tag);
                     drow["IdMeta"] = Convert.ToInt32(oFrm2.EdIdMeta.Tag);
                     _lastMeta = oFrm2.EdIdMeta.EditValue.ToString();
                     drow["IdTipoUsuario"] = oFrm2.CboTipoUsuario.EditValue.ToString()[0];
+                    _lastTipoUsuario = oFrm2.CboTipoUsuario.EditValue.ToString()[0];
                     _lastClasificador = oFrm2.EdIdClasificador.EditValue.ToString();
                     drow["Clasificador"] = _lastClasificador;
                     drow["Codigo"] = (oFrm2.EdCodigo.EditValue==null) ? "" : oFrm2.EdCodigo.EditValue.ToString() ;
@@ -963,6 +978,7 @@ Los Cambios se Haran Directamente en la Base de Datos",
                     r["IdMeta"] = Convert.ToInt32(oFrm2.EdIdMeta.Tag);
                     _lastMeta = oFrm2.EdIdMeta.EditValue.ToString();
                     r["IdTipoUsuario"] = oFrm2.CboTipoUsuario.EditValue.ToString()[0];
+                    _lastTipoUsuario = oFrm2.CboTipoUsuario.EditValue.ToString()[0];
                     _lastClasificador = oFrm2.EdIdClasificador.EditValue.ToString();
                     r["Clasificador"] = _lastClasificador;
                     r["Codigo"] = (oFrm2.EdCodigo.EditValue == null) ? "" : oFrm2.EdCodigo.EditValue.ToString();

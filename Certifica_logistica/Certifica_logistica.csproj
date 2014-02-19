@@ -229,12 +229,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="reportes\servicio.cs">
+      <DependentUpon>servicio.rpt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportes\servicio_joyce.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>servicio_joyce.rpt</DependentUpon>
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="reportes\servicio_lorena_xp.cs">
       <AutoGen>True</AutoGen>
@@ -371,7 +377,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\Debug\reportes\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="certifica_logistica.pfx" />
@@ -450,9 +458,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <None Include="reportes\servicio_joyce.rpt">
+    <None Include="reportes\servicio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>servicio_joyce.cs</LastGenOutput>
+      <LastGenOutput>servicio.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="reportes\servicio_lorena_xp.rpt">
@@ -463,6 +471,10 @@
     <None Include="reportes\servicio_nelson.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>servicio_nelson.cs</LastGenOutput>
+    </None>
+    <None Include="reportes\servicio_joyce.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>servicio_joyce.cs</LastGenOutput>
     </None>
     <EmbeddedResource Include="utiles\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
@@ -790,6 +802,7 @@
     <None Include="images\moneda_32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="images\mtc.png" />
     <Content Include="unsa.ico" />
   </ItemGroup>
   <ItemGroup>

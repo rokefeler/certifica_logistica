@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="contrato_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\contrato_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="New_room_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\New-room-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,8 +151,8 @@
   <data name="inventario2_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\inventario2-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="login24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\login24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="contrato_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\contrato_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="addUserGroup-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\addUserGroup-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,8 +193,8 @@
   <data name="Product_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Product-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="login48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\login48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="moneda_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\moneda_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="student_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\student_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,8 +202,14 @@
   <data name="inbox-icon_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\inbox-icon_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="login48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\login48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="process_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\process-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="login24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\login24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logout24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\logout24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,10 +217,13 @@
   <data name="avion_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\avion_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mtc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\mtc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sunat_small.fw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\sunat_small.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="moneda_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\moneda_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mtc1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\mtc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

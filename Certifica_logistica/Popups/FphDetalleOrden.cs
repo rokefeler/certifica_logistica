@@ -238,8 +238,9 @@ namespace Certifica_logistica.Popups
 
                     EdCodigo.BackColor = Color.LightGreen;
                     //Se actualiza la Meta segun la base de Servicios
-                    EdIdMeta.EditValue = objS.Meta;
-                    EdIdMeta_Leave(sender,e);
+                    //EdIdMeta.Tag = objS.Meta;
+                    EdIdMeta.EditValue = objS.Meta.ToString("00");
+                    EdIdMeta_Leave(sender,e); //muestra y actualiza codigo de meta
                     //[TM=Moviles] [TF=Telefonia Fija] [SE=Suministro de Energia] [SA=Suministro de Agua y Desague] [SI=Suministro de Internet]
                     switch (objS.TipoServicio)
                     {

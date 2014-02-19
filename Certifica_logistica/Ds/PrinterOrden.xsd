@@ -12,17 +12,16 @@
   <xs:element name="PrinterOrden" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PrinterOrden" msprop:Generator_UserDSName="PrinterOrden">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="resumen_metas" msprop:Generator_TableClassName="resumen_metasDataTable" msprop:Generator_TableVarName="tableresumen_metas" msprop:Generator_TablePropName="resumen_metas" msprop:Generator_RowDeletingName="resumen_metasRowDeleting" msprop:Generator_RowChangingName="resumen_metasRowChanging" msprop:Generator_RowEvHandlerName="resumen_metasRowChangeEventHandler" msprop:Generator_RowDeletedName="resumen_metasRowDeleted" msprop:Generator_UserTableName="resumen_metas" msprop:Generator_RowChangedName="resumen_metasRowChanged" msprop:Generator_RowEvArgName="resumen_metasRowChangeEvent" msprop:Generator_RowClassName="resumen_metasRow">
+        <xs:element name="resumen_metas" msprop:Generator_TableClassName="resumen_metasDataTable" msprop:Generator_TableVarName="tableresumen_metas" msprop:Generator_RowChangedName="resumen_metasRowChanged" msprop:Generator_TablePropName="resumen_metas" msprop:Generator_RowDeletingName="resumen_metasRowDeleting" msprop:Generator_RowChangingName="resumen_metasRowChanging" msprop:Generator_RowEvHandlerName="resumen_metasRowChangeEventHandler" msprop:Generator_RowDeletedName="resumen_metasRowDeleted" msprop:Generator_RowClassName="resumen_metasRow" msprop:Generator_UserTableName="resumen_metas" msprop:Generator_RowEvArgName="resumen_metasRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdOrden" msprop:Generator_ColumnVarNameInTable="columnIdOrden" msprop:Generator_ColumnPropNameInRow="IdOrden" msprop:Generator_ColumnPropNameInTable="IdOrdenColumn" msprop:Generator_UserColumnName="IdOrden" type="xs:long" minOccurs="0" />
               <xs:element name="meta" msprop:Generator_ColumnVarNameInTable="columnmeta" msprop:Generator_ColumnPropNameInRow="meta" msprop:Generator_ColumnPropNameInTable="metaColumn" msprop:Generator_UserColumnName="meta" type="xs:string" minOccurs="0" />
-              <xs:element name="clasificador" msprop:Generator_ColumnVarNameInTable="columnclasificador" msprop:Generator_ColumnPropNameInRow="clasificador" msprop:Generator_ColumnPropNameInTable="clasificadorColumn" msprop:Generator_UserColumnName="clasificador" type="xs:string" minOccurs="0" />
               <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Detalle" msprop:Generator_TableClassName="DetalleDataTable" msprop:Generator_TableVarName="tableDetalle" msprop:Generator_TablePropName="Detalle" msprop:Generator_RowDeletingName="DetalleRowDeleting" msprop:Generator_RowChangingName="DetalleRowChanging" msprop:Generator_RowEvHandlerName="DetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="DetalleRowDeleted" msprop:Generator_UserTableName="Detalle" msprop:Generator_RowChangedName="DetalleRowChanged" msprop:Generator_RowEvArgName="DetalleRowChangeEvent" msprop:Generator_RowClassName="DetalleRow">
+        <xs:element name="Detalle" msprop:Generator_TableClassName="DetalleDataTable" msprop:Generator_TableVarName="tableDetalle" msprop:Generator_RowChangedName="DetalleRowChanged" msprop:Generator_TablePropName="Detalle" msprop:Generator_RowDeletingName="DetalleRowDeleting" msprop:Generator_RowChangingName="DetalleRowChanging" msprop:Generator_RowEvHandlerName="DetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="DetalleRowDeleted" msprop:Generator_RowClassName="DetalleRow" msprop:Generator_UserTableName="Detalle" msprop:Generator_RowEvArgName="DetalleRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdOrden" msprop:Generator_ColumnVarNameInTable="columnIdOrden" msprop:Generator_ColumnPropNameInRow="IdOrden" msprop:Generator_ColumnPropNameInTable="IdOrdenColumn" msprop:Generator_UserColumnName="IdOrden" type="xs:long" minOccurs="0" />
@@ -37,7 +36,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Orden" msprop:Generator_TableClassName="OrdenDataTable" msprop:Generator_TableVarName="tableOrden" msprop:Generator_TablePropName="Orden" msprop:Generator_RowDeletingName="OrdenRowDeleting" msprop:Generator_RowChangingName="OrdenRowChanging" msprop:Generator_RowEvHandlerName="OrdenRowChangeEventHandler" msprop:Generator_RowDeletedName="OrdenRowDeleted" msprop:Generator_UserTableName="Orden" msprop:Generator_RowChangedName="OrdenRowChanged" msprop:Generator_RowEvArgName="OrdenRowChangeEvent" msprop:Generator_RowClassName="OrdenRow">
+        <xs:element name="Orden" msprop:Generator_TableClassName="OrdenDataTable" msprop:Generator_TableVarName="tableOrden" msprop:Generator_RowChangedName="OrdenRowChanged" msprop:Generator_TablePropName="Orden" msprop:Generator_RowDeletingName="OrdenRowDeleting" msprop:Generator_RowChangingName="OrdenRowChanging" msprop:Generator_RowEvHandlerName="OrdenRowChangeEventHandler" msprop:Generator_RowDeletedName="OrdenRowDeleted" msprop:Generator_RowClassName="OrdenRow" msprop:Generator_UserTableName="Orden" msprop:Generator_RowEvArgName="OrdenRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdOrden" msprop:Generator_ColumnVarNameInTable="columnIdOrden" msprop:Generator_ColumnPropNameInRow="IdOrden" msprop:Generator_ColumnPropNameInTable="IdOrdenColumn" msprop:Generator_UserColumnName="IdOrden" type="xs:long" />
@@ -74,6 +73,15 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="resumen_clasificador" msprop:Generator_TableClassName="resumen_clasificadorDataTable" msprop:Generator_TableVarName="tableresumen_clasificador" msprop:Generator_TablePropName="resumen_clasificador" msprop:Generator_RowDeletingName="resumen_clasificadorRowDeleting" msprop:Generator_RowChangingName="resumen_clasificadorRowChanging" msprop:Generator_RowEvHandlerName="resumen_clasificadorRowChangeEventHandler" msprop:Generator_RowDeletedName="resumen_clasificadorRowDeleted" msprop:Generator_UserTableName="resumen_clasificador" msprop:Generator_RowChangedName="resumen_clasificadorRowChanged" msprop:Generator_RowEvArgName="resumen_clasificadorRowChangeEvent" msprop:Generator_RowClassName="resumen_clasificadorRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdOrden" msprop:Generator_ColumnVarNameInTable="columnIdOrden" msprop:Generator_ColumnPropNameInRow="IdOrden" msprop:Generator_ColumnPropNameInTable="IdOrdenColumn" msprop:Generator_UserColumnName="IdOrden" type="xs:long" minOccurs="0" />
+              <xs:element name="clasificador" msprop:Generator_ColumnVarNameInTable="columnclasificador" msprop:Generator_ColumnPropNameInRow="clasificador" msprop:Generator_ColumnPropNameInTable="clasificadorColumn" msprop:Generator_UserColumnName="clasificador" type="xs:string" minOccurs="0" />
+              <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -83,8 +91,9 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Orden_Detalle" msdata:parent="Orden" msdata:child="Detalle" msdata:parentkey="IdOrden" msdata:childkey="IdOrden" msprop:Generator_UserChildTable="Detalle" msprop:Generator_ChildPropName="GetDetalleRows" msprop:Generator_UserRelationName="Orden_Detalle" msprop:Generator_ParentPropName="OrdenRow" msprop:Generator_RelationVarName="relationOrden_Detalle" msprop:Generator_UserParentTable="Orden" />
-      <msdata:Relationship name="Orden_resumen_metas" msdata:parent="Orden" msdata:child="resumen_metas" msdata:parentkey="IdOrden" msdata:childkey="IdOrden" msprop:Generator_UserChildTable="resumen_metas" msprop:Generator_ChildPropName="Getresumen_metasRows" msprop:Generator_UserRelationName="Orden_resumen_metas" msprop:Generator_ParentPropName="OrdenRow" msprop:Generator_RelationVarName="relationOrden_resumen_metas" msprop:Generator_UserParentTable="Orden" />
+      <msdata:Relationship name="Orden_Detalle" msdata:parent="Orden" msdata:child="Detalle" msdata:parentkey="IdOrden" msdata:childkey="IdOrden" msprop:Generator_UserChildTable="Detalle" msprop:Generator_ChildPropName="GetDetalleRows" msprop:Generator_UserRelationName="Orden_Detalle" msprop:Generator_RelationVarName="relationOrden_Detalle" msprop:Generator_UserParentTable="Orden" msprop:Generator_ParentPropName="OrdenRow" />
+      <msdata:Relationship name="Orden_resumen_metas" msdata:parent="Orden" msdata:child="resumen_metas" msdata:parentkey="IdOrden" msdata:childkey="IdOrden" msprop:Generator_UserChildTable="resumen_metas" msprop:Generator_ChildPropName="Getresumen_metasRows" msprop:Generator_UserRelationName="Orden_resumen_metas" msprop:Generator_RelationVarName="relationOrden_resumen_metas" msprop:Generator_UserParentTable="Orden" msprop:Generator_ParentPropName="OrdenRow" />
+      <msdata:Relationship name="Orden_resumen_clasificador" msdata:parent="Orden" msdata:child="resumen_clasificador" msdata:parentkey="IdOrden" msdata:childkey="IdOrden" msprop:Generator_UserChildTable="resumen_clasificador" msprop:Generator_ChildPropName="Getresumen_clasificadorRows" msprop:Generator_UserRelationName="Orden_resumen_clasificador" msprop:Generator_ParentPropName="OrdenRow" msprop:Generator_RelationVarName="relationOrden_resumen_clasificador" msprop:Generator_UserParentTable="Orden" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
