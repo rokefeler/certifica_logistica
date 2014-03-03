@@ -11,5 +11,8 @@
     <Setting Name="Server_Updates" Type="System.String" Scope="User">
       <Value Profile="(Default)">10.40.1.151</Value>
     </Setting>
+    <Setting Name="ruta_importacion" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

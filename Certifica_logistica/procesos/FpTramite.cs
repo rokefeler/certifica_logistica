@@ -255,7 +255,7 @@ namespace Certifica_logistica.procesos
             {
                 codigoExp = Value;
                 if (
-                    MessageBox.Show("Desea Ud. Modificar los Datos de este Expediente?", "Confirme Por Favor",
+                    MessageBox.Show(@"Desea Ud. Modificar los Datos de este Expediente?", @"Confirme Por Favor",
                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) !=
                     DialogResult.Yes)
                     return false;
@@ -408,6 +408,36 @@ namespace Certifica_logistica.procesos
             if(_exp!=null) _exp.Clear();
             EdIdExpediente.Focus();
             
+            return true;
+        }
+
+        //Opción para Corregir el Nro de Expediente Ingresado
+        public override bool Master_Corregir()
+       {
+            if (String.IsNullOrEmpty(Value)) return false;
+            if(_exp==null) 
+            {
+                General.ShowMessage("Por Favor Cargue el Exp. Nuevamente");
+                return false;
+            }
+            var of = new FphModificarNroExp
+            {
+                //TxtExpedienteActual.Text = Value,
+                _backColor = BackColor, 
+                _Codigo = Value, 
+                _idUsuario = _FrmPadre.Miconfiguracion.IdUsuario, 
+                _miDatabase = _FrmPadre.MiDatabase, 
+                _nLog = _exp.Nlog,
+                _anio=_exp.Anio,
+                _TiTuloForm = "Corrección de Nro. de Expediente"
+            };
+            of.TxtExpedienteActual.Text = Value;
+            var dialogResult = of.ShowDialog();
+            if(dialogResult== DialogResult.Cancel)
+                dialogResult = of.ShowDialog();
+            if (dialogResult != DialogResult.OK) return false;
+            General.ShowMessage("Debe volver a Cargar el Expediente\nLa Ventana se Cerrara");
+            Close();
             return true;
         }
 

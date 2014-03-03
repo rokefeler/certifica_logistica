@@ -25,6 +25,8 @@ namespace DaoLogistica.DAO
             DATA.Db.AddInParameter(cmd, "IdMeta", DbType.Int32, obj.IdMeta);
             DATA.Db.AddInParameter(cmd, "Cantidad", DbType.Int32, obj.Cantidad);
             DATA.Db.AddInParameter(cmd, "Monto", DbType.Decimal, obj.Monto);
+            if(obj.Exceso>0) //Caso contrario grabara valor NULL
+                DATA.Db.AddInParameter(cmd, "Exceso", DbType.Decimal, obj.Exceso);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             if (dbTrans != null)
                 DATA.Db.ExecuteNonQuery(cmd, dbTrans);
@@ -71,7 +73,7 @@ namespace DaoLogistica.DAO
         {
             if (idOrden <= 0) throw new ArgumentNullException("idOrden");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogisticaDetalle");
-            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetAll);
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetAll); //500
             DATA.Db.AddInParameter(cmd, "idOrden", DbType.Int64, idOrden);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             return DATA.Db.ExecuteDataSet(cmd);
@@ -98,6 +100,7 @@ namespace DaoLogistica.DAO
             obj.IdMeta = dr.GetInt32(dr.GetOrdinal("IdMeta"));
             obj.Cantidad = dr.GetInt32(dr.GetOrdinal("Cantidad"));
             obj.Monto = dr.GetDecimal(dr.GetOrdinal("Monto"));
+            obj.Exceso = dr.GetDecimal(dr.GetOrdinal("Exceso"));
             return obj;
         }
 

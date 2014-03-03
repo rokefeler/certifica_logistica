@@ -44,10 +44,12 @@ namespace Certifica_logistica
                 Nuevo = false,
                 Eliminar = false,
                 Grabar = false,
+                Corregir = false,
                 GrabarNombre = "&Grabar",
                 ProcesarNombre = "&Procesar",
                 NuevoNombre = "&Nuevo",
-                EliminarNombre = "&Eliminar"
+                EliminarNombre = "&Eliminar",
+                CorregirNombre = "Correg&ir"
             };
         }
         /// <summary>
@@ -56,7 +58,7 @@ namespace Certifica_logistica
         /// <returns></returns>
         public virtual bool Master_GrabarFormulario()
         {
-            return false;
+            throw new NotImplementedException();
         }
         /// <summary>
         /// PErmite Ejecutar la orden principal del Formulario activo
@@ -64,7 +66,7 @@ namespace Certifica_logistica
         /// <returns></returns>
         public virtual bool Master_RunFormulario()
         {
-            return false;
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Permite Cerrar el Formulario
@@ -81,7 +83,7 @@ namespace Certifica_logistica
         /// <returns></returns>
         public virtual bool Master_NuevoFormulario()
         {
-            return false;
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Cancela cualquier edición, Limpiando todos los controles 
@@ -211,7 +213,7 @@ namespace Certifica_logistica
         /// <returns></returns>
         public virtual bool Master_ImprimirFormulario(bool isPrevio, int nCopias)
         {
-            return true;
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Permite Eliminar un Registro Mostrado
@@ -219,7 +221,7 @@ namespace Certifica_logistica
         /// <returns></returns>
          public virtual bool Master_EliminarFormulario()
         {
-            return false;
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Para Formularios de Operatividad, COnformidad y otros y se pueda Bloqeuar o desbloquear un Expediente
@@ -229,7 +231,7 @@ namespace Certifica_logistica
  
         public virtual bool Master_BloquearFormulario()
          {
-             return false;
+             throw new NotImplementedException();
          }
         /// <summary>
         /// Permite Imprimir los Datos Actuales
@@ -237,20 +239,24 @@ namespace Certifica_logistica
         /// <returns></returns>
         public virtual bool ImprimirFormulario()
         {
-            return false;
+            throw new NotImplementedException();
         }
         
         //Procesa cualquier comando temporal, ejemplo para planillas pueda procesar de un solo pepo todas las facturas su constancia de Deposito.
         public virtual bool Master_Procesar2()
         {
-            return false;
+            throw new NotImplementedException();
         }
-        /*
-        private void masterform_Deactivate(object sender, EventArgs e)
+        /// <summary>
+        /// Permite Corregir un Campo Clave, Para Tramite Doc.
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool Master_Corregir()
         {
-            _FrmPadre.Run
-        }*/
-        
+            throw new NotImplementedException();
+        }
+
+
         /// <summary>
         /// Cuando Ingrese al COntrol que Seleccione T odo el Texto por Defecto
         /// </summary>
@@ -294,7 +300,7 @@ namespace Certifica_logistica
             }
         }
 
-        public virtual void Object_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        public virtual void Object_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode== Keys.Enter)
                 SendKeys.Send("{TAB}");
@@ -311,6 +317,7 @@ namespace Certifica_logistica
                 oFrm.procesarToolStrip.Enabled = _DerechoFormulario.Procesar;
                 oFrm.RunToolStrip.Text = _DerechoFormulario.ProcesarNombre;
                 oFrm.procesarToolStrip.Text = _DerechoFormulario.ProcesarNombre;
+                oFrm.toolStripCorregir.Enabled = _DerechoFormulario.Corregir;
                 //}
                 //if (_DerechoFormulario.Grabar)
                 //{
@@ -318,6 +325,7 @@ namespace Certifica_logistica
                 oFrm.saveToolStrip.Enabled = _DerechoFormulario.Grabar;//Visible;
                 oFrm.toolStripGrabar.Text = _DerechoFormulario.GrabarNombre;
                 oFrm.saveToolStrip.Text = _DerechoFormulario.GrabarNombre;
+                oFrm.toolStripCorregir.Text = _DerechoFormulario.CorregirNombre;
                 //}
                 //if (_DerechoFormulario.Nuevo)
                 //{
@@ -345,7 +353,7 @@ namespace Certifica_logistica
         /// <returns></returns>
         public virtual bool Master_Verificar()
         {
-            return false;
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -357,7 +365,7 @@ namespace Certifica_logistica
         /// <returns></returns>
         public virtual bool Master_CargarFicha(String idPrincipal, String idSecundario=null, int anio=2014)
         {
-            return false;
+            throw new NotImplementedException();
         }
     }
 }

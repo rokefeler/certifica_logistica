@@ -39,7 +39,6 @@ namespace Certifica_logistica
         public bool CargarDatosIniciales()
         {
             bool ret = true;
-            var cArchivoConfig = String.Empty;
             var con = new Conexion();
             try
             {
@@ -69,7 +68,7 @@ namespace Certifica_logistica
                 //TODO: cambiar encryptacion por objeto
                 try
                 {
-                    cArchivoConfig = DatabaSeConfig.ConfiguracionDb(con);
+                    var cArchivoConfig = DatabaSeConfig.ConfiguracionDb(con);
                     
                     if (cArchivoConfig.Length == 0)
                     {
@@ -661,9 +660,13 @@ namespace Certifica_logistica
            var oFrm = new FpTramite
            {
                MdiParent = this,
-               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false },
-               _FrmPadre = this
+               _DerechoFormulario = { Grabar = true, Eliminar = true, Nuevo = true, Procesar = false, CorregirNombre = "Corregir Exp."},
+               _FrmPadre = this,
            };
+           //TODO Solo hasta que se termine la opcion de Roles de Usuario, Pendiente desde 03Mar2014
+           if (Miconfiguracion.IdUsuario.Equals("ACALLA") || Miconfiguracion.IdUsuario.Equals("JVARGASC") ||
+               Miconfiguracion.IdUsuario.Equals("SYSTEM"))
+               oFrm._DerechoFormulario.Corregir = true;
            oFrm.Show();
        }
 
@@ -762,6 +765,12 @@ namespace Certifica_logistica
            };
            oFrm.Show();
 
+       }
+
+       private void toolStripCorregir_Click(object sender, EventArgs e)
+       {
+           var oFrm = (Masterform)ActiveMdiChild;
+           if (oFrm != null) oFrm.Master_Corregir();
        }
     }
 }

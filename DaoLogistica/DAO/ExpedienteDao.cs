@@ -43,7 +43,26 @@ namespace DaoLogistica.DAO
             ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
             return ret; //devuelve el id único del registro
         }
-
+        public static int Corregir(string expActual, string nuevoExp, int nLog, int anio, string codLogin, DbTransaction dbTrans)
+        {
+            if (String.IsNullOrEmpty(expActual)) throw new ArgumentNullException("expActual");
+            if (String.IsNullOrEmpty(nuevoExp)) throw new ArgumentNullException("nuevoExp");
+            if (nLog<=0 || anio<=0) throw new ArgumentNullException("nLog");
+            if (String.IsNullOrEmpty(codLogin)) throw new ArgumentNullException("codLogin");
+            if (dbTrans == null) throw new ArgumentNullException("dbTrans");
+            
+            var cmd = DATA.Db.GetStoredProcCommand("sp_TExpediente");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.Corregir);//1001
+            DATA.Db.AddInParameter(cmd, "Idexpediente", DbType.String, expActual);
+            DATA.Db.AddInParameter(cmd, "IdexpedienteFinal", DbType.String, nuevoExp);
+            DATA.Db.AddInParameter(cmd, "nLog", DbType.Int32, nLog);
+            DATA.Db.AddInParameter(cmd, "Anio", DbType.Int32, anio);
+            DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, codLogin);
+            DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
+            DATA.Db.ExecuteNonQuery(cmd, dbTrans);
+            var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
+            return ret; //devuelve el id de respuesta
+        }
         public static int Delete(long idExpLog, DbTransaction dbTrans)
         {
             if (idExpLog <=0) throw new ArgumentNullException("idExpLog");
@@ -131,27 +150,30 @@ namespace DaoLogistica.DAO
         }
         protected static Expediente MakeObj(IDataReader dr)
         {
-            var obj = new Expediente();
-            obj.Idexpediente    = dr.GetString(dr.GetOrdinal("IdExpediente"));
-            obj.FechaExp        = dr.GetDateTime(dr.GetOrdinal("FechaExp"));
-            obj.FechaIngreso    = dr.GetDateTime(dr.GetOrdinal("FechaIngreso"));
-            obj.CodSubDepOrigen = dr.GetString(dr.GetOrdinal("CodSubDep_Origen"));
-            obj.CodSubDepEntrega = dr.GetString(dr.GetOrdinal("CodSubDep_Entrega"));
-            obj.IdxTipoDocTra   = dr.GetString(dr.GetOrdinal("IdxTipoDocTra"));
-            obj.Nrodoc          = dr.GetString(dr.GetOrdinal("NroDoc"));
-            obj.Asunto          = dr.GetString(dr.GetOrdinal("Asunto"));
-            obj.Moneda          = Convert.ToChar(dr.GetValue(dr.GetOrdinal("Moneda")));
-            obj.MontoAprobado   = dr.GetDecimal(dr.GetOrdinal("MontoAprobado"));
-            obj.CNroAuto        = dr.GetString(dr.GetOrdinal("cNroAuto"));
-            obj.IdRubro         = dr.GetInt32(dr.GetOrdinal("IdRubro"));
-            obj.IdMeta          = dr.GetInt32(dr.GetOrdinal("IdMeta"));
-            obj.Ccp             = dr.GetString(dr.GetOrdinal("ccp"));
-            obj.Folios          = dr.GetInt16(dr.GetOrdinal("Folios"));
-            obj.IdFuente        = dr.GetInt16(dr.GetOrdinal("IdFuente"));
-            obj.CodLogin        = dr.GetString(dr.GetOrdinal("CodLogin"));
-            obj.FechaRegistro   = dr.GetDateTime(dr.GetOrdinal("FechaRegistro"));
-            obj.Nlog            = dr.GetInt32(dr.GetOrdinal("nLog"));
-            obj.Estado          = Convert.ToChar(dr.GetValue(dr.GetOrdinal("Estado")));
+            var obj = new Expediente
+            {
+                Idexpediente = dr.GetString(dr.GetOrdinal("IdExpediente")),
+                FechaExp = dr.GetDateTime(dr.GetOrdinal("FechaExp")),
+                FechaIngreso = dr.GetDateTime(dr.GetOrdinal("FechaIngreso")),
+                CodSubDepOrigen = dr.GetString(dr.GetOrdinal("CodSubDep_Origen")),
+                CodSubDepEntrega = dr.GetString(dr.GetOrdinal("CodSubDep_Entrega")),
+                IdxTipoDocTra = dr.GetString(dr.GetOrdinal("IdxTipoDocTra")),
+                Nrodoc = dr.GetString(dr.GetOrdinal("NroDoc")),
+                Asunto = dr.GetString(dr.GetOrdinal("Asunto")),
+                Moneda = Convert.ToChar(dr.GetValue(dr.GetOrdinal("Moneda"))),
+                MontoAprobado = dr.GetDecimal(dr.GetOrdinal("MontoAprobado")),
+                CNroAuto = dr.GetString(dr.GetOrdinal("cNroAuto")),
+                IdRubro = dr.GetInt32(dr.GetOrdinal("IdRubro")),
+                IdMeta = dr.GetInt32(dr.GetOrdinal("IdMeta")),
+                Ccp = dr.GetString(dr.GetOrdinal("ccp")),
+                Folios = dr.GetInt16(dr.GetOrdinal("Folios")),
+                IdFuente = dr.GetInt16(dr.GetOrdinal("IdFuente")),
+                CodLogin = dr.GetString(dr.GetOrdinal("CodLogin")),
+                FechaRegistro = dr.GetDateTime(dr.GetOrdinal("FechaRegistro")),
+                Nlog = dr.GetInt32(dr.GetOrdinal("nLog")),
+                Anio = dr.GetInt32(dr.GetOrdinal("Anio")),
+                Estado = Convert.ToChar(dr.GetValue(dr.GetOrdinal("Estado")))
+            };
             return obj;
         }
 

@@ -34,6 +34,7 @@ namespace DaoLogistica.ENTIDAD
             IdMeta = 0;
             Cantidad = 0;
             Monto = 0m;
+            Exceso = 0m;
         }
 
         #region Properties
@@ -46,6 +47,7 @@ namespace DaoLogistica.ENTIDAD
         public int IdMeta { get; set; }
         public int Cantidad { get; set; }
         public decimal Monto { get; set; }
+        public decimal Exceso { get; set; }
 
         #endregion
     }

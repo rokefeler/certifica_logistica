@@ -87,6 +87,9 @@ namespace Certifica_logistica.procesos
             this.label4 = new System.Windows.Forms.Label();
             this.LblRazon = new System.Windows.Forms.Label();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.importarcionGenericaDeDetallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detalleOrdenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsTramite = new Certifica_logistica.Ds.DsTramite();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -106,7 +109,9 @@ namespace Certifica_logistica.procesos
             this.colCantidad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMonto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colImporte = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colExceso = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CboYearOrden = new System.Windows.Forms.ComboBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EdIdOrden.Properties)).BeginInit();
@@ -134,6 +139,7 @@ namespace Certifica_logistica.procesos
             ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodigo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detalleOrdenBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTramite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -410,9 +416,9 @@ namespace Certifica_logistica.procesos
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(6, 116);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(100, 13);
+            this.label19.Size = new System.Drawing.Size(229, 13);
             this.label19.TabIndex = 14;
-            this.label19.Text = "Detalle/Referencia:";
+            this.label19.Text = "Detalle/Referencia (Agregar Periodo del pago):";
             // 
             // label6
             // 
@@ -794,6 +800,8 @@ namespace Certifica_logistica.procesos
             // 
             // gridControl1
             // 
+            this.gridControl1.AllowDrop = true;
+            this.gridControl1.ContextMenuStrip = this.contextMenuStrip1;
             this.gridControl1.DataSource = this.detalleOrdenBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
@@ -806,8 +814,32 @@ namespace Certifica_logistica.procesos
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.gridControl1_DragDrop);
+            this.gridControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.gridControl1_DragEnter);
             this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
             this.gridControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridControl1_KeyDown);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importarcionGenericaDeDetallesToolStripMenuItem,
+            this.salirToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(246, 48);
+            // 
+            // importarcionGenericaDeDetallesToolStripMenuItem
+            // 
+            this.importarcionGenericaDeDetallesToolStripMenuItem.Name = "importarcionGenericaDeDetallesToolStripMenuItem";
+            this.importarcionGenericaDeDetallesToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.importarcionGenericaDeDetallesToolStripMenuItem.Text = "&1. Importacion Genérica de Detalles";
+            this.importarcionGenericaDeDetallesToolStripMenuItem.Click += new System.EventHandler(this.importarcionGenericaDeDetallesToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.salirToolStripMenuItem.Text = "&Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // detalleOrdenBindingSource
             // 
@@ -943,7 +975,8 @@ namespace Certifica_logistica.procesos
             this.colDetalle,
             this.colCantidad,
             this.colMonto,
-            this.colImporte});
+            this.colImporte,
+            this.colExceso});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Monto", this.colIdMeta, "")});
@@ -1086,6 +1119,14 @@ namespace Certifica_logistica.procesos
             this.colImporte.VisibleIndex = 6;
             this.colImporte.Width = 74;
             // 
+            // colExceso
+            // 
+            this.colExceso.DisplayFormat.FormatString = "#.00;[#.00];CERO";
+            this.colExceso.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colExceso.FieldName = "Exceso";
+            this.colExceso.Name = "colExceso";
+            this.colExceso.Width = 70;
+            // 
             // CboYearOrden
             // 
             this.CboYearOrden.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
@@ -1096,6 +1137,10 @@ namespace Certifica_logistica.procesos
             this.CboYearOrden.Name = "CboYearOrden";
             this.CboYearOrden.Size = new System.Drawing.Size(59, 21);
             this.CboYearOrden.TabIndex = 24;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FpOrdenLogistica
             // 
@@ -1142,6 +1187,7 @@ namespace Certifica_logistica.procesos
             ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodigo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.detalleOrdenBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTramite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -1232,5 +1278,10 @@ namespace Certifica_logistica.procesos
         private System.Windows.Forms.Button BtnClonar;
         public long _idOrdenAClonar;
         private PrinterOrden _dsPrint;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem importarcionGenericaDeDetallesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private DevExpress.XtraGrid.Columns.GridColumn colExceso;
     }
 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
-using System.Net;
 using System.Windows.Forms;
 using Certifica_logistica.modulos;
 using Certifica_logistica.Popups;
 using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
+using CertificaUtils;
 
 namespace Certifica_logistica.mantenimiento
 {
@@ -188,17 +187,16 @@ namespace Certifica_logistica.mantenimiento
         private void TxtCodPersonal_Leave(object sender, EventArgs e)
         {
             dxErrorProvider1.SetError(EdCodPersonal, "");
+            EdCodPersonal.ResetBackColor();
             if (EdCodPersonal.EditValue == null)
                 EdCodPersonal.EditValue = "";
 
             var idP = EdCodPersonal.EditValue.ToString();
 
             if (idP.Length == 0)
-            {
-                TxtApellidos.Text = "";
-                dxErrorProvider1.SetError(EdCodPersonal, "Debe Ingresar Codigo de Usuario Final u digitar 0");
-            }
-            else if (idP.Length < 8)
+                return;
+            
+            if (idP.Length < 8)
             {
                 TxtApellidos.Text = "";
                 dxErrorProvider1.SetError(EdCodPersonal, "Código Ingresado es Muy Corto (Log. Minima 08 Dig)");
@@ -336,9 +334,49 @@ namespace Certifica_logistica.mantenimiento
             try  { cod = EdCodPersonal.Text.Trim();}
             catch{ cod = ""; }
             if (string.IsNullOrEmpty(cod)) return;
-            ImportarDnIsunat(cod);
+            var obj = new SunatDni(cod);
+            if (obj.GetPersona!=null)
+            {
+                TxtApellidos.Text = String.Format("{0} {1}", obj.GetPersona.ApePaterno, obj.GetPersona.ApeMaterno);
+                TxtNombres.Text = obj.GetPersona.Nombres;
+            }
+            else
+            {
+                TxtApellidos.Text = "";
+                TxtNombres.Text = "";
+                General.ShowMessage(obj.Error);
+            }
+            //ImportarDnIsunat(cod);
         }
-        private void ImportarDnIsunat(String dni)
+        
+        private void BtnImportarReniec_Click(object sender, EventArgs e)
+        {
+            var oFrm = new FphConsultaReniec {_TiTuloForm = "Consulta Externa RENIEC", _backColor = BackColor};
+            oFrm.txtNumDni.Text = EdCodPersonal.Text;
+            var res = oFrm.ShowDialog();
+            if (res == DialogResult.Cancel)
+                oFrm.ShowDialog();
+
+            SuspendLayout();
+            try
+            {
+                EdCodPersonal.Text = oFrm.txtNumDni.Text;
+                TxtApellidos.Text = oFrm._Codigo;
+                TxtNombres.Text = oFrm._Nombre;
+                EdCodPersonal.Focus();
+            }
+            catch
+            {
+                EdCodPersonal.Text = oFrm.txtNumDni.Text;
+                TxtApellidos.Text = "";
+                TxtNombres.Text = "";
+            }
+            oFrm.Close();
+            ResumeLayout();
+        }
+
+        /*
+         * private void ImportarDnIsunat(String dni)
         {
             var url = string.Format("http://www.sunat.gob.pe/ol-ti-itdenuncia/denS01Alias?tipodoc=1&numdoc={0}&accion=buscar", dni);
             using (var client = new WebClient())
@@ -403,6 +441,7 @@ namespace Certifica_logistica.mantenimiento
                 //------------------------------
             }
         }
+         * */
       
     }
 }

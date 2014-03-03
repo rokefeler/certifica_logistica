@@ -3,9 +3,8 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.IO;
-using System.Net;
 using System.Windows.Forms;
+using CertificaUtils;
 using Certifica_logistica.modulos;
 using DaoLogistica;
 using DaoLogistica.DAO;
@@ -25,7 +24,7 @@ namespace Certifica_logistica.mantenimiento
         {
             EdRuc.EditValue = null;
             Value = String.Empty;
-            TxtSituacion.Text = @"ACTIVO";
+            TxtEstado.Text = @"ACTIVO";
             ChkHabido.Checked = true;
             TxtRazon.Text = "";
             TxtRazonComercial.Text = "";
@@ -94,7 +93,7 @@ namespace Certifica_logistica.mantenimiento
             if (DtFecVencRNP.EditValue != null) 
                 _obj.RnpVencimiento = DtFecVencRNP.DateTime; //verificar
             _obj.CodDis = EdUbigeo.EditValue.ToString().Trim();
-            _obj.Situacion = TxtSituacion.Text;
+            _obj.Situacion = TxtEstado.Text;
             _obj.EsHabido = (ChkHabido.Checked) ? 'S' : 'N';
             _obj.TipoNegocio = TxtTipoNegocio.Text.Trim();
             _obj.Dni = TxtDni.Text.Trim();
@@ -135,14 +134,16 @@ namespace Certifica_logistica.mantenimiento
         {
             _obj = ProveedorDao.GetbyId(idPrincipal);
             EdRuc.ResetBackColor();
+            toolTipController1.SetToolTip(EdRuc, "");
             if (_obj == null)
             {
-                General.ShowMessage("Ruc Ingresado no Existe");
+                toolTipController1.SetToolTip(EdRuc,"Ruc Ingresado no Existe");
                 return false;
             }
    
             EdRuc.BackColor = Color.GreenYellow;
-            TxtSituacion.Text = _obj.Situacion;
+            TxtEstado.Text = _obj.Situacion;
+            TxtEstado.BackColor = TxtEstado.Text.Contains("ACTIVO") ? Color.GreenYellow : Color.Red;
             ChkHabido.Checked = (_obj.EsHabido=='S');
             TxtRazon.Text = _obj.Razon;
             TxtRazonComercial.Text = _obj.RazonComercial;
@@ -181,7 +182,35 @@ namespace Certifica_logistica.mantenimiento
         private void BtnImportarRuc_Click(object sender, EventArgs e)
         {
             if (!SubVerificaSoloRuc()) return;
-            Importarrucsunat(EdRuc.EditValue.ToString().Trim());
+            //Importarrucsunat(EdRuc.EditValue.ToString().Trim());
+            Cursor = Cursors.WaitCursor;
+            var obj = new Sunat(EdRuc.EditValue.ToString().Trim(),false);
+            if (obj.GetPersona == null)
+            {
+                General.ShowMessage(obj.Error,"Error al Importar desde la WEB");
+                return;
+            }
+            TxtRazon.Text = obj.GetPersona.RazonSocial;
+            TxtRazonComercial.Text = obj.GetPersona.RazonComercial;
+            TxtDireccion.Text = obj.GetPersona.Direccion;
+            TxtTelefono.Text = obj.GetPersona.Telefono;
+            TxtDni.Text = obj.GetPersona.Dni; // Falta
+            try
+            {
+                EdUbigeo.Text = DistritoDao.UbicaDistrito(obj.GetPersona.NombreDistrito, obj.GetPersona.NombreProvincia,
+                    obj.GetPersona.NombreDepartamento);
+            }
+            catch
+            {
+                EdUbigeo.Text = String.Empty;
+            }
+            TxtAgenteRetencion.Text = obj.GetPersona.EsAgenteRetencion;
+            TxtTipoNegocio.Text = obj.GetPersona.TipoNegocio;
+            TxtEstado.Text = obj.GetPersona.Estado;
+            TxtEstado.BackColor = TxtEstado.Text.Contains("ACTIVO") ? Color.GreenYellow : Color.Red;
+            ChkHabido.Checked = obj.GetPersona.Situacion.Equals("HABIDO");
+            DtFecNac.EditValue = (obj.GetPersona.FecNac.Year == 1900) ? null : DtFecNac.EditValue = obj.GetPersona.FecNac;
+            Cursor = Cursors.Default;
         }
 
         private bool SubVerificaSoloRuc()
@@ -215,8 +244,7 @@ namespace Certifica_logistica.mantenimiento
             dxErrorProvider1.SetError(EdRuc, "");
             return true;
         }
-
-
+        /*
         private void Importarrucsunat(String ruc)
         {
             var url = @"http://www.sunat.gob.pe/w/wapS01Alias?ruc=" + ruc;
@@ -413,7 +441,7 @@ namespace Certifica_logistica.mantenimiento
                 //------------------------------
             }
         }
-
+        */
         
         private void FmProveedor_Load(object sender, EventArgs e)
         {

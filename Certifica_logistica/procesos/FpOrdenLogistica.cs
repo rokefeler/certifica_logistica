@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Common;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 using Certifica_logistica.Ds;
 using Certifica_logistica.modulos;
@@ -13,6 +14,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
+using Winnovative.ExcelLib;
 
 namespace Certifica_logistica.procesos
 {
@@ -303,6 +305,7 @@ namespace Certifica_logistica.procesos
                     det.Detalle = (string) dr["Detalle"];
                     det.Cantidad = (int)dr["Cantidad"];
                     det.Monto = (decimal) dr["Monto"];
+                    det.Exceso = (decimal)dr["Exceso"];
                     ret=OrdenLogisticaDetalleDao.Grabar(det, dbTrans);
                     if (ret > 0) continue;
                     dbTrans.Rollback();
@@ -320,6 +323,7 @@ namespace Certifica_logistica.procesos
                 _tbOrdenDetalle.Clear();
                 _tbOrdenDetalle.Load(ds.CreateDataReader());
                 BtnClonar.Visible = true;
+                EdIdOrden.Properties.ReadOnly = true; //Solo Lectura
                 General.ShowMessage(msg,"SU ORDEN FUE CORRECTAMENTE GUARDADA, VERIFIQUE POR FAVOR");
                 //var cIdxTipoOrden = General.AnalizaTipoOrden(_TipoOrden);
                 //Volver a Cargar Toda la Orden 
@@ -523,14 +527,15 @@ namespace Certifica_logistica.procesos
             memoDescripcion.EditValue = null;
             TxtRd.Text = "";
             TxtTotal.Text = @"0.00";
+            Value = "";
             BtnClonar.Visible = false;
             _tbOrdenDetalle.Rows.Clear();
             dxErrorProvider1.ClearErrors();
+            EdIdOrden.Properties.ReadOnly = false;
             EdIdExpediente.Focus();
             return true;
         }
-
-// ReSharper disable once OptionalParameterHierarchyMismatch
+        // ReSharper disable once OptionalParameterHierarchyMismatch
 // ReSharper disable once OptionalParameterHierarchyMismatch
         public override bool Master_CargarFicha(string idPrincipal, string idSecundario, int anio = 2014)
         {
@@ -933,6 +938,7 @@ Los Cambios se Haran Directamente en la Base de Datos",
                     oFrm2.TxtDetalle.Text = r["Detalle"].ToString();
                     oFrm2.SpnCant.EditValue = Convert.ToInt32(r["Cantidad"]);
                     oFrm2.SpnMonto.EditValue = Convert.ToDecimal(r["Monto"]);
+                    oFrm2.SpnExceso.EditValue = Convert.ToDecimal(r["Exceso"]);
 
                 }
                 else //Si es Nuevo
@@ -969,6 +975,7 @@ Los Cambios se Haran Directamente en la Base de Datos",
                     drow["Detalle"] = oFrm2.TxtDetalle.Text.Trim();
                     drow["Cantidad"] = (oFrm2.SpnCant.Value == 0) ? 1 : Convert.ToInt32(oFrm2.SpnCant.Value);
                     drow["Monto"] = oFrm2.SpnMonto.EditValue;
+                    drow["Exceso"] = oFrm2.SpnExceso.EditValue;
                     _tbOrdenDetalle.Rows.Add(drow);
                 }
                 else //Si es Modificación de un Item
@@ -985,6 +992,7 @@ Los Cambios se Haran Directamente en la Base de Datos",
                     r["Detalle"] = oFrm2.TxtDetalle.Text.Trim();
                     r["Cantidad"] = (oFrm2.SpnCant.Value == 0) ? 1 : Convert.ToInt32(oFrm2.SpnCant.Value); 
                     r["Monto"] = oFrm2.SpnMonto.EditValue;
+                    r["Exceso"] = oFrm2.SpnExceso.EditValue;
                 }
                 RefreshDetalle();
                 ResumeLayout();
@@ -1040,8 +1048,7 @@ Los Cambios se Haran Directamente en la Base de Datos",
         }
 
         private void BtnCargaOrden_Click(object sender, EventArgs e)
-        {
-            if (EdIdOrden.EditValue == null) return;
+        {if (EdIdOrden.EditValue == null) return;
             if (EdIdOrden.IsModified) return;
             var cNroExp = EdIdOrden.EditValue.ToString();
             var nExp = Convert.ToInt32(cNroExp);
@@ -1125,7 +1132,312 @@ Los Cambios se Haran Directamente en la Base de Datos",
         {
             EdCodigo.IsModified = true;
         }
-
         
+        private void gridControl1_DragEnter(object sender, DragEventArgs e)
+        {
+            // Check if the Dataformat of the data can be accepted
+            // (we only accept file drops from Explorer, etc.)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) 
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None; // Unknown data, ignore it
+            
+        }
+
+        private void gridControl1_DragDrop(object sender, DragEventArgs e)
+        {
+            //string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            //foreach (string file in files) Console.WriteLine(file);
+            //FileInfo f = null, f2 = null;
+            // Extract the data from the DataObject-Container into a string list
+            string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            // Do something with the data...
+            // For example add all files into a simple label control:
+            var control = 0;
+            foreach (var file in fileList)
+            {
+                //Solo permite evaluar el primer archivo valido que tenga exten. XLS?
+                if (control == 1) break; 
+                var f = new FileInfo(file);
+                if (!f.Extension.Contains("XLS"))
+                {
+                    General.ShowMessage(String.Format("extension capturada {0}",f.Extension));
+                    continue;
+                }
+                ImportarFromExcelDetalleGenerico(file);
+                control++;
+            }
+        }
+
+        private void ImportarFromExcelDetalleGenerico(string file)
+        {
+            ExcelCellStyle objStyloOk, objStyloError, objStyloAdvertencia, objStyloNormal;
+            var fil = 10;
+            try
+            {
+                var workbook = new ExcelWorkbook(file);
+                // set the license key before saving the workbook
+                workbook.LicenseKey = "RW51ZXZ0ZXVldGt1ZXZ0a3R3a3x8fHw=";
+                var worksheet = workbook.Worksheets[0];
+                char cTipoUsuario;
+                var stylos = workbook.Styles;
+                /*foreach (ExcelCellStyle s in stylos) --saber nombre de Stylos
+                {
+                    objStyloAdvertencia = s;
+                    objStyloError = s;
+                    objStyloNormal = s;
+                    objStyloOk = s;
+                    General.ShowMessage(s.Name);
+                }*/
+                objStyloOk = stylos[0]; //stylos["Good"];
+                objStyloError = stylos[1]; //stylos["Bad"];
+                objStyloNormal = stylos[2]; //stylos["Normal"];
+                objStyloAdvertencia = stylos[3]; //stylos["Warning Text"];
+                
+                try
+                {
+                    cTipoUsuario = Convert.ToChar(worksheet["G1"].Value.ToString().Trim());
+                }
+                catch
+                {
+                    General.ShowMessage("No se Encontro Que Tipo de Usuario Representara los Codigos Ingresados");
+                    return;
+                }
+                SuspendLayout();
+                while (true)
+                {
+                    var cfil = fil.ToString(CultureInfo.InvariantCulture).Trim();
+                    fil++;
+                    string clasificador;
+                    /* CONTROL ES POR NUMERACION DE FILA, si esta vacio SE ACABO */
+                    try
+                    {
+// ReSharper disable once RedundantAssignment
+                        clasificador = worksheet["A" + cfil].Value.ToString().Trim();
+                    }
+                    catch
+                    {
+                        break; //Salir del bucle
+                    }
+                    /*-------FIN DE CONTROL SI EXISTE DATOS O NO --------*/
+                    try
+                    {
+                        clasificador = worksheet["B" + cfil].Value.ToString().Trim();
+                    }
+                    catch
+                    {
+                        if (workbook.Format == ExcelWorkbookFormat.Xlsx_2007)
+                        {
+                            worksheet["B" + cfil].Style = objStyloOk;
+                            worksheet["H" + cfil].Style = objStyloAdvertencia;
+                        }
+                        worksheet["H" + cfil].Text = "Clasificador no Existe en el presente Periodo";
+                        break; //Salir del bucle
+                    }
+                    if (String.IsNullOrEmpty(clasificador)) break; //Salir
+
+                    string codigo;
+                    try
+                    {
+                        codigo = worksheet["C" + cfil].Value.ToString().Trim();
+                    }
+                    catch
+                    {
+                        if (workbook.Format == ExcelWorkbookFormat.Xlsx_2007)
+                        {
+                            worksheet["C" + cfil].Style = objStyloError;
+                            worksheet["H" + cfil].Style = objStyloAdvertencia;
+                        }
+                        worksheet["H" + cfil].Text = "Código de Suministro esta Vacio o Mal Ingresado";
+                        break; //Salir del Bucle infinito
+                    }
+
+                    //Si meta esta vacia, se utilizara la encontrada en la BBDD
+                    string cmeta;
+                    try //nombre de la Meta
+                    {
+                        cmeta = worksheet["E" + cfil].Value.ToString().Trim();
+                    }
+                    catch
+                    {
+                        cmeta = String.Empty;
+                    }
+
+
+                    decimal dmonto;
+                    try
+                    {
+                        dmonto = Convert.ToDecimal(worksheet["F" + cfil].Value);
+                    }
+                    catch
+                    {
+                        if (workbook.Format == ExcelWorkbookFormat.Xlsx_2007)
+                        {
+                            worksheet["C" + cfil].Style = objStyloError;
+                            worksheet["H" + cfil].Style = objStyloAdvertencia;
+                        }
+                        worksheet["H" + cfil].Text = "Código de Suministro esta Vacio o Mal Ingresado";
+                        break; //pasar siguiente, dado que no tiene monto, se ignora
+                    }
+                    decimal dexceso;
+                    try
+                    {
+                        dexceso = Convert.ToDecimal(worksheet["G" + cfil].Value);
+                    }
+                    catch
+                    {
+                        dexceso = 0m;
+                    }
+                    /* INICIO verificar datos con BBDD*/
+                    #region INICIO verificar datos con BBDD
+                    try
+                    {
+                        var objCla = ClasificadorGastoDao.GetbyId(clasificador, CboYearOrden.SelectedItem.ToString());
+                        if (objCla == null) //Error Grave
+                        {
+                            General.ShowMessage(String.Format("Clasificador Ingresado en la Fila {0}, NO EXISTE", cfil));
+                            if (workbook.Format == ExcelWorkbookFormat.Xlsx_2007)
+                            {
+                                worksheet["B" + cfil].Style = objStyloError;
+                                worksheet["H" + cfil].Style = objStyloAdvertencia;
+                            }
+                            worksheet["B" + cfil].Text = "Clasificado Ingresado NO EXISTE";
+                            break; //Salir del Bucle infinito
+                        }
+                        //---------------------------------------------------
+                        //Colocar Resultado
+                        if (workbook.Format == ExcelWorkbookFormat.Xlsx_2007)
+                        {
+                            worksheet["C" + cfil].Style = objStyloOk;
+                            worksheet["H" + cfil].Style = objStyloNormal;
+                            worksheet["H" + cfil].Text = "OK";
+                        }
+
+                        //---------------------------------------------------
+                        var objMeta = MetaDao.GetbyId(cmeta, CboYearOrden.SelectedItem.ToString());
+                        if (objMeta == null) //Error Grave
+                        {
+                            General.ShowMessage(String.Format("Meta Ingresada en la Fila {0}, NO EXISTE", cfil));
+                            if (workbook.Format == ExcelWorkbookFormat.Xlsx_2007)
+                            {
+                                worksheet["E" + cfil].Style = objStyloError;
+                                worksheet["H" + cfil].Style = objStyloAdvertencia;
+                            }
+                            worksheet["H" + cfil].Text = "Meta Ingresada NO EXISTE en el presente Periodo";
+                            break; //Salir del Bucle infinito
+                        }
+                        var cDetalle = String.Empty;
+                        //---------------------------------------------------
+                        switch (cTipoUsuario)
+                        {
+                            case 'A':
+                                var objA = AlumnoDao.GetBy(codigo);
+                                if (objA != null)
+                                    cDetalle = objA.ApeNom;
+                                break;
+                            case 'P':
+                                var objP = PersonalDao.GetbyId(codigo);
+                                if (objP != null)
+                                    cDetalle = objP.RazonSocial;
+                                break;
+                            case 'V':
+                                var objV = ProveedorDao.GetbyId(codigo);
+                                if (objV != null)
+                                    cDetalle = objV.Razon;
+                                break;
+                            case 'S':
+                                var objS = ServiciosDao.GetbyId(codigo);
+                                if (objS != null)
+                                    cDetalle = objS.Responsable;
+                                break;
+                        } //fin de switch
+                        //---------------------------------------------
+                        if (String.IsNullOrEmpty(cDetalle))
+                        {
+                            General.ShowMessage(String.Format("Código Ingresado en la Fila {0} NO EXISTE - Verifica el Tipo de Servicio", cfil));
+                            if (workbook.Format == ExcelWorkbookFormat.Xlsx_2007)
+                            {
+                                worksheet["C" + cfil].Style = objStyloError;
+                                worksheet["H" + cfil].Style = objStyloAdvertencia;
+                            }
+                            worksheet["H" + cfil].Text = "Código NO EXISTE";
+                            break; //Salir
+                        }
+                        var drow = _tbOrdenDetalle.NewDetalleOrdenRow();
+                        drow["Id"] = 0; //Este es Id de Base de Datos CUIDADO
+                        drow["IdOrden"] = String.IsNullOrEmpty(Value) ? 0 : Convert.ToInt64(Value);
+                        drow["IdClasificador"] = objCla.IdClasificador;
+                        drow["IdMeta"] = objMeta.IdMeta;
+                        _lastMeta = objMeta.Cnro;
+                        drow["IdTipoUsuario"] = cTipoUsuario;
+                        _lastTipoUsuario = cTipoUsuario;
+                        _lastClasificador = clasificador;
+                        drow["Clasificador"] = _lastClasificador;
+                        drow["Codigo"] = codigo;
+                        drow["Detalle"] = cDetalle;
+                        drow["Cantidad"] = 1;
+                        drow["Monto"] = dmonto;
+                        drow["Exceso"] = dexceso;
+                        _tbOrdenDetalle.Rows.Add(drow);
+                    }
+                    catch (Exception ex)
+                    {
+                        General.ShowMessage(ex.Message, "Ups , Intentelo Nuevamente");
+                    }
+
+                    #endregion FIN de revision de datos
+                } //FIn de bucle While
+                try
+                {
+                    workbook.Save();
+                }catch
+                {
+                    Console.Beep();
+                }
+                RefreshDetalle();
+                ResumeLayout();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Ups Error no controlado: " + ex.Message);
+            }
+        }
+        
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Hide();
+        }
+
+        private void importarcionGenericaDeDetallesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string pathOrigen;
+            /* Verificar si Estado de elemento no esta bloqueado */
+            if (_IsBloqueado)
+            {
+                General.ShowMessage("La Orden Cargada Esta Bloqueada", "Acceso Restringido");
+                return;
+            }
+
+            try
+            {
+                pathOrigen = Properties.Settings.Default.ruta_importacion;
+            }
+            catch
+            {
+                pathOrigen = null;
+            }
+            //Si no hay Dato de Ruta Temporal, se Abrira la carpeta de mis documentos
+            if (string.IsNullOrEmpty(pathOrigen))
+                pathOrigen = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            openFileDialog1.InitialDirectory = pathOrigen;
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+            openFileDialog1.Filter = @"Excel v2003 (*.xls)|*.xls|Excel v2007(*.xlsx)|*.xlsx|Todos los Archivos (*.*)|*.*";
+            openFileDialog1.FilterIndex = 0;
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
+            ImportarFromExcelDetalleGenerico(openFileDialog1.FileName);
+        }
     } //Fin de Clase
 }

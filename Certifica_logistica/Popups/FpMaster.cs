@@ -29,6 +29,7 @@ namespace Certifica_logistica.Popups
       
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.OK;
             GrabarFormulario();
             //Hide();
         }
@@ -37,6 +38,7 @@ namespace Certifica_logistica.Popups
         {
             CancelarFormulario();
             _Codigo = String.Empty;
+            DialogResult = DialogResult.Abort;
             Hide();
         }
 
@@ -45,6 +47,7 @@ namespace Certifica_logistica.Popups
             panel1.BackColor  = _backColor;
             panel2.BackColor = _backColor;
             _Codigo = string.Empty;
+            if(!String.IsNullOrEmpty(_TiTuloForm))
             Text = _TiTuloForm;
         }
     }

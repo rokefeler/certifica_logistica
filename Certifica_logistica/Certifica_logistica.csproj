@@ -80,49 +80,10 @@
   <PropertyGroup>
     <ManifestKeyFile>Certifica_logistica_ClaveTemporal.pfx</ManifestKeyFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86ok|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86ok\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>default</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>default</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86ok|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\x86ok\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>default</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
+    <Compile Include="controls\MyTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Ds\DsTramite.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -193,11 +154,23 @@
     <Compile Include="Popups\FphBusqueda.designer.cs">
       <DependentUpon>FphBusqueda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popups\FphConsultaReniec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FphConsultaReniec.Designer.cs">
+      <DependentUpon>FphConsultaReniec.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popups\FphDetalleOrden.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Popups\FphDetalleOrden.designer.cs">
       <DependentUpon>FphDetalleOrden.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\FphModificarNroExp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FphModificarNroExp.Designer.cs">
+      <DependentUpon>FphModificarNroExp.cs</DependentUpon>
     </Compile>
     <Compile Include="Popups\FpMaster.cs">
       <SubType>Form</SubType>
@@ -353,8 +326,15 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="wnvxls">
+      <HintPath>lib\wnvxls.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CertificaUtils\CertificaUtils.csproj">
+      <Project>{e2972181-8ae1-4727-918c-764eae8c7b77}</Project>
+      <Name>CertificaUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DaoLogistica\DaoLogistica.csproj">
       <Project>{7e7f7709-d898-4193-97bb-b2cee7bf6c61}</Project>
       <Name>DaoLogistica</Name>
@@ -440,8 +420,14 @@
     <EmbeddedResource Include="Popups\FphBusqueda.resx">
       <DependentUpon>FphBusqueda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FphConsultaReniec.resx">
+      <DependentUpon>FphConsultaReniec.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Popups\FphDetalleOrden.resx">
       <DependentUpon>FphDetalleOrden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FphModificarNroExp.resx">
+      <DependentUpon>FphModificarNroExp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popups\FpMaster.resx">
       <DependentUpon>FpMaster.cs</DependentUpon>
@@ -802,7 +788,12 @@
     <None Include="images\moneda_32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="images\mtc.png" />
+    <None Include="images\mtc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="images\dni.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="unsa.ico" />
   </ItemGroup>
   <ItemGroup>

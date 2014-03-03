@@ -4,6 +4,7 @@
     {
         InsertUpdate = 100,
         SetClave=101,
+        Corregir=1001, //Exp. corregir por nLog
         MarcarIngresouSalida=102,
         InsertDefecto = 103,
         InsertDerivar = 104,

@@ -10,10 +10,8 @@ namespace DaoLogistica.DAO
 	{
 	
 	public static int Grabar(Departamento tDepartamento, DbTransaction dbTrans)
-        {
-// ReSharper disable once RedundantAssignment
-            int ret = -1;
-	    DbCommand cmd = DATA.Db.GetStoredProcCommand("sp_tDepartamento");
+    {
+	    var cmd = DATA.Db.GetStoredProcCommand("sp_tDepartamento");
 	    DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.InsertUpdate);
 	    DATA.Db.AddInParameter(cmd, "CodDep", DbType.String, tDepartamento.CodDep);
 	    DATA.Db.AddInParameter(cmd, "Denomi", DbType.String, tDepartamento.Nombre );
@@ -23,9 +21,9 @@ namespace DaoLogistica.DAO
 	        DATA.Db.ExecuteNonQuery(cmd, dbTrans);
 	    else
 	        DATA.Db.ExecuteNonQuery(cmd);
-	    ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
+	    var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
 	    return ret; //devuelve el id único del registro
-        }
+    }
 
         public static int Delete(String codDep, DbTransaction dbTrans)
         {

@@ -40,6 +40,7 @@ namespace Certifica_logistica
             this.procesarToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripGrabar = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripCorregir = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripBloquearExpediente = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMntConfiguracionAcceso = new System.Windows.Forms.ToolStripMenuItem();
@@ -153,6 +154,7 @@ namespace Certifica_logistica
             this.procesarToolStrip,
             this.toolStripGrabar,
             this.toolStripEliminar,
+            this.toolStripCorregir,
             this.toolStripBloquearExpediente,
             this.toolStripSeparator9,
             this.toolStripMntConfiguracionAcceso,
@@ -238,6 +240,17 @@ namespace Certifica_logistica
             this.toolStripEliminar.Size = new System.Drawing.Size(235, 22);
             this.toolStripEliminar.Text = "&Eliminar";
             this.toolStripEliminar.Click += new System.EventHandler(this.deleteToolStripButton_Click);
+            // 
+            // toolStripCorregir
+            // 
+            this.toolStripCorregir.Enabled = false;
+            this.toolStripCorregir.Image = global::Certifica_logistica.Properties.Resources.Ok_24;
+            this.toolStripCorregir.Name = "toolStripCorregir";
+            this.toolStripCorregir.Size = new System.Drawing.Size(235, 22);
+            this.toolStripCorregir.Text = "Correg&ir";
+            this.toolStripCorregir.ToolTipText = "Permite Realizar una Corrección de Un Número de Expediente u Otro Campo Principal" +
+    " de Identidad";
+            this.toolStripCorregir.Click += new System.EventHandler(this.toolStripCorregir_Click);
             // 
             // toolStripBloquearExpediente
             // 
@@ -828,8 +841,8 @@ namespace Certifica_logistica
             this.LblVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.LblVersion.ForeColor = System.Drawing.Color.OliveDrab;
             this.LblVersion.Name = "LblVersion";
-            this.LblVersion.Size = new System.Drawing.Size(151, 22);
-            this.LblVersion.Text = "Compilación: 09Feb2014G";
+            this.LblVersion.Size = new System.Drawing.Size(150, 22);
+            this.LblVersion.Text = "Compilación: 28Feb2014B";
             // 
             // toolStripCDeposito
             // 
@@ -1020,6 +1033,7 @@ namespace Certifica_logistica
         private System.Windows.Forms.ToolStripMenuItem planillaDePropinasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contratoConvenioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viaticosToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem toolStripCorregir;
     }
 }
 

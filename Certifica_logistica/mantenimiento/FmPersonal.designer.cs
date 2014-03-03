@@ -61,6 +61,7 @@
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.BtnImportarSunat = new System.Windows.Forms.Button();
             this.BtnImportarMTC = new System.Windows.Forms.Button();
+            this.BtnImportarReniec = new System.Windows.Forms.Button();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.pan1.SuspendLayout();
@@ -413,14 +414,25 @@
             // 
             // BtnImportarMTC
             // 
-            this.BtnImportarMTC.Image = global::Certifica_logistica.Properties.Resources.mtc;
             this.BtnImportarMTC.Location = new System.Drawing.Point(347, 46);
             this.BtnImportarMTC.Name = "BtnImportarMTC";
-            this.BtnImportarMTC.Size = new System.Drawing.Size(111, 30);
+            this.BtnImportarMTC.Size = new System.Drawing.Size(49, 30);
             this.BtnImportarMTC.TabIndex = 26;
-            this.BtnImportarMTC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTipController1.SetToolTip(this.BtnImportarMTC, "Importar Datos de SUNAT (Requiere Conexión a Internet)");
+            this.BtnImportarMTC.Text = "MTC";
+            this.toolTipController1.SetToolTip(this.BtnImportarMTC, "Importar Datos Online de MTC");
             this.BtnImportarMTC.UseVisualStyleBackColor = true;
+            this.BtnImportarMTC.Visible = false;
+            // 
+            // BtnImportarReniec
+            // 
+            this.BtnImportarReniec.Location = new System.Drawing.Point(402, 46);
+            this.BtnImportarReniec.Name = "BtnImportarReniec";
+            this.BtnImportarReniec.Size = new System.Drawing.Size(71, 30);
+            this.BtnImportarReniec.TabIndex = 27;
+            this.BtnImportarReniec.Text = "RENIEC";
+            this.toolTipController1.SetToolTip(this.BtnImportarReniec, "Importar Datos ONLINE de RENIEC");
+            this.BtnImportarReniec.UseVisualStyleBackColor = true;
+            this.BtnImportarReniec.Click += new System.EventHandler(this.BtnImportarReniec_Click);
             // 
             // dxErrorProvider1
             // 
@@ -430,6 +442,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(479, 405);
+            this.Controls.Add(this.BtnImportarReniec);
             this.Controls.Add(this.BtnImportarMTC);
             this.Controls.Add(this.BtnImportarSunat);
             this.Controls.Add(this.GrpSubDependencia);
@@ -489,6 +502,7 @@
             this.Controls.SetChildIndex(this.GrpSubDependencia, 0);
             this.Controls.SetChildIndex(this.BtnImportarSunat, 0);
             this.Controls.SetChildIndex(this.BtnImportarMTC, 0);
+            this.Controls.SetChildIndex(this.BtnImportarReniec, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
             this.pan1.ResumeLayout(false);
             this.pan1.PerformLayout();
@@ -537,5 +551,6 @@
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private System.Windows.Forms.Button BtnImportarMTC;
         private System.Windows.Forms.Button BtnImportarSunat;
+        private System.Windows.Forms.Button BtnImportarReniec;
     }
 }

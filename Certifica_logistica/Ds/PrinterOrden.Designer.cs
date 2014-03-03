@@ -701,6 +701,8 @@ namespace Certifica_logistica.Ds {
             
             private global::System.Data.DataColumn columnmonto;
             
+            private global::System.Data.DataColumn columnExceso;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DetalleDataTable() {
@@ -808,6 +810,14 @@ namespace Certifica_logistica.Ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ExcesoColumn {
+                get {
+                    return this.columnExceso;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -843,7 +853,7 @@ namespace Certifica_logistica.Ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleRow AddDetalleRow(OrdenRow parentOrdenRowByOrden_Detalle, string clasificador, string meta, string TipoUsuario, string SIGLAUSER, string codigo, string Detalle, int cantidad, decimal monto) {
+            public DetalleRow AddDetalleRow(OrdenRow parentOrdenRowByOrden_Detalle, string clasificador, string meta, string TipoUsuario, string SIGLAUSER, string codigo, string Detalle, int cantidad, decimal monto, decimal Exceso) {
                 DetalleRow rowDetalleRow = ((DetalleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -854,7 +864,8 @@ namespace Certifica_logistica.Ds {
                         codigo,
                         Detalle,
                         cantidad,
-                        monto};
+                        monto,
+                        Exceso};
                 if ((parentOrdenRowByOrden_Detalle != null)) {
                     columnValuesArray[0] = parentOrdenRowByOrden_Detalle[0];
                 }
@@ -889,6 +900,7 @@ namespace Certifica_logistica.Ds {
                 this.columnDetalle = base.Columns["Detalle"];
                 this.columncantidad = base.Columns["cantidad"];
                 this.columnmonto = base.Columns["monto"];
+                this.columnExceso = base.Columns["Exceso"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -912,6 +924,9 @@ namespace Certifica_logistica.Ds {
                 base.Columns.Add(this.columncantidad);
                 this.columnmonto = new global::System.Data.DataColumn("monto", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmonto);
+                this.columnExceso = new global::System.Data.DataColumn("Exceso", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExceso);
+                this.columnExceso.DefaultValue = ((decimal)(0.00m));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2295,6 +2310,22 @@ namespace Certifica_logistica.Ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Exceso {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDetalle.ExcesoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Exceso\' de la tabla \'Detalle\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDetalle.ExcesoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public OrdenRow OrdenRow {
                 get {
                     return ((OrdenRow)(this.GetParentRow(this.Table.ParentRelations["Orden_Detalle"])));
@@ -2410,6 +2441,18 @@ namespace Certifica_logistica.Ds {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetmontoNull() {
                 this[this.tableDetalle.montoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsExcesoNull() {
+                return this.IsNull(this.tableDetalle.ExcesoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetExcesoNull() {
+                this[this.tableDetalle.ExcesoColumn] = global::System.Convert.DBNull;
             }
         }
         

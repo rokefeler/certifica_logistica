@@ -79,10 +79,12 @@ static class CONSTANTE
         public bool Grabar;
         public bool Procesar;
         public bool Eliminar;
+        public bool Corregir; //Excepcional para Tramite
         public string NuevoNombre;
         public string GrabarNombre;
         public string ProcesarNombre;
         public string EliminarNombre;
+        public string CorregirNombre;
     }
 
     public enum ETipoDeBien
@@ -542,8 +544,14 @@ static class CONSTANTE
                case -5:
                    cad = "Imposible Continuar, Estado de Registro Es BLOQUEADO TOTAL";
                    break;
+               case -6: //CambioExpediente
+                   cad = "Nro. de Expediente a Cambiar, Contiene Ordenes Relacionadas - Imposible Continuar";
+                   break;
+               case -7: //CambioExpediente
+                   cad = "Nro. de Expediente NUEVO, Ya Existe y Contiene Ordenes Relacionadas - Imposible Continuar";
+                   break;
                default:
-                   cad = "Los Datos Fueron Correctamente Grabados en la Base de Datos";
+                   cad = "PROCESO SATISFACTORIO";
                    break;
            }
            return cad;
@@ -578,7 +586,7 @@ static class CONSTANTE
            }
            return cod;
        }
-       public static String Limpiar(String cad)
+       /*public static String Limpiar(String cad)
        {
            cad = cad.Replace("&#209;", "Ñ");
            cad = cad.Replace("&#xD1;", "Ñ");
@@ -594,6 +602,6 @@ static class CONSTANTE
            cad = cad.Replace("&#xDA;", "Ú");
            cad = cad.Replace('\u0022', ' ');
            return cad;
-       }
+       }*/
     } //--no borrar
 }

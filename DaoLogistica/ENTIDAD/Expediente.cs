@@ -15,7 +15,7 @@ namespace DaoLogistica.ENTIDAD
 		public Expediente(string idexpediente, DateTime fechaExp, DateTime fechaIngreso, 
             string codSubDepOrigen, string codSubdepEntrega, string idxTipoDocTra, string nrodoc, string asunto, char moneda, 
             decimal montoAprobado, string cNroAuto, int idRubro, int idMeta, string ccp, short folios, short idfuente, 
-            string codLogin, DateTime fechaRegistro, int nlog)
+            string codLogin, DateTime fechaRegistro, int nlog, int anio)
 		{
             Idexpediente = idexpediente;
             FechaExp = fechaExp;
@@ -37,6 +37,7 @@ namespace DaoLogistica.ENTIDAD
 		    IdFuente = idfuente;
 		    Nlog = nlog;
 		    Estado = '1';
+		    Anio = anio;
 		}
 
         public void Clear()
@@ -62,6 +63,7 @@ namespace DaoLogistica.ENTIDAD
             IdFuente = 0;
             Nlog = 0;
             Estado = '1';
+            Anio = 0;
         }
 		#endregion
 
@@ -103,7 +105,17 @@ namespace DaoLogistica.ENTIDAD
 
 		public DateTime FechaRegistro { get; set; }
         public short IdFuente { get; set; }
+        /// <summary>
+        /// Numero de Log. Interno
+        /// </summary>
         public int Nlog { get; set; }
+        /// <summary>
+        /// Año del Log
+        /// </summary>
+        public int Anio { get; set; }
+        /// <summary>
+        /// Estado [0=Anulado, 1=Vigente, 2=Bloqueado con O/S, 3=Bloqueo total, 4=etc ]
+        /// </summary>
         public char Estado { get; set; }
 		#endregion
     }

@@ -36,7 +36,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.EdRuc = new DevExpress.XtraEditors.ButtonEdit();
             this.label14 = new System.Windows.Forms.Label();
-            this.TxtSituacion = new DevExpress.XtraEditors.TextEdit();
+            this.TxtEstado = new DevExpress.XtraEditors.TextEdit();
             this.ChkHabido = new DevExpress.XtraEditors.CheckEdit();
             this.Grp01 = new DevExpress.XtraEditors.GroupControl();
             this.DtFecNac = new DevExpress.XtraEditors.DateEdit();
@@ -77,7 +77,7 @@
             this.pan1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdRuc.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtSituacion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtEstado.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkHabido.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grp01)).BeginInit();
             this.Grp01.SuspendLayout();
@@ -135,9 +135,10 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(12, 52);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(33, 13);
+            this.label13.Size = new System.Drawing.Size(37, 13);
             this.label13.TabIndex = 0;
             this.label13.Text = "&RUC:";
             // 
@@ -160,29 +161,39 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(316, 53);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 13);
+            this.label14.Size = new System.Drawing.Size(96, 13);
             this.label14.TabIndex = 2;
-            this.label14.Text = "Situación SUNAT:";
+            this.label14.Text = "Estado SUNAT:";
             // 
-            // TxtSituacion
+            // TxtEstado
             // 
-            this.TxtSituacion.EnterMoveNextControl = true;
-            this.TxtSituacion.Location = new System.Drawing.Point(416, 49);
-            this.TxtSituacion.Name = "TxtSituacion";
-            this.TxtSituacion.Properties.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtSituacion.Properties.Appearance.Options.UseBackColor = true;
-            this.TxtSituacion.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.TxtSituacion.Properties.ReadOnly = true;
-            this.TxtSituacion.Size = new System.Drawing.Size(148, 22);
-            this.TxtSituacion.TabIndex = 3;
-            this.TxtSituacion.TabStop = false;
+            this.TxtEstado.EditValue = "";
+            this.TxtEstado.EnterMoveNextControl = true;
+            this.TxtEstado.Location = new System.Drawing.Point(416, 49);
+            this.TxtEstado.Name = "TxtEstado";
+            this.TxtEstado.Properties.Appearance.BackColor = System.Drawing.Color.Khaki;
+            this.TxtEstado.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.TxtEstado.Properties.Appearance.ForeColor = System.Drawing.Color.Navy;
+            this.TxtEstado.Properties.Appearance.Options.UseBackColor = true;
+            this.TxtEstado.Properties.Appearance.Options.UseFont = true;
+            this.TxtEstado.Properties.Appearance.Options.UseForeColor = true;
+            this.TxtEstado.Properties.Appearance.Options.UseTextOptions = true;
+            this.TxtEstado.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.TxtEstado.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.TxtEstado.Properties.ReadOnly = true;
+            this.TxtEstado.Size = new System.Drawing.Size(148, 22);
+            this.TxtEstado.TabIndex = 3;
+            this.TxtEstado.TabStop = false;
             // 
             // ChkHabido
             // 
             this.ChkHabido.Location = new System.Drawing.Point(569, 50);
             this.ChkHabido.Name = "ChkHabido";
+            this.ChkHabido.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChkHabido.Properties.Appearance.Options.UseFont = true;
             this.ChkHabido.Properties.Caption = "Es Habido";
             this.ChkHabido.Size = new System.Drawing.Size(75, 19);
             this.ChkHabido.TabIndex = 4;
@@ -602,7 +613,7 @@
             this.Controls.Add(this.Grp01);
             this.Controls.Add(this.ChkHabido);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.TxtSituacion);
+            this.Controls.Add(this.TxtEstado);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.EdRuc);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -612,7 +623,7 @@
             this.Controls.SetChildIndex(this.pan1, 0);
             this.Controls.SetChildIndex(this.EdRuc, 0);
             this.Controls.SetChildIndex(this.label13, 0);
-            this.Controls.SetChildIndex(this.TxtSituacion, 0);
+            this.Controls.SetChildIndex(this.TxtEstado, 0);
             this.Controls.SetChildIndex(this.label14, 0);
             this.Controls.SetChildIndex(this.ChkHabido, 0);
             this.Controls.SetChildIndex(this.Grp01, 0);
@@ -623,7 +634,7 @@
             this.pan1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdRuc.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtSituacion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtEstado.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkHabido.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grp01)).EndInit();
             this.Grp01.ResumeLayout(false);
@@ -690,7 +701,7 @@
         private DevExpress.XtraEditors.ButtonEdit EdUbigeo;
         private DevExpress.XtraEditors.CheckEdit ChkHabido;
         private System.Windows.Forms.Label label14;
-        private DevExpress.XtraEditors.TextEdit TxtSituacion;
+        private DevExpress.XtraEditors.TextEdit TxtEstado;
         private System.Windows.Forms.Label label13;
         private DevExpress.XtraEditors.ButtonEdit EdRuc;
         private System.Windows.Forms.Button BtnImportarRuc;

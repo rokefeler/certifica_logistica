@@ -76,6 +76,9 @@ namespace Certifica_logistica.Popups
                         LblTipoUsuario.Visible = true;
                         EdCodigo.Visible = true;
                         EdCodigo.EditValue = null;
+                        //--nuevo 27Feb14 pedido Joyce
+                        LblExceso.Visible = true;
+                        SpnExceso.Visible = true;
                         break;
 
                     case ENumTipoOrden.MOVILIDAD:
@@ -105,7 +108,7 @@ namespace Certifica_logistica.Popups
 
         private void CboPeriodo_Leave(object sender, EventArgs e)
         {
-            string pe = CboPeriodo.SelectedItem.ToString();
+            var pe = CboPeriodo.SelectedItem.ToString();
             try
             {
                 if (CboPeriodo.Tag.Equals(pe))
@@ -339,6 +342,8 @@ namespace Certifica_logistica.Popups
             var c = (char)CboTipoUsuario.EditValue;
             LblServicio.Visible = false;
             TxtServicio.Visible = false;
+            LblExceso.Visible = false;
+            SpnExceso.Visible = false;
             switch (c)
             {
                 case 'V': //Proveedor
@@ -352,6 +357,8 @@ namespace Certifica_logistica.Popups
                     TxtServicio.Visible = true;
                     EdCodigo.Visible = true;
                     LblTipoUsuario.Visible = true;
+                    LblExceso.Visible = true;
+                    SpnExceso.Visible=true;
                     break;
                 case 'N': //Ninguno
                     EdCodigo.Visible = false;

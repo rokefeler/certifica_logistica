@@ -53,6 +53,8 @@
             this.LblTipoUsuario = new System.Windows.Forms.Label();
             this.EdCodigo = new DevExpress.XtraEditors.ButtonEdit();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.SpnExceso = new DevExpress.XtraEditors.SpinEdit();
+            this.LblExceso = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -65,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodigo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpnExceso.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnAceptar
@@ -79,7 +82,7 @@
             // 
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Size = new System.Drawing.Size(434, 208);
+            this.panel1.Size = new System.Drawing.Size(433, 208);
             // 
             // panel3
             // 
@@ -87,7 +90,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(434, 92);
+            this.panel3.Size = new System.Drawing.Size(433, 92);
             this.panel3.TabIndex = 0;
             // 
             // groupBox1
@@ -117,7 +120,7 @@
             0,
             0});
             this.SpnCant.EnterMoveNextControl = true;
-            this.SpnCant.Location = new System.Drawing.Point(367, 46);
+            this.SpnCant.Location = new System.Drawing.Point(351, 46);
             this.SpnCant.Name = "SpnCant";
             this.SpnCant.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -132,7 +135,7 @@
             0,
             0,
             0});
-            this.SpnCant.Size = new System.Drawing.Size(54, 20);
+            this.SpnCant.Size = new System.Drawing.Size(70, 20);
             this.SpnCant.TabIndex = 9;
             this.SpnCant.TabStop = false;
             this.SpnCant.ToolTipController = this.toolTipController1;
@@ -169,22 +172,17 @@
             0,
             0});
             this.SpnMonto.EnterMoveNextControl = true;
-            this.SpnMonto.Location = new System.Drawing.Point(275, 46);
+            this.SpnMonto.Location = new System.Drawing.Point(258, 46);
             this.SpnMonto.Name = "SpnMonto";
             this.SpnMonto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.SpnMonto.Properties.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.SpnMonto.Properties.Mask.EditMask = "n2";
             this.SpnMonto.Properties.MaxValue = new decimal(new int[] {
             999999999,
             0,
             0,
             131072});
-            this.SpnMonto.Size = new System.Drawing.Size(86, 20);
+            this.SpnMonto.Size = new System.Drawing.Size(87, 20);
             this.SpnMonto.TabIndex = 7;
             this.SpnMonto.ToolTipController = this.toolTipController1;
             this.SpnMonto.Leave += new System.EventHandler(this.SpnMonto_Leave);
@@ -201,7 +199,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(317, 26);
+            this.label1.Location = new System.Drawing.Point(300, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 6;
@@ -219,7 +217,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(238, 26);
+            this.label13.Location = new System.Drawing.Point(221, 26);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(34, 13);
             this.label13.TabIndex = 4;
@@ -238,7 +236,7 @@
             this.EdIdClasificador.Properties.Mask.EditMask = "0.0.9 99.99 99";
             this.EdIdClasificador.Properties.Mask.IgnoreMaskBlank = false;
             this.EdIdClasificador.Properties.MaxLength = 15;
-            this.EdIdClasificador.Size = new System.Drawing.Size(135, 20);
+            this.EdIdClasificador.Size = new System.Drawing.Size(117, 20);
             this.EdIdClasificador.TabIndex = 3;
             this.EdIdClasificador.ToolTipController = this.toolTipController1;
             this.EdIdClasificador.Leave += new System.EventHandler(this.EdIdClasificador_Leave);
@@ -246,7 +244,7 @@
             // EdIdMeta
             // 
             this.EdIdMeta.EnterMoveNextControl = true;
-            this.EdIdMeta.Location = new System.Drawing.Point(210, 46);
+            this.EdIdMeta.Location = new System.Drawing.Point(192, 46);
             this.EdIdMeta.Name = "EdIdMeta";
             this.EdIdMeta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -263,6 +261,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.LblExceso);
+            this.panel4.Controls.Add(this.SpnExceso);
             this.panel4.Controls.Add(this.TxtServicio);
             this.panel4.Controls.Add(this.LblServicio);
             this.panel4.Controls.Add(this.TxtDetalle);
@@ -274,17 +274,17 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 92);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(434, 116);
-            this.panel4.TabIndex = 2;
+            this.panel4.Size = new System.Drawing.Size(433, 116);
+            this.panel4.TabIndex = 1;
             // 
             // TxtServicio
             // 
             this.TxtServicio.BackColor = System.Drawing.Color.Snow;
             this.TxtServicio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtServicio.Location = new System.Drawing.Point(236, 23);
+            this.TxtServicio.Location = new System.Drawing.Point(219, 23);
             this.TxtServicio.Name = "TxtServicio";
             this.TxtServicio.ReadOnly = true;
-            this.TxtServicio.Size = new System.Drawing.Size(188, 20);
+            this.TxtServicio.Size = new System.Drawing.Size(135, 20);
             this.TxtServicio.TabIndex = 5;
             this.TxtServicio.TabStop = false;
             this.TxtServicio.Visible = false;
@@ -292,7 +292,7 @@
             // LblServicio
             // 
             this.LblServicio.AutoSize = true;
-            this.LblServicio.Location = new System.Drawing.Point(256, 7);
+            this.LblServicio.Location = new System.Drawing.Point(239, 7);
             this.LblServicio.Name = "LblServicio";
             this.LblServicio.Size = new System.Drawing.Size(84, 13);
             this.LblServicio.TabIndex = 4;
@@ -302,19 +302,19 @@
             // TxtDetalle
             // 
             this.TxtDetalle.EnterMoveNextControl = true;
-            this.TxtDetalle.Location = new System.Drawing.Point(12, 74);
+            this.TxtDetalle.Location = new System.Drawing.Point(5, 74);
             this.TxtDetalle.Name = "TxtDetalle";
             this.TxtDetalle.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtDetalle.Properties.MaxLength = 70;
-            this.TxtDetalle.Size = new System.Drawing.Size(412, 20);
-            this.TxtDetalle.TabIndex = 7;
+            this.TxtDetalle.Size = new System.Drawing.Size(422, 20);
+            this.TxtDetalle.TabIndex = 9;
             this.TxtDetalle.ToolTipController = this.toolTipController1;
             this.TxtDetalle.Leave += new System.EventHandler(this.TxtDetalle_Leave);
             // 
             // CboTipoUsuario
             // 
             this.CboTipoUsuario.EnterMoveNextControl = true;
-            this.CboTipoUsuario.Location = new System.Drawing.Point(12, 23);
+            this.CboTipoUsuario.Location = new System.Drawing.Point(5, 23);
             this.CboTipoUsuario.Name = "CboTipoUsuario";
             this.CboTipoUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -323,7 +323,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("nombre", "Nombre", 50, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
             this.CboTipoUsuario.Properties.DisplayMember = "nombre";
             this.CboTipoUsuario.Properties.ValueMember = "Sigla";
-            this.CboTipoUsuario.Size = new System.Drawing.Size(112, 20);
+            this.CboTipoUsuario.Size = new System.Drawing.Size(106, 20);
             this.CboTipoUsuario.TabIndex = 1;
             this.CboTipoUsuario.ToolTipController = this.toolTipController1;
             this.CboTipoUsuario.EditValueChanged += new System.EventHandler(this.CboTipoUsuario_EditValueChanged);
@@ -340,16 +340,16 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 58);
+            this.label11.Location = new System.Drawing.Point(5, 58);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 13);
-            this.label11.TabIndex = 6;
+            this.label11.TabIndex = 8;
             this.label11.Text = "&Detalle";
             // 
             // LblTipoUsuario
             // 
             this.LblTipoUsuario.AutoSize = true;
-            this.LblTipoUsuario.Location = new System.Drawing.Point(138, 7);
+            this.LblTipoUsuario.Location = new System.Drawing.Point(123, 7);
             this.LblTipoUsuario.Name = "LblTipoUsuario";
             this.LblTipoUsuario.Size = new System.Drawing.Size(43, 13);
             this.LblTipoUsuario.TabIndex = 2;
@@ -358,7 +358,7 @@
             // EdCodigo
             // 
             this.EdCodigo.EnterMoveNextControl = true;
-            this.EdCodigo.Location = new System.Drawing.Point(131, 23);
+            this.EdCodigo.Location = new System.Drawing.Point(116, 23);
             this.EdCodigo.Name = "EdCodigo";
             this.EdCodigo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -379,11 +379,44 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
+            // SpnExceso
+            // 
+            this.SpnExceso.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.SpnExceso.EnterMoveNextControl = true;
+            this.SpnExceso.Location = new System.Drawing.Point(356, 23);
+            this.SpnExceso.Name = "SpnExceso";
+            this.SpnExceso.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SpnExceso.Properties.Mask.EditMask = "n2";
+            this.SpnExceso.Properties.MaxValue = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            131072});
+            this.SpnExceso.Size = new System.Drawing.Size(71, 20);
+            this.SpnExceso.TabIndex = 7;
+            this.SpnExceso.ToolTipController = this.toolTipController1;
+            this.SpnExceso.Visible = false;
+            // 
+            // LblExceso
+            // 
+            this.LblExceso.AutoSize = true;
+            this.LblExceso.Location = new System.Drawing.Point(354, 7);
+            this.LblExceso.Name = "LblExceso";
+            this.LblExceso.Size = new System.Drawing.Size(42, 13);
+            this.LblExceso.TabIndex = 6;
+            this.LblExceso.Text = "E&xceso";
+            this.LblExceso.Visible = false;
+            // 
             // FphDetalleOrden
             // 
             this.AcceptButton = null;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(434, 268);
+            this.ClientSize = new System.Drawing.Size(433, 268);
             this.ControlBox = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -405,6 +438,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodigo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpnExceso.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -434,5 +468,7 @@
         private System.Windows.Forms.TextBox TxtServicio;
         public DevExpress.XtraEditors.SpinEdit SpnCant;
         private System.Windows.Forms.Label LblCantidad;
+        public DevExpress.XtraEditors.SpinEdit SpnExceso;
+        private System.Windows.Forms.Label LblExceso;
     }
 }
