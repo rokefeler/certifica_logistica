@@ -202,24 +202,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="reportes\ordenes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ordenes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="reportes\servicio.cs">
       <DependentUpon>servicio.rpt</DependentUpon>
+      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="reportes\servicio_joyce.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>servicio_joyce.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="reportes\servicio_lorena_xp.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>servicio_lorena_xp.rpt</DependentUpon>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="reportes\servicio_nelson.cs">
@@ -227,6 +221,19 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="salidas\FrReporte01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="salidas\FrReporte01.Designer.cs">
+      <DependentUpon>FrReporte01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="salidas\FsListadoPorExpediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="salidas\FsListadoPorExpediente.Designer.cs">
+      <DependentUpon>FsListadoPorExpediente.cs</DependentUpon>
     </Compile>
     <Compile Include="utiles\AboutBox1.cs">
       <SubType>Form</SubType>
@@ -240,6 +247,12 @@
     <Compile Include="utiles\FrmAddUser.Designer.cs">
       <DependentUpon>FrmAddUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="utiles\FrmConfigTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utiles\FrmConfigTemplate.Designer.cs">
+      <DependentUpon>FrmConfigTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="utiles\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,12 +264,6 @@
     </Compile>
     <Compile Include="utiles\frm_clave.designer.cs">
       <DependentUpon>frm_clave.cs</DependentUpon>
-    </Compile>
-    <Compile Include="utiles\FrmPrint.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="utiles\FrmPrint.designer.cs">
-      <DependentUpon>FrmPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="utiles\FrmPrevio.cs">
       <SubType>Form</SubType>
@@ -359,6 +366,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\reportes\" />
+    <Folder Include="listados\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -449,33 +457,36 @@
       <LastGenOutput>servicio.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="reportes\servicio_lorena_xp.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>servicio_lorena_xp.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="reportes\servicio_nelson.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>servicio_nelson.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="reportes\servicio_joyce.rpt">
+    <None Include="reportes\ordenes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>servicio_joyce.cs</LastGenOutput>
+      <LastGenOutput>ordenes.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="salidas\FrReporte01.resx">
+      <DependentUpon>FrReporte01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="salidas\FsListadoPorExpediente.resx">
+      <DependentUpon>FsListadoPorExpediente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="utiles\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="utiles\FrmAddUser.resx">
       <DependentUpon>FrmAddUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="utiles\FrmConfigTemplate.resx">
+      <DependentUpon>FrmConfigTemplate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="utiles\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="utiles\frm_clave.resx">
       <DependentUpon>frm_clave.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="utiles\FrmPrint.resx">
-      <DependentUpon>FrmPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="utiles\FrmPrevio.resx">
       <DependentUpon>FrmPrevio.cs</DependentUpon>
@@ -609,9 +620,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="images\login48.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="images\logo unsa1 - copia.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="images\logo unsa1.jpg">
@@ -794,6 +802,9 @@
     <Content Include="images\dni.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="images\logo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="unsa.ico" />
   </ItemGroup>
   <ItemGroup>

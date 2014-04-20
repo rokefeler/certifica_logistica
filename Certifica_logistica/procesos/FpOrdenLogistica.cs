@@ -48,7 +48,9 @@ namespace Certifica_logistica.procesos
         {
             if(!_isCargadoDatosInternos)
                 PrepararDatosInternos();
-            if(_idOrdenAClonar>0)
+            if (!String.IsNullOrEmpty(Value))
+                CargarFromFuera();
+            else if(_idOrdenAClonar>0)
                 ClonarDatos(_idOrdenAClonar);
             else //Si no es Clonar, poner Especificas Relativas
             {
@@ -220,6 +222,25 @@ namespace Certifica_logistica.procesos
             }
 
         }
+        private void CargarFromFuera()
+        {
+            var nroOrdenExistente = Convert.ToInt64(Value);
+            var ord = OrdenLogisticaDao.GetbyId(nroOrdenExistente);
+            if (ord == null)
+            {
+                General.ShowMessage("El numero de Orden que paso, Ya no Existe");
+                return;
+            }
+            EdIdOrden.EditValue = ord.Nro;
+            foreach (String it in CboYearOrden.Items)
+            {
+                if (!it.Equals(ord.Anio.ToString(CultureInfo.InvariantCulture))) continue;
+                CboYearOrden.SelectedItem = it;
+                break;
+            }
+            //Cargar Elementos de 
+            BtnCargaOrden_Click(this, null);
+ }
         public override bool Master_GrabarFormulario()
         {
             if (!Master_Verificar()) return false;
@@ -254,7 +275,7 @@ namespace Certifica_logistica.procesos
             else
             {
                 if (
-                   MessageBox.Show(@"Esta Ud. Seguro de Grabar Esta Orden de Servicio?\nDebe Verificar bien LA FUENTE y CENTRO DE COSTO\nUna Vez Guardado, Estos Datos Quedaran Bloqueados por Seguridad", @"Confirme por Favor",MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) !=DialogResult.Yes)
+                   MessageBox.Show(@"Esta Ud. Seguro de Grabar Esta Orden de Servicio?\nDebe Verificar bien Nro. de Expediente, LA FUENTE y CENTRO DE COSTO\nUna Vez Guardado, Estos Datos Quedaran Bloqueados por Seguridad", @"Confirme por Favor",MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) !=DialogResult.Yes)
                     return false;
             }
 
@@ -341,7 +362,7 @@ namespace Certifica_logistica.procesos
 
             return true;
         }
-        public override bool Master_ImprimirFormulario(bool isPrevio, int nCopias)
+        public override bool Master_ImprimirFormulario(bool isPrevio, int nCopias, int desde, int hasta, string cImpresora)
         {
             var ret = false;
             const string cReporte = "servicio.rpt";
@@ -422,8 +443,8 @@ namespace Certifica_logistica.procesos
                 }
                 else
                 {
-                    //Rpt.PrintOptions.PrinterName = _FrmPadre.Miconfiguracion.PrinterName;
-                    rpt.PrintToPrinter(nCopias, true, 1, 99999);
+                    rpt.PrintOptions.PrinterName = cImpresora;
+                    rpt.PrintToPrinter(nCopias, true, desde, hasta);
                 }
             }
             else
@@ -503,7 +524,6 @@ namespace Certifica_logistica.procesos
             
             CboYearOrden.SelectedIndex = 0;
             CboYearOrden.ResetBackColor();
-            
             CboYearExp.SelectedIndex = 0;
             CboYearExp.ResetBackColor();
             
@@ -547,9 +567,12 @@ namespace Certifica_logistica.procesos
                 General.ShowMessage("El Numero de Orden Ingresado, No Se encuentra Registrado","Intentelo Nuevamente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
+            
+            BtnCarga.Enabled = false; //Impedir que se modifique despues nro de exp. 13MAR13
+
             CargarExpediente(ord.IdExpediente);
             Value = ord.IdOrden.ToString(CultureInfo.InvariantCulture);
-            //TODO PROBAR CARGA DE ORDEN AQUI ME QUEDE
+            //
             //Ahora cargar los demas Datos
             DtFechaGiro.EditValue = ord.FechaGiro;
             TxtReferencia.Text = ord.Referencia;
@@ -572,8 +595,6 @@ namespace Certifica_logistica.procesos
             TxtTotal.Text = ord.Total.ToString(CultureInfo.InvariantCulture);
             TxtTotal.Tag = ord.Total.ToString(CultureInfo.InvariantCulture);
             BtnClonar.Visible = true;
-            // dsTramite.Tables[name: "DetalleOrden"].Clear();
-            // dsTramite.Tables[name: "DetalleOrden"].Load(_tbOrdenDetalle.CreateDataReader());
             return false;
         }
 
@@ -687,6 +708,15 @@ namespace Certifica_logistica.procesos
             CboYearExp.BackColor = Color.LightGreen;
             var words = cNroExp.Split('-');
             EdIdExpediente.EditValue = words[0];
+            //Ubicar Nro de Exp.
+            foreach (var s in CboYearExp.Items)
+            {
+                if (!s.Equals(words[1]))
+                    continue;
+                CboYearExp.SelectedItem = s;
+                break;
+            }
+
             toolTipController1.SetToolTip(label18, "F.Exp =" + exp.FechaExp.ToShortDateString());
             DtFechaExp.DateTime = exp.FechaIngreso;
             for (var x = 0; x < CboFuente.Items.Count; x++)
@@ -819,78 +849,80 @@ namespace Certifica_logistica.procesos
 
         private void gridControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Insert)
+            switch (e.KeyCode)
             {
-                ModificarItem(true);
-            }
-            else if (e.KeyCode == Keys.Enter)
-                ModificarItem();
-            else if (e.KeyCode == Keys.Delete)
-            {
-                //verificar si ya tiene Nro de Orden o no.
-                if (String.IsNullOrEmpty(Value))
-                {
-                    var index = GetUnicaFilaActual(); //index de muestra del grid
-                    if (index <= 0) return;
-                    var r = (DataRowView) gridView1.GetFocusedRow();
-                    r.Delete(); //Elimina Fila
-                    RefreshDetalle();
-                    //gridView1.DeleteRow(index); //Metodo 2
-                }
-                else
-                {
-                    DataRowView r;
+                case Keys.Insert:
+                    ModificarItem(true);
+                    break;
+                case Keys.Enter:
+                    ModificarItem();
+                    break;
+                case Keys.Delete:
+                    if (String.IsNullOrEmpty(Value))
+                    {
+                        var index = GetUnicaFilaActual(); //index de muestra del grid
+                        if (index <= 0) return;
+                        var r = (DataRowView) gridView1.GetFocusedRow();
+                        r.Delete(); //Elimina Fila
+                        RefreshDetalle();
+                        //gridView1.DeleteRow(index); //Metodo 2
+                    }
+                    else
+                    {
+                        DataRowView r;
 // ReSharper disable once RedundantAssignment
-                    long id = 0;
-                    try
-                    {
-                        r = (DataRowView) gridView1.GetFocusedRow();
-                        id = (long) r["Id"];
-                    }
-                    catch (Exception ex3)
-                    {
-                        General.ShowMessage(ex3.Message);
-                        return;
-                    }
-                    if (
-                        MessageBox.Show(
-                            @"Esta Ud. Seguro de Eliminar Este Item ?
-Los Cambios se Haran Directamente en la Base de Datos",
-                            @"Confirme Por Favor - Acción Delicada", MessageBoxButtons.YesNoCancel,
-                            MessageBoxIcon.Question) != DialogResult.Yes)
-                        return;
-                    
-                    DbConnection con = null;
-                    DbTransaction dbTrans = null;
-                    try
-                    {
-                        con = DATA.Db.CreateConnection();
-                        con.Open();
-                        dbTrans = con.BeginTransaction();
-                        var ret=OrdenLogisticaDetalleDao.Delete(id,  _FrmPadre.Miconfiguracion.IdUsuario, dbTrans);
-                        if (ret > 0)
+                        long id = 0;
+                        try
                         {
-                            dbTrans.Commit();
-                            r.Delete(); //Elimina Fila
-                            RefreshDetalle();
-                            General.ShowMessage("El Item Fue Eliminado, el Total de Orden Fue correctamente Actualizada");
+                            r = (DataRowView) gridView1.GetFocusedRow();
+                            id = (long) r["Id"];
                         }
-                        else
-                            dbTrans.Rollback();
+                        catch (Exception ex3)
+                        {
+                            General.ShowMessage(ex3.Message);
+                            return;
+                        }
+                        if (
+                            MessageBox.Show(
+                                @"Esta Ud. Seguro de Eliminar Este Item ?
+Los Cambios se Haran Directamente en la Base de Datos",
+                                @"Confirme Por Favor - Acción Delicada", MessageBoxButtons.YesNoCancel,
+                                MessageBoxIcon.Question) != DialogResult.Yes)
+                            return;
+                    
+                        DbConnection con = null;
+                        DbTransaction dbTrans = null;
+                        try
+                        {
+                            con = DATA.Db.CreateConnection();
+                            con.Open();
+                            dbTrans = con.BeginTransaction();
+                            var ret=OrdenLogisticaDetalleDao.Delete(id,  _FrmPadre.Miconfiguracion.IdUsuario, dbTrans);
+                            if (ret > 0)
+                            {
+                                dbTrans.Commit();
+                                r.Delete(); //Elimina Fila
+                                RefreshDetalle();
+                                General.ShowMessage("El Item Fue Eliminado, el Total de Orden Fue correctamente Actualizada");
+                            }
+                            else
+                                dbTrans.Rollback();
+                        }
+                        catch (Exception ex1)
+                        {
+                            if (dbTrans != null) dbTrans.Rollback();
+                            General.ShowMessage(ex1.Message);
+                        }
+                        finally
+                        {
+                            if(con != null && con.State== ConnectionState.Open)
+                                con.Close();
+                        }
                     }
-                    catch (Exception ex1)
-                    {
-                        if (dbTrans != null) dbTrans.Rollback();
-                        General.ShowMessage(ex1.Message);
-                    }
-                    finally
-                    {
-                        if(con != null && con.State== ConnectionState.Open)
-                        con.Close();
-                    }
-                }
+                    break;
             }
         }
+
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
             ModificarItem();
@@ -1048,7 +1080,8 @@ Los Cambios se Haran Directamente en la Base de Datos",
         }
 
         private void BtnCargaOrden_Click(object sender, EventArgs e)
-        {if (EdIdOrden.EditValue == null) return;
+        {
+            if (EdIdOrden.EditValue == null) return;
             if (EdIdOrden.IsModified) return;
             var cNroExp = EdIdOrden.EditValue.ToString();
             var nExp = Convert.ToInt32(cNroExp);
@@ -1438,6 +1471,12 @@ Los Cambios se Haran Directamente en la Base de Datos",
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
             ImportarFromExcelDetalleGenerico(openFileDialog1.FileName);
+        }
+
+        private void FpOrdenLogistica_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F6)
+                Master_ImprimirFormulario(true, 1,1,1,"");
         }
     } //Fin de Clase
 }

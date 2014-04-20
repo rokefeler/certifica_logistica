@@ -404,29 +404,30 @@ namespace Certifica_logistica
         {
             var oFrm = (Masterform) ActiveMdiChild;
             if (oFrm == null) return;
-            int nCopias;
+            var nCopias = 1;
+            var nFromPage = 1;
+            var nToPage = 9999;
+            var cImpresora = String.Empty;
             switch (oFrm.Name)
             {
                 case "FpAmbiente":
                 case "tarjetaform":
-                    nCopias = 1;
                     break;
                 default:
-                    var pfrm = new FrmPrint();
-                    pfrm.ShowDialog();
-                    nCopias = pfrm._nCopias;
-                    if (nCopias <= 0)
+                    if (printDialog1.ShowDialog() != DialogResult.OK)
                         return;
-                    pfrm.Close();
+                    nCopias = printDialog1.PrinterSettings.Copies;
+                    nFromPage = printDialog1.PrinterSettings.FromPage == 0 ? 1 : printDialog1.PrinterSettings.FromPage;
+                    nToPage = printDialog1.PrinterSettings.ToPage == 0 ? 9999 : printDialog1.PrinterSettings.ToPage;
+                    cImpresora = printDialog1.PrinterSettings.PrinterName;
                     break;
             }
-            oFrm.Master_ImprimirFormulario(false, nCopias);
+            oFrm.Master_ImprimirFormulario(false, nCopias, nFromPage, nToPage, cImpresora );
         }
-
         private void printPreviewToolStripButton_Click(object sender, EventArgs e)
         {
             var oFrm = (Masterform) ActiveMdiChild;
-            if (oFrm != null) oFrm.Master_ImprimirFormulario(true, 0);
+            if (oFrm != null) oFrm.Master_ImprimirFormulario(true,1,1,1,"");
         }
 
         private void toolStripBloquearExpediente_Click(object sender, EventArgs e)

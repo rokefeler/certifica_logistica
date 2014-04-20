@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Windows.Forms;
 using Certifica_logistica.modulos;
 using Certifica_logistica.Popups;
+using Certifica_logistica.salidas;
 using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
@@ -19,6 +20,9 @@ namespace Certifica_logistica.procesos
 {
     public partial class FpTramite : Masterform
     {
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        public static extern long BitBlt(IntPtr hdcDest, int nXDest, int nYDest, int nWidth, int nHeight, IntPtr hdcSrc, int nXSrc, int nYSrc, int dwRop);
+        private Bitmap _memoryImage;
         private DataTable _tb;
         private Expediente _exp;
         public FpTramite()
@@ -379,13 +383,26 @@ namespace Certifica_logistica.procesos
         {
             Value = String.Empty;
             EdIdExpediente.EditValue = null;
+            EdIdExpediente.IsModified = true;
             CboYearExp.SelectedIndex = 0;
+            EdCodSubDep.IsModified = true;
+            EdCodSubDep_Recibe.IsModified = true;
+            
             //DtFechaExp.EditValue = null; //mantener por indic. de SUssy
             DtFechaIngresoExp.EditValue = DateTime.Now;
             //CboFuente.SelectedIndex = 3;
             CboMoneda.SelectedIndex = 0;
             TxtNroAutorizacion.Text = "";
             TxtMontoAprobado.Text = "";
+            LnkOrdenes.Visible = false;
+            CboFuente.Enabled = true;
+            EdCodSubDep.Enabled = true;
+            CboTipoDoc.Enabled = true;
+            TxtNroDoc.Enabled = true;
+            TxtObsv.ResetBackColor();
+            TxtObsv.ReadOnly = false;
+            BtnObsv.Enabled = false;
+            BtnLimpiar.Enabled = true;
             //EdCodSubDep.EditValue = null;  //Queda misma Dependencia  por defecto, segun sussy
             //TxtDependencia.Text = "";
             //toolTipController1.SetToolTip(TxtDependencia,"");
@@ -440,26 +457,14 @@ namespace Certifica_logistica.procesos
             Close();
             return true;
         }
-
-// ReSharper disable once RedundantOverridenMember
-        public override void Object_KeyDown(object sender, KeyEventArgs e)
-        {
-                base.Object_KeyDown(sender, e);
-        }
-
-// ReSharper disable once RedundantOverridenMember
-        public override void ObjectEnter(object sender, EventArgs e)
-        {
-            base.ObjectEnter(sender, e);
-        }
-
-        public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null,int anio=2014)
+        public override bool Master_CargarFicha(string idPrincipal, string idSecundario = null, int anio = 2014)
         {
             BtnObsv.Enabled = false;
             CboFuente.Enabled = true;
             EdCodSubDep.Enabled = true;
             CboTipoDoc.Enabled = true;
             TxtNroDoc.Enabled = true;
+            LnkOrdenes.Visible = false;
             _exp = ExpedienteDao.GetbyId(idPrincipal); //Cargar Estado
             EdIdExpediente.ResetBackColor();
             CboYearExp.ResetBackColor();
@@ -476,7 +481,7 @@ namespace Certifica_logistica.procesos
             DtFechaIngresoExp.DateTime = _exp.FechaIngreso;
             for (var x = 0; x < CboFuente.Items.Count; x++)
             {
-                var fte = (FuenteFinanciamiento) CboFuente.Items[x];
+                var fte = (FuenteFinanciamiento)CboFuente.Items[x];
                 if (fte.IdFuente == _exp.IdFuente)
                 {
                     CboFuente.SelectedIndex = x;
@@ -486,7 +491,7 @@ namespace Certifica_logistica.procesos
             for (int x = 0; x < CboMoneda.Items.Count; x++)
             {
                 var m = CboMoneda.Items[x].ToString()[0];
-                if (_exp.Moneda==m)
+                if (_exp.Moneda == m)
                 {
                     CboMoneda.SelectedIndex = x;
                     break;
@@ -494,7 +499,7 @@ namespace Certifica_logistica.procesos
             }
 
             TxtNroAutorizacion.Text = _exp.CNroAuto;
-            if(_exp.MontoAprobado <= 0)
+            if (_exp.MontoAprobado <= 0)
                 TxtMontoAprobado.Text = "";
             else
                 TxtMontoAprobado.Text = _exp.MontoAprobado.ToString("####00.00");
@@ -502,10 +507,10 @@ namespace Certifica_logistica.procesos
             EdCodSubDep_Recibe.IsModified = true;
 
             EdCodSubDep.EditValue = _exp.CodSubDepOrigen;
-            EdCodSubDep_Leave(EdCodSubDep,null);
+            EdCodSubDep_Leave(EdCodSubDep, null);
             EdCodSubDep_Recibe.EditValue = _exp.CodSubDepEntrega;
             EdCodSubDep_Leave(EdCodSubDep_Recibe, null);
-            General.UbicaItemsComboCodigo(CboTipoDoc,_exp.IdxTipoDocTra);
+            General.UbicaItemsComboCodigo(CboTipoDoc, _exp.IdxTipoDocTra);
             TxtNroDoc.Text = _exp.Nrodoc;
             TxtAsunto.Text = _exp.Asunto;
             TxtFolios.Text = _exp.Folios.ToString("#00");
@@ -518,11 +523,34 @@ namespace Certifica_logistica.procesos
                 TxtNroDoc.Enabled = false;
             }
             BtnObsv.Enabled = true;
+            if (OrdenLogisticaDao.ExisteExpediente(_exp.Idexpediente))
+                LnkOrdenes.Visible = true;
             //Cargar Observaciones
             VerDetalleExpediente();
             VerDetalleObservaciones();
             return true;
         }
+
+        public override bool Master_ImprimirFormulario(bool isPrevio, int nCopias, int desde, int hasta, string cImpresora)
+        {
+            CaptureScreen();
+            printPreviewDialog1.Show();
+            return true;
+        }
+
+        // ReSharper disable once RedundantOverridenMember
+        public override void Object_KeyDown(object sender, KeyEventArgs e)
+        {
+                base.Object_KeyDown(sender, e);
+        }
+
+// ReSharper disable once RedundantOverridenMember
+        public override void ObjectEnter(object sender, EventArgs e)
+        {
+            base.ObjectEnter(sender, e);
+        }
+
+        
         
         private void VerDetalleExpediente()
         {
@@ -688,50 +716,46 @@ namespace Certifica_logistica.procesos
 
         private void LstObsv_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
+            if (e.KeyCode != Keys.Delete) return;
+            if (String.IsNullOrEmpty(Value)) return;
+            var con = DATA.Db.CreateConnection();
+            con.Open();
+            var dbTrans = con.BeginTransaction();
+            try
             {
-                if (String.IsNullOrEmpty(Value)) return;
-                var con = DATA.Db.CreateConnection();
-                con.Open();
-                var dbTrans = con.BeginTransaction();
-                try
+                // ReSharper disable once RedundantAssignment
+                // ReSharper disable once RedundantAssignment
+                var cad = String.Empty;
+                var o = (ObservacionExpediente) LstObsv.SelectedItem;
+
+                if (o.Id > 0)
                 {
-                    // ReSharper disable once RedundantAssignment
-                    var ret = 0;
-                    // ReSharper disable once RedundantAssignment
-                    var cad = String.Empty;
-                    var o = (ObservacionExpediente) LstObsv.SelectedItem;
-
-                    if (o.Id > 0)
+                    var ret = ObservacionExpedienteDao.Delete(o.Id, _FrmPadre.Miconfiguracion.IdUsuario, dbTrans);
+                    if (ret >= 0)
                     {
-
-                        ret = ObservacionExpedienteDao.Delete(o.Id, _FrmPadre.Miconfiguracion.IdUsuario, dbTrans);
-                        if (ret >= 0)
-                        {
-                            dbTrans.Commit();
-                            General.ShowMessage(string.Format("Observación del {0} Fue Eliminada Correctamente",
-                                o.Display));
-                            EdIdExpediente.IsModified = true; //marcar que se modifico el control para refrescos
-                            VerDetalleObservaciones(); //Refrescar
-                        }
-                        else
-                        {
-                            dbTrans.Rollback();
-                            cad = General.AnalizaResultadoSql(ret);
-                            General.ShowMessage(cad);
-                        }
+                        dbTrans.Commit();
+                        General.ShowMessage(string.Format("Observación del {0} Fue Eliminada Correctamente",
+                            o.Display));
+                        EdIdExpediente.IsModified = true; //marcar que se modifico el control para refrescos
+                        VerDetalleObservaciones(); //Refrescar
+                    }
+                    else
+                    {
+                        dbTrans.Rollback();
+                        cad = General.AnalizaResultadoSql(ret);
+                        General.ShowMessage(cad);
                     }
                 }
-                catch (Exception)
-                {
-                    dbTrans.Rollback();
-                    Console.Beep();
-                }
-                finally
-                {
-                    if (con.State == ConnectionState.Open)
-                        con.Close();
-                }
+            }
+            catch (Exception)
+            {
+                dbTrans.Rollback();
+                Console.Beep();
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                    con.Close();
             }
         }
 
@@ -773,6 +797,42 @@ namespace Certifica_logistica.procesos
                 EdCodSubDep_Properties_ButtonClick(sender,null);
              else
                  base.Object_KeyDown(sender,e);
+        }
+        
+        private void LnkOrdenes_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var fs = new FsListadoPorExpediente
+            {
+                MdiParent = this._FrmPadre,
+                _FrmPadre = this._FrmPadre,
+                _DerechoFormulario =
+                {
+                    Eliminar = false,
+                    Grabar = false,
+                    Nuevo = false,
+                    Procesar = false,
+                    Corregir = false
+                },
+                Value = this.Value,
+            };
+            fs.Show(); //cargar Formulario
+        }
+
+        private void FpTramite_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F3: //Ver Listado de Ordenes
+                    if(LnkOrdenes.Visible)
+                        LnkOrdenes_LinkClicked(sender,null);
+                    break;
+
+                case Keys.F6: //Impresión
+                    Master_ImprimirFormulario(true, 1, 1, 1, "");
+                    break;
+            }
+            
+                
         }
       
         /*
@@ -848,6 +908,21 @@ namespace Certifica_logistica.procesos
             ResumeLayout();
         }
         */
- 
+        private void CaptureScreen()
+        {
+            Graphics mygraphics = this.CreateGraphics();
+            Size s = this.Size;
+            _memoryImage = new Bitmap(s.Width, s.Height, mygraphics);
+            Graphics memoryGraphics = Graphics.FromImage(_memoryImage);
+            IntPtr dc1 = mygraphics.GetHdc();
+            IntPtr dc2 = memoryGraphics.GetHdc();
+            BitBlt(dc2, 0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height, dc1, 0, 0, 13369376);
+            mygraphics.ReleaseHdc(dc1);
+            memoryGraphics.ReleaseHdc(dc2);
+        }
+        private void printDocument1_PrintPage(System.Object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(_memoryImage, 0, 0);
+        }
     }
 }

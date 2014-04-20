@@ -175,6 +175,17 @@ namespace DaoLogistica.DAO
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
             return (ret > 0);
         }
+        public static bool ExisteExpediente(String idExpediente)
+        {
+            if (String.IsNullOrEmpty(idExpediente)) throw new ArgumentNullException("idExpediente");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.ExistId2);
+            DATA.Db.AddInParameter(cmd, "idExpediente", DbType.String, idExpediente);
+            DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
+            DATA.Db.ExecuteNonQuery(cmd);
+            var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
+            return (ret > 0);
+        }
         public static bool ExisteById(int nroOrden, int anio)
         {
             if (nroOrden<=0) throw new ArgumentNullException("nroOrden");
@@ -187,6 +198,14 @@ namespace DaoLogistica.DAO
             DATA.Db.ExecuteNonQuery(cmd);
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
             return (ret > 0);
+        }
+        public static DataSet GetReporteByExpediente(string idexpediente)
+        {
+            if (idexpediente == null) throw new ArgumentNullException("idexpediente","Baby requiero mas datos");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_ReporteOrdenServicio");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.ReporteByExpediente);
+            DATA.Db.AddInParameter(cmd, "@IdExpediente", DbType.String, idexpediente);
+            return DATA.Db.ExecuteDataSet(cmd); 
         }
     }
 }

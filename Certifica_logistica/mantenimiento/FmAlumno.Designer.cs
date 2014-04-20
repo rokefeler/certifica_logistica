@@ -170,6 +170,7 @@
             // 
             // TxtEmail
             // 
+            this.TxtEmail.EditValue = "@";
             this.TxtEmail.EnterMoveNextControl = true;
             this.TxtEmail.Location = new System.Drawing.Point(5, 189);
             this.TxtEmail.Name = "TxtEmail";
@@ -191,7 +192,7 @@
             // 
             // DtFecNac
             // 
-            this.DtFecNac.EditValue = null;
+            this.DtFecNac.EditValue = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.DtFecNac.Location = new System.Drawing.Point(573, 191);
             this.DtFecNac.Name = "DtFecNac";
             this.DtFecNac.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -221,6 +222,7 @@
             // 
             // TxtDni
             // 
+            this.TxtDni.EditValue = "00000000";
             this.TxtDni.EnterMoveNextControl = true;
             this.TxtDni.Location = new System.Drawing.Point(476, 190);
             this.TxtDni.Name = "TxtDni";
@@ -283,6 +285,7 @@
             // 
             // TxtDireccion
             // 
+            this.TxtDireccion.EditValue = ".";
             this.TxtDireccion.EnterMoveNextControl = true;
             this.TxtDireccion.Location = new System.Drawing.Point(5, 89);
             this.TxtDireccion.Name = "TxtDireccion";
@@ -334,6 +337,7 @@
             // 
             // EdUbigeo
             // 
+            this.EdUbigeo.EditValue = "000000";
             this.EdUbigeo.Location = new System.Drawing.Point(5, 136);
             this.EdUbigeo.Name = "EdUbigeo";
             this.EdUbigeo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

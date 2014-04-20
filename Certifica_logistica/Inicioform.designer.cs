@@ -119,6 +119,7 @@ namespace Certifica_logistica
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -166,7 +167,7 @@ namespace Certifica_logistica
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(56, 20);
+            this.fileMenu.Size = new System.Drawing.Size(60, 20);
             this.fileMenu.Text = "&Sistema";
             // 
             // LoginToolStripMenuItem
@@ -175,14 +176,14 @@ namespace Certifica_logistica
             this.LoginToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem";
             this.LoginToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.LoginToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.LoginToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.LoginToolStripMenuItem.Text = "&Login";
             this.LoginToolStripMenuItem.Click += new System.EventHandler(this.LoginToolStripMenuItem_Click);
             // 
             // cambiarClaveToolStripMenuItem
             // 
             this.cambiarClaveToolStripMenuItem.Name = "cambiarClaveToolStripMenuItem";
-            this.cambiarClaveToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.cambiarClaveToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.cambiarClaveToolStripMenuItem.Text = "Cambiar Clave";
             this.cambiarClaveToolStripMenuItem.Click += new System.EventHandler(this.cambiarClaveToolStripMenuItem_Click_1);
             // 
@@ -191,14 +192,14 @@ namespace Certifica_logistica
             this.LogoutToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.logout24;
             this.LogoutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem";
-            this.LogoutToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.LogoutToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.LogoutToolStripMenuItem.Text = "&Cerrar Sesion - Logout";
             this.LogoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(246, 6);
             // 
             // nuevoToolStrip
             // 
@@ -206,7 +207,7 @@ namespace Certifica_logistica
             this.nuevoToolStrip.Image = global::Certifica_logistica.Properties.Resources._new;
             this.nuevoToolStrip.Name = "nuevoToolStrip";
             this.nuevoToolStrip.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.nuevoToolStrip.Size = new System.Drawing.Size(235, 22);
+            this.nuevoToolStrip.Size = new System.Drawing.Size(249, 22);
             this.nuevoToolStrip.Text = "&Nuevo";
             this.nuevoToolStrip.Click += new System.EventHandler(this.newToolStripButton_Click);
             // 
@@ -216,7 +217,7 @@ namespace Certifica_logistica
             this.procesarToolStrip.Image = global::Certifica_logistica.Properties.Resources.run_24;
             this.procesarToolStrip.Name = "procesarToolStrip";
             this.procesarToolStrip.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.procesarToolStrip.Size = new System.Drawing.Size(235, 22);
+            this.procesarToolStrip.Size = new System.Drawing.Size(249, 22);
             this.procesarToolStrip.Text = "Procesar";
             this.procesarToolStrip.Click += new System.EventHandler(this.procesarToolStripMenuItem_Click);
             // 
@@ -226,7 +227,7 @@ namespace Certifica_logistica
             this.toolStripGrabar.Image = global::Certifica_logistica.Properties.Resources.Save24;
             this.toolStripGrabar.Name = "toolStripGrabar";
             this.toolStripGrabar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-            this.toolStripGrabar.Size = new System.Drawing.Size(235, 22);
+            this.toolStripGrabar.Size = new System.Drawing.Size(249, 22);
             this.toolStripGrabar.Text = "&Grabar";
             this.toolStripGrabar.Click += new System.EventHandler(this.saveToolStripButton_Click);
             // 
@@ -237,7 +238,7 @@ namespace Certifica_logistica
             this.toolStripEliminar.Name = "toolStripEliminar";
             this.toolStripEliminar.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.E)));
-            this.toolStripEliminar.Size = new System.Drawing.Size(235, 22);
+            this.toolStripEliminar.Size = new System.Drawing.Size(249, 22);
             this.toolStripEliminar.Text = "&Eliminar";
             this.toolStripEliminar.Click += new System.EventHandler(this.deleteToolStripButton_Click);
             // 
@@ -246,7 +247,7 @@ namespace Certifica_logistica
             this.toolStripCorregir.Enabled = false;
             this.toolStripCorregir.Image = global::Certifica_logistica.Properties.Resources.Ok_24;
             this.toolStripCorregir.Name = "toolStripCorregir";
-            this.toolStripCorregir.Size = new System.Drawing.Size(235, 22);
+            this.toolStripCorregir.Size = new System.Drawing.Size(249, 22);
             this.toolStripCorregir.Text = "Correg&ir";
             this.toolStripCorregir.ToolTipText = "Permite Realizar una Corrección de Un Número de Expediente u Otro Campo Principal" +
     " de Identidad";
@@ -258,27 +259,27 @@ namespace Certifica_logistica
             this.toolStripBloquearExpediente.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.B)));
-            this.toolStripBloquearExpediente.Size = new System.Drawing.Size(235, 22);
+            this.toolStripBloquearExpediente.Size = new System.Drawing.Size(249, 22);
             this.toolStripBloquearExpediente.Text = "&Bloquear";
             this.toolStripBloquearExpediente.Click += new System.EventHandler(this.toolStripBloquearExpediente_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(246, 6);
             // 
             // toolStripMntConfiguracionAcceso
             // 
             this.toolStripMntConfiguracionAcceso.Enabled = false;
             this.toolStripMntConfiguracionAcceso.Name = "toolStripMntConfiguracionAcceso";
-            this.toolStripMntConfiguracionAcceso.Size = new System.Drawing.Size(235, 22);
+            this.toolStripMntConfiguracionAcceso.Size = new System.Drawing.Size(249, 22);
             this.toolStripMntConfiguracionAcceso.Text = "Configuración de Acceso";
             this.toolStripMntConfiguracionAcceso.Click += new System.EventHandler(this.toolStripMntConfiguracionAcceso_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(246, 6);
             // 
             // printToolStripMenuItem
             // 
@@ -286,7 +287,7 @@ namespace Certifica_logistica
             this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.printToolStripMenuItem.Text = "Im&primir";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripButton_Click);
             // 
@@ -297,27 +298,27 @@ namespace Certifica_logistica
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
             this.printPreviewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.P)));
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.printPreviewToolStripMenuItem.Text = "Impresión Pre&via";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripButton_Click);
             // 
             // printSetupToolStripMenuItem
             // 
             this.printSetupToolStripMenuItem.Name = "printSetupToolStripMenuItem";
-            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.printSetupToolStripMenuItem.Text = "Print Setup";
             this.printSetupToolStripMenuItem.Click += new System.EventHandler(this.printSetupToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(232, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(246, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
@@ -337,7 +338,7 @@ namespace Certifica_logistica
             this.abrirExcelToolStripMenuItem,
             this.abrirWinWordToolStripMenuItem});
             this.editMenu.Name = "editMenu";
-            this.editMenu.Size = new System.Drawing.Size(52, 20);
+            this.editMenu.Size = new System.Drawing.Size(58, 20);
             this.editMenu.Text = "&Edición";
             // 
             // undoToolStripMenuItem
@@ -346,7 +347,7 @@ namespace Certifica_logistica
             this.undoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.undoToolStripMenuItem.Text = "&DesHacer";
             // 
             // redoToolStripMenuItem
@@ -355,13 +356,13 @@ namespace Certifica_logistica
             this.redoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.redoToolStripMenuItem.Text = "&Repetir";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(247, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(264, 6);
             // 
             // cutToolStripMenuItem
             // 
@@ -369,7 +370,7 @@ namespace Certifica_logistica
             this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.cutToolStripMenuItem.Text = "Cor&tar";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.CutToolStripMenuItem_Click);
             // 
@@ -379,7 +380,7 @@ namespace Certifica_logistica
             this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.copyToolStripMenuItem.Text = "&Copiar";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
@@ -389,33 +390,33 @@ namespace Certifica_logistica
             this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.pasteToolStripMenuItem.Text = "&Pegar";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(247, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(264, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.selectAllToolStripMenuItem.Text = "&Seleccionar todo";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(247, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(264, 6);
             // 
             // calculadoraWindowsToolStripMenuItem
             // 
             this.calculadoraWindowsToolStripMenuItem.Name = "calculadoraWindowsToolStripMenuItem";
             this.calculadoraWindowsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
-            this.calculadoraWindowsToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.calculadoraWindowsToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.calculadoraWindowsToolStripMenuItem.Text = "Calculadora Windows";
             this.calculadoraWindowsToolStripMenuItem.Click += new System.EventHandler(this.calculadoraWindowsToolStripMenuItem_Click);
             // 
@@ -425,7 +426,7 @@ namespace Certifica_logistica
             this.abrirExcelToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.E)));
-            this.abrirExcelToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.abrirExcelToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.abrirExcelToolStripMenuItem.Text = "Abrir Excel";
             this.abrirExcelToolStripMenuItem.Click += new System.EventHandler(this.abrirExcelToolStripMenuItem_Click);
             // 
@@ -435,7 +436,7 @@ namespace Certifica_logistica
             this.abrirWinWordToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.W)));
-            this.abrirWinWordToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.abrirWinWordToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.abrirWinWordToolStripMenuItem.Text = "Abrir WinWord";
             this.abrirWinWordToolStripMenuItem.Click += new System.EventHandler(this.abrirWinWordToolStripMenuItem_Click);
             // 
@@ -445,7 +446,7 @@ namespace Certifica_logistica
             this.toolBarToolStripMenuItem,
             this.statusBarToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
-            this.viewMenu.Size = new System.Drawing.Size(35, 20);
+            this.viewMenu.Size = new System.Drawing.Size(36, 20);
             this.viewMenu.Text = "&Ver";
             // 
             // toolBarToolStripMenuItem
@@ -454,7 +455,7 @@ namespace Certifica_logistica
             this.toolBarToolStripMenuItem.CheckOnClick = true;
             this.toolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolBarToolStripMenuItem.Name = "toolBarToolStripMenuItem";
-            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.toolBarToolStripMenuItem.Text = "&Toolbar";
             this.toolBarToolStripMenuItem.Click += new System.EventHandler(this.ToolBarToolStripMenuItem_Click);
             // 
@@ -464,7 +465,7 @@ namespace Certifica_logistica
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.statusBarToolStripMenuItem.Text = "&Status Bar";
             this.statusBarToolStripMenuItem.Click += new System.EventHandler(this.StatusBarToolStripMenuItem_Click);
             // 
@@ -481,7 +482,7 @@ namespace Certifica_logistica
             this.usuariosDeSistemaToolStripMenuItem});
             this.MantenimientoMenuItemSup.Enabled = false;
             this.MantenimientoMenuItemSup.Name = "MantenimientoMenuItemSup";
-            this.MantenimientoMenuItemSup.Size = new System.Drawing.Size(89, 20);
+            this.MantenimientoMenuItemSup.Size = new System.Drawing.Size(101, 20);
             this.MantenimientoMenuItemSup.Text = "&Mantenimiento";
             // 
             // personalToolStripMenuItem
@@ -490,7 +491,7 @@ namespace Certifica_logistica
             this.personalToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.adduser_16;
             this.personalToolStripMenuItem.Name = "personalToolStripMenuItem";
             this.personalToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.personalToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.personalToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.personalToolStripMenuItem.Text = "Pers&onal Institucional";
             this.personalToolStripMenuItem.Click += new System.EventHandler(this.personalToolStripMenuItem_Click);
             // 
@@ -498,7 +499,7 @@ namespace Certifica_logistica
             // 
             this.proveedoresToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.addUserGroup_24;
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
             // 
@@ -506,40 +507,40 @@ namespace Certifica_logistica
             // 
             this.alumnosToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.student_24;
             this.alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
-            this.alumnosToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.alumnosToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.alumnosToolStripMenuItem.Text = "Alumnos";
             this.alumnosToolStripMenuItem.Click += new System.EventHandler(this.alumnosToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(213, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(227, 6);
             // 
             // dependenciasToolStripMenuItem
             // 
             this.dependenciasToolStripMenuItem.Name = "dependenciasToolStripMenuItem";
-            this.dependenciasToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.dependenciasToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.dependenciasToolStripMenuItem.Text = "Dependencias";
             // 
             // subDependenciasToolStripMenuItem
             // 
             this.subDependenciasToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.edificio_32;
             this.subDependenciasToolStripMenuItem.Name = "subDependenciasToolStripMenuItem";
-            this.subDependenciasToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.subDependenciasToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.subDependenciasToolStripMenuItem.Text = "SubDependencias";
             this.subDependenciasToolStripMenuItem.Click += new System.EventHandler(this.subDependenciasToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(213, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(227, 6);
             // 
             // usuariosDeSistemaToolStripMenuItem
             // 
             this.usuariosDeSistemaToolStripMenuItem.Enabled = false;
             this.usuariosDeSistemaToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.login24;
             this.usuariosDeSistemaToolStripMenuItem.Name = "usuariosDeSistemaToolStripMenuItem";
-            this.usuariosDeSistemaToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.usuariosDeSistemaToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.usuariosDeSistemaToolStripMenuItem.Text = "Usuarios de Sistema";
             this.usuariosDeSistemaToolStripMenuItem.Click += new System.EventHandler(this.usuariosDeSistemaToolStripMenuItem_Click);
             // 
@@ -555,7 +556,7 @@ namespace Certifica_logistica
             this.viaticosToolStripMenuItem});
             this.operacionesToolStripMenuItemSup.Enabled = false;
             this.operacionesToolStripMenuItemSup.Name = "operacionesToolStripMenuItemSup";
-            this.operacionesToolStripMenuItemSup.Size = new System.Drawing.Size(79, 20);
+            this.operacionesToolStripMenuItemSup.Size = new System.Drawing.Size(85, 20);
             this.operacionesToolStripMenuItemSup.Text = "&Operaciones";
             // 
             // trámiteDocumentarioToolStripMenuItem
@@ -563,21 +564,21 @@ namespace Certifica_logistica
             this.trámiteDocumentarioToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.inbox_icon_24;
             this.trámiteDocumentarioToolStripMenuItem.Name = "trámiteDocumentarioToolStripMenuItem";
             this.trámiteDocumentarioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.trámiteDocumentarioToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.trámiteDocumentarioToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.trámiteDocumentarioToolStripMenuItem.Text = "Trámite Documentario";
             this.trámiteDocumentarioToolStripMenuItem.Click += new System.EventHandler(this.trámiteDocumentarioToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(252, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(266, 6);
             // 
             // ordenesDeServicioToolStripMenuItem
             // 
             this.ordenesDeServicioToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.orden_48;
             this.ordenesDeServicioToolStripMenuItem.Name = "ordenesDeServicioToolStripMenuItem";
             this.ordenesDeServicioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.ordenesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.ordenesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.ordenesDeServicioToolStripMenuItem.Text = "Ordenes de Servicio / Trabajo";
             this.ordenesDeServicioToolStripMenuItem.Click += new System.EventHandler(this.ordenesDeServicioToolStripMenuItem_Click);
             // 
@@ -586,7 +587,7 @@ namespace Certifica_logistica
             this.planillaDeMovilidadToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.taxi_32;
             this.planillaDeMovilidadToolStripMenuItem.Name = "planillaDeMovilidadToolStripMenuItem";
             this.planillaDeMovilidadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.planillaDeMovilidadToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.planillaDeMovilidadToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.planillaDeMovilidadToolStripMenuItem.Text = "Planilla de Movilidad";
             this.planillaDeMovilidadToolStripMenuItem.Click += new System.EventHandler(this.planillaDeMovilidadToolStripMenuItem_Click);
             // 
@@ -595,7 +596,7 @@ namespace Certifica_logistica
             this.planillaDePropinasToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.moneda_32;
             this.planillaDePropinasToolStripMenuItem.Name = "planillaDePropinasToolStripMenuItem";
             this.planillaDePropinasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
-            this.planillaDePropinasToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.planillaDePropinasToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.planillaDePropinasToolStripMenuItem.Text = "Planilla de Propinas";
             this.planillaDePropinasToolStripMenuItem.Click += new System.EventHandler(this.planillaDePropinasToolStripMenuItem_Click);
             // 
@@ -604,7 +605,7 @@ namespace Certifica_logistica
             this.contratoConvenioToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.contrato_24;
             this.contratoConvenioToolStripMenuItem.Name = "contratoConvenioToolStripMenuItem";
             this.contratoConvenioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
-            this.contratoConvenioToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.contratoConvenioToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.contratoConvenioToolStripMenuItem.Text = "Contrato Convenio";
             this.contratoConvenioToolStripMenuItem.Click += new System.EventHandler(this.contratoConvenioToolStripMenuItem_Click);
             // 
@@ -613,7 +614,7 @@ namespace Certifica_logistica
             this.viaticosToolStripMenuItem.Image = global::Certifica_logistica.Properties.Resources.avion_24;
             this.viaticosToolStripMenuItem.Name = "viaticosToolStripMenuItem";
             this.viaticosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5)));
-            this.viaticosToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.viaticosToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.viaticosToolStripMenuItem.Text = "Viaticos";
             this.viaticosToolStripMenuItem.Click += new System.EventHandler(this.viaticosToolStripMenuItem_Click);
             // 
@@ -626,7 +627,7 @@ namespace Certifica_logistica
             this.ReportesMenuItemSup.Name = "ReportesMenuItemSup";
             this.ReportesMenuItemSup.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.D1)));
-            this.ReportesMenuItemSup.Size = new System.Drawing.Size(63, 20);
+            this.ReportesMenuItemSup.Size = new System.Drawing.Size(65, 20);
             this.ReportesMenuItemSup.Text = "&Reportes";
             // 
             // relaciónDeAmbientesToolStripMenuItem
@@ -635,13 +636,13 @@ namespace Certifica_logistica
             this.relaciónDeAmbientesToolStripMenuItem.Name = "relaciónDeAmbientesToolStripMenuItem";
             this.relaciónDeAmbientesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.D1)));
-            this.relaciónDeAmbientesToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.relaciónDeAmbientesToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.relaciónDeAmbientesToolStripMenuItem.Text = "Reportes de Tramites";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(255, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(268, 6);
             // 
             // windowsMenu
             // 
@@ -653,41 +654,41 @@ namespace Certifica_logistica
             this.arrangeIconsToolStripMenuItem,
             this.cerrarActualToolStripMenuItem});
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(64, 20);
+            this.windowsMenu.Size = new System.Drawing.Size(67, 20);
             this.windowsMenu.Text = "Ve&ntanas";
             // 
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.cascadeToolStripMenuItem.Text = "&Cascada";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
             // 
             // tileVerticalToolStripMenuItem
             // 
             this.tileVerticalToolStripMenuItem.Name = "tileVerticalToolStripMenuItem";
-            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.tileVerticalToolStripMenuItem.Text = "Organiza &Vertical";
             this.tileVerticalToolStripMenuItem.Click += new System.EventHandler(this.TileVerticalToolStripMenuItem_Click);
             // 
             // tileHorizontalToolStripMenuItem
             // 
             this.tileHorizontalToolStripMenuItem.Name = "tileHorizontalToolStripMenuItem";
-            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.tileHorizontalToolStripMenuItem.Text = "Organiza &Horizontal";
             this.tileHorizontalToolStripMenuItem.Click += new System.EventHandler(this.TileHorizontalToolStripMenuItem_Click);
             // 
             // closeAllToolStripMenuItem
             // 
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.closeAllToolStripMenuItem.Text = "C&errar Todos";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
             // arrangeIconsToolStripMenuItem
             // 
             this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
-            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.arrangeIconsToolStripMenuItem.Text = "&Arrange Icons";
             this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
             // 
@@ -695,7 +696,7 @@ namespace Certifica_logistica
             // 
             this.cerrarActualToolStripMenuItem.Name = "cerrarActualToolStripMenuItem";
             this.cerrarActualToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.cerrarActualToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.cerrarActualToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.cerrarActualToolStripMenuItem.Text = "Cerrar Actual";
             this.cerrarActualToolStripMenuItem.Click += new System.EventHandler(this.cerrarActualToolStripMenuItem_Click);
             // 
@@ -706,25 +707,25 @@ namespace Certifica_logistica
             this.toolStripSeparator8,
             this.aboutToolStripMenuItem});
             this.helpMenu.Name = "helpMenu";
-            this.helpMenu.Size = new System.Drawing.Size(40, 20);
+            this.helpMenu.Size = new System.Drawing.Size(44, 20);
             this.helpMenu.Text = "&Help";
             // 
             // ActualizarToolStrip
             // 
             this.ActualizarToolStrip.Name = "ActualizarToolStrip";
-            this.ActualizarToolStrip.Size = new System.Drawing.Size(121, 22);
+            this.ActualizarToolStrip.Size = new System.Drawing.Size(126, 22);
             this.ActualizarToolStrip.Text = "&Actualizar";
             this.ActualizarToolStrip.Click += new System.EventHandler(this.ActualizarToolStrip_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(123, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.aboutToolStripMenuItem.Text = "&About ...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -755,7 +756,7 @@ namespace Certifica_logistica
             this.newToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("newToolStrip.Image")));
             this.newToolStrip.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStrip.Name = "newToolStrip";
-            this.newToolStrip.Size = new System.Drawing.Size(58, 22);
+            this.newToolStrip.Size = new System.Drawing.Size(62, 22);
             this.newToolStrip.Text = "Nuevo";
             this.newToolStrip.ToolTipText = "Nuevo - Ctrl + N";
             this.newToolStrip.Click += new System.EventHandler(this.newToolStripButton_Click);
@@ -766,7 +767,7 @@ namespace Certifica_logistica
             this.saveToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStrip.Image")));
             this.saveToolStrip.ImageTransparentColor = System.Drawing.Color.Black;
             this.saveToolStrip.Name = "saveToolStrip";
-            this.saveToolStrip.Size = new System.Drawing.Size(60, 22);
+            this.saveToolStrip.Size = new System.Drawing.Size(62, 22);
             this.saveToolStrip.Text = "Grabar";
             this.saveToolStrip.ToolTipText = "Grabar - Ctrl + G";
             this.saveToolStrip.Click += new System.EventHandler(this.saveToolStripButton_Click);
@@ -777,7 +778,7 @@ namespace Certifica_logistica
             this.RunToolStrip.Image = global::Certifica_logistica.Properties.Resources.run_24;
             this.RunToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RunToolStrip.Name = "RunToolStrip";
-            this.RunToolStrip.Size = new System.Drawing.Size(69, 22);
+            this.RunToolStrip.Size = new System.Drawing.Size(72, 22);
             this.RunToolStrip.Text = "Procesar";
             this.RunToolStrip.ToolTipText = "Run / Procesar Ctrl+R";
             this.RunToolStrip.Click += new System.EventHandler(this.RunToolStrip_Click);
@@ -788,7 +789,7 @@ namespace Certifica_logistica
             this.deleteToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStrip.Image")));
             this.deleteToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteToolStrip.Name = "deleteToolStrip";
-            this.deleteToolStrip.Size = new System.Drawing.Size(63, 22);
+            this.deleteToolStrip.Size = new System.Drawing.Size(70, 22);
             this.deleteToolStrip.Text = "Eliminar";
             this.deleteToolStrip.ToolTipText = "Eliminar - Ctrl + Shift + E";
             this.deleteToolStrip.Click += new System.EventHandler(this.deleteToolStripButton_Click);
@@ -798,7 +799,7 @@ namespace Certifica_logistica
             this.closetoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("closetoolStripButton.Image")));
             this.closetoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.closetoolStripButton.Name = "closetoolStripButton";
-            this.closetoolStripButton.Size = new System.Drawing.Size(58, 22);
+            this.closetoolStripButton.Size = new System.Drawing.Size(59, 22);
             this.closetoolStripButton.Text = "Cerrar";
             this.closetoolStripButton.ToolTipText = "Cerrar - Ctrl + F4";
             this.closetoolStripButton.Click += new System.EventHandler(this.closetoolStripButton_Click);
@@ -841,8 +842,8 @@ namespace Certifica_logistica
             this.LblVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.LblVersion.ForeColor = System.Drawing.Color.OliveDrab;
             this.LblVersion.Name = "LblVersion";
-            this.LblVersion.Size = new System.Drawing.Size(150, 22);
-            this.LblVersion.Text = "Compilación: 28Feb2014B";
+            this.LblVersion.Size = new System.Drawing.Size(152, 22);
+            this.LblVersion.Text = "Modificación: 28Feb2014C";
             // 
             // toolStripCDeposito
             // 
@@ -870,7 +871,7 @@ namespace Certifica_logistica
             this.toolStripStatusLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Red;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(64, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(67, 17);
             this.toolStripStatusLabel1.Text = "Status Here";
             // 
             // toolStripStatusLabel2
@@ -878,14 +879,14 @@ namespace Certifica_logistica
             this.toolStripStatusLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripStatusLabel2.ForeColor = System.Drawing.Color.Blue;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(43, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(40, 17);
             this.toolStripStatusLabel2.Text = "0.0.0.0";
             // 
             // toolStripStatus_user
             // 
             this.toolStripStatus_user.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatus_user.Name = "toolStripStatus_user";
-            this.toolStripStatus_user.Size = new System.Drawing.Size(47, 17);
+            this.toolStripStatus_user.Size = new System.Drawing.Size(50, 17);
             this.toolStripStatus_user.Text = "Usuario:";
             // 
             // toolStripProgressBar1
@@ -903,7 +904,7 @@ namespace Certifica_logistica
             this.toolStripStatusLabel3.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel3.ForeColor = System.Drawing.Color.DarkGreen;
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(288, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(311, 17);
             this.toolStripStatusLabel3.Text = "HONESTIDAD - RESPETO - SERVICIO - RESPONSABILIDAD";
             // 
             // timer1
@@ -914,6 +915,12 @@ namespace Certifica_logistica
             // popupMenu1
             // 
             this.popupMenu1.Name = "popupMenu1";
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.AllowPrintToFile = false;
+            this.printDialog1.AllowSomePages = true;
+            this.printDialog1.UseEXDialog = true;
             // 
             // Inicioform
             // 
@@ -927,7 +934,7 @@ namespace Certifica_logistica
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Inicioform";
-            this.Text = "CERTIFICA LOGISTICA";
+            this.Text = "LOGISTICA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inicioform_FormClosing);
             this.Load += new System.EventHandler(this.inicioform_Load);
@@ -1034,6 +1041,7 @@ namespace Certifica_logistica
         private System.Windows.Forms.ToolStripMenuItem contratoConvenioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viaticosToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem toolStripCorregir;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }
 

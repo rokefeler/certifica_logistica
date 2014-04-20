@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Certifica_logistica.modulos;
@@ -35,10 +34,11 @@ namespace Certifica_logistica.mantenimiento
             EdEscuelas.Properties.BestFitMode = BestFitMode.BestFitResizePopup;
             EdEscuelas.Properties.SearchMode = SearchMode.AutoComplete;
             EdEscuelas.Properties.AutoSearchColumnIndex = 1;
+            EdEscuelas.EditValue = 0; //por defecto
             //EdEscuelas.EditValue = @"00"; //Dependencia por defecto
-            
-        }
 
+        }
+        
         public override bool Master_NuevoFormulario()
         {
             EdCUI.EditValue = null;
@@ -132,6 +132,7 @@ namespace Certifica_logistica.mantenimiento
                 if (ret > 0)
                 {
                     string msg;
+                    if(_Lst!=null)
                     foreach (var t in _Lst)
                     {
                         ret = AlumnoDetalleEscuelaDao.GrabarDetalleEscuela(_obj.Cui, t.IdEscuela,

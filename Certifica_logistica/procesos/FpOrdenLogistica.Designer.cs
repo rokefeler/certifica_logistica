@@ -825,19 +825,19 @@ namespace Certifica_logistica.procesos
             this.importarcionGenericaDeDetallesToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(246, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(261, 48);
             // 
             // importarcionGenericaDeDetallesToolStripMenuItem
             // 
             this.importarcionGenericaDeDetallesToolStripMenuItem.Name = "importarcionGenericaDeDetallesToolStripMenuItem";
-            this.importarcionGenericaDeDetallesToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.importarcionGenericaDeDetallesToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.importarcionGenericaDeDetallesToolStripMenuItem.Text = "&1. Importacion Genérica de Detalles";
             this.importarcionGenericaDeDetallesToolStripMenuItem.Click += new System.EventHandler(this.importarcionGenericaDeDetallesToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -1153,6 +1153,7 @@ namespace Certifica_logistica.procesos
             this.Text = "Trabajo de Ordenes de Servicio";
             this.Activated += new System.EventHandler(this.FpOrdenLogistica_Activated);
             this.Load += new System.EventHandler(this.FpOrdenLogistica_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FpOrdenLogistica_KeyDown);
             this.Controls.SetChildIndex(this.pan1, 0);
             this.Controls.SetChildIndex(this.splitContainerControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();

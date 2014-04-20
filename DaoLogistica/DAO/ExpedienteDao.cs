@@ -188,6 +188,7 @@ namespace DaoLogistica.DAO
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
             return (ret > 0);
         }
+       
     }
 }
 

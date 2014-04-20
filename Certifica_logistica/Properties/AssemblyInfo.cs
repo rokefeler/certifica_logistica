@@ -6,13 +6,13 @@ using System.Resources;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Certifica Logistica")]
+[assembly: AssemblyTitle("LOGISTICA")]
 [assembly: AssemblyDescription("Sistema de Gestión Logistica")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CERTIFICA")]
-[assembly: AssemblyProduct("CERTIFICA LOGISTICA")]
-[assembly: AssemblyCopyright("CERTIFICA 2014")]
-[assembly: AssemblyTrademark("Certifica_Logistica")]
+[assembly: AssemblyCompany("WALLACE")]
+[assembly: AssemblyProduct("LOGISTICA")]
+[assembly: AssemblyCopyright("WALLACE 2014")]
+[assembly: AssemblyTrademark("WALLACE")]
 [assembly: AssemblyCulture("")]
 
 // Si establece ComVisible como false, los tipos de este ensamblado no estarán visibles 
@@ -30,6 +30,6 @@ using System.Resources;
 //      Número de compilación
 //      Revisión
 //
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("es-PE")]

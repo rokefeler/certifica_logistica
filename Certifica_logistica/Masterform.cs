@@ -211,7 +211,7 @@ namespace Certifica_logistica
         /// Permite imprimir Contenido de Formulario (Si Formulario Soporta)
         /// </summary>
         /// <returns></returns>
-        public virtual bool Master_ImprimirFormulario(bool isPrevio, int nCopias)
+        public virtual bool Master_ImprimirFormulario(bool isPrevio, int nCopias, int desde, int hasta, string cImpresora)
         {
             throw new NotImplementedException();
         }

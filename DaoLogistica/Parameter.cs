@@ -15,8 +15,9 @@
         DeleteForzadoLogico = 302,
         Delete08a12DIG = 303,
         RecuperarLogico=304,
+        ReporteByExpediente=305, //reporte 18abr14
         ExistsId = 400,    //Por COdigo único de Tabla
-        ExistSbn=4001,
+        ExistId2=4001, //Si existe por IdExpediente
         ExistGp=4002,
         ExistEmail=401,
         ExistTipoDoc=402,
