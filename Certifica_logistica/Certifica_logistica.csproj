@@ -1,0 +1,845 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FC29A57-0F83-4F17-88E7-025FA30560F4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Certifica_logistica</RootNamespace>
+    <AssemblyName>Certifica_logistica</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publicar\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Certifica_logistica.modulos.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>unsa.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>certifica_logistica.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>392591DD2E30853BF7BC196F5650EC62953BF1B6</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Certifica_logistica_ClaveTemporal.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="controls\MyTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Ds\DsReporteOrden.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsReporteOrden.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ds\DsTramite.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsTramite.xsd</DependentUpon>
+    </Compile>
+    <None Include="Ds\DsTramite1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsTramite.xsd</DependentUpon>
+    </None>
+    <Compile Include="Ds\PrinterOrden.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrinterOrden.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Inicioform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicioform.designer.cs">
+      <DependentUpon>Inicioform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimiento\FmAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mantenimiento\FmAlumno.Designer.cs">
+      <DependentUpon>FmAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimiento\FmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mantenimiento\FmLogin.designer.cs">
+      <DependentUpon>FmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimiento\FmPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mantenimiento\FmPersonal.designer.cs">
+      <DependentUpon>FmPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimiento\FmProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mantenimiento\FmProveedor.Designer.cs">
+      <DependentUpon>FmProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimiento\FmSubDependencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mantenimiento\FmSubDependencia.Designer.cs">
+      <DependentUpon>FmSubDependencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Masterform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masterform.Designer.cs">
+      <DependentUpon>Masterform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulos\Conexion.cs" />
+    <Compile Include="modulos\DataBaseConfig.cs" />
+    <Compile Include="modulos\general.cs" />
+    <Compile Include="modulos\HtmlRemove.cs" />
+    <Compile Include="modulos\Program.cs" />
+    <Compile Include="modulos\Security.cs" />
+    <Compile Include="Popups\FpConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FpConfig.designer.cs">
+      <DependentUpon>FpConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\FphBusqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FphBusqueda.designer.cs">
+      <DependentUpon>FphBusqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\FphConsultaReniec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FphConsultaReniec.Designer.cs">
+      <DependentUpon>FphConsultaReniec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\FphDetalleOrden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FphDetalleOrden.designer.cs">
+      <DependentUpon>FphDetalleOrden.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\FphModificarNroExp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FphModificarNroExp.Designer.cs">
+      <DependentUpon>FphModificarNroExp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popups\FpMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popups\FpMaster.designer.cs">
+      <DependentUpon>FpMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="procesos\FpOrdenLogistica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="procesos\FpOrdenLogistica.Designer.cs">
+      <DependentUpon>FpOrdenLogistica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="procesos\FpTramite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="procesos\FpTramite.Designer.cs">
+      <DependentUpon>FpTramite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\ordenes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ordenes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="reportes\servicio.cs">
+      <DependentUpon>servicio.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="reportes\servicio_nelson.cs">
+      <DependentUpon>servicio_nelson.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="salidas\FrReporte01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="salidas\FrReporte01.Designer.cs">
+      <DependentUpon>FrReporte01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="salidas\FsListadoPorExpediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="salidas\FsListadoPorExpediente.Designer.cs">
+      <DependentUpon>FsListadoPorExpediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utiles\AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utiles\AboutBox1.designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utiles\FrmAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utiles\FrmAddUser.Designer.cs">
+      <DependentUpon>FrmAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utiles\FrmConfigTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utiles\FrmConfigTemplate.Designer.cs">
+      <DependentUpon>FrmConfigTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utiles\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utiles\FrmLogin.designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utiles\frm_clave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utiles\frm_clave.designer.cs">
+      <DependentUpon>frm_clave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utiles\FrmPrevio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utiles\FrmPrevio.designer.cs">
+      <DependentUpon>FrmPrevio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utiles\ubigeoform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utiles\ubigeoform.designer.cs">
+      <DependentUpon>ubigeoform.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v13.2, Version=13.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security.Cryptography, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Common">
+      <HintPath>lib\Rebex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Ftp">
+      <HintPath>lib\Rebex.Ftp.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Networking">
+      <HintPath>lib\Rebex.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="wnvxls">
+      <HintPath>lib\wnvxls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CertificaUtils\CertificaUtils.csproj">
+      <Project>{e2972181-8ae1-4727-918c-764eae8c7b77}</Project>
+      <Name>CertificaUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DaoLogistica\DaoLogistica.csproj">
+      <Project>{7e7f7709-d898-4193-97bb-b2cee7bf6c61}</Project>
+      <Name>DaoLogistica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\reportes\" />
+    <Folder Include="listados\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="certifica_logistica.pfx" />
+    <None Include="Certifica_logistica_ClaveTemporal.pfx" />
+    <None Include="Ds\DsReporteOrden.xsc">
+      <DependentUpon>DsReporteOrden.xsd</DependentUpon>
+    </None>
+    <None Include="Ds\DsReporteOrden.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsReporteOrden.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Ds\DsReporteOrden.xss">
+      <DependentUpon>DsReporteOrden.xsd</DependentUpon>
+    </None>
+    <None Include="Ds\DsTramite.xsc">
+      <DependentUpon>DsTramite.xsd</DependentUpon>
+    </None>
+    <None Include="Ds\DsTramite.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsTramite1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Ds\DsTramite.xss">
+      <DependentUpon>DsTramite.xsd</DependentUpon>
+    </None>
+    <None Include="Ds\PrinterOrden.xsc">
+      <DependentUpon>PrinterOrden.xsd</DependentUpon>
+    </None>
+    <None Include="Ds\PrinterOrden.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PrinterOrden.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Ds\PrinterOrden.xss">
+      <DependentUpon>PrinterOrden.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Inicioform.resx">
+      <DependentUpon>Inicioform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mantenimiento\FmAlumno.resx">
+      <DependentUpon>FmAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mantenimiento\FmLogin.resx">
+      <DependentUpon>FmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mantenimiento\FmPersonal.resx">
+      <DependentUpon>FmPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mantenimiento\FmProveedor.resx">
+      <DependentUpon>FmProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mantenimiento\FmSubDependencia.resx">
+      <DependentUpon>FmSubDependencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masterform.resx">
+      <DependentUpon>Masterform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FpConfig.resx">
+      <DependentUpon>FpConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FphBusqueda.resx">
+      <DependentUpon>FphBusqueda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FphConsultaReniec.resx">
+      <DependentUpon>FphConsultaReniec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FphDetalleOrden.resx">
+      <DependentUpon>FphDetalleOrden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FphModificarNroExp.resx">
+      <DependentUpon>FphModificarNroExp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popups\FpMaster.resx">
+      <DependentUpon>FpMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="procesos\FpOrdenLogistica.resx">
+      <DependentUpon>FpOrdenLogistica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="procesos\FpTramite.resx">
+      <DependentUpon>FpTramite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="reportes\servicio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>servicio.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="reportes\servicio_nelson.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>servicio_nelson.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="reportes\ordenes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ordenes.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="salidas\FrReporte01.resx">
+      <DependentUpon>FrReporte01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="salidas\FsListadoPorExpediente.resx">
+      <DependentUpon>FsListadoPorExpediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utiles\AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utiles\FrmAddUser.resx">
+      <DependentUpon>FrmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utiles\FrmConfigTemplate.resx">
+      <DependentUpon>FrmConfigTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utiles\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utiles\frm_clave.resx">
+      <DependentUpon>frm_clave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utiles\FrmPrevio.resx">
+      <DependentUpon>FrmPrevio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utiles\ubigeoform.es-PE.resx">
+      <DependentUpon>ubigeoform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utiles\ubigeoform.resx">
+      <DependentUpon>ubigeoform.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\add-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\adduser-16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\adduser-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\adduser-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\AddUser.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\addUserGroup-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\addUserGroup-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\archivero2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\cancel-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\cancel-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Close-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\delete.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\delete24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\dinero5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\dinero6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\disco_a2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\edificio_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\engrane.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\faro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Find-user.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\fondo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\fondo2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Hangar-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\import-export-128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\import-export-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Import-export.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\inbox-icon_24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\inbox-icon_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\inbox-icon_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\inventario-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\inventario2-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Inventory.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\investigacion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\kdvi.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\llave.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\login-icon32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\login.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\login2.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\login24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\login32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\login48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\logo unsa1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\logo-unsa - copia.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\logo-unsa.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\logo.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\logout-icon48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\logout24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\maleta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Network Service.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\New-room-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\New.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\new.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\newplus.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Ok-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\open-file-128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\open-file-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\orden-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\order-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\plus.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Preview.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\print.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Print.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Print01-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Print02-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Print02-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\process-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\processes_16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\processes_24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Product-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Product-documentacion.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Product.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\RemoveUserGroup-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\RemoveUserGroup-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\report02-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\report02.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Reporte.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\reports-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\room.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\run-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Save24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\save48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\SearchRed-16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\SearchRed-24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\sunat.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\sunat_small.fw.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\student_48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\student_24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\unsa.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\unsa1.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\unsa2.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\unsa2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\unsa_blank.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\varios.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Xp-MadB 008.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\Xp-MadB 020.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\avion_24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\contrato_24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\taxi_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\moneda_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\mtc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\anulado.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="images\dni.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="images\logo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="unsa.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
