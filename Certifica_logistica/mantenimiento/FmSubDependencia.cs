@@ -85,7 +85,7 @@ namespace Certifica_logistica.mantenimiento
             if (!Master_Verificar()) return false;
             if(_obj==null) 
                 _obj=new SubDependencia();
-            _obj.CodSubDep = EdCodSubDep.EditValue.ToString();
+            _obj.CodSubDep = EdCodSubDep.EditValue.ToString().ToUpper();
             _obj.CodDependencia = EdCodDependencia.EditValue.ToString();
             _obj.Nombre = TxtNombre.Text;
             _obj.CodPersonal = EdCodPersonal.EditValue.ToString();

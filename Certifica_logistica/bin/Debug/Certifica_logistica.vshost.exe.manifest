@@ -168,14 +168,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Certifica_logistica.exe" size="3313664">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Certifica_logistica.exe" size="3715072">
       <assemblyIdentity name="Certifica_logistica" version="1.0.0.1" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>FJ+UxDhm67xCUBbH+G+/o8dzvMM=</dsig:DigestValue>
+        <dsig:DigestValue>mJXNOZ7eXj37FGpGWEZYXm7cfiQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -187,7 +187,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Lqfmy/dyJ485JERNE2+S6cpIcf4=</dsig:DigestValue>
+        <dsig:DigestValue>7wWkU6Rma8yjbboHRpoQjTdQAyk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -199,7 +199,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>aUUjDOO50Vj5gGiJSuEDewWRY1k=</dsig:DigestValue>
+        <dsig:DigestValue>miijPXmZLgyBCjzMFVSdms3A35g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -228,14 +228,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DaoLogistica.dll" size="105984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DaoLogistica.dll" size="107008">
       <assemblyIdentity name="DaoLogistica" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Omv2b2oTszPDXbWpg1ZT9LZ9apQ=</dsig:DigestValue>
+        <dsig:DigestValue>KD8ViWNMwDmcHD3CWc7Sp0pxEcQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -10,10 +10,9 @@
 
 #pragma warning disable 1591
 
-namespace Certifica_logistica.Ds
-{
-
-
+namespace Certifica_logistica.Ds {
+    
+    
     /// <summary>
     ///Represents a strongly typed in-memory cache of data.
     ///</summary>
@@ -23,23 +22,21 @@ namespace Certifica_logistica.Ds
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("DsTramite")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DsTramite : global::System.Data.DataSet
-    {
-
+    public partial class DsTramite : global::System.Data.DataSet {
+        
         private DetalleTramiteDataTable tableDetalleTramite;
-
+        
         private TTipoUsuarioDataTable tableTTipoUsuario;
-
+        
         private DetalleOrdenDataTable tableDetalleOrden;
-
+        
         private RptOrdenesDataTable tableRptOrdenes;
-
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public DsTramite()
-        {
+        public DsTramite() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -48,43 +45,35 @@ namespace Certifica_logistica.Ds
             this.EndInit();
             this.InitExpressions();
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected DsTramite(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-            base(info, context, false)
-        {
-            if ((this.IsBinarySerialized(info, context) == true))
-            {
+        protected DsTramite(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                base(info, context, false) {
+            if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
-                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema))
-                {
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
                     this.InitExpressions();
                 }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
-            if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema))
-            {
+            if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["DetalleTramite"] != null))
-                {
+                if ((ds.Tables["DetalleTramite"] != null)) {
                     base.Tables.Add(new DetalleTramiteDataTable(ds.Tables["DetalleTramite"]));
                 }
-                if ((ds.Tables["TTipoUsuario"] != null))
-                {
+                if ((ds.Tables["TTipoUsuario"] != null)) {
                     base.Tables.Add(new TTipoUsuarioDataTable(ds.Tables["TTipoUsuario"]));
                 }
-                if ((ds.Tables["DetalleOrden"] != null))
-                {
+                if ((ds.Tables["DetalleOrden"] != null)) {
                     base.Tables.Add(new DetalleOrdenDataTable(ds.Tables["DetalleOrden"]));
                 }
-                if ((ds.Tables["RptOrdenes"] != null))
-                {
+                if ((ds.Tables["RptOrdenes"] != null)) {
                     base.Tables.Add(new RptOrdenesDataTable(ds.Tables["RptOrdenes"]));
                 }
                 this.DataSetName = ds.DataSetName;
@@ -96,8 +85,7 @@ namespace Certifica_logistica.Ds
                 this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
                 this.InitVars();
             }
-            else
-            {
+            else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
                 this.InitExpressions();
             }
@@ -106,150 +94,125 @@ namespace Certifica_logistica.Ds
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DetalleTramiteDataTable DetalleTramite
-        {
-            get
-            {
+        public DetalleTramiteDataTable DetalleTramite {
+            get {
                 return this.tableDetalleTramite;
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TTipoUsuarioDataTable TTipoUsuario
-        {
-            get
-            {
+        public TTipoUsuarioDataTable TTipoUsuario {
+            get {
                 return this.tableTTipoUsuario;
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DetalleOrdenDataTable DetalleOrden
-        {
-            get
-            {
+        public DetalleOrdenDataTable DetalleOrden {
+            get {
                 return this.tableDetalleOrden;
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public RptOrdenesDataTable RptOrdenes
-        {
-            get
-            {
+        public RptOrdenesDataTable RptOrdenes {
+            get {
                 return this.tableRptOrdenes;
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
-        public override global::System.Data.SchemaSerializationMode SchemaSerializationMode
-        {
-            get
-            {
+        public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
+            get {
                 return this._schemaSerializationMode;
             }
-            set
-            {
+            set {
                 this._schemaSerializationMode = value;
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public new global::System.Data.DataTableCollection Tables
-        {
-            get
-            {
+        public new global::System.Data.DataTableCollection Tables {
+            get {
                 return base.Tables;
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public new global::System.Data.DataRelationCollection Relations
-        {
-            get
-            {
+        public new global::System.Data.DataRelationCollection Relations {
+            get {
                 return base.Relations;
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override void InitializeDerivedDataSet()
-        {
+        protected override void InitializeDerivedDataSet() {
             this.BeginInit();
             this.InitClass();
             this.EndInit();
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public override global::System.Data.DataSet Clone()
-        {
+        public override global::System.Data.DataSet Clone() {
             DsTramite cln = ((DsTramite)(base.Clone()));
             cln.InitVars();
             cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override bool ShouldSerializeTables()
-        {
+        protected override bool ShouldSerializeTables() {
             return false;
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override bool ShouldSerializeRelations()
-        {
+        protected override bool ShouldSerializeRelations() {
             return false;
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader)
-        {
-            if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema))
-            {
+        protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
+            if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["DetalleTramite"] != null))
-                {
+                if ((ds.Tables["DetalleTramite"] != null)) {
                     base.Tables.Add(new DetalleTramiteDataTable(ds.Tables["DetalleTramite"]));
                 }
-                if ((ds.Tables["TTipoUsuario"] != null))
-                {
+                if ((ds.Tables["TTipoUsuario"] != null)) {
                     base.Tables.Add(new TTipoUsuarioDataTable(ds.Tables["TTipoUsuario"]));
                 }
-                if ((ds.Tables["DetalleOrden"] != null))
-                {
+                if ((ds.Tables["DetalleOrden"] != null)) {
                     base.Tables.Add(new DetalleOrdenDataTable(ds.Tables["DetalleOrden"]));
                 }
-                if ((ds.Tables["RptOrdenes"] != null))
-                {
+                if ((ds.Tables["RptOrdenes"] != null)) {
                     base.Tables.Add(new RptOrdenesDataTable(ds.Tables["RptOrdenes"]));
                 }
                 this.DataSetName = ds.DataSetName;
@@ -261,72 +224,59 @@ namespace Certifica_logistica.Ds
                 this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
                 this.InitVars();
             }
-            else
-            {
+            else {
                 this.ReadXml(reader);
                 this.InitVars();
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable()
-        {
+        protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
             global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
             this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
             stream.Position = 0;
             return global::System.Xml.Schema.XmlSchema.Read(new global::System.Xml.XmlTextReader(stream), null);
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal void InitVars()
-        {
+        internal void InitVars() {
             this.InitVars(true);
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal void InitVars(bool initTable)
-        {
+        internal void InitVars(bool initTable) {
             this.tableDetalleTramite = ((DetalleTramiteDataTable)(base.Tables["DetalleTramite"]));
-            if ((initTable == true))
-            {
-                if ((this.tableDetalleTramite != null))
-                {
+            if ((initTable == true)) {
+                if ((this.tableDetalleTramite != null)) {
                     this.tableDetalleTramite.InitVars();
                 }
             }
             this.tableTTipoUsuario = ((TTipoUsuarioDataTable)(base.Tables["TTipoUsuario"]));
-            if ((initTable == true))
-            {
-                if ((this.tableTTipoUsuario != null))
-                {
+            if ((initTable == true)) {
+                if ((this.tableTTipoUsuario != null)) {
                     this.tableTTipoUsuario.InitVars();
                 }
             }
             this.tableDetalleOrden = ((DetalleOrdenDataTable)(base.Tables["DetalleOrden"]));
-            if ((initTable == true))
-            {
-                if ((this.tableDetalleOrden != null))
-                {
+            if ((initTable == true)) {
+                if ((this.tableDetalleOrden != null)) {
                     this.tableDetalleOrden.InitVars();
                 }
             }
             this.tableRptOrdenes = ((RptOrdenesDataTable)(base.Tables["RptOrdenes"]));
-            if ((initTable == true))
-            {
-                if ((this.tableRptOrdenes != null))
-                {
+            if ((initTable == true)) {
+                if ((this.tableRptOrdenes != null)) {
                     this.tableRptOrdenes.InitVars();
                 }
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitClass()
-        {
+        private void InitClass() {
             this.DataSetName = "DsTramite";
             this.Prefix = "";
             this.Namespace = "http://tempuri.org/DsTramite.xsd";
@@ -341,49 +291,42 @@ namespace Certifica_logistica.Ds
             this.tableRptOrdenes = new RptOrdenesDataTable();
             base.Tables.Add(this.tableRptOrdenes);
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeDetalleTramite()
-        {
+        private bool ShouldSerializeDetalleTramite() {
             return false;
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeTTipoUsuario()
-        {
+        private bool ShouldSerializeTTipoUsuario() {
             return false;
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeDetalleOrden()
-        {
+        private bool ShouldSerializeDetalleOrden() {
             return false;
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeRptOrdenes()
-        {
+        private bool ShouldSerializeRptOrdenes() {
             return false;
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e)
-        {
-            if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove))
-            {
+        private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
+            if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
             }
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs)
-        {
+        public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
             DsTramite ds = new DsTramite();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -392,43 +335,34 @@ namespace Certifica_logistica.Ds
             sequence.Items.Add(any);
             type.Particle = sequence;
             global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-            if (xs.Contains(dsSchema.TargetNamespace))
-            {
+            if (xs.Contains(dsSchema.TargetNamespace)) {
                 global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                 global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                try
-                {
+                try {
                     global::System.Xml.Schema.XmlSchema schema = null;
                     dsSchema.Write(s1);
-                    for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); )
-                    {
+                    for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
                         schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                         s2.SetLength(0);
                         schema.Write(s2);
-                        if ((s1.Length == s2.Length))
-                        {
+                        if ((s1.Length == s2.Length)) {
                             s1.Position = 0;
                             s2.Position = 0;
-                            for (; ((s1.Position != s1.Length)
-                                        && (s1.ReadByte() == s2.ReadByte())); )
-                            {
+                            for (; ((s1.Position != s1.Length) 
+                                        && (s1.ReadByte() == s2.ReadByte())); ) {
                                 ;
                             }
-                            if ((s1.Position == s1.Length))
-                            {
+                            if ((s1.Position == s1.Length)) {
                                 return type;
                             }
                         }
                     }
                 }
-                finally
-                {
-                    if ((s1 != null))
-                    {
+                finally {
+                    if ((s1 != null)) {
                         s1.Close();
                     }
-                    if ((s2 != null))
-                    {
+                    if ((s2 != null)) {
                         s2.Close();
                     }
                 }
@@ -436,225 +370,193 @@ namespace Certifica_logistica.Ds
             xs.Add(dsSchema);
             return type;
         }
-
+        
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitExpressions()
-        {
+        private void InitExpressions() {
             this.DetalleOrden.ImporteColumn.Expression = "Cantidad*Monto";
         }
-
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DetalleTramiteRowChangeEventHandler(object sender, DetalleTramiteRowChangeEvent e);
-
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void TTipoUsuarioRowChangeEventHandler(object sender, TTipoUsuarioRowChangeEvent e);
-
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DetalleOrdenRowChangeEventHandler(object sender, DetalleOrdenRowChangeEvent e);
-
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void RptOrdenesRowChangeEventHandler(object sender, RptOrdenesRowChangeEvent e);
-
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DetalleTramiteDataTable : global::System.Data.TypedTableBase<DetalleTramiteRow>
-        {
-
+        public partial class DetalleTramiteDataTable : global::System.Data.TypedTableBase<DetalleTramiteRow> {
+            
             private global::System.Data.DataColumn columnIdDetalleExp;
-
+            
             private global::System.Data.DataColumn columnFechaRecep;
-
+            
             private global::System.Data.DataColumn columnSubDep;
-
+            
             private global::System.Data.DataColumn columnNombre;
-
+            
             private global::System.Data.DataColumn columnFechaDeriva;
-
+            
             private global::System.Data.DataColumn columnMotivo;
-
+            
             private global::System.Data.DataColumn columnReferencia;
-
+            
             private global::System.Data.DataColumn columnCondición;
-
+            
             private global::System.Data.DataColumn columnTiempo;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleTramiteDataTable()
-            {
+            public DetalleTramiteDataTable() {
                 this.TableName = "DetalleTramite";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DetalleTramiteDataTable(global::System.Data.DataTable table)
-            {
+            internal DetalleTramiteDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
-                {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
-                {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace))
-                {
+                if ((table.Namespace != table.DataSet.Namespace)) {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
                 this.MinimumCapacity = table.MinimumCapacity;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected DetalleTramiteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                base(info, context)
-            {
+            protected DetalleTramiteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
                 this.InitVars();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdDetalleExpColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn IdDetalleExpColumn {
+                get {
                     return this.columnIdDetalleExp;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FechaRecepColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn FechaRecepColumn {
+                get {
                     return this.columnFechaRecep;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SubDepColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn SubDepColumn {
+                get {
                     return this.columnSubDep;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NombreColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn NombreColumn {
+                get {
                     return this.columnNombre;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FechaDerivaColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn FechaDerivaColumn {
+                get {
                     return this.columnFechaDeriva;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MotivoColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn MotivoColumn {
+                get {
                     return this.columnMotivo;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ReferenciaColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn ReferenciaColumn {
+                get {
                     return this.columnReferencia;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CondiciónColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn CondiciónColumn {
+                get {
                     return this.columnCondición;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TiempoColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn TiempoColumn {
+                get {
                     return this.columnTiempo;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count
-            {
-                get
-                {
+            public int Count {
+                get {
                     return this.Rows.Count;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleTramiteRow this[int index]
-            {
-                get
-                {
+            public DetalleTramiteRow this[int index] {
+                get {
                     return ((DetalleTramiteRow)(this.Rows[index]));
                 }
             }
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event DetalleTramiteRowChangeEventHandler DetalleTramiteRowChanging;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event DetalleTramiteRowChangeEventHandler DetalleTramiteRowChanged;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event DetalleTramiteRowChangeEventHandler DetalleTramiteRowDeleting;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event DetalleTramiteRowChangeEventHandler DetalleTramiteRowDeleted;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddDetalleTramiteRow(DetalleTramiteRow row)
-            {
+            public void AddDetalleTramiteRow(DetalleTramiteRow row) {
                 this.Rows.Add(row);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleTramiteRow AddDetalleTramiteRow(string IdDetalleExp, System.DateTime FechaRecep, string SubDep, string Nombre, System.DateTime FechaDeriva, string Motivo, string Referencia, string Condición, string Tiempo)
-            {
+            public DetalleTramiteRow AddDetalleTramiteRow(string IdDetalleExp, System.DateTime FechaRecep, string SubDep, string Nombre, System.DateTime FechaDeriva, string Motivo, string Referencia, string Condición, string Tiempo) {
                 DetalleTramiteRow rowDetalleTramiteRow = ((DetalleTramiteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdDetalleExp,
@@ -670,27 +572,24 @@ namespace Certifica_logistica.Ds
                 this.Rows.Add(rowDetalleTramiteRow);
                 return rowDetalleTramiteRow;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone()
-            {
+            public override global::System.Data.DataTable Clone() {
                 DetalleTramiteDataTable cln = ((DetalleTramiteDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance()
-            {
+            protected override global::System.Data.DataTable CreateInstance() {
                 return new DetalleTramiteDataTable();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars()
-            {
+            internal void InitVars() {
                 this.columnIdDetalleExp = base.Columns["IdDetalleExp"];
                 this.columnFechaRecep = base.Columns["FechaRecep"];
                 this.columnSubDep = base.Columns["SubDep"];
@@ -701,11 +600,10 @@ namespace Certifica_logistica.Ds
                 this.columnCondición = base.Columns["Condición"];
                 this.columnTiempo = base.Columns["Tiempo"];
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass()
-            {
+            private void InitClass() {
                 this.columnIdDetalleExp = new global::System.Data.DataColumn("IdDetalleExp", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdDetalleExp);
                 this.columnFechaRecep = new global::System.Data.DataColumn("FechaRecep", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -725,83 +623,70 @@ namespace Certifica_logistica.Ds
                 this.columnTiempo = new global::System.Data.DataColumn("Tiempo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTiempo);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleTramiteRow NewDetalleTramiteRow()
-            {
+            public DetalleTramiteRow NewDetalleTramiteRow() {
                 return ((DetalleTramiteRow)(this.NewRow()));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
-            {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new DetalleTramiteRow(builder);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType()
-            {
+            protected override global::System.Type GetRowType() {
                 return typeof(DetalleTramiteRow);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.DetalleTramiteRowChanged != null))
-                {
+                if ((this.DetalleTramiteRowChanged != null)) {
                     this.DetalleTramiteRowChanged(this, new DetalleTramiteRowChangeEvent(((DetalleTramiteRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.DetalleTramiteRowChanging != null))
-                {
+                if ((this.DetalleTramiteRowChanging != null)) {
                     this.DetalleTramiteRowChanging(this, new DetalleTramiteRowChangeEvent(((DetalleTramiteRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.DetalleTramiteRowDeleted != null))
-                {
+                if ((this.DetalleTramiteRowDeleted != null)) {
                     this.DetalleTramiteRowDeleted(this, new DetalleTramiteRowChangeEvent(((DetalleTramiteRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.DetalleTramiteRowDeleting != null))
-                {
+                if ((this.DetalleTramiteRowDeleting != null)) {
                     this.DetalleTramiteRowDeleting(this, new DetalleTramiteRowChangeEvent(((DetalleTramiteRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveDetalleTramiteRow(DetalleTramiteRow row)
-            {
+            public void RemoveDetalleTramiteRow(DetalleTramiteRow row) {
                 this.Rows.Remove(row);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
-            {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DsTramite ds = new DsTramite();
@@ -826,43 +711,34 @@ namespace Certifica_logistica.Ds
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace))
-                {
+                if (xs.Contains(dsSchema.TargetNamespace)) {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try
-                    {
+                    try {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); )
-                        {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length))
-                            {
+                            if ((s1.Length == s2.Length)) {
                                 s1.Position = 0;
                                 s2.Position = 0;
-                                for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); )
-                                {
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length))
-                                {
+                                if ((s1.Position == s1.Length)) {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally
-                    {
-                        if ((s1 != null))
-                        {
+                    finally {
+                        if ((s1 != null)) {
                             s1.Close();
                         }
-                        if ((s2 != null))
-                        {
+                        if ((s2 != null)) {
                             s2.Close();
                         }
                     }
@@ -871,122 +747,105 @@ namespace Certifica_logistica.Ds
                 return type;
             }
         }
-
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TTipoUsuarioDataTable : global::System.Data.TypedTableBase<TTipoUsuarioRow>
-        {
-
+        public partial class TTipoUsuarioDataTable : global::System.Data.TypedTableBase<TTipoUsuarioRow> {
+            
             private global::System.Data.DataColumn columnSigla;
-
+            
             private global::System.Data.DataColumn columnnombre;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TTipoUsuarioDataTable()
-            {
+            public TTipoUsuarioDataTable() {
                 this.TableName = "TTipoUsuario";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TTipoUsuarioDataTable(global::System.Data.DataTable table)
-            {
+            internal TTipoUsuarioDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
-                {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
-                {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace))
-                {
+                if ((table.Namespace != table.DataSet.Namespace)) {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
                 this.MinimumCapacity = table.MinimumCapacity;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected TTipoUsuarioDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                base(info, context)
-            {
+            protected TTipoUsuarioDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
                 this.InitVars();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SiglaColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn SiglaColumn {
+                get {
                     return this.columnSigla;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn nombreColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn nombreColumn {
+                get {
                     return this.columnnombre;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count
-            {
-                get
-                {
+            public int Count {
+                get {
                     return this.Rows.Count;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TTipoUsuarioRow this[int index]
-            {
-                get
-                {
+            public TTipoUsuarioRow this[int index] {
+                get {
                     return ((TTipoUsuarioRow)(this.Rows[index]));
                 }
             }
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event TTipoUsuarioRowChangeEventHandler TTipoUsuarioRowChanging;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event TTipoUsuarioRowChangeEventHandler TTipoUsuarioRowChanged;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event TTipoUsuarioRowChangeEventHandler TTipoUsuarioRowDeleting;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event TTipoUsuarioRowChangeEventHandler TTipoUsuarioRowDeleted;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddTTipoUsuarioRow(TTipoUsuarioRow row)
-            {
+            public void AddTTipoUsuarioRow(TTipoUsuarioRow row) {
                 this.Rows.Add(row);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TTipoUsuarioRow AddTTipoUsuarioRow(char Sigla, string nombre)
-            {
+            public TTipoUsuarioRow AddTTipoUsuarioRow(char Sigla, string nombre) {
                 TTipoUsuarioRow rowTTipoUsuarioRow = ((TTipoUsuarioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Sigla,
@@ -995,35 +854,31 @@ namespace Certifica_logistica.Ds
                 this.Rows.Add(rowTTipoUsuarioRow);
                 return rowTTipoUsuarioRow;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone()
-            {
+            public override global::System.Data.DataTable Clone() {
                 TTipoUsuarioDataTable cln = ((TTipoUsuarioDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance()
-            {
+            protected override global::System.Data.DataTable CreateInstance() {
                 return new TTipoUsuarioDataTable();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars()
-            {
+            internal void InitVars() {
                 this.columnSigla = base.Columns["Sigla"];
                 this.columnnombre = base.Columns["nombre"];
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass()
-            {
+            private void InitClass() {
                 this.columnSigla = new global::System.Data.DataColumn("Sigla", typeof(char), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSigla);
                 this.columnnombre = new global::System.Data.DataColumn("nombre", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1033,83 +888,70 @@ namespace Certifica_logistica.Ds
                 this.columnSigla.Unique = true;
                 this.columnnombre.Caption = "Nombre";
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TTipoUsuarioRow NewTTipoUsuarioRow()
-            {
+            public TTipoUsuarioRow NewTTipoUsuarioRow() {
                 return ((TTipoUsuarioRow)(this.NewRow()));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
-            {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new TTipoUsuarioRow(builder);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType()
-            {
+            protected override global::System.Type GetRowType() {
                 return typeof(TTipoUsuarioRow);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.TTipoUsuarioRowChanged != null))
-                {
+                if ((this.TTipoUsuarioRowChanged != null)) {
                     this.TTipoUsuarioRowChanged(this, new TTipoUsuarioRowChangeEvent(((TTipoUsuarioRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.TTipoUsuarioRowChanging != null))
-                {
+                if ((this.TTipoUsuarioRowChanging != null)) {
                     this.TTipoUsuarioRowChanging(this, new TTipoUsuarioRowChangeEvent(((TTipoUsuarioRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.TTipoUsuarioRowDeleted != null))
-                {
+                if ((this.TTipoUsuarioRowDeleted != null)) {
                     this.TTipoUsuarioRowDeleted(this, new TTipoUsuarioRowChangeEvent(((TTipoUsuarioRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.TTipoUsuarioRowDeleting != null))
-                {
+                if ((this.TTipoUsuarioRowDeleting != null)) {
                     this.TTipoUsuarioRowDeleting(this, new TTipoUsuarioRowChangeEvent(((TTipoUsuarioRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveTTipoUsuarioRow(TTipoUsuarioRow row)
-            {
+            public void RemoveTTipoUsuarioRow(TTipoUsuarioRow row) {
                 this.Rows.Remove(row);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
-            {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DsTramite ds = new DsTramite();
@@ -1134,43 +976,34 @@ namespace Certifica_logistica.Ds
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace))
-                {
+                if (xs.Contains(dsSchema.TargetNamespace)) {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try
-                    {
+                    try {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); )
-                        {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length))
-                            {
+                            if ((s1.Length == s2.Length)) {
                                 s1.Position = 0;
                                 s2.Position = 0;
-                                for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); )
-                                {
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length))
-                                {
+                                if ((s1.Position == s1.Length)) {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally
-                    {
-                        if ((s1 != null))
-                        {
+                    finally {
+                        if ((s1 != null)) {
                             s1.Close();
                         }
-                        if ((s2 != null))
-                        {
+                        if ((s2 != null)) {
                             s2.Close();
                         }
                     }
@@ -1179,265 +1012,224 @@ namespace Certifica_logistica.Ds
                 return type;
             }
         }
-
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DetalleOrdenDataTable : global::System.Data.TypedTableBase<DetalleOrdenRow>
-        {
-
+        public partial class DetalleOrdenDataTable : global::System.Data.TypedTableBase<DetalleOrdenRow> {
+            
             private global::System.Data.DataColumn columnIndex;
-
+            
             private global::System.Data.DataColumn columnId;
-
+            
             private global::System.Data.DataColumn columnIdOrden;
-
+            
             private global::System.Data.DataColumn columnIdClasificador;
-
+            
             private global::System.Data.DataColumn columnIdMeta;
-
+            
             private global::System.Data.DataColumn columnIdTipoUsuario;
-
+            
             private global::System.Data.DataColumn columnclasificador;
-
+            
             private global::System.Data.DataColumn columncodigo;
-
+            
             private global::System.Data.DataColumn columnDetalle;
-
+            
             private global::System.Data.DataColumn columnCantidad;
-
+            
             private global::System.Data.DataColumn columnMonto;
-
+            
             private global::System.Data.DataColumn columnImporte;
-
+            
             private global::System.Data.DataColumn columnExceso;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleOrdenDataTable() :
-                this(false)
-            {
+            public DetalleOrdenDataTable() : 
+                    this(false) {
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleOrdenDataTable(bool initExpressions)
-            {
+            public DetalleOrdenDataTable(bool initExpressions) {
                 this.TableName = "DetalleOrden";
                 this.BeginInit();
                 this.InitClass();
-                if ((initExpressions == true))
-                {
+                if ((initExpressions == true)) {
                     this.InitExpressions();
                 }
                 this.EndInit();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DetalleOrdenDataTable(global::System.Data.DataTable table)
-            {
+            internal DetalleOrdenDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
-                {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
-                {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace))
-                {
+                if ((table.Namespace != table.DataSet.Namespace)) {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
                 this.MinimumCapacity = table.MinimumCapacity;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected DetalleOrdenDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                base(info, context)
-            {
+            protected DetalleOrdenDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
                 this.InitVars();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IndexColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn IndexColumn {
+                get {
                     return this.columnIndex;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn IdColumn {
+                get {
                     return this.columnId;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdOrdenColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn IdOrdenColumn {
+                get {
                     return this.columnIdOrden;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdClasificadorColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn IdClasificadorColumn {
+                get {
                     return this.columnIdClasificador;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdMetaColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn IdMetaColumn {
+                get {
                     return this.columnIdMeta;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdTipoUsuarioColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn IdTipoUsuarioColumn {
+                get {
                     return this.columnIdTipoUsuario;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn clasificadorColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn clasificadorColumn {
+                get {
                     return this.columnclasificador;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn codigoColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn codigoColumn {
+                get {
                     return this.columncodigo;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DetalleColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn DetalleColumn {
+                get {
                     return this.columnDetalle;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CantidadColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn CantidadColumn {
+                get {
                     return this.columnCantidad;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MontoColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn MontoColumn {
+                get {
                     return this.columnMonto;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ImporteColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn ImporteColumn {
+                get {
                     return this.columnImporte;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ExcesoColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn ExcesoColumn {
+                get {
                     return this.columnExceso;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count
-            {
-                get
-                {
+            public int Count {
+                get {
                     return this.Rows.Count;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleOrdenRow this[int index]
-            {
-                get
-                {
+            public DetalleOrdenRow this[int index] {
+                get {
                     return ((DetalleOrdenRow)(this.Rows[index]));
                 }
             }
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event DetalleOrdenRowChangeEventHandler DetalleOrdenRowChanging;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event DetalleOrdenRowChangeEventHandler DetalleOrdenRowChanged;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event DetalleOrdenRowChangeEventHandler DetalleOrdenRowDeleting;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event DetalleOrdenRowChangeEventHandler DetalleOrdenRowDeleted;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddDetalleOrdenRow(DetalleOrdenRow row)
-            {
+            public void AddDetalleOrdenRow(DetalleOrdenRow row) {
                 this.Rows.Add(row);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleOrdenRow AddDetalleOrdenRow(long Id, long IdOrden, int IdClasificador, int IdMeta, char IdTipoUsuario, string clasificador, string codigo, string Detalle, int Cantidad, decimal Monto, decimal Importe, decimal Exceso)
-            {
+            public DetalleOrdenRow AddDetalleOrdenRow(long Id, long IdOrden, int IdClasificador, int IdMeta, char IdTipoUsuario, string clasificador, string codigo, string Detalle, int Cantidad, decimal Monto, decimal Importe, decimal Exceso) {
                 DetalleOrdenRow rowDetalleOrdenRow = ((DetalleOrdenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1457,11 +1249,10 @@ namespace Certifica_logistica.Ds
                 this.Rows.Add(rowDetalleOrdenRow);
                 return rowDetalleOrdenRow;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleOrdenRow AddDetalleOrdenRow(long Id, long IdOrden, int IdClasificador, int IdMeta, char IdTipoUsuario, string clasificador, string codigo, string Detalle, int Cantidad, decimal Monto, decimal Exceso)
-            {
+            public DetalleOrdenRow AddDetalleOrdenRow(long Id, long IdOrden, int IdClasificador, int IdMeta, char IdTipoUsuario, string clasificador, string codigo, string Detalle, int Cantidad, decimal Monto, decimal Exceso) {
                 DetalleOrdenRow rowDetalleOrdenRow = ((DetalleOrdenRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1481,27 +1272,24 @@ namespace Certifica_logistica.Ds
                 this.Rows.Add(rowDetalleOrdenRow);
                 return rowDetalleOrdenRow;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone()
-            {
+            public override global::System.Data.DataTable Clone() {
                 DetalleOrdenDataTable cln = ((DetalleOrdenDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance()
-            {
+            protected override global::System.Data.DataTable CreateInstance() {
                 return new DetalleOrdenDataTable();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars()
-            {
+            internal void InitVars() {
                 this.columnIndex = base.Columns["Index"];
                 this.columnId = base.Columns["Id"];
                 this.columnIdOrden = base.Columns["IdOrden"];
@@ -1516,11 +1304,10 @@ namespace Certifica_logistica.Ds
                 this.columnImporte = base.Columns["Importe"];
                 this.columnExceso = base.Columns["Exceso"];
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass()
-            {
+            private void InitClass() {
                 this.columnIndex = new global::System.Data.DataColumn("Index", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIndex);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
@@ -1557,90 +1344,76 @@ namespace Certifica_logistica.Ds
                 this.columnImporte.ReadOnly = true;
                 this.columnExceso.DefaultValue = ((decimal)(0.00m));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleOrdenRow NewDetalleOrdenRow()
-            {
+            public DetalleOrdenRow NewDetalleOrdenRow() {
                 return ((DetalleOrdenRow)(this.NewRow()));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
-            {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new DetalleOrdenRow(builder);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType()
-            {
+            protected override global::System.Type GetRowType() {
                 return typeof(DetalleOrdenRow);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitExpressions()
-            {
+            private void InitExpressions() {
                 this.ImporteColumn.Expression = "Cantidad*Monto";
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.DetalleOrdenRowChanged != null))
-                {
+                if ((this.DetalleOrdenRowChanged != null)) {
                     this.DetalleOrdenRowChanged(this, new DetalleOrdenRowChangeEvent(((DetalleOrdenRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.DetalleOrdenRowChanging != null))
-                {
+                if ((this.DetalleOrdenRowChanging != null)) {
                     this.DetalleOrdenRowChanging(this, new DetalleOrdenRowChangeEvent(((DetalleOrdenRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.DetalleOrdenRowDeleted != null))
-                {
+                if ((this.DetalleOrdenRowDeleted != null)) {
                     this.DetalleOrdenRowDeleted(this, new DetalleOrdenRowChangeEvent(((DetalleOrdenRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.DetalleOrdenRowDeleting != null))
-                {
+                if ((this.DetalleOrdenRowDeleting != null)) {
                     this.DetalleOrdenRowDeleting(this, new DetalleOrdenRowChangeEvent(((DetalleOrdenRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveDetalleOrdenRow(DetalleOrdenRow row)
-            {
+            public void RemoveDetalleOrdenRow(DetalleOrdenRow row) {
                 this.Rows.Remove(row);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
-            {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DsTramite ds = new DsTramite();
@@ -1665,43 +1438,34 @@ namespace Certifica_logistica.Ds
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace))
-                {
+                if (xs.Contains(dsSchema.TargetNamespace)) {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try
-                    {
+                    try {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); )
-                        {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length))
-                            {
+                            if ((s1.Length == s2.Length)) {
                                 s1.Position = 0;
                                 s2.Position = 0;
-                                for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); )
-                                {
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length))
-                                {
+                                if ((s1.Position == s1.Length)) {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally
-                    {
-                        if ((s1 != null))
-                        {
+                    finally {
+                        if ((s1 != null)) {
                             s1.Close();
                         }
-                        if ((s2 != null))
-                        {
+                        if ((s2 != null)) {
                             s2.Close();
                         }
                     }
@@ -1710,319 +1474,272 @@ namespace Certifica_logistica.Ds
                 return type;
             }
         }
-
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class RptOrdenesDataTable : global::System.Data.TypedTableBase<RptOrdenesRow>
-        {
-
+        public partial class RptOrdenesDataTable : global::System.Data.TypedTableBase<RptOrdenesRow> {
+            
             private global::System.Data.DataColumn columnIDORDEN;
-
+            
             private global::System.Data.DataColumn columnTIPOORDEN;
-
+            
             private global::System.Data.DataColumn columnNROORDEN;
-
+            
             private global::System.Data.DataColumn columnFECHA;
-
+            
             private global::System.Data.DataColumn columnTOTAL;
-
+            
             private global::System.Data.DataColumn columnFUENTE;
-
+            
             private global::System.Data.DataColumn columnTIPOUSUARIO;
-
+            
             private global::System.Data.DataColumn columnRAZONCABECERA;
-
+            
             private global::System.Data.DataColumn columnCODIGO;
-
+            
             private global::System.Data.DataColumn columnREFERENCIA;
-
+            
             private global::System.Data.DataColumn columnDESCRIPCION;
-
+            
             private global::System.Data.DataColumn columnHECHOPOR;
-
+            
             private global::System.Data.DataColumn columnCCP;
-
+            
             private global::System.Data.DataColumn columnRESOLUCION;
-
+            
             private global::System.Data.DataColumn columnPROCESO;
-
+            
             private global::System.Data.DataColumn columnESTADO;
-
+            
             private global::System.Data.DataColumn columnCODTIPOORDEN;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RptOrdenesDataTable()
-            {
+            public RptOrdenesDataTable() {
                 this.TableName = "RptOrdenes";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RptOrdenesDataTable(global::System.Data.DataTable table)
-            {
+            internal RptOrdenesDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
-                {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
-                {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace))
-                {
+                if ((table.Namespace != table.DataSet.Namespace)) {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
                 this.MinimumCapacity = table.MinimumCapacity;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected RptOrdenesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                base(info, context)
-            {
+            protected RptOrdenesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
                 this.InitVars();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDORDENColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn IDORDENColumn {
+                get {
                     return this.columnIDORDEN;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TIPOORDENColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn TIPOORDENColumn {
+                get {
                     return this.columnTIPOORDEN;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NROORDENColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn NROORDENColumn {
+                get {
                     return this.columnNROORDEN;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FECHAColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn FECHAColumn {
+                get {
                     return this.columnFECHA;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TOTALColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn TOTALColumn {
+                get {
                     return this.columnTOTAL;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FUENTEColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn FUENTEColumn {
+                get {
                     return this.columnFUENTE;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TIPOUSUARIOColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn TIPOUSUARIOColumn {
+                get {
                     return this.columnTIPOUSUARIO;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RAZONCABECERAColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn RAZONCABECERAColumn {
+                get {
                     return this.columnRAZONCABECERA;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CODIGOColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn CODIGOColumn {
+                get {
                     return this.columnCODIGO;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn REFERENCIAColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn REFERENCIAColumn {
+                get {
                     return this.columnREFERENCIA;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DESCRIPCIONColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn DESCRIPCIONColumn {
+                get {
                     return this.columnDESCRIPCION;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HECHOPORColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn HECHOPORColumn {
+                get {
                     return this.columnHECHOPOR;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CCPColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn CCPColumn {
+                get {
                     return this.columnCCP;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RESOLUCIONColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn RESOLUCIONColumn {
+                get {
                     return this.columnRESOLUCION;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PROCESOColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn PROCESOColumn {
+                get {
                     return this.columnPROCESO;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ESTADOColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn ESTADOColumn {
+                get {
                     return this.columnESTADO;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CODTIPOORDENColumn
-            {
-                get
-                {
+            public global::System.Data.DataColumn CODTIPOORDENColumn {
+                get {
                     return this.columnCODTIPOORDEN;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count
-            {
-                get
-                {
+            public int Count {
+                get {
                     return this.Rows.Count;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RptOrdenesRow this[int index]
-            {
-                get
-                {
+            public RptOrdenesRow this[int index] {
+                get {
                     return ((RptOrdenesRow)(this.Rows[index]));
                 }
             }
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event RptOrdenesRowChangeEventHandler RptOrdenesRowChanging;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event RptOrdenesRowChangeEventHandler RptOrdenesRowChanged;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event RptOrdenesRowChangeEventHandler RptOrdenesRowDeleting;
-
+            
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public event RptOrdenesRowChangeEventHandler RptOrdenesRowDeleted;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddRptOrdenesRow(RptOrdenesRow row)
-            {
+            public void AddRptOrdenesRow(RptOrdenesRow row) {
                 this.Rows.Add(row);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RptOrdenesRow AddRptOrdenesRow(
-                        string IDORDEN,
-                        string TIPOORDEN,
-                        string NROORDEN,
-                        System.DateTime FECHA,
-                        decimal TOTAL,
-                        string FUENTE,
-                        string TIPOUSUARIO,
-                        string RAZONCABECERA,
-                        string CODIGO,
-                        string REFERENCIA,
-                        string DESCRIPCION,
-                        string HECHOPOR,
-                        string CCP,
-                        string RESOLUCION,
-                        string PROCESO,
-                        string ESTADO,
-                        string CODTIPOORDEN)
-            {
+                        string IDORDEN, 
+                        string TIPOORDEN, 
+                        string NROORDEN, 
+                        System.DateTime FECHA, 
+                        decimal TOTAL, 
+                        string FUENTE, 
+                        string TIPOUSUARIO, 
+                        string RAZONCABECERA, 
+                        string CODIGO, 
+                        string REFERENCIA, 
+                        string DESCRIPCION, 
+                        string HECHOPOR, 
+                        string CCP, 
+                        string RESOLUCION, 
+                        string PROCESO, 
+                        string ESTADO, 
+                        string CODTIPOORDEN) {
                 RptOrdenesRow rowRptOrdenesRow = ((RptOrdenesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IDORDEN,
@@ -2046,35 +1763,31 @@ namespace Certifica_logistica.Ds
                 this.Rows.Add(rowRptOrdenesRow);
                 return rowRptOrdenesRow;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RptOrdenesRow FindByIDORDEN(string IDORDEN)
-            {
+            public RptOrdenesRow FindByIDORDEN(string IDORDEN) {
                 return ((RptOrdenesRow)(this.Rows.Find(new object[] {
                             IDORDEN})));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone()
-            {
+            public override global::System.Data.DataTable Clone() {
                 RptOrdenesDataTable cln = ((RptOrdenesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance()
-            {
+            protected override global::System.Data.DataTable CreateInstance() {
                 return new RptOrdenesDataTable();
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars()
-            {
+            internal void InitVars() {
                 this.columnIDORDEN = base.Columns["IDORDEN"];
                 this.columnTIPOORDEN = base.Columns["TIPOORDEN"];
                 this.columnNROORDEN = base.Columns["NROORDEN"];
@@ -2093,11 +1806,10 @@ namespace Certifica_logistica.Ds
                 this.columnESTADO = base.Columns["ESTADO"];
                 this.columnCODTIPOORDEN = base.Columns["CODTIPOORDEN"];
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass()
-            {
+            private void InitClass() {
                 this.columnIDORDEN = new global::System.Data.DataColumn("IDORDEN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIDORDEN);
                 this.columnTIPOORDEN = new global::System.Data.DataColumn("TIPOORDEN", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2138,83 +1850,70 @@ namespace Certifica_logistica.Ds
                 this.columnIDORDEN.Unique = true;
                 this.columnNROORDEN.AllowDBNull = false;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RptOrdenesRow NewRptOrdenesRow()
-            {
+            public RptOrdenesRow NewRptOrdenesRow() {
                 return ((RptOrdenesRow)(this.NewRow()));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
-            {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new RptOrdenesRow(builder);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType()
-            {
+            protected override global::System.Type GetRowType() {
                 return typeof(RptOrdenesRow);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.RptOrdenesRowChanged != null))
-                {
+                if ((this.RptOrdenesRowChanged != null)) {
                     this.RptOrdenesRowChanged(this, new RptOrdenesRowChangeEvent(((RptOrdenesRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.RptOrdenesRowChanging != null))
-                {
+                if ((this.RptOrdenesRowChanging != null)) {
                     this.RptOrdenesRowChanging(this, new RptOrdenesRowChangeEvent(((RptOrdenesRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.RptOrdenesRowDeleted != null))
-                {
+                if ((this.RptOrdenesRowDeleted != null)) {
                     this.RptOrdenesRowDeleted(this, new RptOrdenesRowChangeEvent(((RptOrdenesRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
-            {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.RptOrdenesRowDeleting != null))
-                {
+                if ((this.RptOrdenesRowDeleting != null)) {
                     this.RptOrdenesRowDeleting(this, new RptOrdenesRowChangeEvent(((RptOrdenesRow)(e.Row)), e.Action));
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveRptOrdenesRow(RptOrdenesRow row)
-            {
+            public void RemoveRptOrdenesRow(RptOrdenesRow row) {
                 this.Rows.Remove(row);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
-            {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DsTramite ds = new DsTramite();
@@ -2239,43 +1938,34 @@ namespace Certifica_logistica.Ds
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace))
-                {
+                if (xs.Contains(dsSchema.TargetNamespace)) {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try
-                    {
+                    try {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); )
-                        {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length))
-                            {
+                            if ((s1.Length == s2.Length)) {
                                 s1.Position = 0;
                                 s2.Position = 0;
-                                for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); )
-                                {
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length))
-                                {
+                                if ((s1.Position == s1.Length)) {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally
-                    {
-                        if ((s1 != null))
-                        {
+                    finally {
+                        if ((s1 != null)) {
                             s1.Close();
                         }
-                        if ((s2 != null))
-                        {
+                        if ((s2 != null)) {
                             s2.Close();
                         }
                     }
@@ -2284,1623 +1974,1312 @@ namespace Certifica_logistica.Ds
                 return type;
             }
         }
-
+        
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class DetalleTramiteRow : global::System.Data.DataRow
-        {
-
+        public partial class DetalleTramiteRow : global::System.Data.DataRow {
+            
             private DetalleTramiteDataTable tableDetalleTramite;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DetalleTramiteRow(global::System.Data.DataRowBuilder rb) :
-                base(rb)
-            {
+            internal DetalleTramiteRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
                 this.tableDetalleTramite = ((DetalleTramiteDataTable)(this.Table));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string IdDetalleExp
-            {
-                get
-                {
-                    try
-                    {
+            public string IdDetalleExp {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleTramite.IdDetalleExpColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'IdDetalleExp\' de la tabla \'DetalleTramite\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleTramite.IdDetalleExpColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime FechaRecep
-            {
-                get
-                {
-                    try
-                    {
+            public System.DateTime FechaRecep {
+                get {
+                    try {
                         return ((global::System.DateTime)(this[this.tableDetalleTramite.FechaRecepColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaRecep\' de la tabla \'DetalleTramite\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleTramite.FechaRecepColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string SubDep
-            {
-                get
-                {
-                    try
-                    {
+            public string SubDep {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleTramite.SubDepColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'SubDep\' de la tabla \'DetalleTramite\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleTramite.SubDepColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nombre
-            {
-                get
-                {
-                    try
-                    {
+            public string Nombre {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleTramite.NombreColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Nombre\' de la tabla \'DetalleTramite\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleTramite.NombreColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime FechaDeriva
-            {
-                get
-                {
-                    try
-                    {
+            public System.DateTime FechaDeriva {
+                get {
+                    try {
                         return ((global::System.DateTime)(this[this.tableDetalleTramite.FechaDerivaColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaDeriva\' de la tabla \'DetalleTramite\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleTramite.FechaDerivaColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Motivo
-            {
-                get
-                {
-                    try
-                    {
+            public string Motivo {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleTramite.MotivoColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Motivo\' de la tabla \'DetalleTramite\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleTramite.MotivoColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Referencia
-            {
-                get
-                {
-                    try
-                    {
+            public string Referencia {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleTramite.ReferenciaColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Referencia\' de la tabla \'DetalleTramite\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleTramite.ReferenciaColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Condición
-            {
-                get
-                {
-                    try
-                    {
+            public string Condición {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleTramite.CondiciónColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Condición\' de la tabla \'DetalleTramite\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleTramite.CondiciónColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Tiempo
-            {
-                get
-                {
-                    try
-                    {
+            public string Tiempo {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleTramite.TiempoColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Tiempo\' de la tabla \'DetalleTramite\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleTramite.TiempoColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIdDetalleExpNull()
-            {
+            public bool IsIdDetalleExpNull() {
                 return this.IsNull(this.tableDetalleTramite.IdDetalleExpColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIdDetalleExpNull()
-            {
+            public void SetIdDetalleExpNull() {
                 this[this.tableDetalleTramite.IdDetalleExpColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFechaRecepNull()
-            {
+            public bool IsFechaRecepNull() {
                 return this.IsNull(this.tableDetalleTramite.FechaRecepColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFechaRecepNull()
-            {
+            public void SetFechaRecepNull() {
                 this[this.tableDetalleTramite.FechaRecepColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSubDepNull()
-            {
+            public bool IsSubDepNull() {
                 return this.IsNull(this.tableDetalleTramite.SubDepColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSubDepNull()
-            {
+            public void SetSubDepNull() {
                 this[this.tableDetalleTramite.SubDepColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNombreNull()
-            {
+            public bool IsNombreNull() {
                 return this.IsNull(this.tableDetalleTramite.NombreColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNombreNull()
-            {
+            public void SetNombreNull() {
                 this[this.tableDetalleTramite.NombreColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFechaDerivaNull()
-            {
+            public bool IsFechaDerivaNull() {
                 return this.IsNull(this.tableDetalleTramite.FechaDerivaColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFechaDerivaNull()
-            {
+            public void SetFechaDerivaNull() {
                 this[this.tableDetalleTramite.FechaDerivaColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMotivoNull()
-            {
+            public bool IsMotivoNull() {
                 return this.IsNull(this.tableDetalleTramite.MotivoColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMotivoNull()
-            {
+            public void SetMotivoNull() {
                 this[this.tableDetalleTramite.MotivoColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsReferenciaNull()
-            {
+            public bool IsReferenciaNull() {
                 return this.IsNull(this.tableDetalleTramite.ReferenciaColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetReferenciaNull()
-            {
+            public void SetReferenciaNull() {
                 this[this.tableDetalleTramite.ReferenciaColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCondiciónNull()
-            {
+            public bool IsCondiciónNull() {
                 return this.IsNull(this.tableDetalleTramite.CondiciónColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCondiciónNull()
-            {
+            public void SetCondiciónNull() {
                 this[this.tableDetalleTramite.CondiciónColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTiempoNull()
-            {
+            public bool IsTiempoNull() {
                 return this.IsNull(this.tableDetalleTramite.TiempoColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTiempoNull()
-            {
+            public void SetTiempoNull() {
                 this[this.tableDetalleTramite.TiempoColumn] = global::System.Convert.DBNull;
             }
         }
-
+        
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class TTipoUsuarioRow : global::System.Data.DataRow
-        {
-
+        public partial class TTipoUsuarioRow : global::System.Data.DataRow {
+            
             private TTipoUsuarioDataTable tableTTipoUsuario;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal TTipoUsuarioRow(global::System.Data.DataRowBuilder rb) :
-                base(rb)
-            {
+            internal TTipoUsuarioRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
                 this.tableTTipoUsuario = ((TTipoUsuarioDataTable)(this.Table));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public char Sigla
-            {
-                get
-                {
-                    try
-                    {
+            public char Sigla {
+                get {
+                    try {
                         return ((char)(this[this.tableTTipoUsuario.SiglaColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Sigla\' de la tabla \'TTipoUsuario\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableTTipoUsuario.SiglaColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string nombre
-            {
-                get
-                {
-                    try
-                    {
+            public string nombre {
+                get {
+                    try {
                         return ((string)(this[this.tableTTipoUsuario.nombreColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre\' de la tabla \'TTipoUsuario\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableTTipoUsuario.nombreColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSiglaNull()
-            {
+            public bool IsSiglaNull() {
                 return this.IsNull(this.tableTTipoUsuario.SiglaColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSiglaNull()
-            {
+            public void SetSiglaNull() {
                 this[this.tableTTipoUsuario.SiglaColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsnombreNull()
-            {
+            public bool IsnombreNull() {
                 return this.IsNull(this.tableTTipoUsuario.nombreColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetnombreNull()
-            {
+            public void SetnombreNull() {
                 this[this.tableTTipoUsuario.nombreColumn] = global::System.Convert.DBNull;
             }
         }
-
+        
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class DetalleOrdenRow : global::System.Data.DataRow
-        {
-
+        public partial class DetalleOrdenRow : global::System.Data.DataRow {
+            
             private DetalleOrdenDataTable tableDetalleOrden;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DetalleOrdenRow(global::System.Data.DataRowBuilder rb) :
-                base(rb)
-            {
+            internal DetalleOrdenRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
                 this.tableDetalleOrden = ((DetalleOrdenDataTable)(this.Table));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Index
-            {
-                get
-                {
-                    try
-                    {
+            public int Index {
+                get {
+                    try {
                         return ((int)(this[this.tableDetalleOrden.IndexColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Index\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.IndexColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Id
-            {
-                get
-                {
-                    try
-                    {
+            public long Id {
+                get {
+                    try {
                         return ((long)(this[this.tableDetalleOrden.IdColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.IdColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long IdOrden
-            {
-                get
-                {
-                    try
-                    {
+            public long IdOrden {
+                get {
+                    try {
                         return ((long)(this[this.tableDetalleOrden.IdOrdenColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'IdOrden\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.IdOrdenColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int IdClasificador
-            {
-                get
-                {
-                    try
-                    {
+            public int IdClasificador {
+                get {
+                    try {
                         return ((int)(this[this.tableDetalleOrden.IdClasificadorColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'IdClasificador\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.IdClasificadorColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int IdMeta
-            {
-                get
-                {
-                    try
-                    {
+            public int IdMeta {
+                get {
+                    try {
                         return ((int)(this[this.tableDetalleOrden.IdMetaColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'IdMeta\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.IdMetaColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public char IdTipoUsuario
-            {
-                get
-                {
-                    try
-                    {
+            public char IdTipoUsuario {
+                get {
+                    try {
                         return ((char)(this[this.tableDetalleOrden.IdTipoUsuarioColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'IdTipoUsuario\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.IdTipoUsuarioColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string clasificador
-            {
-                get
-                {
-                    try
-                    {
+            public string clasificador {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleOrden.clasificadorColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'clasificador\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.clasificadorColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string codigo
-            {
-                get
-                {
-                    try
-                    {
+            public string codigo {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleOrden.codigoColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'codigo\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.codigoColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Detalle
-            {
-                get
-                {
-                    try
-                    {
+            public string Detalle {
+                get {
+                    try {
                         return ((string)(this[this.tableDetalleOrden.DetalleColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Detalle\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.DetalleColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Cantidad
-            {
-                get
-                {
-                    try
-                    {
+            public int Cantidad {
+                get {
+                    try {
                         return ((int)(this[this.tableDetalleOrden.CantidadColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Cantidad\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.CantidadColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Monto
-            {
-                get
-                {
-                    try
-                    {
+            public decimal Monto {
+                get {
+                    try {
                         return ((decimal)(this[this.tableDetalleOrden.MontoColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Monto\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.MontoColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Importe
-            {
-                get
-                {
-                    try
-                    {
+            public decimal Importe {
+                get {
+                    try {
                         return ((decimal)(this[this.tableDetalleOrden.ImporteColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Importe\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.ImporteColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Exceso
-            {
-                get
-                {
-                    try
-                    {
+            public decimal Exceso {
+                get {
+                    try {
                         return ((decimal)(this[this.tableDetalleOrden.ExcesoColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Exceso\' de la tabla \'DetalleOrden\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableDetalleOrden.ExcesoColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIndexNull()
-            {
+            public bool IsIndexNull() {
                 return this.IsNull(this.tableDetalleOrden.IndexColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIndexNull()
-            {
+            public void SetIndexNull() {
                 this[this.tableDetalleOrden.IndexColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIdNull()
-            {
+            public bool IsIdNull() {
                 return this.IsNull(this.tableDetalleOrden.IdColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIdNull()
-            {
+            public void SetIdNull() {
                 this[this.tableDetalleOrden.IdColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIdOrdenNull()
-            {
+            public bool IsIdOrdenNull() {
                 return this.IsNull(this.tableDetalleOrden.IdOrdenColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIdOrdenNull()
-            {
+            public void SetIdOrdenNull() {
                 this[this.tableDetalleOrden.IdOrdenColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIdClasificadorNull()
-            {
+            public bool IsIdClasificadorNull() {
                 return this.IsNull(this.tableDetalleOrden.IdClasificadorColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIdClasificadorNull()
-            {
+            public void SetIdClasificadorNull() {
                 this[this.tableDetalleOrden.IdClasificadorColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIdMetaNull()
-            {
+            public bool IsIdMetaNull() {
                 return this.IsNull(this.tableDetalleOrden.IdMetaColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIdMetaNull()
-            {
+            public void SetIdMetaNull() {
                 this[this.tableDetalleOrden.IdMetaColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIdTipoUsuarioNull()
-            {
+            public bool IsIdTipoUsuarioNull() {
                 return this.IsNull(this.tableDetalleOrden.IdTipoUsuarioColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIdTipoUsuarioNull()
-            {
+            public void SetIdTipoUsuarioNull() {
                 this[this.tableDetalleOrden.IdTipoUsuarioColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsclasificadorNull()
-            {
+            public bool IsclasificadorNull() {
                 return this.IsNull(this.tableDetalleOrden.clasificadorColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetclasificadorNull()
-            {
+            public void SetclasificadorNull() {
                 this[this.tableDetalleOrden.clasificadorColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IscodigoNull()
-            {
+            public bool IscodigoNull() {
                 return this.IsNull(this.tableDetalleOrden.codigoColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetcodigoNull()
-            {
+            public void SetcodigoNull() {
                 this[this.tableDetalleOrden.codigoColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDetalleNull()
-            {
+            public bool IsDetalleNull() {
                 return this.IsNull(this.tableDetalleOrden.DetalleColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDetalleNull()
-            {
+            public void SetDetalleNull() {
                 this[this.tableDetalleOrden.DetalleColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCantidadNull()
-            {
+            public bool IsCantidadNull() {
                 return this.IsNull(this.tableDetalleOrden.CantidadColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCantidadNull()
-            {
+            public void SetCantidadNull() {
                 this[this.tableDetalleOrden.CantidadColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMontoNull()
-            {
+            public bool IsMontoNull() {
                 return this.IsNull(this.tableDetalleOrden.MontoColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMontoNull()
-            {
+            public void SetMontoNull() {
                 this[this.tableDetalleOrden.MontoColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsImporteNull()
-            {
+            public bool IsImporteNull() {
                 return this.IsNull(this.tableDetalleOrden.ImporteColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetImporteNull()
-            {
+            public void SetImporteNull() {
                 this[this.tableDetalleOrden.ImporteColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsExcesoNull()
-            {
+            public bool IsExcesoNull() {
                 return this.IsNull(this.tableDetalleOrden.ExcesoColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetExcesoNull()
-            {
+            public void SetExcesoNull() {
                 this[this.tableDetalleOrden.ExcesoColumn] = global::System.Convert.DBNull;
             }
         }
-
+        
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class RptOrdenesRow : global::System.Data.DataRow
-        {
-
+        public partial class RptOrdenesRow : global::System.Data.DataRow {
+            
             private RptOrdenesDataTable tableRptOrdenes;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RptOrdenesRow(global::System.Data.DataRowBuilder rb) :
-                base(rb)
-            {
+            internal RptOrdenesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
                 this.tableRptOrdenes = ((RptOrdenesDataTable)(this.Table));
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string IDORDEN
-            {
-                get
-                {
+            public string IDORDEN {
+                get {
                     return ((string)(this[this.tableRptOrdenes.IDORDENColumn]));
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.IDORDENColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TIPOORDEN
-            {
-                get
-                {
-                    try
-                    {
+            public string TIPOORDEN {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.TIPOORDENColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'TIPOORDEN\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.TIPOORDENColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NROORDEN
-            {
-                get
-                {
+            public string NROORDEN {
+                get {
                     return ((string)(this[this.tableRptOrdenes.NROORDENColumn]));
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.NROORDENColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime FECHA
-            {
-                get
-                {
-                    try
-                    {
+            public System.DateTime FECHA {
+                get {
+                    try {
                         return ((global::System.DateTime)(this[this.tableRptOrdenes.FECHAColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'FECHA\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.FECHAColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TOTAL
-            {
-                get
-                {
-                    try
-                    {
+            public decimal TOTAL {
+                get {
+                    try {
                         return ((decimal)(this[this.tableRptOrdenes.TOTALColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'TOTAL\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.TOTALColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FUENTE
-            {
-                get
-                {
-                    try
-                    {
+            public string FUENTE {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.FUENTEColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'FUENTE\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.FUENTEColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TIPOUSUARIO
-            {
-                get
-                {
-                    try
-                    {
+            public string TIPOUSUARIO {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.TIPOUSUARIOColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'TIPOUSUARIO\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.TIPOUSUARIOColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RAZONCABECERA
-            {
-                get
-                {
-                    try
-                    {
+            public string RAZONCABECERA {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.RAZONCABECERAColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'RAZONCABECERA\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.RAZONCABECERAColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CODIGO
-            {
-                get
-                {
-                    try
-                    {
+            public string CODIGO {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.CODIGOColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'CODIGO\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.CODIGOColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string REFERENCIA
-            {
-                get
-                {
-                    try
-                    {
+            public string REFERENCIA {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.REFERENCIAColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'REFERENCIA\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.REFERENCIAColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DESCRIPCION
-            {
-                get
-                {
-                    try
-                    {
+            public string DESCRIPCION {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.DESCRIPCIONColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'DESCRIPCION\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.DESCRIPCIONColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string HECHOPOR
-            {
-                get
-                {
-                    try
-                    {
+            public string HECHOPOR {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.HECHOPORColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'HECHOPOR\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.HECHOPORColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CCP
-            {
-                get
-                {
-                    try
-                    {
+            public string CCP {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.CCPColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'CCP\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.CCPColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RESOLUCION
-            {
-                get
-                {
-                    try
-                    {
+            public string RESOLUCION {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.RESOLUCIONColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'RESOLUCION\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.RESOLUCIONColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PROCESO
-            {
-                get
-                {
-                    try
-                    {
+            public string PROCESO {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.PROCESOColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'PROCESO\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.PROCESOColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ESTADO
-            {
-                get
-                {
-                    try
-                    {
+            public string ESTADO {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.ESTADOColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'ESTADO\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.ESTADOColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CODTIPOORDEN
-            {
-                get
-                {
-                    try
-                    {
+            public string CODTIPOORDEN {
+                get {
+                    try {
                         return ((string)(this[this.tableRptOrdenes.CODTIPOORDENColumn]));
                     }
-                    catch (global::System.InvalidCastException e)
-                    {
+                    catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'CODTIPOORDEN\' de la tabla \'RptOrdenes\' es DBNull.", e);
                     }
                 }
-                set
-                {
+                set {
                     this[this.tableRptOrdenes.CODTIPOORDENColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTIPOORDENNull()
-            {
+            public bool IsTIPOORDENNull() {
                 return this.IsNull(this.tableRptOrdenes.TIPOORDENColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTIPOORDENNull()
-            {
+            public void SetTIPOORDENNull() {
                 this[this.tableRptOrdenes.TIPOORDENColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFECHANull()
-            {
+            public bool IsFECHANull() {
                 return this.IsNull(this.tableRptOrdenes.FECHAColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFECHANull()
-            {
+            public void SetFECHANull() {
                 this[this.tableRptOrdenes.FECHAColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTOTALNull()
-            {
+            public bool IsTOTALNull() {
                 return this.IsNull(this.tableRptOrdenes.TOTALColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTOTALNull()
-            {
+            public void SetTOTALNull() {
                 this[this.tableRptOrdenes.TOTALColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFUENTENull()
-            {
+            public bool IsFUENTENull() {
                 return this.IsNull(this.tableRptOrdenes.FUENTEColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFUENTENull()
-            {
+            public void SetFUENTENull() {
                 this[this.tableRptOrdenes.FUENTEColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTIPOUSUARIONull()
-            {
+            public bool IsTIPOUSUARIONull() {
                 return this.IsNull(this.tableRptOrdenes.TIPOUSUARIOColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTIPOUSUARIONull()
-            {
+            public void SetTIPOUSUARIONull() {
                 this[this.tableRptOrdenes.TIPOUSUARIOColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRAZONCABECERANull()
-            {
+            public bool IsRAZONCABECERANull() {
                 return this.IsNull(this.tableRptOrdenes.RAZONCABECERAColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRAZONCABECERANull()
-            {
+            public void SetRAZONCABECERANull() {
                 this[this.tableRptOrdenes.RAZONCABECERAColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCODIGONull()
-            {
+            public bool IsCODIGONull() {
                 return this.IsNull(this.tableRptOrdenes.CODIGOColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCODIGONull()
-            {
+            public void SetCODIGONull() {
                 this[this.tableRptOrdenes.CODIGOColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsREFERENCIANull()
-            {
+            public bool IsREFERENCIANull() {
                 return this.IsNull(this.tableRptOrdenes.REFERENCIAColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetREFERENCIANull()
-            {
+            public void SetREFERENCIANull() {
                 this[this.tableRptOrdenes.REFERENCIAColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDESCRIPCIONNull()
-            {
+            public bool IsDESCRIPCIONNull() {
                 return this.IsNull(this.tableRptOrdenes.DESCRIPCIONColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDESCRIPCIONNull()
-            {
+            public void SetDESCRIPCIONNull() {
                 this[this.tableRptOrdenes.DESCRIPCIONColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHECHOPORNull()
-            {
+            public bool IsHECHOPORNull() {
                 return this.IsNull(this.tableRptOrdenes.HECHOPORColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHECHOPORNull()
-            {
+            public void SetHECHOPORNull() {
                 this[this.tableRptOrdenes.HECHOPORColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCCPNull()
-            {
+            public bool IsCCPNull() {
                 return this.IsNull(this.tableRptOrdenes.CCPColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCCPNull()
-            {
+            public void SetCCPNull() {
                 this[this.tableRptOrdenes.CCPColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRESOLUCIONNull()
-            {
+            public bool IsRESOLUCIONNull() {
                 return this.IsNull(this.tableRptOrdenes.RESOLUCIONColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRESOLUCIONNull()
-            {
+            public void SetRESOLUCIONNull() {
                 this[this.tableRptOrdenes.RESOLUCIONColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPROCESONull()
-            {
+            public bool IsPROCESONull() {
                 return this.IsNull(this.tableRptOrdenes.PROCESOColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPROCESONull()
-            {
+            public void SetPROCESONull() {
                 this[this.tableRptOrdenes.PROCESOColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsESTADONull()
-            {
+            public bool IsESTADONull() {
                 return this.IsNull(this.tableRptOrdenes.ESTADOColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetESTADONull()
-            {
+            public void SetESTADONull() {
                 this[this.tableRptOrdenes.ESTADOColumn] = global::System.Convert.DBNull;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCODTIPOORDENNull()
-            {
+            public bool IsCODTIPOORDENNull() {
                 return this.IsNull(this.tableRptOrdenes.CODTIPOORDENColumn);
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCODTIPOORDENNull()
-            {
+            public void SetCODTIPOORDENNull() {
                 this[this.tableRptOrdenes.CODTIPOORDENColumn] = global::System.Convert.DBNull;
             }
         }
-
+        
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class DetalleTramiteRowChangeEvent : global::System.EventArgs
-        {
-
+        public class DetalleTramiteRowChangeEvent : global::System.EventArgs {
+            
             private DetalleTramiteRow eventRow;
-
+            
             private global::System.Data.DataRowAction eventAction;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleTramiteRowChangeEvent(DetalleTramiteRow row, global::System.Data.DataRowAction action)
-            {
+            public DetalleTramiteRowChangeEvent(DetalleTramiteRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleTramiteRow Row
-            {
-                get
-                {
+            public DetalleTramiteRow Row {
+                get {
                     return this.eventRow;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action
-            {
-                get
-                {
+            public global::System.Data.DataRowAction Action {
+                get {
                     return this.eventAction;
                 }
             }
         }
-
+        
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class TTipoUsuarioRowChangeEvent : global::System.EventArgs
-        {
-
+        public class TTipoUsuarioRowChangeEvent : global::System.EventArgs {
+            
             private TTipoUsuarioRow eventRow;
-
+            
             private global::System.Data.DataRowAction eventAction;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TTipoUsuarioRowChangeEvent(TTipoUsuarioRow row, global::System.Data.DataRowAction action)
-            {
+            public TTipoUsuarioRowChangeEvent(TTipoUsuarioRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TTipoUsuarioRow Row
-            {
-                get
-                {
+            public TTipoUsuarioRow Row {
+                get {
                     return this.eventRow;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action
-            {
-                get
-                {
+            public global::System.Data.DataRowAction Action {
+                get {
                     return this.eventAction;
                 }
             }
         }
-
+        
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class DetalleOrdenRowChangeEvent : global::System.EventArgs
-        {
-
+        public class DetalleOrdenRowChangeEvent : global::System.EventArgs {
+            
             private DetalleOrdenRow eventRow;
-
+            
             private global::System.Data.DataRowAction eventAction;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleOrdenRowChangeEvent(DetalleOrdenRow row, global::System.Data.DataRowAction action)
-            {
+            public DetalleOrdenRowChangeEvent(DetalleOrdenRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DetalleOrdenRow Row
-            {
-                get
-                {
+            public DetalleOrdenRow Row {
+                get {
                     return this.eventRow;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action
-            {
-                get
-                {
+            public global::System.Data.DataRowAction Action {
+                get {
                     return this.eventAction;
                 }
             }
         }
-
+        
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class RptOrdenesRowChangeEvent : global::System.EventArgs
-        {
-
+        public class RptOrdenesRowChangeEvent : global::System.EventArgs {
+            
             private RptOrdenesRow eventRow;
-
+            
             private global::System.Data.DataRowAction eventAction;
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RptOrdenesRowChangeEvent(RptOrdenesRow row, global::System.Data.DataRowAction action)
-            {
+            public RptOrdenesRowChangeEvent(RptOrdenesRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RptOrdenesRow Row
-            {
-                get
-                {
+            public RptOrdenesRow Row {
+                get {
                     return this.eventRow;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action
-            {
-                get
-                {
+            public global::System.Data.DataRowAction Action {
+                get {
                     return this.eventAction;
                 }
             }

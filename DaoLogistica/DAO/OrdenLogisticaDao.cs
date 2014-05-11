@@ -10,8 +10,9 @@ namespace DaoLogistica.DAO
 
         public static int Grabar(OrdenLogistica obj, DbTransaction dbTrans,out int cNroOrden)
         {
-            cNroOrden = 0;
             if (obj==null) throw new ArgumentNullException("obj");
+            if (dbTrans == null) throw new ArgumentNullException("dbTrans");
+            cNroOrden = 0;            
             //if (obj.Nro==0) throw new ArgumentNullException("obj","Falta Nro. de Orden");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
             DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.InsertUpdate);
@@ -43,10 +44,8 @@ namespace DaoLogistica.DAO
             DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, obj.CodLogin);
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
             DATA.Db.AddOutParameter(cmd, "NroOrden", DbType.Int32, 10);
-            if (dbTrans != null)
-                DATA.Db.ExecuteNonQuery(cmd, dbTrans);
-            else
-                DATA.Db.ExecuteNonQuery(cmd);
+            DATA.Db.ExecuteNonQuery(cmd, dbTrans);
+            
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
             if (obj.IdOrden <= 0)
             {
@@ -56,17 +55,18 @@ namespace DaoLogistica.DAO
             return ret; //devuelve el id único del registro
         }
 
-        public static int Delete(long idOrden, DbTransaction dbTrans)
+        public static int Delete(long idOrden, string codlogin, DbTransaction dbTrans)
         {
             if (idOrden <= 0) throw new ArgumentNullException("idOrden");
+            if (dbTrans==null) throw new ArgumentNullException("dbTrans", "Baby que mal");
             var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
-            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.DeleteLogico);
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.DeleteLogico); //300
             DATA.Db.AddInParameter(cmd, "IdOrden", DbType.Int64, idOrden);
+            DATA.Db.AddInParameter(cmd, "CodLogin", DbType.String, codlogin);
+
             DATA.Db.AddOutParameter(cmd, "ret", DbType.Int32, 10);
-            if (dbTrans != null)
-                DATA.Db.ExecuteNonQuery(cmd, dbTrans);
-            else
-                DATA.Db.ExecuteNonQuery(cmd);
+            DATA.Db.ExecuteNonQuery(cmd, dbTrans);
+
             var ret = (int)DATA.Db.GetParameterValue(cmd, "@ret");
             return ret;
         }
@@ -126,6 +126,14 @@ namespace DaoLogistica.DAO
             return DATA.Db.ExecuteDataSet(cmd);
         }
 
+        public static void CambiaEstado(EstadoOrden estado, long idorden)
+        {
+            var cmd = DATA.Db.GetStoredProcCommand("sp_TOrdenLogistica");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.CambiarEstado); //1021
+            DATA.Db.AddInParameter(cmd, "IdOrden", DbType.Int64, idorden);
+            DATA.Db.AddInParameter(cmd, "Estado", DbType.Int16, estado);
+            DATA.Db.ExecuteNonQuery(cmd);
+        }
         protected static OrdenLogistica MakeObj(IDataReader dr)
         {
             var obj = new OrdenLogistica();
@@ -205,7 +213,21 @@ namespace DaoLogistica.DAO
             var cmd = DATA.Db.GetStoredProcCommand("sp_ReporteOrdenServicio");
             DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.ReporteByExpediente);
             DATA.Db.AddInParameter(cmd, "@IdExpediente", DbType.String, idexpediente);
+            cmd.CommandTimeout = 150; //Tiempo 150 seg
             return DATA.Db.ExecuteDataSet(cmd); 
+        }
+        public static DataSet GetReporteDetallado(int opcion, String codLogin, 
+                                        String del, String al, String param)
+        {
+            if (param == null) throw new ArgumentNullException("param", "Baby no lo intentes");
+            var cmd = DATA.Db.GetStoredProcCommand("sp_ReporteDetalladoOrdenServicio");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, opcion);
+            DATA.Db.AddInParameter(cmd, "@param", DbType.String, param);
+            DATA.Db.AddInParameter(cmd, "@Codlogin", DbType.String, codLogin);
+            DATA.Db.AddInParameter(cmd, "@del", DbType.String, del);
+            DATA.Db.AddInParameter(cmd, "@al", DbType.String, al);
+            cmd.CommandTimeout = 0; //Tiempo Ilimitado
+            return DATA.Db.ExecuteDataSet(cmd);
         }
     }
 }

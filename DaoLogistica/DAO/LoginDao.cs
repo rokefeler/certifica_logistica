@@ -154,7 +154,7 @@ namespace DaoLogistica.DAO
         public static List<Login> SelectAllByEstado(Char eStado)
         {
             DbCommand cmd = DATA.Db.GetStoredProcCommand("sp_tLogin");
-            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetByEstado);
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetByEstado); //526
             DATA.Db.AddInParameter(cmd, "Estado", DbType.String, Convert.ToString(eStado));
             using (IDataReader dr = DATA.Db.ExecuteReader(cmd))
             {
@@ -162,6 +162,22 @@ namespace DaoLogistica.DAO
                 while (dr.Read())
                 {
                     Login tDerecho = MakeLogin(dr);
+                    tLoginList.Add(tDerecho);
+                }
+                return tLoginList;
+            }
+        }
+
+        public static List<Login> SelectAll()
+        {
+            var cmd = DATA.Db.GetStoredProcCommand("sp_tLogin");
+            DATA.Db.AddInParameter(cmd, "tipo_select", DbType.Int32, Select_SQL.GetAll); //500
+            using (var dr = DATA.Db.ExecuteReader(cmd))
+            {
+                var tLoginList = new List<Login>();
+                while (dr.Read())
+                {
+                    var tDerecho = MakeLogin(dr);
                     tLoginList.Add(tDerecho);
                 }
                 return tLoginList;

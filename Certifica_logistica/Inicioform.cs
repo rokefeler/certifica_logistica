@@ -10,6 +10,7 @@ using Certifica_logistica.mantenimiento;
 using Certifica_logistica.modulos;
 using Certifica_logistica.Popups;
 using Certifica_logistica.procesos;
+using Certifica_logistica.salidas;
 using Certifica_logistica.utiles;
 using DaoLogistica;
 using DaoLogistica.DAO;
@@ -446,7 +447,7 @@ namespace Certifica_logistica
             
             usuariosDeSistemaToolStripMenuItem.Enabled = estado;
             
-            relaciónDeAmbientesToolStripMenuItem.Enabled = estado;
+            RelOrdenesToolStripMenuItem.Enabled = estado;
             
             LoginToolStripMenuItem.Enabled = !estado;
             usuariosDeSistemaToolStripMenuItem.Enabled = false;
@@ -772,6 +773,17 @@ namespace Certifica_logistica
        {
            var oFrm = (Masterform)ActiveMdiChild;
            if (oFrm != null) oFrm.Master_Corregir();
+       }
+
+       private void RelOrdenesToolStripMenuItem_Click(object sender, EventArgs e)
+       {
+           var oFrm = new FrReporte01
+           {
+               MdiParent = this,
+               _DerechoFormulario = { Grabar = false, Eliminar = false, Nuevo = false, Procesar = true },
+               _FrmPadre = this
+           };
+           oFrm.Show();
        }
     }
 }

@@ -84,11 +84,21 @@
     <Compile Include="controls\MyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Ds\DsReporteOrden.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsReporteOrden.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Ds\DsTramite.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DsTramite.xsd</DependentUpon>
     </Compile>
+    <None Include="Ds\DsTramite1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsTramite.xsd</DependentUpon>
+    </None>
     <Compile Include="Ds\PrinterOrden.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -372,13 +382,24 @@
     <None Include="app.config" />
     <None Include="certifica_logistica.pfx" />
     <None Include="Certifica_logistica_ClaveTemporal.pfx" />
+    <None Include="Ds\DsReporteOrden.xsc">
+      <DependentUpon>DsReporteOrden.xsd</DependentUpon>
+    </None>
+    <None Include="Ds\DsReporteOrden.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsReporteOrden.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Ds\DsReporteOrden.xss">
+      <DependentUpon>DsReporteOrden.xsd</DependentUpon>
+    </None>
     <None Include="Ds\DsTramite.xsc">
       <DependentUpon>DsTramite.xsd</DependentUpon>
     </None>
     <None Include="Ds\DsTramite.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsTramite.Designer.cs</LastGenOutput>
+      <LastGenOutput>DsTramite1.Designer.cs</LastGenOutput>
     </None>
     <None Include="Ds\DsTramite.xss">
       <DependentUpon>DsTramite.xsd</DependentUpon>
@@ -797,6 +818,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="images\mtc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="images\anulado.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="images\dni.ico">

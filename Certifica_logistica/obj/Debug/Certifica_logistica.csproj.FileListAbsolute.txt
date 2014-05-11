@@ -1,4 +1,3 @@
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.exe
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.csprojResolveAssemblyReference.cache
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.Inicioform.resources
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.mantenimiento.FmAlumno.resources
@@ -28,11 +27,15 @@ E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\D
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.utiles.Ubigeoform.es-PE.resources
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.csproj.GenerateResource.Cache
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.exe.licenses
-E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.pdb
-E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\Certifica_logistica.exe.config
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\images\dni.ico
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\Properties\Resources.resx
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\Properties\Resources.Designer.cs
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\reportes\ordenes.cs
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\reportes\servicio.cs
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\reportes\servicio_nelson.cs
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\reportes\servicio.rpt
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\reportes\servicio_nelson.rpt
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\reportes\ordenes.rpt
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\images\add-24.png
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\images\adduser-16.png
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\images\adduser-24.png
@@ -133,6 +136,9 @@ E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\D
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\images\taxi_32.png
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\images\moneda_32.png
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\images\mtc.png
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\images\anulado.jpg
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\images\logo.jpg
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\Certifica_logistica.exe.config
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\Certifica_logistica.exe.manifest
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\Certifica_logistica.application
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\bin\Debug\Certifica_logistica.exe
@@ -198,10 +204,5 @@ E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\D
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.TrustInfo.xml
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.exe.manifest
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.application
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\bin\Debug\reportes\ordenes.cs
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\bin\Debug\reportes\servicio.cs
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\bin\Debug\reportes\servicio_nelson.cs
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\bin\Debug\reportes\servicio.rpt
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\bin\Debug\reportes\servicio_nelson.rpt
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\bin\Debug\reportes\ordenes.rpt
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\Certifica_logistica\bin\Debug\images\logo.jpg
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.exe
+E:\dev\Dropbox\certifica_logistica\certifica_logistica\Certifica_logistica\obj\Debug\Certifica_logistica.pdb

@@ -12,4 +12,3 @@ E:\dev\Dropbox\certifica_logistica\certifica_logistica\DaoLogistica\bin\Debug\Mi
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\DaoLogistica\bin\Debug\Microsoft.Practices.Unity.Interception.xml
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\DaoLogistica\obj\Debug\DaoLogistica.dll
 E:\dev\Dropbox\certifica_logistica\certifica_logistica\DaoLogistica\obj\Debug\DaoLogistica.pdb
-E:\dev\Dropbox\certifica_logistica\Certifica_logistica\DaoLogistica\obj\Debug\DaoLogistica.csprojResolveAssemblyReference.cache

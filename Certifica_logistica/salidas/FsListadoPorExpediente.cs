@@ -19,6 +19,32 @@ namespace Certifica_logistica.salidas
         public FsListadoPorExpediente()
         {
             InitializeComponent();
+        } 
+        private void FsListadoPorExpediente_Load(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Value)) return;
+            /******************************************************/
+            Dock = DockStyle.Fill;
+            var location = Location;
+            var tamanio = Size;
+            Dock = DockStyle.None;
+            Location = location;
+            Size = tamanio;
+            /******************************************************/
+            LblTitulo.Text = String.Format("{0} {1}", LblTitulo.Tag ,Value);
+            _ds = OrdenLogisticaDao.GetReporteByExpediente(Value);
+            dsTramite.Tables[name: "RptOrdenes"].Clear();
+            dsTramite.Tables[name: "RptOrdenes"].Load(_ds.CreateDataReader());
+            try
+            {
+                BtnExportar.Visible = false;
+                if (_ds.Tables[0].Rows.Count > 0)
+                    BtnExportar.Visible = true;
+            }
+            catch
+            {
+                Console.Beep();
+            }
         }
         public override bool Master_GrabarFormulario()
         {
@@ -93,14 +119,7 @@ namespace Certifica_logistica.salidas
             }
             return true;
         }
-        private void FsListadoPorExpediente_Load(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(Value)) return;
-            LblTitulo.Text = String.Format("{0} {1}", LblTitulo.Tag ,Value);
-            _ds = OrdenLogisticaDao.GetReporteByExpediente(Value);
-            dsTramite.Tables[name: "RptOrdenes"].Clear();
-            dsTramite.Tables[name: "RptOrdenes"].Load(_ds.CreateDataReader());
-        }
+       
         private void gridControl1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -138,6 +157,7 @@ namespace Certifica_logistica.salidas
                 General.ShowMessage("No se encontró ningún registro a Exportar");
                 return;
             }
+            Image logoImg;
             var nTope = dsTramite.RptOrdenes.Rows.Count + 6;
             var sCelda = String.Concat("E", nTope.ToString(CultureInfo.InvariantCulture));
             var sRange = String.Concat("E6:E", (nTope - 1).ToString(CultureInfo.InvariantCulture));
@@ -154,115 +174,20 @@ namespace Certifica_logistica.salidas
 
             // set the default worksheet name
             worksheet.Name = Value;
-            worksheet[sRangeI].Style.Number.NumberFormatString = "@";
+            
 
             // load data from DataTable into the worksheet
             worksheet.LoadDataTable(dsTramite.RptOrdenes, 5, 1, true);
-            // customize the workbook
-
-            // set the license key before saving the workbook
-            workbook.LicenseKey = "RW51ZXZ0ZXVldGt1ZXZ0a3R3a3x8fHw=";
+            worksheet[sRangeI].Style.Number.NumberFormatString = "@";
+            ExcelCellStyle styleTitulo, styleHeader, styleRows, styleformulaTotal;
+            General.EstiloExportarExcel(workbook, out styleTitulo, out styleHeader, out styleRows, out styleformulaTotal, out logoImg);
+            //----------------------------------------------------------------------------------------------------------
 
             // set workbook description properties
             workbook.DocumentProperties.Subject = "Listado de Ordenes del Expediente " + Value;
             workbook.DocumentProperties.Comments = "Información de OUL-UNSA";
 
-            #region CREATE CUSTOM WORKBOOK STYLES
-
-            #region Add a style used for the cells in the worksheet title area
-
-            var titleStyle = workbook.Styles.AddStyle("WorksheetTitleStyle");
-            // center the text in the title area
-            titleStyle.Alignment.HorizontalAlignment = ExcelCellHorizontalAlignmentType.Left;
-            titleStyle.Alignment.VerticalAlignment = ExcelCellVerticalAlignmentType.Center;
-            // set the title area borders
-            titleStyle.Borders[ExcelCellBorderIndex.Bottom].Color = Color.Green;
-            titleStyle.Borders[ExcelCellBorderIndex.Bottom].LineStyle = ExcelCellLineStyle.Medium;
-            titleStyle.Borders[ExcelCellBorderIndex.Top].Color = Color.Green;
-            titleStyle.Borders[ExcelCellBorderIndex.Top].LineStyle = ExcelCellLineStyle.Medium;
-            titleStyle.Borders[ExcelCellBorderIndex.Left].Color = Color.Green;
-            titleStyle.Borders[ExcelCellBorderIndex.Left].LineStyle = ExcelCellLineStyle.Medium;
-            titleStyle.Borders[ExcelCellBorderIndex.Right].Color = Color.Green;
-            titleStyle.Borders[ExcelCellBorderIndex.Right].LineStyle = ExcelCellLineStyle.Medium;
-                // set the gradient fill for the title area range with a custom color
-                titleStyle.Fill.FillType = ExcelCellFillType.GradientFill;
-                titleStyle.Fill.GradientFillOptions.Color1 = Color.FromArgb(255, 255, 204);
-                titleStyle.Fill.GradientFillOptions.Color2 = Color.White;
-            // set the title area font 
-            titleStyle.Font.Size = 14;
-            titleStyle.Font.Bold = true;
-            titleStyle.Font.UnderlineType = ExcelCellUnderlineType.Single;
-
-            #endregion
-
-            #region Add a style used for the data table header
-
-            var dataHeaderStyle = workbook.Styles.AddStyle("DataHeaderStyle");
-            dataHeaderStyle.Font.Size = 10;
-            dataHeaderStyle.Font.Bold = true;
-            dataHeaderStyle.Alignment.VerticalAlignment = ExcelCellVerticalAlignmentType.Center;
-            dataHeaderStyle.Alignment.HorizontalAlignment = ExcelCellHorizontalAlignmentType.Left;
-            dataHeaderStyle.Fill.FillType = ExcelCellFillType.SolidFill;
-            dataHeaderStyle.Fill.SolidFillOptions.BackColor = Color.LightBlue;
-            dataHeaderStyle.Borders[ExcelCellBorderIndex.Bottom].LineStyle = ExcelCellLineStyle.Thin;
-            dataHeaderStyle.Borders[ExcelCellBorderIndex.Top].LineStyle = ExcelCellLineStyle.Thin;
-            dataHeaderStyle.Borders[ExcelCellBorderIndex.Left].LineStyle = ExcelCellLineStyle.Thin;
-            dataHeaderStyle.Borders[ExcelCellBorderIndex.Right].LineStyle = ExcelCellLineStyle.Thin;
-
-            #endregion
-            #region Add a style used for table Details
-
-            var detailsRowsrStyle = workbook.Styles.AddStyle("DetailsRowStyle");
-            detailsRowsrStyle.Borders[ExcelCellBorderIndex.Bottom].LineStyle = ExcelCellLineStyle.Thin;
-            detailsRowsrStyle.Borders[ExcelCellBorderIndex.Top].LineStyle = ExcelCellLineStyle.Thin;
-            detailsRowsrStyle.Borders[ExcelCellBorderIndex.Left].LineStyle = ExcelCellLineStyle.Thin;
-            detailsRowsrStyle.Borders[ExcelCellBorderIndex.Right].LineStyle = ExcelCellLineStyle.Thin;
-
-            #endregion
-            #region Add a style used for the formula results
-
-            var formulaResultStyle = workbook.Styles.AddStyle("FormulaResultStyle");
-            formulaResultStyle.Font.Size = 10;
-            formulaResultStyle.Font.Bold = true;
-            formulaResultStyle.Alignment.VerticalAlignment = ExcelCellVerticalAlignmentType.Center;
-            formulaResultStyle.Fill.FillType = ExcelCellFillType.SolidFill;
-            formulaResultStyle.Fill.SolidFillOptions.BackColor = Color.FromArgb(204, 255, 204);
-            formulaResultStyle.Borders[ExcelCellBorderIndex.Bottom].LineStyle = ExcelCellLineStyle.Thin;
-            formulaResultStyle.Borders[ExcelCellBorderIndex.Top].LineStyle = ExcelCellLineStyle.Thin;
-            formulaResultStyle.Borders[ExcelCellBorderIndex.Left].LineStyle = ExcelCellLineStyle.Thin;
-            formulaResultStyle.Borders[ExcelCellBorderIndex.Right].LineStyle = ExcelCellLineStyle.Thin;
-
-            #endregion
-            #endregion
-
-            #region WORKSHEET PAGE SETUP
-
-            // set worksheet paper size and orientation, margins, header and footer
-            worksheet.PageSetup.PaperSize = ExcelPagePaperSize.PaperA4;
-            worksheet.PageSetup.Orientation = ExcelPageOrientation.Landscape;
-            worksheet.PageSetup.LeftMargin = 0.5;
-            worksheet.PageSetup.RightMargin = 0.5;
-            worksheet.PageSetup.TopMargin = 1;
-            worksheet.PageSetup.BottomMargin = 0.5;
-
-            // add header and footer
-
-            //display a logo image in the left part of the header
-            var imagesPath = System.IO.Path.Combine(Application.StartupPath, @"images"); //..\..\Images"
-            var logoImg = Image.FromFile(System.IO.Path.Combine(imagesPath, "logo.jpg"));
-            worksheet.PageSetup.LeftHeaderFormat = "&G";
-            worksheet.PageSetup.LeftHeaderPicture = logoImg;
-            // display Fecha y hora in the right part of the header
-            worksheet.PageSetup.RightHeaderFormat = "&D &T"; 
-
-            // add worksheet header and footer
-            // display the workbook file name in the left part of the footer
-            worksheet.PageSetup.LeftFooterFormat = "&F";
-            // display the page number in the center part of the footer
-            worksheet.PageSetup.RightFooterFormat = "&P";
-
-            #endregion
-
+           
             #region WRITE THE WORKSHEET TOP TITLE
 
             // merge the cells in the range to create the title area 
@@ -275,16 +200,16 @@ namespace Certifica_logistica.salidas
             // set a row height of 18 points for each row in the range
             titleRange.RowHeightInPoints = 18;
             // set the worksheet top title style
-            titleRange.Style = titleStyle;
+            titleRange.Style = styleTitulo;
 
             #endregion
 
             
 
             worksheet["A5"].Value = "ITEM";
-            worksheet["A5:P5"].Style = dataHeaderStyle;
+            worksheet["A5:P5"].Style = styleHeader;
             worksheet["A5:P5"].RowHeightInPoints = 20;
-            worksheet[sRangeTotal].Style = detailsRowsrStyle;
+            worksheet[sRangeTotal].Style = styleRows;
             // lock the data table header
             worksheet["A6"].FreezePanes();
             worksheet["A6"].FormulaR1C1 = "=+ROW(RC)-5";
@@ -312,13 +237,13 @@ namespace Certifica_logistica.salidas
 
             
             worksheet[sCelda].Formula = string.Format("SUM({0})",sRange);
-            worksheet[sCelda].Style = formulaResultStyle;
+            worksheet[sCelda].Style = styleformulaTotal;
             
             // SAVE THE WORKBOOK
 
             // the workbook is saved in Excel 2007 (.xlsx) format 
             // get the output file path
-            var outFilePath = System.IO.Path.Combine(Application.StartupPath, "listados","Ordenes_Exp_" + Value+DateTime.Now.ToString("--ddMMyy_hhmmss") +".xlsx");
+            var outFilePath = System.IO.Path.Combine(Application.StartupPath, "listados","Ordenes_Exp_" + Value+ "_" + DateTime.Now.ToString("ddMMyy_hhmmss") +".xlsx");
             try
                 {
                     // save the workbook to output path
@@ -333,10 +258,11 @@ namespace Certifica_logistica.salidas
                 {
                     // close the workbook and release the allocated resources
                     workbook.Close();
-                    // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+                    #region Dispose the Image object
                     if (logoImg != null)
                         logoImg.Dispose();
-                }
+                    #endregion
+            }
 
             var dr = MessageBox.Show(@"Desea Ud. Abrir el archivo de excel en un visor externo?", @"Abrir Libro de Excel", MessageBoxButtons.YesNo);
             if (dr != DialogResult.Yes)

@@ -515,6 +515,9 @@ namespace Certifica_logistica.procesos
             TxtAsunto.Text = _exp.Asunto;
             TxtFolios.Text = _exp.Folios.ToString("#00");
             TxtnLog.Text = @"Log:" + _exp.Nlog.ToString(CultureInfo.InvariantCulture).PadLeft(6, '0');
+            //Add 26.04.2014
+            Text = Tag + String.Format("Creado por : {0} El {1}{2}", _exp.CodLogin,
+                _exp.FechaRegistro.ToShortDateString(), _exp.FechaRegistro.ToShortTimeString());
             if (_exp.Estado == '2' || _exp.Estado == '3')
             {
                 CboFuente.Enabled = false;

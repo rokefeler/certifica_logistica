@@ -86,6 +86,7 @@ namespace Certifica_logistica.procesos
             this.EdCodigo = new DevExpress.XtraEditors.ButtonEdit();
             this.label4 = new System.Windows.Forms.Label();
             this.LblRazon = new System.Windows.Forms.Label();
+            this.PicAnulado = new System.Windows.Forms.PictureBox();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.importarcionGenericaDeDetallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -138,6 +139,7 @@ namespace Certifica_logistica.procesos
             this.GrpDocumento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodigo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicAnulado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detalleOrdenBindingSource)).BeginInit();
@@ -227,6 +229,7 @@ namespace Certifica_logistica.procesos
             this.splitContainerControl1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainerControl1.Panel1.Controls.Add(this.GrpDocumento);
             this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.PicAnulado);
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(698, 482);
@@ -798,6 +801,16 @@ namespace Certifica_logistica.procesos
             this.LblRazon.TabIndex = 4;
             this.LblRazon.Text = "Razon Social / Nombre:";
             // 
+            // PicAnulado
+            // 
+            this.PicAnulado.Location = new System.Drawing.Point(0, 71);
+            this.PicAnulado.Name = "PicAnulado";
+            this.PicAnulado.Size = new System.Drawing.Size(137, 99);
+            this.PicAnulado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicAnulado.TabIndex = 24;
+            this.PicAnulado.TabStop = false;
+            this.PicAnulado.Visible = false;
+            // 
             // gridControl1
             // 
             this.gridControl1.AllowDrop = true;
@@ -1187,6 +1200,7 @@ namespace Certifica_logistica.procesos
             this.GrpDocumento.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CboTipoUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdCodigo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicAnulado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.detalleOrdenBindingSource)).EndInit();
@@ -1284,5 +1298,6 @@ namespace Certifica_logistica.procesos
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private DevExpress.XtraGrid.Columns.GridColumn colExceso;
+        private System.Windows.Forms.PictureBox PicAnulado;
     }
 }

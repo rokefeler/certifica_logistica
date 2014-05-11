@@ -6,14 +6,17 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Certifica_logistica.Ds;
 using Certifica_logistica.modulos;
 using Certifica_logistica.Popups;
+using Certifica_logistica.Properties;
 using Certifica_logistica.utiles;
 using CrystalDecisions.CrystalReports.Engine;
 using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
+using DevExpress.XtraEditors.Controls;
 using Winnovative.ExcelLib;
 
 namespace Certifica_logistica.procesos
@@ -29,9 +32,8 @@ namespace Certifica_logistica.procesos
         private string _lastMeta;
         private char _lastTipoUsuario;
         private bool _isCargadoDatosInternos;
-/*
-        private DataSet _ds;
-*/
+        private Int16 _estado; //Estado de la Orden Cargada
+
         public FpOrdenLogistica()
         {
             InitializeComponent();
@@ -42,6 +44,8 @@ namespace Certifica_logistica.procesos
             _isCargadoDatosInternos = false;
             _idOrdenAClonar=0;
             _lastTipoUsuario = ' ';
+            _estado = 1;
+            PicAnulado.Dock = DockStyle.Fill; //Rellenar en toodo el contenedor
         }
 
         private void FpOrdenLogistica_Load(object sender, EventArgs e)
@@ -149,23 +153,23 @@ namespace Certifica_logistica.procesos
                     CboTipoUsuario.EditValue = 'N';
                     cad = @"PLANILLA DE PROPINAS";
                     //pic1.Load(Application.StartupPath + "\\images\\moneda_24.png");
-                    pic1.Image= Properties.Resources.moneda_32;
+                    pic1.Image= Resources.moneda_32;
                     //Icon = ToolboxBitmapAttribute.
                     break;
                 case ENumTipoOrden.MOVILIDAD: //PERSONAL
                     cad = @"PLANILLA DE MOVILIDAD";
                     CboTipoUsuario.EditValue = 'N';
-                    pic1.Image= Properties.Resources.taxi_32;
+                    pic1.Image= Resources.taxi_32;
                     break;
                 case ENumTipoOrden.CONVENIO: //DOC EXTRANJERO
                     cad = @"CONTRATO CONVENIO";
                     CboTipoUsuario.EditValue = 'P';
-                    pic1.Image= Properties.Resources.contrato_24;
+                    pic1.Image= Resources.contrato_24;
                     break;
                 case ENumTipoOrden.VIATICOS: //PERSONAL
                     cad = @"PLANILLA DE VIATICOS";
                     CboTipoUsuario.EditValue = 'P';
-                    pic1.Image= Properties.Resources.avion_24;
+                    pic1.Image= Resources.avion_24;
                     break;
                 case ENumTipoOrden.SERVICIO: //PROVEEDOR
                     cad = @"ORDEN DE SERVICIO U TRABAJO";
@@ -244,8 +248,7 @@ namespace Certifica_logistica.procesos
         public override bool Master_GrabarFormulario()
         {
             if (!Master_Verificar()) return false;
-            OrdenLogistica obj;
-            obj = new OrdenLogistica();
+            var obj = new OrdenLogistica();
             if (!String.IsNullOrEmpty(Value))
                 obj.IdOrden = Convert.ToInt64(Value); //Indicar el Id de la Orden.
             obj.IdExpediente = EdIdExpediente.Tag.ToString();
@@ -264,6 +267,18 @@ namespace Certifica_logistica.procesos
             {
                 obj.Codigo = "";
             }
+
+            if (_estado == 0)
+            {
+                General.ShowMessage("La Orden Esta ANULADA, No se puede Continuar");
+                return false;
+            }
+            if(_estado>=3)
+            {
+                General.ShowMessage("La Orden Esta BLOQUEADA, No se puede Continuar");
+                return false;
+            }
+
             if (!string.IsNullOrEmpty(Value))
             {
                 if (
@@ -362,6 +377,69 @@ namespace Certifica_logistica.procesos
 
             return true;
         }
+
+        public override bool Master_EliminarFormulario()
+        {
+            var ret = 0;
+            //verificar si esta cargado alguna opción
+            if (String.IsNullOrEmpty(Value))
+                return false;
+            //Cargar Datos de Orden
+            var obj = OrdenLogisticaDao.GetbyId(Convert.ToInt64(Value));
+            if (obj == null)
+            {
+                General.ShowMessage("La Orden Indicada, Ya no esta Disponible","Orden no Existe");
+                return false;
+            }
+            //Verificar que El Estado no sea Bloqueado [0=Anulado] [1=Borrador] [2=Impreso] [3=Bloqueado]
+            if (obj.Estado == 0)
+            {
+                General.ShowMessage("La Orden ya se Encuentra ANULADA", icon: MessageBoxIcon.Stop);
+                return false;
+            }
+            if(obj.Estado>=3)
+            {
+                General.ShowMessage("La Orden Se encuentra BLOQUEADA, Consulte con el Administrador de BBDD", icon: MessageBoxIcon.Stop);
+                return false;
+            }
+            var nres = MessageBox.Show(@"¿Desea Ud. ANULAR ESTA ORDEN?", @"Confirme por Favor",
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3);
+            if (nres != DialogResult.Yes) return false;
+            nres = MessageBox.Show(@"¿Esta Ud. Realmente Seguro?, Esta Opción no es Reversible", @"última Oportunidad",
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button3);
+            if (nres != DialogResult.Yes) return false;
+
+            var con = _FrmPadre.MiDatabase.CreateConnection();
+            con.Open();
+            var dbtrans = con.BeginTransaction();
+            string msg;
+            try
+            {
+                ret=OrdenLogisticaDao.Delete(obj.IdOrden, _FrmPadre.Miconfiguracion.IdUsuario, dbtrans);
+                msg = General.AnalizaResultadoSql(ret);
+                if (ret>0)
+                {
+                    dbtrans.Commit();
+                    msg = "Orden Fue Eliminada Correctamente";
+                }
+                else
+                    dbtrans.Rollback();
+
+            }
+            catch (Exception ex)
+            {
+                dbtrans.Rollback();
+                msg = string.Format("Error en Operación BBDD - {0}", ex.Message);
+            }
+            finally
+            {
+                if(con.State== ConnectionState.Open)
+                    con.Close();
+            }
+            General.ShowMessage(msg);
+            return (ret > 0);
+        }
+
         public override bool Master_ImprimirFormulario(bool isPrevio, int nCopias, int desde, int hasta, string cImpresora)
         {
             var ret = false;
@@ -446,6 +524,8 @@ namespace Certifica_logistica.procesos
                     rpt.PrintOptions.PrinterName = cImpresora;
                     rpt.PrintToPrinter(nCopias, true, desde, hasta);
                 }
+                //Grabar Estado de La Orden a Impreso
+                OrdenLogisticaDao.CambiaEstado(EstadoOrden.Impreso, Convert.ToInt64(Value));
             }
             else
             {
@@ -516,6 +596,8 @@ namespace Certifica_logistica.procesos
         public override bool Master_NuevoFormulario()
         {
             toolTipController1.SetToolTip(DtFechaExp, "");
+            toolTipController1.SetToolTip(EdIdOrden, "");
+            toolTipController1.SetToolTip(CboYearOrden, "");
             EdIdOrden.EditValue = null;
             EdIdOrden.ResetBackColor();
             
@@ -553,12 +635,17 @@ namespace Certifica_logistica.procesos
             dxErrorProvider1.ClearErrors();
             EdIdOrden.Properties.ReadOnly = false;
             EdIdExpediente.Focus();
+            PicAnulado.Image = null;
+            PicAnulado.Visible = false;
             return true;
         }
         // ReSharper disable once OptionalParameterHierarchyMismatch
 // ReSharper disable once OptionalParameterHierarchyMismatch
         public override bool Master_CargarFicha(string idPrincipal, string idSecundario, int anio = 2014)
         {
+            toolTipController1.SetToolTip(EdIdOrden, "");
+            toolTipController1.SetToolTip(CboYearOrden, "");
+            PicAnulado.Visible = false;
             var ord = OrdenLogisticaDao.GetbyId(Convert.ToInt32(idPrincipal),anio, idSecundario);
             if (ord == null)
             {
@@ -567,17 +654,59 @@ namespace Certifica_logistica.procesos
                 General.ShowMessage("El Numero de Orden Ingresado, No Se encuentra Registrado","Intentelo Nuevamente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
+            var msgTitle = string.Format("Creado por {0} el {1} {2}", ord.CodLogin, ord.FechaRegistro.ToShortDateString(), ord.FechaRegistro.ToShortTimeString() );
+            _estado = ord.Estado; //Copiar Estado Actual en Memoria
+            switch (ord.Estado)
+            {
+                case 0:
+                    EdIdOrden.BackColor = Color.Red;
+                    CboYearOrden.BackColor = Color.Red;
+                    toolTipController1.SetToolTip(EdIdOrden, "OJO - ORDEN ESTA ANULADA");
+                    toolTipController1.SetToolTip(CboYearOrden, "OJO - ORDEN ESTA ANULADA");
+                    msgTitle = String.Format("{0} - ¡¡¡ ORDEN ANULADA !!! el {1} {2} por {3}",msgTitle, ord.FechaAnulacion.ToShortDateString(), ord.FechaAnulacion.ToShortTimeString(), ord.CodLoginAnula) ;
+                    try
+                    {
+                        var imagesPath = Path.Combine(Application.StartupPath, @"images");
+                        PicAnulado.Image = Image.FromFile(Path.Combine(imagesPath, "anulado.jpg"));
+                        PicAnulado.Visible = true;
+                    }
+                    catch
+                    {
+                        PicAnulado.Visible = false;
+                    }
+                    break;
+                case 1: //Vigente Borrador
+                    EdIdOrden.BackColor = Color.LightGreen;
+                    CboYearOrden.BackColor = Color.LightGreen;
+                    msgTitle = String.Format("{0} - ¡¡¡ ORDEN GRABADA BORRADOR !!!", msgTitle);
+                    break;
+                case 2: //Impreso
+                    EdIdOrden.BackColor = Color.LightGreen;
+                    CboYearOrden.BackColor = Color.LightGreen;
+                    msgTitle = String.Format("{0} - ¡¡¡ ORDEN IMPRESA !!! el {1} {2}", msgTitle, ord.FechaImpresion.ToShortDateString(), ord.FechaImpresion.ToShortTimeString());
+                    break;
+                default:
+                    if (ord.Estado >= 3)
+                    {
+                        EdIdOrden.BackColor = Color.Gold;
+                        CboYearOrden.BackColor = Color.Gold;
+                        msgTitle = String.Format("{0} - ¡¡¡ ORDEN BLOQUEADA !!! el {1} {2}", msgTitle, ord.FechaBloqueo.ToShortDateString(), ord.FechaBloqueo.ToShortTimeString());
+                        toolTipController1.SetToolTip(EdIdOrden, "OJO - ORDEN ESTA BLOQUEADA");
+                        toolTipController1.SetToolTip(CboYearOrden, "OJO - ORDEN ESTA BLOQUEADA");
+                    }
+                    break;
+            }
             
             BtnCarga.Enabled = false; //Impedir que se modifique despues nro de exp. 13MAR13
-
+            Text = msgTitle;
             CargarExpediente(ord.IdExpediente);
             Value = ord.IdOrden.ToString(CultureInfo.InvariantCulture);
             //
             //Ahora cargar los demas Datos
             DtFechaGiro.EditValue = ord.FechaGiro;
             TxtReferencia.Text = ord.Referencia;
-            EdIdOrden.BackColor = Color.LightGreen;
-            CboYearOrden.BackColor = Color.LightGreen;
+
+            
             General.UbicaItemsComboCodigo(CboTipoProceso, ord.IdxProceso);
             CboTipoProceso_SelectedIndexChanged(this,null);
             TxtNroProceso.Text = ord.NroProceso;
@@ -597,8 +726,24 @@ namespace Certifica_logistica.procesos
             BtnClonar.Visible = true;
             return false;
         }
-
-        private void TxtCodPersonal_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        /*
+        private void DibujAnulado()
+        {
+         
+            var formGraphics = CreateGraphics();
+            const string drawString = "¡¡¡ ANULADO !!!";
+            var drawFont = new Font("Arial", 30);
+            var drawBrush = new SolidBrush(Color.Black);
+            const float x = 150.0F;
+            const float y = 50.0F;
+            var drawFormat = new StringFormat();
+            formGraphics.DrawString(drawString, drawFont, drawBrush, x, y, drawFormat);
+            drawFont.Dispose();
+            drawBrush.Dispose();
+            formGraphics.Dispose();
+        }
+        */
+        private void TxtCodPersonal_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             var cTipoUsuario = (char) CboTipoUsuario.EditValue;
             var eTipoTabla= ENumTabla.NINGUNO;
@@ -648,24 +793,10 @@ namespace Certifica_logistica.procesos
                 TxtTotal.Text=@"0.00";
                 TxtTotal.Tag = "0.00";
             }
-            /*
-            var query = from row in _tbOrdenDetalle.AsEnumerable()
-                        group row by row.Field<Int32>("IdMeta") into grp
-                        select new
-                        {
-                            Id = grp.Key,
-                            sum = grp.Sum(r => r.Field<int>("Monto"))
-                        };
-            foreach (var grp in query)
-            {
-                LstMetas.Items.Add(String.Format("S/. {0} = {1}", grp.Id, grp.sum));
-            }*/
-            //var dtotal=_tbOrdenDetalle.Select("COUNT")
-            // dsTramite.Tables[name: "DetalleOrden"].Clear();
-            // dsTramite.Tables[name: "DetalleOrden"].Load(_tbOrdenDetalle.CreateDataReader());
+ 
         }
-
-// ReSharper disable once RedundantOverridenMember
+        
+        // ReSharper disable once RedundantOverridenMember
         public override void ObjectEnter(object sender, EventArgs e)
         {
             base.ObjectEnter(sender, e);
@@ -1081,6 +1212,7 @@ Los Cambios se Haran Directamente en la Base de Datos",
 
         private void BtnCargaOrden_Click(object sender, EventArgs e)
         {
+            _estado = 1; //se resetea _estado actual de la Orden
             if (EdIdOrden.EditValue == null) return;
             if (EdIdOrden.IsModified) return;
             var cNroExp = EdIdOrden.EditValue.ToString();
@@ -1102,7 +1234,7 @@ Los Cambios se Haran Directamente en la Base de Datos",
             }
         }
 
-        private void EdIdExpediente_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void EdIdExpediente_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             var oFrm = new FphBusqueda { _TiTuloForm = "Busqueda De Expedientes Ingresados", _backColor = BackColor, _TipoTabla = ENumTabla.EXPEDIENTE };
             oFrm.ShowDialog();
@@ -1122,7 +1254,7 @@ Los Cambios se Haran Directamente en la Base de Datos",
         
         }
 
-        private void EdIdOrden_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void EdIdOrden_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
             var oFrm = new FphBusqueda
             {
@@ -1453,7 +1585,7 @@ Los Cambios se Haran Directamente en la Base de Datos",
 
             try
             {
-                pathOrigen = Properties.Settings.Default.ruta_importacion;
+                pathOrigen = Settings.Default.ruta_importacion;
             }
             catch
             {

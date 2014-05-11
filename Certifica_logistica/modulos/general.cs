@@ -12,6 +12,7 @@ using DaoLogistica;
 using DaoLogistica.DAO;
 using DaoLogistica.ENTIDAD;
 using Rebex.Net;
+using Winnovative.ExcelLib;
 
 namespace Certifica_logistica.modulos
 {
@@ -233,9 +234,6 @@ static class CONSTANTE
             
             return ret;
         }
-
-      
-       
         public static bool LeerServerFtp(string carpeta, ref Ftp myftp, Boolean isRoot)
         {
             TimeSpan Dif ;
@@ -429,28 +427,6 @@ static class CONSTANTE
            return ip4Address;
        }
 
-       public static DataTable GenerarTablaForStickers()
-       {
-           var tb = new DataTable();
-           var c = new DataColumn { DataType = Type.GetType("System.Int32"), ColumnName = "CodBien" };
-           tb.Columns.Add(c);
-
-           c = new DataColumn { DataType = Type.GetType("System.String"), ColumnName = "Denomi" };
-           tb.Columns.Add(c);
-
-           c = new DataColumn { DataType = Type.GetType("System.String"), ColumnName = "CodSbn" };
-           tb.Columns.Add(c);
-
-           c = new DataColumn { DataType = Type.GetType("System.String"), ColumnName = "CodAmbiente" };
-           tb.Columns.Add(c);
-
-           c = new DataColumn { DataType = Type.GetType("System.String"), ColumnName = "Gp" };
-           tb.Columns.Add(c);
-
-           c = new DataColumn("Codbar", typeof(byte[]));
-           tb.Columns.Add(c);
-           return tb;
-       }
 
        public static ENumTabla DeterminaTipoUsuario(char cTipo, out string cNombre)
        {
@@ -480,45 +456,7 @@ static class CONSTANTE
            }
            return tipo;
        }
-       public static bool AnalizarEstadoAmbiente(int estado, out String msgEstado)
-       {
-            var isBloqueado = false;
-                    switch (estado)
-                    {
-                        case 1: //No Existe Estado 0
-                            msgEstado = "Ambiente Pendiente de Asignar Responsables";
-                            break;
-                        case 2:
-                            msgEstado = "Ambiente En Proceso de Inventario";
-                            break;
-                        case 3:
-                            msgEstado = "Planillas de Amb. Entregadas a USUARIO, Pendientes de Firmar";
-                            break;
-                        case 4:
-                            msgEstado =
-                                "Planillas de Amb. FIRMADAS x USUARIO, ENTREGADAS a Coordinador - Ambiente Cerrado";
-                            isBloqueado = true;
-                            break;
-                        case 5:
-                            msgEstado = "Planillas de Amb. Digitalizadas, Ambiente Cerrado";
-                            isBloqueado = true;
-                            break;
-                        case 6:
-                            msgEstado = "Planillas de Amb. Empastadas en Libro, Ambiente Cerrado";
-                            isBloqueado = true;
-                            break;
-                        case 7:
-                            msgEstado = "Planillas de Amb. Conciliadas, Ambiente Cerrado";
-                            isBloqueado = true;
-                            break;
-                        default:
-                           msgEstado = "Estado de Ambiente DESCONOCIDO, COMUNIQUE AL ADMINISTRADOR";
-                           isBloqueado = true;
-                            break;
-                    }
-           return isBloqueado;
-       }
-
+    
        /// <summary>
        /// Permite Devolver cual es el mensaje de texto a devolver, segun el resultado devuelto por la BD
        /// </summary>
@@ -539,16 +477,19 @@ static class CONSTANTE
                    cad = "El Monto Actual, Supera El SALDO APROBADO, registrado en TRAMITE";
                    break;
                case -4:
-                   cad = "Imposible Continuar, Estado de Registro Es ANULADO";
+                   cad = "Imposible Continuar, Estado Actual del Registro Es ANULADO";
                    break;
                case -5:
-                   cad = "Imposible Continuar, Estado de Registro Es BLOQUEADO TOTAL";
+                   cad = "Imposible Continuar, Estado Actual del Registro Es BLOQUEADO TOTAL";
                    break;
                case -6: //CambioExpediente
                    cad = "Nro. de Expediente a Cambiar, Contiene Ordenes Relacionadas - Imposible Continuar";
                    break;
                case -7: //CambioExpediente
                    cad = "Nro. de Expediente NUEVO, Ya Existe y Contiene Ordenes Relacionadas - Imposible Continuar";
+                   break;
+               case -8:
+                    cad = "Orden Ya no se encuentra Disponible (Fue Eliminado?)- Verifique Nuevamente";
                    break;
                default:
                    cad = "PROCESO SATISFACTORIO";
@@ -586,22 +527,114 @@ static class CONSTANTE
            }
            return cod;
        }
-       /*public static String Limpiar(String cad)
+
+       public static void EstiloExportarExcel(ExcelWorkbook workbook,  
+           out ExcelCellStyle StyleTitulo, out ExcelCellStyle StyleHeader,
+           out ExcelCellStyle StyleRows, out ExcelCellStyle FormulaTotalStyle, out Image logoImg)
        {
-           cad = cad.Replace("&#209;", "Ñ");
-           cad = cad.Replace("&#xD1;", "Ñ");
-           cad = cad.Replace("&#193;", "Á");
-           cad = cad.Replace("&#201;", "É");
-           cad = cad.Replace("&#205;", "Í");
-           cad = cad.Replace("&#211;", "Ó");
-           cad = cad.Replace("&#218;", "Ú");
-           cad = cad.Replace("&#xC1;", "Á");
-           cad = cad.Replace("&#xC9;", "É");
-           cad = cad.Replace("&#xCD;", "Í");
-           cad = cad.Replace("&#xD3;", "Ó");
-           cad = cad.Replace("&#xDA;", "Ú");
-           cad = cad.Replace('\u0022', ' ');
-           return cad;
-       }*/
+           //var worksheet = workbook.Worksheets[0];
+           // set the license key before saving the workbook
+           workbook.LicenseKey = "RW51ZXZ0ZXVldGt1ZXZ0a3R3a3x8fHw=";
+           var worksheet = workbook.Worksheets[0];
+            #region CREATE CUSTOM WORKBOOK STYLES
+
+            #region Add a style used for the cells in the worksheet title area
+
+            var titleStyle = workbook.Styles.AddStyle("WorksheetTitleStyle");
+            // center the text in the title area
+            titleStyle.Alignment.HorizontalAlignment = ExcelCellHorizontalAlignmentType.Left;
+            titleStyle.Alignment.VerticalAlignment = ExcelCellVerticalAlignmentType.Center;
+            // set the title area borders
+            titleStyle.Borders[ExcelCellBorderIndex.Bottom].Color = Color.Green;
+            titleStyle.Borders[ExcelCellBorderIndex.Bottom].LineStyle = ExcelCellLineStyle.Medium;
+            titleStyle.Borders[ExcelCellBorderIndex.Top].Color = Color.Green;
+            titleStyle.Borders[ExcelCellBorderIndex.Top].LineStyle = ExcelCellLineStyle.Medium;
+            titleStyle.Borders[ExcelCellBorderIndex.Left].Color = Color.Green;
+            titleStyle.Borders[ExcelCellBorderIndex.Left].LineStyle = ExcelCellLineStyle.Medium;
+            titleStyle.Borders[ExcelCellBorderIndex.Right].Color = Color.Green;
+            titleStyle.Borders[ExcelCellBorderIndex.Right].LineStyle = ExcelCellLineStyle.Medium;
+            // set the gradient fill for the title area range with a custom color
+            titleStyle.Fill.FillType = ExcelCellFillType.GradientFill;
+            titleStyle.Fill.GradientFillOptions.Color1 = Color.FromArgb(255, 255, 204);
+            titleStyle.Fill.GradientFillOptions.Color2 = Color.White;
+            // set the title area font 
+            titleStyle.Font.Size = 14;
+            titleStyle.Font.Bold = true;
+            titleStyle.Font.UnderlineType = ExcelCellUnderlineType.Single;
+            StyleTitulo = titleStyle;
+            #endregion
+
+            #region Add a style used for the data table header
+
+            var dataHeaderStyle = workbook.Styles.AddStyle("DataHeaderStyle");
+            dataHeaderStyle.Font.Size = 10;
+            dataHeaderStyle.Font.Bold = true;
+            dataHeaderStyle.Alignment.VerticalAlignment = ExcelCellVerticalAlignmentType.Center;
+            dataHeaderStyle.Alignment.HorizontalAlignment = ExcelCellHorizontalAlignmentType.Left;
+            dataHeaderStyle.Fill.FillType = ExcelCellFillType.SolidFill;
+            dataHeaderStyle.Fill.SolidFillOptions.BackColor = Color.LightBlue;
+            dataHeaderStyle.Borders[ExcelCellBorderIndex.Bottom].LineStyle = ExcelCellLineStyle.Thin;
+            dataHeaderStyle.Borders[ExcelCellBorderIndex.Top].LineStyle = ExcelCellLineStyle.Thin;
+            dataHeaderStyle.Borders[ExcelCellBorderIndex.Left].LineStyle = ExcelCellLineStyle.Thin;
+            dataHeaderStyle.Borders[ExcelCellBorderIndex.Right].LineStyle = ExcelCellLineStyle.Thin;
+            StyleHeader = dataHeaderStyle;
+            #endregion
+            #region Add a style used for table Details
+
+            var detailsRowsrStyle = workbook.Styles.AddStyle("DetailsRowStyle");
+            detailsRowsrStyle.Borders[ExcelCellBorderIndex.Bottom].LineStyle = ExcelCellLineStyle.Thin;
+            detailsRowsrStyle.Borders[ExcelCellBorderIndex.Top].LineStyle = ExcelCellLineStyle.Thin;
+            detailsRowsrStyle.Borders[ExcelCellBorderIndex.Left].LineStyle = ExcelCellLineStyle.Thin;
+            detailsRowsrStyle.Borders[ExcelCellBorderIndex.Right].LineStyle = ExcelCellLineStyle.Thin;
+            StyleRows = detailsRowsrStyle;
+
+            #endregion
+            #region Add a style used for the formula results
+
+            var formulaResultStyle = workbook.Styles.AddStyle("FormulaResultStyle");
+            formulaResultStyle.Font.Size = 10;
+            formulaResultStyle.Font.Bold = true;
+            formulaResultStyle.Alignment.VerticalAlignment = ExcelCellVerticalAlignmentType.Center;
+            formulaResultStyle.Fill.FillType = ExcelCellFillType.SolidFill;
+            formulaResultStyle.Fill.SolidFillOptions.BackColor = Color.FromArgb(204, 255, 204);
+            formulaResultStyle.Borders[ExcelCellBorderIndex.Bottom].LineStyle = ExcelCellLineStyle.Thin;
+            formulaResultStyle.Borders[ExcelCellBorderIndex.Top].LineStyle = ExcelCellLineStyle.Thin;
+            formulaResultStyle.Borders[ExcelCellBorderIndex.Left].LineStyle = ExcelCellLineStyle.Thin;
+            formulaResultStyle.Borders[ExcelCellBorderIndex.Right].LineStyle = ExcelCellLineStyle.Thin;
+            FormulaTotalStyle = formulaResultStyle;
+            #endregion
+            #endregion
+
+            #region WORKSHEET PAGE SETUP
+
+            // set worksheet paper size and orientation, margins, header and footer
+            worksheet.PageSetup.PaperSize = ExcelPagePaperSize.PaperA4;
+            worksheet.PageSetup.Orientation = ExcelPageOrientation.Landscape;
+            worksheet.PageSetup.LeftMargin = 0.5;
+            worksheet.PageSetup.RightMargin = 0.5;
+            worksheet.PageSetup.TopMargin = 1;
+            worksheet.PageSetup.BottomMargin = 0.5;
+
+            // add header and footer
+
+            //display a logo image in the left part of the header
+            var imagesPath = Path.Combine(Application.StartupPath, @"images"); //..\..\Images"
+            logoImg = Image.FromFile(Path.Combine(imagesPath, "logo.jpg"));
+           
+               worksheet.PageSetup.LeftHeaderFormat = "&G";
+               worksheet.PageSetup.LeftHeaderPicture = logoImg;
+           // display Fecha y hora in the right part of the header
+               worksheet.PageSetup.RightHeaderFormat = "&D &T";
+
+               // add worksheet header and footer
+               // display the workbook file name in the left part of the footer
+               worksheet.PageSetup.LeftFooterFormat = "&F";
+               // display the page number in the center part of the footer
+               worksheet.PageSetup.RightFooterFormat = "&P";
+           
+
+           #endregion
+       }
+   
     } //--no borrar
 }

@@ -103,6 +103,16 @@ namespace Certifica_logistica.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap anulado {
+            get {
+                object obj = ResourceManager.GetObject("anulado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap avion_24 {
             get {
                 object obj = ResourceManager.GetObject("avion_24", resourceCulture);

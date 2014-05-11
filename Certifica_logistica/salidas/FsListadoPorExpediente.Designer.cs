@@ -419,6 +419,7 @@
             // 
             // BtnExportar
             // 
+            this.BtnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnExportar.Location = new System.Drawing.Point(766, 12);
             this.BtnExportar.Name = "BtnExportar";
             this.BtnExportar.Size = new System.Drawing.Size(75, 25);
@@ -426,6 +427,7 @@
             this.BtnExportar.Text = "Exportar";
             this.toolTipController1.SetToolTip(this.BtnExportar, "F6 Exportación Completa a Excel");
             this.BtnExportar.UseVisualStyleBackColor = true;
+            this.BtnExportar.Visible = false;
             this.BtnExportar.Click += new System.EventHandler(this.BtnExportar_Click);
             // 
             // FsListadoPorExpediente

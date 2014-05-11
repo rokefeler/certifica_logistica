@@ -111,7 +111,7 @@
             this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TxtNombre.Location = new System.Drawing.Point(101, 103);
-            this.TxtNombre.MaxLength = 45;
+            this.TxtNombre.MaxLength = 256;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(407, 20);
             this.TxtNombre.TabIndex = 5;

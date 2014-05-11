@@ -6,6 +6,7 @@
         SetClave=101,
         Corregir=1001, //Exp. corregir por nLog
         MarcarIngresouSalida=102,
+        CambiarEstado=1021, //Estado Orden
         InsertDefecto = 103,
         InsertDerivar = 104,
         InsertRelacionado=105,
@@ -16,6 +17,7 @@
         Delete08a12DIG = 303,
         RecuperarLogico=304,
         ReporteByExpediente=305, //reporte 18abr14
+        ReporteDetalladoOrden = 306, //reporte 18abr14
         ExistsId = 400,    //Por COdigo único de Tabla
         ExistId2=4001, //Si existe por IdExpediente
         ExistGp=4002,
@@ -111,5 +113,16 @@
         Nulo = -1,
         Falso,
         Verdadero
+    }
+    /// <summary>
+    /// Estado que puede tener una Orden de Servicio 
+    /// </summary>
+    public enum EstadoOrden
+    {
+        Anulado=0,
+        Borrador=1,
+        Impreso=2,
+        Bloqueado=3
+        //[0=Anulado] [1=Borrador] [2=Impreso] [3=Bloqueado]
     }
 }
